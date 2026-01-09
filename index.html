@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Balwaan – Roz ka kaam. Roz ki taqat.</title>
-  <meta name="description" content="Balwaan ek Ayurvedic formulation hai jo daily wellness aur routine life support ke liye design ki gayi hai."/>
-  <!-- Google Fonts for Poppins & Inter -->
+  <title>Balwaan – Roz ka kaam. Roz ki taqat. | Combo Offer MRP ₹1998 सिर्फ ₹999</title>
+  <meta name="description" content="Balwaan Combo Offer: 2 jars मात्र ₹999 (MRP ₹1998). Daily wellness support Ayurvedic formulation."/>
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Google Analytics (Optional - Replace with your ID) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
   <style>
     :root {
       --primary-green: #1f5f3b;
       --light-bg: #f9f9f9;
       --hero-bg: linear-gradient(135deg, #f4f9f6 0%, #e8f5e9 100%);
       --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --offer-gold: #f39c12;
     }
     * { box-sizing: border-box; }
     body {
@@ -44,9 +43,35 @@
       background: var(--hero-bg);
       text-align: center;
       padding: 80px 15px;
+      position: relative;
     }
     @media (max-width: 768px) { .hero { padding: 60px 15px; } }
     .hero p { font-size: 1.2rem; margin: 0 0 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .offer-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--offer-gold);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(243,156,18,0.4);
+    }
+    @media (max-width: 768px) { .offer-badge { top: 10px; right: 10px; font-size: 1rem; padding: 8px 16px; } }
+    .price-tag {
+      background: var(--offer-gold);
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: inline-block;
+      margin: 20px 0;
+      box-shadow: var(--shadow);
+    }
+    .old-price { text-decoration: line-through; color: #999; font-size: 1.2rem; margin-left: 15px; }
     .btn {
       display: inline-block;
       margin: 10px 5px;
@@ -58,9 +83,9 @@
       transition: all 0.3s ease;
       border: none;
       cursor: pointer;
-      min-width: 200px;
+      min-width: 220px;
     }
-    @media (max-width: 480px) { .btn { padding: 14px 24px; font-size: 0.95rem; min-width: 180px; } }
+    @media (max-width: 480px) { .btn { padding: 14px 24px; font-size: 0.95rem; min-width: 200px; } }
     .primary {
       background: var(--primary-green);
       color: #fff;
@@ -92,6 +117,7 @@
       box-shadow: var(--shadow);
       text-align: center;
     }
+    .box img { max-width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px; }
     .box h3 { margin-top: 0; color: var(--primary-green); }
     ul {
       list-style: none;
@@ -114,6 +140,8 @@
     .not-list li:before { content: '❌'; color: #d32f2f; }
     .not-list { color: #666; }
     .disclaimer { font-size: 0.85rem; color: #666; font-style: italic; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
     footer {
       background: var(--primary-green);
       color: #fff;
@@ -121,185 +149,147 @@
       padding: 30px 15px;
       text-align: center;
     }
-    .trust-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 20px 0; }
-    .badge { background: #fff; padding: 10px 20px; border-radius: 25px; font-weight: 500; box-shadow: var(--shadow); }
-    #rzp-button { width: 100%; max-width: 300px; }
+    .trust-badges { 
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+      margin: 20px 0; 
+    }
+    .badge { 
+      background: #fff; 
+      padding: 12px 24px; 
+      border-radius: 25px; 
+      font-weight: 500; 
+      box-shadow: var(--shadow); 
+      color: var(--primary-green);
+    }
+    #rzp-button { width: 100%; max-width: 350px; }
+    .product-image { max-width: 300px; margin: 0 auto 20px; display: block; }
     @media (max-width: 480px) { section { padding: 30px 10px; } }
   </style>
 </head>
 <body>
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION with Combo Images -->
 <section class="hero">
+  <div class="offer-badge">🛒 COMBO OFFER 50% OFF</div>
   <h1>Roz ka kaam. Roz ki taqat.</h1>
-  <p>Ek Ayurvedic formulation jo daily wellness aur routine life support ke liye design ki gayi hai.</p>
-  <p class="disclaimer">AYUSH guidelines ke anuroop tayyar kiya gaya</p>
-  <a href="#order" class="btn primary">Order Now</a>
-  <a href="https://wa.me/91XXXXXXXXXX" class="btn secondary">WhatsApp par poochhein</a>
+  <p>2 Balwaan Jars मात्र <span class="price-tag">₹999 <span class="old-price">MRP ₹1998</span></span></p>
+  <img src="[IMAGE1_URL]" alt="Balwaan Combo Offer - 2 Jars Strength & Stamina" class="product-image" loading="lazy">
+  <a href="#order" class="btn primary">50% OFF - Order Now</a>
+  <a href="https://wa.me/91XXXXXXXXXX" class="btn secondary">WhatsApp Order</a>
 </section>
 
-<!-- PRODUCT INTRO -->
+<!-- HOW TO USE - Steps Image -->
 <section>
-  <h2>Balwaan kya hai?</h2>
-  <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">
-    <strong>Balwaan</strong> ek Ayurvedic formulation hai jo paramparik jari-bootiyon par aadharit hai.
-    Iska uddeshya sharir ki daily strength, stamina aur overall wellness ko support karna hai —
-    bina kisi instant ya unrealistic claim ke.
-  </p>
+  <h2>Best Results Need Routine</h2>
   <div class="grid">
-    <ul>
-      <li>Ayurvedic formulation</li>
-      <li>Daily routine support</li>
-      <li>Long-term wellness approach</li>
-      <li>Discipline aur consistency par focus</li>
-    </ul>
+    <img src="[IMAGE2_URL]" alt="Balwaan Usage Steps: Daily with warm water/milk" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto 30px; border-radius: 16px; box-shadow: var(--shadow);" loading="lazy">
+    <div class="box">
+      <h3>✅ 5 Simple Steps</h3>
+      <ul class="steps-grid">
+        <li>Daily लें</li>
+        <li>गर्म दूध या पानी के साथ</li>
+        <li>Routine बनाएं</li>
+        <li>Consistency रखें</li>
+        <li>Sealed Pack</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- WHAT IT IS / IS NOT -->
+<!-- WHAT IT IS / IS NOT with Product Image -->
 <section>
   <h2>Balwaan kya hai aur kya nahi</h2>
   <div class="grid">
     <div class="box not-list">
-      <h3>❌ Balwaan kya nahi hai</h3>
+      <h3>❌ No Instant Promises</h3>
       <ul>
-        <li>Instant ya overnight result ka dawa nahi</li>
-        <li>Medical treatment ka replacement nahi</li>
-        <li>Artificial shortcut based product nahi</li>
+        <li>Instant results नहीं</li>
+        <li>Medical replacement नहीं</li>
+        <li>Exaggerated claims नहीं</li>
       </ul>
     </div>
     <div class="box">
-      <h3>✅ Balwaan kya hai</h3>
+      <img src="[IMAGE3_URL]" alt="Balwaan Jar - Ayurvedic Daily Wellness" style="max-width: 200px;" loading="lazy">
+      <h3>✅ Daily Wellness Support</h3>
       <ul>
-        <li>Ayurvedic wellness support</li>
-        <li>Daily use ke liye design</li>
-        <li>Routine aur lifestyle ke sath kaam karta hai</li>
+        <li>Ayurveda-inspired</li>
+        <li>Discipline पर built</li>
+        <li>Routine के साथ काम करता</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- PRODUCT INTRO -->
 <section>
-  <h2>Ayurvedic approach kaise kaam karti hai?</h2>
+  <h2>Balwaan Combo kya hai?</h2>
   <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">
-    Ayurveda ka focus sharir ke natural balance par hota hai.
-    Balwaan ko is tarah formulate kiya gaya hai ki ye:
+    <strong>Balwaan Combo (2 Jars)</strong> - Strength & Stamina support के लिए double value.
+    MRP ₹1998 की जगह सिर्फ ₹999 में। Paramparik jari-bootiyon पर आधारित daily wellness.
   </p>
-  <div class="grid">
-    <ul>
-      <li>Sharir ki prakritik urja ko support kare</li>
-      <li>Daily routine ke pressure me body ko sustain kare</li>
-      <li>Gradual aur natural approach follow kare</li>
-    </ul>
-  </div>
-  <p class="disclaimer" style="text-align: center;">Note: Ye ek wellness support hai, kisi rog ka ilaaj nahi.</p>
-</section>
-
-<!-- WHO SHOULD USE -->
-<section>
-  <h2>Ye product kis ke liye hai?</h2>
-  <div class="grid">
-    <div class="box">
-      <h3>✔ Suitable</h3>
-      <ul>
-        <li>Working professionals</li>
-        <li>Busy routine wale log</li>
-        <li>Daily wellness ko seriously lene wale</li>
-      </ul>
-    </div>
-    <div class="box not-list">
-      <h3>❌ Suitable nahi</h3>
-      <ul>
-        <li>Instant ya magical results expect karne wale</li>
-        <li>Medical treatment ka option dhundne wale</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- HOW TO USE -->
-<section>
-  <h2>Sevan Vidhi</h2>
-  <p style="text-align: center; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
-    Label par di gayi salah ke anusar ya Ayurvedic expert ki guidance me lein.
-  </p>
-  <div class="grid">
-    <ul>
-      <li>Nirdharit matra se adhik na lein</li>
-      <li>Pregnant ya medical condition wale vyakti pehle salah lein</li>
-    </ul>
-  </div>
-</section>
-
-<!-- TRUST BLOCK -->
-<section>
-  <h2>Quality & Compliance</h2>
-  <div class="trust-badges">
-    <div class="badge">AYUSH Licence No: [YOUR_LICENSE]</div>
-    <div class="badge">GST Registered</div>
-    <div class="badge">Made in India</div>
-    <div class="badge">Quality-Focused</div>
-  </div>
-  <ul style="justify-content: center;">
-    <li>Paramparik Ayurvedic formulation</li>
-    <li>Strict quality checks</li>
+  <ul style="max-width: 600px; margin: 0 auto;">
+    <li>Ayurvedic formulation (2 महीने का pack)</li>
+    <li>Daily routine support</li>
+    <li>50% discount - Limited time</li>
   </ul>
 </section>
 
-<!-- CTA / ORDER SECTION -->
-<section id="order" class="hero">
-  <h2>Ek disciplined wellness approach chahte hain?</h2>
-  <p style="max-width: 600px; margin-left: auto; margin-right: auto;">
-    Agar aap daily routine ke sath natural wellness support chahte hain,
-    to Balwaan ek socha-samjha option ho sakta hai.
-  </p>
-  <!-- Razorpay Checkout Button (Replace with your keys/amount) -->
-  <button id="rzp-button" class="btn primary">₹499 - Order Now (Secure Checkout)</button>
-  <a href="https://wa.me/91XXXXXXXXXX?text=Balwaan%20order%20details%20bhejo" class="btn secondary">WhatsApp Support</a>
-  <p class="disclaimer" style="margin-top: 20px;">UPI / Card / COD Available</p>
+<!-- TRUST & CTA -->
+<section id="order" style="background: var(--hero-bg);">
+  <h2>Ready for Disciplined Wellness?</h2>
+  <div class="trust-badges">
+    <div class="badge">AYUSH Licence [YOUR_NO]</div>
+    <div class="badge">GST Registered</div>
+    <div class="badge">Made in India</div>
+    <div class="badge">COD Available</div>
+  </div>
+  <div style="text-align: center; margin: 40px 0;">
+    <span class="price-tag">Combo ₹999 (Save ₹999)</span>
+    <br><br>
+    <button id="rzp-button" class="btn primary">Secure Checkout - UPI/Card/COD</button>
+    <br>
+    <a href="https://wa.me/91XXXXXXXXXX?text=Balwaan%20Combo%20₹999%20order%20karna%20hai" class="btn secondary">WhatsApp Fast Order</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <p><strong>Disclaimer:</strong><br>
-    Ye product kisi bhi disease ko diagnose, treat, cure ya prevent karne ka dawa nahi karta.
-    Ayurvedic practitioner se salah lein.
+    Wellness support product. Disease का इलाज नहीं। Ayurvedic expert से सलाह लें।
   </p>
-  <p>© 2026 Balwaan. All rights reserved. | Made in India</p>
+  <p>© 2026 Balwaan. All rights reserved. | Limited Combo Offer</p>
 </footer>
 
-<!-- Razorpay Checkout Script (Replace YOUR_KEY_ID and amount) -->
+<!-- Razorpay Script - Updated for Combo -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
   var options = {
-    "key": "YOUR_RAZORPAY_KEY_ID",  // Dashboard se len (test/live)
-    "amount": "49900",  // ₹499 in paise (100x)
+    "key": "YOUR_RAZORPAY_KEY_ID",
+    "amount": "99900",  // ₹999 in paise
     "currency": "INR",
-    "name": "Balwaan",
-    "description": "Daily Wellness Ayurvedic Support",
-    "image": "https://your-site.com/logo.png",  // Optional logo URL
+    "name": "Balwaan Combo Offer",
+    "description": "2 Jars Strength & Stamina | MRP ₹1998",
+    "image": "[IMAGE1_URL]",  // Combo image URL
     "handler": function(response) {
-      // Payment success - WhatsApp order confirmation
-      var msg = "New Order!
-ID: " + response.razorpay_order_id + 
+      var msg = "🔥 NEW COMBO ORDER!
+" +
+                "Order ID: " + response.razorpay_order_id + 
                 "
-Payment ID: " + response.razorpay_payment_id + 
+Payment: " + response.razorpay_payment_id + 
                 "
-Amount: ₹499
-Status: Paid";
+Amount: ₹999 (Combo)
+✅ PAID";
       window.open("https://wa.me/91XXXXXXXXXX?text=" + encodeURIComponent(msg), "_blank");
-      alert("Order confirmed! Details WhatsApp pe bheje gaye.");
+      alert("Combo Order Confirmed! Details WhatsApp पर।");
     },
-    "prefill": {
-      "name": "", "email": "", "contact": ""
-    },
-    "theme": {
-      "color": "#1f5f3b"
-    }
+    "prefill": { "name": "", "email": "", "contact": "" },
+    "theme": { "color": "#1f5f3b" },
+    "modal": { "ondismiss": function() { console.log("Dismissed"); } }
   };
-  var rzpButton = document.getElementById('rzp-button');
-  rzpButton.onclick = function(e) {
+  document.getElementById('rzp-button').onclick = function(e) {
     var rzp = new Razorpay(options);
     rzp.open();
     e.preventDefault();
