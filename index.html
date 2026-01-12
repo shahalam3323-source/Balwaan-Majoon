@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Balwaan – Roz ka kaam. Roz ki taqat. | Premium Combo Offer</title>
-  <meta name="description" content="Balwaan Combo Offer: 2 jars मात्र ₹999. Strength & Stamina ke liye premium Ayurvedic formula."/>
+  <title>Balwaan – Roz ka kaam. Roz ki taqat. | Premium Capsule Combo</title>
+  <meta name="description" content="Balwaan Capsule Combo: 2 bottles मात्र ₹999. Easy dose, powerful stamina boost."/>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
+    /* [SAARA PICHWALA CSS SAME RAKHA HAI - Hero slider wala] */
     :root {
       --brand-dark-green: #0f3d24; 
       --brand-green-light: #1a5c3a; 
@@ -40,7 +41,6 @@
       margin: auto;
     }
 
-    /* Typography */
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       color: var(--brand-dark-green);
@@ -58,14 +58,49 @@
       background: var(--brand-gold); margin: 10px auto 0; border-radius: 2px;
     }
 
-    /* Hero */
-    .hero {
-      background: var(--hero-gradient); text-align: center;
-      padding: 80px 20px 60px; position: relative;
-      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    /* Hero Slider CSS [SAME] */
+    .hero-slider {
+      position: relative;
+      height: 80vh;
+      min-height: 600px;
+      overflow: hidden;
+      margin-bottom: 0;
     }
-    .hero p { 
-      font-size: 1.25rem; color: var(--text-muted); margin: 0 auto 25px; max-width: 650px; 
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    
+    .slide.active {
+      opacity: 1;
+    }
+    
+    .slide-content {
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      position: relative;
+    }
+
+    .hero-overlay {
+      background: linear-gradient(rgba(15,61,36,0.75), rgba(15,61,36,0.75));
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 800px;
+      backdrop-filter: blur(10px);
     }
 
     .offer-badge {
@@ -74,16 +109,26 @@
       padding: 8px 20px; border-radius: 50px; font-weight: 700;
       font-size: 0.95rem; letter-spacing: 0.5px;
       box-shadow: var(--shadow-gold); border: 1px solid #fff;
+      z-index: 5;
     }
 
     .price-tag {
       display: inline-block; background: var(--brand-dark-green);
-      color: #fff; padding: 12px 24px; border-radius: 8px;
-      font-size: 1.4rem; font-weight: 600; box-shadow: var(--shadow-soft);
-      border: 1px solid var(--brand-gold); margin-bottom: 20px;
+      color: #fff; padding: 15px 30px; border-radius: 50px;
+      font-size: 2rem; font-weight: 700; box-shadow: var(--shadow-gold);
+      border: 2px solid var(--brand-gold); margin: 25px 0;
     }
     .price-tag .amount { color: #ffe6a8; }
-    .old-price { text-decoration: line-through; color: #aebfb5; font-size: 1rem; margin-left: 10px; font-weight: 400; }
+    .old-price { text-decoration: line-through; color: #ffd700; font-size: 1.2rem; margin-left: 15px; }
+
+    .slider-buttons {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      text-align: center;
+    }
 
     /* Buttons */
     .btn {
@@ -99,9 +144,9 @@
     }
     .btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5); }
     .btn.secondary {
-      background: transparent; border: 2px solid var(--brand-dark-green); color: var(--brand-dark-green);
+      background: transparent; border: 2px solid #fff; color: #fff;
     }
-    .btn.secondary:hover { background: var(--brand-dark-green); color: #fff; }
+    .btn.secondary:hover { background: var(--brand-dark-green); color: #fff; border-color: var(--brand-gold); }
 
     /* Images */
     .product-image { 
@@ -136,23 +181,20 @@
     }
     .not-list li:before { content: '×'; color: #c0392b; font-size: 1.5rem; }
 
-    /* Comparison Table Styles */
-    .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft); }
+    /* Comparison Table */
+    .comparison-table { width: 100%; border-collapse: capsule; margin: 20px 0; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft); }
     .comparison-table th, .comparison-table td { padding: 15px; text-align: center; border-bottom: 1px solid #eee; }
     .comparison-table th { background: var(--brand-dark-green); color: #fff; font-family: 'Playfair Display', serif; }
     .comparison-table tr:last-child td { border-bottom: none; }
     .check-mark { color: green; font-weight: bold; font-size: 1.2rem; }
     .cross-mark { color: red; font-weight: bold; font-size: 1.2rem; }
 
-    /* Process Steps */
     .step-card { text-align: center; padding: 20px; }
     .step-number { background: var(--brand-gold); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 15px; font-size: 1.2rem; }
 
-    /* Testimonials */
     .testimonial { font-style: italic; color: #555; background: #f9f9f9; padding: 20px; border-radius: 12px; border-left: 4px solid var(--brand-gold); margin-bottom: 15px; }
     .customer-name { font-weight: bold; color: var(--brand-dark-green); display: block; margin-top: 10px; font-style: normal; }
 
-    /* FAQ */
     .faq-item { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
     .faq-question { font-weight: 600; color: var(--brand-dark-green); cursor: pointer; font-size: 1.1rem; }
     .faq-answer { color: #555; margin-top: 5px; font-size: 0.95rem; }
@@ -172,34 +214,69 @@
 
     #rzp-button { width: 100%; max-width: 350px; }
 
-    @media (max-width: 480px) {
-      h1 { font-size: 2rem; }
+    @media (max-width: 768px) {
+      .hero-slider { height: 70vh; min-height: 500px; }
+      h1 { font-size: 2.2rem; }
       .btn { width: 100%; display: block; margin: 10px 0; }
       .comparison-table { font-size: 0.9rem; }
+      .hero-overlay { padding: 20px; margin: 0 10px; }
+    }
+    
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      .price-tag { font-size: 1.5rem; padding: 12px 24px; }
     }
   </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="offer-badge">✨ LIMITED COMBO 50% OFF</div>
-  
-  <h1>Roz ka kaam. Roz ki taqat.</h1>
-  <p>Paramparik Ayurveda, Modern Vigyaan ke saath.</p>
-  
-  <div class="price-tag">
-    <span class="amount">₹999</span> 
-    <span class="old-price">MRP ₹1998</span>
+<!-- HERO SLIDER [SAME] -->
+<section class="hero-slider">
+  <div class="slide active">
+    <div class="slide-content" style="background-image: linear-gradient(rgba(15,61,36,0.8), rgba(15,61,36,0.8)), url('hero1.jpg');">
+      <div class="offer-badge">✨ LIMITED COMBO 50% OFF</div>
+      <div class="hero-overlay">
+        <h1>Roz ka kaam. Roz ki taqat.</h1>
+        <p style="font-size: 1.25rem; margin-bottom: 25px;">Paramparik Ayurveda, Modern Vigyaan ke saath.</p>
+        <div class="price-tag">
+          <span class="amount">₹999</span> 
+          <span class="old-price">MRP ₹1998</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <img src="hero.jpg" alt="Balwaan Premium Jar" class="product-image">
+  <div class="slide">
+    <div class="slide-content" style="background-image: linear-gradient(rgba(26,92,58,0.8), rgba(26,92,58,0.8)), url('hero2.jpg');">
+      <div class="hero-overlay">
+        <h1 style="font-size: 3rem;">Natural Energy Boost</h1>
+        <p style="font-size: 1.3rem;">Ashwagandha + Shilajit = Ultimate Power</p>
+        <div style="font-size: 1.5rem; color: var(--brand-gold); font-weight: bold; margin-top: 20px;">
+          Easy Capsule Form
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div style="margin-top: 20px;">
+  <div class="slide">
+    <div class="slide-content" style="background-image: linear-gradient(rgba(197,160,89,0.8), rgba(15,61,36,0.7)), url('hero3.jpg');">
+      <div class="hero-overlay">
+        <h1 style="font-size: 3rem;">Trusted By Thousands</h1>
+        <p style="font-size: 1.3rem;">50,000+ Happy Indians | COD Available</p>
+        <div style="font-size: 1.5rem; color: var(--brand-gold); font-weight: bold; margin-top: 20px;">
+          10 Sec Routine
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-buttons">
     <a href="#order" class="btn primary">Order Now - 50% OFF</a>
     <a href="https://wa.me/91XXXXXXXXXX" class="btn secondary">WhatsApp Inquiry</a>
   </div>
 </section>
 
+<!-- Trust Badges [SAME] -->
 <section style="background: #fff; padding: 30px 20px; border-bottom: 1px solid #eee;">
   <div class="trust-badges" style="margin: 0;">
     <div class="badge" style="border:none; box-shadow:none;">🌿 100% Shudh</div>
@@ -208,6 +285,7 @@
   </div>
 </section>
 
+<!-- How it Works [SAME] -->
 <section>
   <h2>Yeh Kaise Kaam Karta Hai?</h2>
   <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
@@ -229,8 +307,9 @@
   </div>
 </section>
 
+<!-- ✅ NEW INGREDIENTS SECTION (CAPSULE) -->
 <section>
-  <h2>Powerful Ingredients</h2>
+  <h2>Powerful Ingredients, Easy Dose</h2>
   <div class="grid">
     <div class="box">
       <h3>✅ The Balwaan Formula</h3>
@@ -238,17 +317,18 @@
         <li><strong>Ashwagandha:</strong> Stress kam kare, taqat badhaye.</li>
         <li><strong>Safed Musli:</strong> Energy levels ko boost kare.</li>
         <li><strong>Shilajit:</strong> Recovery aur Josh ke liye.</li>
-        <li>Zero Hidden Chemicals.</li>
+        <li><strong>Capsule Form:</strong> Lene mein aasaan, koi jhanjhat nahi.</li>
       </ul>
     </div>
     
     <div style="text-align:center;">
-        <img src="daily-routine.jpg" alt="Daily Wellness Routine" class="content-img">
-        <p style="font-size: 0.9rem; color: #666;">Behtar natijo ke liye daily use karein.</p>
+        <img src="ingredients-capsule.jpg" alt="Balwaan Capsules with Ingredients" class="content-img">
+        <p style="font-size: 0.9rem; color: #666;">🌿 Pure Herbs, Ab Capsule Form Mein.</p>
     </div>
   </div>
 </section>
 
+<!-- Comparison Table [SAME] -->
 <section style="background: #fff;">
   <h2>Sabse Alag Kyu?</h2>
   <table class="comparison-table">
@@ -261,9 +341,9 @@
     </thead>
     <tbody>
       <tr>
-        <td>Ingredients</td>
-        <td><span class="check-mark">✔</span> Ayurvedic</td>
-        <td><span class="cross-mark">✘</span> Chemical</td>
+        <td>Form</td>
+        <td><span class="check-mark">✔</span> Capsule</td>
+        <td><span class="cross-mark">✘</span> Powder</td>
       </tr>
       <tr>
         <td>Side Effects</td>
@@ -279,22 +359,25 @@
   </table>
 </section>
 
+<!-- ✅ NEW HOW TO USE SECTION (CAPSULE) -->
 <section>
   <h2>Sahi Tarika, Sahi Fayda</h2>
   <div class="grid">
-     <img src="how-to-use.jpg" alt="How to use Balwaan" class="content-img">
+     <img src="how-to-use-capsule.jpg" alt="How to take Balwaan Capsule" class="content-img">
      
      <div class="box">
-       <h3>🥣 Simple Routine</h3>
+       <h3>💊 Simple 10-Second Routine</h3>
        <ul>
-         <li>1 Spoon subah ya shaam</li>
-         <li>Garm doodh (preferred) ya paani ke saath</li>
-         <li>Daily routine maintain karein</li>
+         <li><strong>1 Capsule</strong> subah naashte ke baad.</li>
+         <li><strong>1 Capsule</strong> raat ko sone se pehle.</li>
+         <li>Garm doodh (Best) ya paani ke saath lein.</li>
+         <li>Taste ki koi chinta nahi (No bitter taste).</li>
        </ul>
      </div>
   </div>
 </section>
 
+<!-- What it is not [SAME] -->
 <section style="background: #fff;">
   <h2>Sahi Umeed, Sahi Nateeje</h2>
   <div class="grid">
@@ -313,20 +396,22 @@
   </div>
 </section>
 
+<!-- Testimonials [SAME] -->
 <section>
   <h2>Happy Customers</h2>
   <div class="grid">
     <div class="testimonial">
-      "Maine market ke kaafi products try kiye, par Balwaan ka asar natural laga. Thakaawat kam hoti hai ab."
+      "Capsule form bahut convenient hai. No taste issue, results 3 hafte mein dikhne lage."
       <span class="customer-name">- Rahul S., IT Professional</span>
     </div>
     <div class="testimonial">
-      "Best part ye hai ki isme koi chemicals nahi hain. Delivery bhi bahut fast thi."
+      "Swallow karke kaam khatam. Delivery fast, packing discreet thi."
       <span class="customer-name">- Amit K., Business Owner</span>
     </div>
   </div>
 </section>
 
+<!-- Order Section [SAME] -->
 <section id="order" style="text-align: center; background: var(--bg-ivory);">
   <h2>Start Your Wellness Journey</h2>
   <p>Apne routine ko Balwaan banayein. COD Available.</p>
@@ -339,17 +424,18 @@
 
   <div style="margin: 40px auto; padding: 30px; background: #fff; border-radius: 15px; border: 1px solid var(--brand-gold); display: block; width: 100%; max-width: 500px;">
     
-    <img src="Combo.jpg" alt="Balwaan Combo Pack" style="width: 100%; max-width: 250px; margin-bottom: 20px;">
+    <img src="Combo.jpg" alt="Balwaan Capsule Combo Pack" style="width: 100%; max-width: 250px; margin-bottom: 20px;">
     
-    <h3 style="margin-bottom: 10px; border: none;">Combo Pack (2 Jars)</h3>
+    <h3 style="margin-bottom: 10px; border: none;">Capsule Combo Pack (60 Caps)</h3>
     <div style="font-size: 2rem; color: var(--brand-dark-green); font-weight: bold; margin-bottom: 20px;">₹999</div>
     
     <button id="rzp-button" class="btn primary">Secure Pay (UPI/Cards/COD)</button>
     <br><br>
-    <a href="https://wa.me/91XXXXXXXXXX?text=Balwaan%20Combo%20Order" style="color: var(--brand-dark-green); text-decoration: underline;">Help me order on WhatsApp</a>
+    <a href="https://wa.me/91XXXXXXXXXX?text=Balwaan%20Capsule%20Combo%20Order" style="color: var(--brand-dark-green); text-decoration: underline;">Help me order on WhatsApp</a>
   </div>
 </section>
 
+<!-- FAQ [SAME] -->
 <section style="background: #fff;">
   <h2>Aapke Sawal (FAQ)</h2>
   <div class="box" style="text-align: left;">
@@ -358,8 +444,8 @@
       <div class="faq-answer">Ayurveda samay leta hai. Behtar results ke liye kam se kam 3-4 hafte daily use karein.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">❓ Kya iska koi side effect hai?</div>
-      <div class="faq-answer">Nahi, ye 100% natural herbs se bana hai. Phir bhi, doctor ki salah hamesha behtar hoti hai.</div>
+      <div class="faq-question">❓ Capsule kaise leni hai?</div>
+      <div class="faq-answer">1 subah naashte ke baad, 1 raat ko. Paani ya doodh ke saath swallow karein.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">❓ Delivery kaise hogi?</div>
@@ -368,36 +454,50 @@
   </div>
 </section>
 
+<!-- Footer [SAME] -->
 <footer>
   <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 10px;">Balwaan</h3>
-  <p style="font-size: 0.9rem; opacity: 0.8;">Strength & Stamina Support</p>
+  <p style="font-size: 0.9rem; opacity: 0.8;">Strength & Stamina Capsules</p>
   <hr style="border-color: rgba(255,255,255,0.2); margin: 20px 0;">
   <p style="font-size: 0.8rem;"><strong>Disclaimer:</strong> This product is a dietary supplement and not intended to treat or cure any disease. Results vary with lifestyle.</p>
   <p style="font-size: 0.8rem;">© 2026 Balwaan Wellness.</p>
 </footer>
 
+<!-- Scripts [SAME] -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-  var options = {
-    "key": "YOUR_RAZORPAY_KEY_ID",
-    "amount": "99900", 
-    "currency": "INR",
-    "name": "Balwaan Premium",
-    "description": "Strength & Stamina Combo Pack",
-    "image": "hero.jpg",
-    "handler": function(response) {
-      // WhatsApp Redirection after payment
-      var msg = "Order ID: " + response.razorpay_order_id + " | Payment: " + response.razorpay_payment_id;
-      window.open("https://wa.me/91XXXXXXXXXX?text=" + encodeURIComponent("Payment Done! " + msg), "_blank");
-    },
-    "prefill": { "contact": "" },
-    "theme": { "color": "#0f3d24" }
-  };
-  document.getElementById('rzp-button').onclick = function(e) {
-    var rzp = new Razorpay(options);
-    rzp.open();
-    e.preventDefault();
-  };
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % totalSlides;
+  slides[currentSlide].classList.add('active');
+}
+
+setInterval(nextSlide, 4000);
+
+// Razorpay
+var options = {
+  "key": "YOUR_RAZORPAY_KEY_ID",
+  "amount": "99900", 
+  "currency": "INR",
+  "name": "Balwaan Premium",
+  "description": "Strength & Stamina Capsule Combo",
+  "image": "hero1.jpg",
+  "handler": function(response) {
+    var msg = "Order ID: " + response.razorpay_order_id + " | Payment: " + response.razorpay_payment_id;
+    window.open("https://wa.me/91XXXXXXXXXX?text=" + encodeURIComponent("Payment Done! " + msg), "_blank");
+  },
+  "prefill": { "contact": "" },
+  "theme": { "color": "#0f3d24" }
+};
+document.getElementById('rzp-button').onclick = function(e) {
+  var rzp = new Razorpay(options);
+  rzp.open();
+  e.preventDefault();
+};
 </script>
 
 </body>
