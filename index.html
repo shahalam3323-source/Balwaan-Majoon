@@ -1,11 +1,16 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Balwaan Capsules – Daily Strength & Stamina | 30 & 60 Capsules</title>
-  <meta name="description" content="Balwaan Ayurvedic Capsules for daily wellness. Choose 30 Capsules @ ₹999 or 60 Capsules @ ₹1499. COD available. No exaggerated claims." />  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="description" content="Balwaan Ayurvedic Capsules for daily wellness. Choose 30 Capsules @ ₹999 or 60 Capsules @ ₹1499. COD available. No exaggerated claims." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
     :root{
       --green-dark:#0f3d24;
       --green:#1a5c3a;
@@ -18,62 +23,76 @@
       --radius:22px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
     img{max-width:100%;display:block}
     section{padding:70px 0}
     .container{max-width:1200px;margin:auto;padding:0 18px}
     h1,h2,h3{font-family:'Playfair Display',serif;color:var(--green-dark)}
 
-    /* HEADER */
-    header{position:sticky;top:0;z-index:50;background:rgba(252,251,247,.9);backdrop-filter:blur(6px);border-bottom:1px solid #eee}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-    .logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(252,251,247,.92);backdrop-filter:blur(6px);border-bottom:1px solid #eee}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+    .logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700}
     .nav a{margin-left:18px;text-decoration:none;color:var(--green-dark);font-weight:600}
 
-    /* HERO */
-    .hero{background:url('hero1.jpg') center/cover no-repeat;position:relative;min-height:92vh;display:flex;align-items:center}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,61,36,.9),rgba(15,61,36,.75))}
-    .hero-content{position:relative;z-index:2;color:#fff;max-width:700px;margin:auto;text-align:center;padding:20px}
-    .tag{display:inline-block;background:var(--gold-grad);padding:10px 20px;border-radius:30px;font-weight:700;margin-bottom:20px}
-    .hero h1{font-size:clamp(2.2rem,6vw,3.8rem);color:#fff}
-    .hero p{margin-top:12px;font-size:1.1rem;opacity:.95}
-    .emotion{font-weight:600;margin:16px 0}
+    /* Hero */
+    .hero{background:url('images/hero1.jpg') center/cover no-repeat;position:relative;min-height:86vh;display:flex;align-items:center}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,61,36,.88),rgba(15,61,36,.72));}
+    .hero-content{position:relative;z-index:2;color:#fff;max-width:820px;margin:auto;text-align:center;padding:28px}
+    .tag{display:inline-block;background:var(--gold-grad);padding:10px 20px;border-radius:30px;font-weight:700;margin-bottom:18px}
+    .hero h1{font-size:clamp(2rem,6vw,3.6rem);color:#fff;line-height:1.02}
+    .hero p{margin-top:12px;font-size:1.05rem;opacity:.95}
+    .emotion{font-weight:600;margin:14px 0}
 
-    .price-box{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:28px 0}
-    .price-card{background:#fff;color:var(--green-dark);padding:22px 30px;border-radius:30px;box-shadow:var(--shadow);min-width:220px}
-    .price-card h3{margin-bottom:6px}
-    .price{font-size:2.2rem;font-weight:800}
+    .price-box{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:24px 0}
+    .price-card{background:#fff;color:var(--green-dark);padding:20px 26px;border-radius:28px;box-shadow:var(--shadow);min-width:220px}
+    .price-card h3{margin-bottom:6px;font-size:1rem}
+    .price{font-size:1.8rem;font-weight:800}
     .price small{display:block;font-size:.9rem;color:var(--muted)}
 
-    .btn{display:inline-block;padding:16px 32px;border-radius:40px;font-weight:700;text-decoration:none}
+    .btn{display:inline-block;padding:14px 28px;border-radius:40px;font-weight:700;text-decoration:none}
     .btn-primary{background:var(--gold-grad);color:var(--green-dark)}
-    .btn-secondary{border:2px solid #fff;color:#fff}
+    .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
 
-    .trust{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-    .trust div{background:#fff;padding:10px 18px;border-radius:30px;font-weight:600;box-shadow:var(--shadow);color:var(--green-dark)}
+    .trust{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+    .trust div{background:#fff;padding:8px 14px;border-radius:28px;font-weight:600;box-shadow:var(--shadow);color:var(--green-dark)}
 
-    /* BENEFITS */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;align-items:center}
-    .card{background:#fff;padding:36px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    /* Grid & cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;align-items:center}
+    .card{background:#fff;padding:28px;border-radius:var(--radius);box-shadow:var(--shadow)}
 
     ul{list-style:none}
     ul li{padding:8px 0}
     ul li::before{content:'✔';color:var(--gold);margin-right:8px}
 
-    /* LIFESTYLE */
-    .lifestyle{background:#fff}
+    /* Order area */
+    .order{background:#fff;border-radius:20px;padding:26px;text-align:center;box-shadow:var(--shadow);max-width:720px;margin:18px auto}
+    .pack-select{display:flex;gap:12px;justify-content:center;margin:18px 0}
+    .pack{padding:12px 18px;border-radius:12px;border:1px solid #eee;cursor:pointer;background:#f9faf9}
+    .pack.active{border:2px solid var(--green-dark);background:linear-gradient(180deg,#fff,#f7fff7)}
 
-    /* ORDER */
-    .order{background:#fff;border-radius:32px;padding:46px;text-align:center;box-shadow:var(--shadow);max-width:680px;margin:auto}
+    /* Reviews */
+    .testimonial{background:#f8f9fa;padding:20px;border-radius:12px;font-style:italic;border-left:6px solid var(--gold)}
 
-    footer{background:var(--green-dark);color:#dfeee5;text-align:center;padding:40px 20px}
+    /* Sticky CTA */
+    .sticky-cta{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,.98);box-shadow:0 10px 30px rgba(0,0,0,.12);border-radius:60px;padding:10px 14px;display:flex;gap:10px;align-items:center}
+    .sticky-cta .cta-btn{padding:10px 16px;border-radius:40px;font-weight:700}
+
+    footer{background:var(--green-dark);color:#dfeee5;text-align:center;padding:30px 18px;margin-top:40px;border-top:4px solid rgba(197,160,89,0.08)}
 
     @media(max-width:768px){
-      section{padding:52px 0}
-      .hero{min-height:88vh}
+      section{padding:48px 0}
+      .hero{min-height:74vh}
+      .hero-content{padding:18px}
+      .price{font-size:1.4rem}
+      .sticky-cta{left:12px;transform:none;width:calc(100% - 24px);justify-content:space-between}
     }
-  </style></head>
-<body><header>
+  </style>
+</head>
+<body>
+
+<header>
   <div class="container nav">
     <div class="logo">Balwaan</div>
     <nav>
@@ -82,39 +101,50 @@
       <a href="#order">Order</a>
     </nav>
   </div>
-</header><!-- HERO --><section class="hero">
-  <div class="hero-content">
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content container">
     <div class="tag">Ayurvedic Daily Wellness</div>
     <h1>Roz ka kaam. Roz ki taqat.</h1>
-    <p class="emotion">Roz ka kaam rukta nahi.<br><strong>Body bhi rukni nahi chahiye.</strong></p>
-    <p>Simple capsule routine for everyday strength & stamina</p><div class="price-box">
-  <div class="price-card">
-    <h3>30 Capsules</h3>
-    <div class="price">₹999</div>
-    <small>Perfect to start</small>
-  </div>
-  <div class="price-card" style="border:3px solid var(--gold)">
-    <h3>60 Capsules</h3>
-    <div class="price">₹1499</div>
-    <small>Best value</small>
-  </div>
-</div>
+    <p class="emotion">Roz ka kaam rukta nahi. <strong>Body bhi rukni nahi chahiye.</strong></p>
+    <p>Simple capsule routine for everyday strength & stamina.</p>
 
-<a href="#order" class="btn btn-primary">Order Now – Pay on Delivery</a>
-<div style="margin-top:14px">
-  <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-secondary">WhatsApp Order</a>
-</div>
+    <div class="price-box" role="list">
+      <div class="price-card" role="listitem">
+        <h3>30 Capsules</h3>
+        <div class="price">₹999</div>
+        <small>Perfect to start</small>
+      </div>
 
-<div class="trust">
-  <div>🌿 Ayurvedic</div>
-  <div>📦 Discreet Packing</div>
-  <div>✅ COD Available</div>
-</div>
+      <div class="price-card" style="border:3px solid var(--gold)" role="listitem">
+        <h3>60 Capsules</h3>
+        <div class="price">₹1499</div>
+        <small>Best value</small>
+      </div>
+    </div>
 
+    <div style="margin-top:20px; display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="#order" class="btn btn-primary">Order Now – Pay on Delivery</a>
+      <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-secondary">WhatsApp Order</a>
+    </div>
+
+    <div class="trust" aria-hidden="false">
+      <div>🌿 Ayurvedic</div>
+      <div>📦 Discreet Packing</div>
+      <div>✅ COD Available</div>
+    </div>
   </div>
-</section><!-- BENEFITS --><section id="benefits">
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
   <div class="container">
     <h2>Why Choose Balwaan Capsules</h2>
+    <div style="max-width:920px;margin:20px auto">
+      <img src="images/benefits-infographic.jpg" alt="Benefits infographic" style="width:100%;border-radius:14px;box-shadow:var(--shadow)" loading="lazy">
+    </div>
     <div class="grid">
       <div class="card">
         <h3>Daily Strength Support</h3>
@@ -130,11 +160,14 @@
       </div>
     </div>
   </div>
-</section><!-- INGREDIENTS --><section id="ingredients" style="background:#fff">
+</section>
+
+<!-- INGREDIENTS -->
+<section id="ingredients" style="background:#fff">
   <div class="container">
     <h2>Trusted Ayurvedic Ingredients</h2>
     <div class="grid">
-      <img src="ingredients-capsule.jpg" alt="Balwaan Ingredients">
+      <img src="images/ingredients-capsule.jpg" alt="Balwaan Ingredients" loading="lazy">
       <div class="card">
         <ul>
           <li>Ashwagandha – stress & balance support</li>
@@ -145,10 +178,13 @@
       </div>
     </div>
   </div>
-</section><!-- LIFESTYLE --><section class="lifestyle">
+</section>
+
+<!-- LIFESTYLE -->
+<section class="lifestyle">
   <div class="container">
     <div class="grid">
-      <img src="lifestyle-man.jpg" alt="Daily routine lifestyle">
+      <img src="images/lifestyle-man.jpg" alt="Daily routine lifestyle" loading="lazy">
       <div>
         <h2>Made for Daily Life</h2>
         <p>Office, business, travel or home — Balwaan fits into your routine without extra effort.</p>
@@ -156,25 +192,31 @@
       </div>
     </div>
   </div>
-</section><!-- REVIEWS --><section id="reviews" style="background:#fff">
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:#fff">
   <div class="container">
     <h2>What Customers Say</h2>
     <div class="grid">
-      <div class="card">
+      <div class="card testimonial">
         <p>“Routine follow karna easy ho gaya. Capsules lene me koi problem nahi.”</p>
         <strong>– Amit, Delhi</strong>
       </div>
-      <div class="card">
+      <div class="card testimonial">
         <p>“No fake claims. Dheere-dheere difference feel hua.”</p>
         <strong>– Rakesh, Pune</strong>
       </div>
-      <div class="card">
+      <div class="card testimonial">
         <p>“Discreet packing aur simple daily use. Trustworthy product.”</p>
         <strong>– Mohit, Jaipur</strong>
       </div>
     </div>
   </div>
-</section><!-- FAQ --><section id="faq">
+</section>
+
+<!-- FAQ -->
+<section id="faq">
   <div class="container">
     <h2>Frequently Asked Questions</h2>
     <div class="grid">
@@ -196,39 +238,111 @@
       </div>
     </div>
   </div>
-</section><!-- ORDER --><section id="order">
+</section>
+
+<!-- ORDER -->
+<section id="order">
   <div class="container">
     <div class="order">
       <h2>Choose Your Pack</h2>
-      <p style="margin-bottom:20px;color:var(--muted)">No instant promises. No exaggerated claims.<br>Daily discipline-based wellness.</p><div class="price-box">
-    <div class="price-card">
-      <h3>30 Capsules</h3>
-      <div class="price">₹999</div>
-    </div>
-    <div class="price-card" style="border:3px solid var(--gold)">
-      <h3>60 Capsules</h3>
-      <div class="price">₹1499</div>
+      <p style="margin-bottom:14px;color:var(--muted)">No instant promises. No exaggerated claims.<br>Daily discipline-based wellness.</p>
+
+      <div class="pack-select" role="radiogroup" aria-label="Choose pack">
+        <div class="pack" data-price="99900" data-label="30 Capsules (₹999)" tabindex="0">30 Capsules<br><strong>₹999</strong></div>
+        <div class="pack active" data-price="149900" data-label="60 Capsules (₹1499)" tabindex="0">60 Capsules<br><strong>₹1499</strong></div>
+      </div>
+
+      <div style="margin:12px 0;font-size:1.1rem;">Selected: <span id="selectedLabel">60 Capsules (₹1499)</span></div>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button id="payBtn" class="btn btn-primary">Pay ₹1499</button>
+        <a id="waLink" href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20order%2060%20Capsules%20of%20Balwaan" class="btn btn-secondary" style="color:var(--green-dark);border-color:var(--green-dark)">Order on WhatsApp</a>
+      </div>
+
+      <div style="margin-top:18px;color:var(--muted);font-size:0.95rem">We accept COD & online payments. Discreet packing.</div>
     </div>
   </div>
+</section>
 
-  <a href="#" class="btn btn-primary">Proceed to Secure Payment</a>
-  <div style="margin-top:12px">
-    <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-secondary" style="color:var(--green-dark);border-color:var(--green-dark)">Order on WhatsApp</a>
+<!-- STICKY CTA -->
+<div class="sticky-cta" role="region" aria-label="Order bar">
+  <div style="display:flex;gap:12px;align-items:center">
+    <strong>Balwaan Capsules</strong>
+    <div id="stickyLabel" style="color:var(--muted);font-size:0.95rem">60 Capsules • ₹1499</div>
+  </div>
+  <div style="display:flex;gap:8px">
+    <button id="stickyPay" class="cta-btn btn-primary">Order Now</button>
+    <a id="stickyWa" class="cta-btn btn-secondary" href="https://wa.me/91XXXXXXXXXX" style="color:var(--green-dark);border-color:var(--green-dark);text-decoration:none;padding:10px 12px;border-radius:40px">WhatsApp</a>
   </div>
 </div>
 
+<footer>
+  <div class="container">
+    <p>© 2026 Balwaan Wellness. Ayurvedic. Discreet. Honest.</p>
   </div>
-</section><!-- STICKY CTA --><div style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #eee;box-shadow:0 -6px 20px rgba(0,0,0,.08);z-index:999">
-  <div class="container" style="display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 18px">
-    <strong>Balwaan Capsules</strong>
-    <div style="display:flex;gap:10px">
-      <a href="#order" class="btn btn-primary" style="padding:10px 18px">Order Now</a>
-      <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-secondary" style="padding:10px 18px;color:var(--green-dark);border-color:var(--green-dark)">WhatsApp</a>
-    </div>
-  </div>
-</div><footer>
-  <p>© 2026 Balwaan Wellness. Ayurvedic. Discreet. Honest.</p>
 </footer>
-  <p>© 2026 Balwaan Wellness. Ayurvedic. Discreet. Honest.</p>
-</footer></body>
+
+<!-- Razorpay & JS -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  // Pack selection
+  const packs = document.querySelectorAll('.pack');
+  const selectedLabel = document.getElementById('selectedLabel');
+  const payBtn = document.getElementById('payBtn');
+  const waLink = document.getElementById('waLink');
+  const stickyLabel = document.getElementById('stickyLabel');
+  const stickyPay = document.getElementById('stickyPay');
+  const stickyWa = document.getElementById('stickyWa');
+
+  let selected = document.querySelector('.pack.active');
+
+  function updateUI(el){
+    packs.forEach(p=>p.classList.remove('active'));
+    el.classList.add('active');
+    const price = el.getAttribute('data-price');
+    const label = el.getAttribute('data-label');
+    selectedLabel.textContent = label;
+    payBtn.textContent = 'Pay ' + label.split('(')[1].replace(')','');
+    waLink.href = 'https://wa.me/91XXXXXXXXXX?text=' + encodeURIComponent('I want to order ' + label);
+    stickyLabel.textContent = label.split('(')[0].trim() + ' • ₹' + (price/100);
+    stickyPay.textContent = 'Order Now';
+    stickyWa.href = waLink.href;
+    // store selected price
+    selected = el;
+  }
+
+  packs.forEach(p=>{
+    p.addEventListener('click',()=>updateUI(p));
+    p.addEventListener('keydown',(e)=>{ if(e.key==='Enter' || e.key===' ') updateUI(p); });
+  });
+
+  // Razorpay payment handler
+  function startPayment(amount, labelText){
+    const options = {
+      key: 'YOUR_RAZORPAY_KEY_ID', // <--- Add your key
+      amount: amount, // in paise
+      currency: 'INR',
+      name: 'Balwaan Wellness',
+      description: labelText,
+      image: 'images/Combo.jpg',
+      handler: function (response){
+        // redirect to whatsapp with order id
+        const text = encodeURIComponent('Payment successful. Order: ' + labelText + ' | Razorpay ID: ' + response.razorpay_payment_id);
+        window.open('https://wa.me/91XXXXXXXXXX?text=' + text, '_blank');
+      },
+      theme: {color: '#0f3d24'}
+    };
+    const rzp = new Razorpay(options);
+    rzp.open();
+  }
+
+  payBtn.addEventListener('click',()=>{
+    const amount = parseInt(selected.getAttribute('data-price'));
+    const labelText = selected.getAttribute('data-label');
+    startPayment(amount, labelText);
+  });
+
+  stickyPay.addEventListener('click',()=>{ payBtn.click(); });
+</script>
+</body>
 </html>
