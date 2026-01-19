@@ -1,0 +1,166 @@
+:root{
+  --green:#0f3d2e;
+  --gold:#c9a24d;
+  --light-gold:#f5e6b8;
+  --dark:#102721;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Montserrat',sans-serif;
+  color:var(--dark);
+  background:#fff;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:var(--green);
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  color:var(--gold);
+}
+
+.logo span{color:white;}
+
+.nav-btn{
+  background:var(--gold);
+  color:var(--green);
+  padding:10px 25px;
+  text-decoration:none;
+  font-weight:600;
+  border-radius:4px;
+}
+
+/* HERO */
+.hero{
+  background:var(--green);
+  padding:100px 8%;
+  color:white;
+}
+
+.hero-wrap{
+  display:flex;
+  align-items:center;
+  gap:60px;
+}
+
+.tag{
+  background:var(--gold);
+  color:var(--green);
+  padding:6px 14px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:3.4rem;
+  color:var(--light-gold);
+}
+
+.hero p{
+  font-size:16px;
+  max-width:480px;
+}
+
+.price{
+  margin:20px 0;
+}
+
+.price .new{
+  font-size:28px;
+  font-weight:700;
+  color:var(--gold);
+}
+
+.price .old{
+  text-decoration:line-through;
+  margin-left:10px;
+}
+
+.cta{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--green);
+  padding:16px 36px;
+  font-weight:700;
+  text-decoration:none;
+  margin-top:20px;
+}
+
+/* TRUST */
+.trust{
+  padding:50px 8%;
+}
+
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  text-align:center;
+}
+
+.trust-box img{
+  width:80px;
+}
+
+/* INGREDIENTS */
+.ingredients{
+  padding:80px 8%;
+  text-align:center;
+}
+
+.ing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.ing-card img{
+  width:100%;
+  border-radius:12px;
+}
+
+/* LIFESTYLE */
+.lifestyle{
+  padding:80px 8%;
+  background:#f9f9f9;
+}
+
+.life-wrap{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+
+.life-wrap img{
+  width:400px;
+  border-radius:16px;
+}
+
+/* FOOTER */
+.footer{
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero-wrap,
+  .life-wrap{
+    flex-direction:column;
+    text-align:center;
+  }
+}
