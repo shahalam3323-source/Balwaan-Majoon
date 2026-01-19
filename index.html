@@ -1,83 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Balwaan Capsules | Ayurvedic Strength Support</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Herbal Wellness</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-body{margin:0;font-family:Inter;background:#fcfbf7;color:#1a1a1a}
-section{padding:60px 20px;text-align:center}
-.hero{background:url('images/hero1.jpg') center/cover;color:white;padding:100px 20px}
-h1{font-size:2.5rem;margin-bottom:10px}
-.price-box{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:20px}
-.card{background:white;padding:20px 25px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.08)}
-.btn{background:linear-gradient(135deg,#d4af37,#aa842e);padding:14px 26px;border-radius:30px;text-decoration:none;color:#0f3d24;font-weight:700;display:inline-block;margin-top:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:30px}
-img{max-width:100%;border-radius:12px}
-footer{background:#0f3d24;color:#dfeee5;padding:30px;text-align:center}
-.sticky{position:fixed;bottom:10px;left:10px;right:10px;background:white;padding:12px;border-radius:40px;display:flex;justify-content:space-between;box-shadow:0 6px 20px rgba(0,0,0,.12)}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+<!-- NAV -->
+<nav class="nav">
+  <div class="logo">BALWAAN<span>GOLD</span></div>
+  <a href="#order" class="nav-btn">Order Now</a>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-<h1>Roz ka kaam. Roz ki taqat.</h1>
-<p>Balwaan Ayurvedic Capsules for daily strength support</p>
+  <div class="hero-wrap">
 
-<div class="price-box">
-<div class="card"><strong>30 Capsules</strong><br>₹999</div>
-<div class="card" style="border:2px solid #c5a059"><strong>60 Capsules</strong><br>₹1499</div>
-</div>
+    <div class="hero-text">
+      <span class="tag">100% Ayurvedic Formula</span>
+      <h1>Daily Strength.<br>Natural Power.</h1>
+      <p>
+        A premium herbal blend designed for modern men.
+        Clean ingredients. No chemicals. Real results.
+      </p>
 
-<a href="#order" class="btn">Order Now - COD</a>
+      <div class="price">
+        <span class="new">₹1,499</span>
+        <span class="old">₹1,999</span>
+      </div>
+
+      <a href="#order" class="cta">Buy Now</a>
+    </div>
+
+    <div class="hero-img">
+      <!-- HERO PRODUCT IMAGE -->
+      <img src="images/hero-product-1000x1200.png" alt="Product Bottle">
+    </div>
+
+  </div>
 </section>
 
-<section>
-<h2>Why Balwaan?</h2>
-<img src="images/benefits-infographic.jpg">
+<!-- TRUST ICONS -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-box">
+      <img src="images/icon-gmp-120.png">
+      <p>GMP Certified</p>
+    </div>
+    <div class="trust-box">
+      <img src="images/icon-vegan-120.png">
+      <p>100% Herbal</p>
+    </div>
+    <div class="trust-box">
+      <img src="images/icon-safe-120.png">
+      <p>No Side Effects</p>
+    </div>
+  </div>
 </section>
 
-<section style="background:white">
-<h2>Ingredients</h2>
-<div class="grid">
-<img src="images/ingredients-capsule.jpg">
-<div class="card" style="text-align:left">
-✔ Ashwagandha<br>
-✔ Shilajit<br>
-✔ Safed Musli<br>
-✔ Easy capsules
-</div>
-</div>
+<!-- INGREDIENTS -->
+<section class="ingredients">
+  <h2>Powerful Natural Ingredients</h2>
+
+  <div class="ing-grid">
+    <div class="ing-card">
+      <img src="images/ashwagandha-600.png">
+      <h3>Ashwagandha</h3>
+    </div>
+    <div class="ing-card">
+      <img src="images/shilajit-600.png">
+      <h3>Shilajit</h3>
+    </div>
+    <div class="ing-card">
+      <img src="images/safed-musli-600.png">
+      <h3>Safed Musli</h3>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Daily Routine Friendly</h2>
-<div class="grid">
-<img src="images/lifestyle-man.jpg">
-<img src="images/how-routine.jpg">
-</div>
+<!-- LIFESTYLE -->
+<section class="lifestyle">
+  <div class="life-wrap">
+    <img src="images/lifestyle-900x1200.jpg">
+    <div class="life-text">
+      <h2>Made for Daily Life</h2>
+      <p>
+        No gym hype. No fake claims.
+        Just balanced energy for work, focus and confidence.
+      </p>
+    </div>
+  </div>
 </section>
 
-<section id="order" style="background:white">
-<h2>Select Your Pack</h2>
-<div class="price-box">
-<div class="card">30 Capsules<br>₹999</div>
-<div class="card" style="border:2px solid #c5a059">60 Capsules<br>₹1499</div>
-</div>
-<a href="https://wa.me/91XXXXXXXXXX" class="btn">Order on WhatsApp</a>
-</section>
-
-<div class="sticky">
-<strong>Balwaan Capsules</strong>
-<a href="#order" class="btn" style="margin:0;padding:10px 16px">Buy</a>
-</div>
-
-<footer>
-© 2026 Balwaan Wellness. Ayurvedic. Honest.
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Premium Herbal Wellness. All rights reserved.</p>
 </footer>
 
 </body>
