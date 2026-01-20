@@ -1,0 +1,53 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none"
+ xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+  <linearGradient id="goldExact" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f9f2d7"/>
+    <stop offset="50%" stop-color="#d4af37"/>
+    <stop offset="100%" stop-color="#8a6a1f"/>
+  </linearGradient>
+</defs>
+
+<!-- Leaf outline -->
+<path d="M64 8
+ C40 20 24 44 24 72
+ C24 100 44 116 64 120
+ C84 116 104 100 104 72
+ C104 44 88 20 64 8Z"
+ stroke="url(#goldExact)"
+ stroke-width="10"
+ stroke-linecap="round"
+ stroke-linejoin="round"/>
+
+<!-- Central stem -->
+<path d="M64 28 L64 112"
+ stroke="url(#goldExact)"
+ stroke-width="10"
+ stroke-linecap="round"/>
+
+<!-- Left branch -->
+<path d="M64 56 L44 76"
+ stroke="url(#goldExact)"
+ stroke-width="8"
+ stroke-linecap="round"/>
+
+<!-- Right branch -->
+<path d="M64 56 L84 76"
+ stroke="url(#goldExact)"
+ stroke-width="8"
+ stroke-linecap="round"/>
+
+<!-- Top left branch -->
+<path d="M64 40 L52 52"
+ stroke="url(#goldExact)"
+ stroke-width="8"
+ stroke-linecap="round"/>
+
+<!-- Top right branch -->
+<path d="M64 40 L76 52"
+ stroke="url(#goldExact)"
+ stroke-width="8"
+ stroke-linecap="round"/>
+
+</svg>
