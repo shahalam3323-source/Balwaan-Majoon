@@ -1,0 +1,29 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none"
+ xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+ <linearGradient id="goldSeal" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#f9f2d7"/>
+  <stop offset="50%" stop-color="#d4af37"/>
+  <stop offset="100%" stop-color="#8a6a1f"/>
+ </linearGradient>
+</defs>
+
+<!-- Outer seal -->
+<circle cx="64" cy="64" r="46"
+ stroke="url(#goldSeal)" stroke-width="4"/>
+
+<!-- Inner seal -->
+<circle cx="64" cy="64" r="34"
+ stroke="url(#goldSeal)" stroke-width="2"/>
+
+<!-- Precision ticks -->
+<path d="M64 12V20M64 108V116M12 64H20M108 64H116"
+ stroke="url(#goldSeal)" stroke-width="2"/>
+
+<!-- Check -->
+<path d="M46 66L60 80L86 50"
+ stroke="url(#goldSeal)" stroke-width="4"
+ stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>
