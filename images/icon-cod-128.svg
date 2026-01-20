@@ -1,0 +1,30 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none"
+ xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+ <linearGradient id="goldCod" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#f9f2d7"/>
+  <stop offset="50%" stop-color="#d4af37"/>
+  <stop offset="100%" stop-color="#8a6a1f"/>
+ </linearGradient>
+</defs>
+
+<!-- Box -->
+<rect x="36" y="34" width="40" height="30" rx="4"
+ stroke="url(#goldCod)" stroke-width="4"/>
+
+<!-- Hand -->
+<path d="M24 74
+ C36 74 44 78 52 78
+ C60 78 66 74 72 74"
+ stroke="url(#goldCod)" stroke-width="4"
+ stroke-linecap="round"/>
+
+<!-- Coin -->
+<circle cx="88" cy="52" r="8"
+ stroke="url(#goldCod)" stroke-width="3"/>
+
+<path d="M86 50H90M88 48V56"
+ stroke="url(#goldCod)" stroke-width="2"/>
+
+</svg>
