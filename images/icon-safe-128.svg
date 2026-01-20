@@ -1,0 +1,30 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none"
+ xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+ <linearGradient id="goldShield" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#f9f2d7"/>
+  <stop offset="50%" stop-color="#d4af37"/>
+  <stop offset="100%" stop-color="#8a6a1f"/>
+ </linearGradient>
+</defs>
+
+<!-- Outer shield -->
+<path d="M64 14L100 34V72
+ C100 96 80 112 64 118
+ C48 112 28 96 28 72V34L64 14Z"
+ stroke="url(#goldShield)" stroke-width="4"
+ stroke-linejoin="round"/>
+
+<!-- Inner shield -->
+<path d="M64 26L88 40V70
+ C88 88 74 100 64 104
+ C54 100 40 88 40 70V40L64 26Z"
+ stroke="url(#goldShield)" stroke-width="2"/>
+
+<!-- Medical cross -->
+<path d="M64 52V76M52 64H76"
+ stroke="url(#goldShield)" stroke-width="4"
+ stroke-linecap="round"/>
+
+</svg>
