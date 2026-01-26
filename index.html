@@ -1,48 +1,788 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Ayurvedic Wellness</title>
+  <title>बलवान मजून - 100% आयुर्वेदिक शक्ति वर्धक | प्रीमियम आयुर्वेदिक वेलनेस</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="बलवान मजून - 100% शुद्ध आयुर्वेदिक शक्ति वर्धक। अश्वगंधा, शिलाजीत और सफेद मूसली से बना प्राकृतिक उत्पाद। प्राकृतिक ऊर्जा, स्टैमिना और मानसिक फोकस के लिए।">
+  <meta name="keywords" content="बलवान मजून, आयुर्वेदिक, शक्ति वर्धक, अश्वगंधा, शिलाजीत, सफेद मूसली, प्राकृतिक उत्पाद, स्वास्थ्य, ऊर्जा, स्टैमिना">
+  <meta name="author" content="Premium Ayurvedic Wellness">
+  
+  <!-- Open Graph Tags for Social Media -->
+  <meta property="og:title" content="बलवान मजून - 100% आयुर्वेदिक शक्ति वर्धक">
+  <meta property="og:description" content="प्राकृतिक ऊर्जा, स्टैमिना और मानसिक फोकस के लिए शुद्ध आयुर्वेदिक फॉर्मूला">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shahalam3323-source.github.io/Balwaan-Majoon/">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --green:#0f3d2e;
+      --gold:#c9a24d;
+      --light-gold:#f5e6b8;
+      --dark:#102721;
+      --white:#ffffff;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      color:var(--dark);
+      line-height:1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER IMPROVED */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:var(--green);
+      box-shadow: var(--shadow);
+      padding: 12px 0;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:28px;
+      font-weight:700;
+      color:var(--gold);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo span{
+      color:var(--white);
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: -5px;
+    }
+
+    .nav-cta{
+      background:var(--gold);
+      color:var(--green);
+      padding:12px 28px;
+      text-decoration:none;
+      font-weight:600;
+      border-radius:6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-cta:hover{
+      background:var(--light-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+
+    /* HERO IMPROVED */
+    .hero{
+      background: linear-gradient(135deg, var(--green) 0%, #1a4d3c 100%);
+      padding:60px 5%;
+      color:white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(201, 162, 77, 0.1) 0%, transparent 70%);
+    }
+
+    .hero-wrap{
+      display:flex;
+      align-items:center;
+      gap:60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-img{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .hero-img img{
+      max-width:100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .hero-text{
+      flex: 1;
+    }
+
+    .badge{
+      background:var(--gold);
+      color:var(--green);
+      padding:8px 18px;
+      font-size:14px;
+      font-weight:600;
+      border-radius:30px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:3.5rem;
+      color:var(--light-gold);
+      line-height:1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .price{
+      margin: 25px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .price .new{
+      font-size:42px;
+      color:var(--gold);
+      font-weight:700;
+    }
+
+    .price .old{
+      font-size:24px;
+      text-decoration:line-through;
+      opacity: 0.7;
+    }
+
+    .discount-tag {
+      background: #e63946;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .main-cta{
+      display:inline-block;
+      margin-top:20px;
+      background:var(--gold);
+      color:var(--green);
+      padding:18px 42px;
+      font-weight:700;
+      text-decoration:none;
+      border-radius:8px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 0 #8b6e2c;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-cta:hover{
+      background:var(--light-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 #8b6e2c;
+    }
+
+    .main-cta:active{
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #8b6e2c;
+    }
+
+    .urgency {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    .urgency i {
+      color: #ff6b6b;
+      margin-right: 8px;
+    }
+
+    /* TRUST BAR IMPROVED */
+    .trust-bar{
+      padding:40px 5%;
+      background: #f8f5f0;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      text-align:center;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .trust-item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .trust-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .trust-item img{
+      width:70px;
+      height: 70px;
+      margin-bottom: 15px;
+    }
+
+    .trust-item span{
+      font-weight:600;
+      color: var(--green);
+    }
+
+    /* WHY IMPROVED */
+    .why{
+      padding:80px 5%;
+      text-align:center;
+      background: white;
+    }
+
+    .why h2{
+      font-family:'Playfair Display',serif;
+      font-size:2.8rem;
+      color:var(--green);
+      margin-bottom: 50px;
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .why-card{
+      padding:40px 30px;
+      border-radius:16px;
+      background:#fafafa;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .why-card:hover{
+      background: white;
+      border-color: var(--gold);
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .why-card img{
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .why-card h3{
+      color:var(--green);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    /* INGREDIENTS IMPROVED */
+    .ingredients{
+      padding:80px 5%;
+      text-align:center;
+      background: #f8f5f0;
+    }
+
+    .ingredients h2{
+      font-family:'Playfair Display',serif;
+      font-size:2.8rem;
+      color:var(--green);
+      margin-bottom: 50px;
+    }
+
+    .ing-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .ing-item{
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .ing-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .ing-item img{
+      width:180px;
+      height:180px;
+      object-fit:cover;
+      border-radius:50%;
+      margin-bottom: 20px;
+      border: 5px solid var(--light-gold);
+    }
+
+    .ing-item h4{
+      color:var(--green);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .ing-item p{
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* REVIEWS IMPROVED */
+    .reviews{
+      padding:80px 5%;
+      background: white;
+      text-align:center;
+    }
+
+    .reviews h2{
+      font-family:'Playfair Display',serif;
+      font-size:2.8rem;
+      color:var(--green);
+      margin-bottom: 50px;
+    }
+
+    .review-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .review-card{
+      background:#f8f5f0;
+      padding:40px 30px;
+      border-radius:16px;
+      text-align: left;
+      transition: transform 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .review-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--gold);
+    }
+
+    .stars{
+      color:var(--gold);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .review-card p{
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .review-card span{
+      font-weight:600;
+      color:var(--green);
+    }
+
+    /* COMPARISON IMPROVED */
+    .compare{
+      padding:80px 5%;
+      text-align:center;
+      background: #f8f5f0;
+    }
+
+    .compare h2{
+      font-family:'Playfair Display',serif;
+      font-size:2.8rem;
+      color:var(--green);
+      margin-bottom: 50px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-shadow: var(--shadow);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th{
+      background:var(--green);
+      color:white;
+      padding:20px;
+      font-weight:600;
+    }
+
+    td{
+      border:1px solid #ddd;
+      padding:20px;
+      background: white;
+    }
+
+    tr:nth-child(even) td {
+      background: #f9f9f9;
+    }
+
+    .check {
+      color: #2a9d8f;
+      font-weight: bold;
+    }
+
+    .cross {
+      color: #e63946;
+      font-weight: bold;
+    }
+
+    /* FOOTER IMPROVED */
+    .footer{
+      background:var(--green);
+      color:white;
+      padding:60px 5% 30px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:40px;
+      max-width: 1400px;
+      margin: 0 auto 40px;
+    }
+
+    .footer h4{
+      color:var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .footer a{
+      display:block;
+      color:#ddd;
+      text-decoration:none;
+      margin:10px 0;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover{
+      color:var(--gold);
+    }
+
+    .payment-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .payment-icons i {
+      font-size: 2rem;
+      background: white;
+      padding: 8px;
+      border-radius: 5px;
+      color: var(--green);
+    }
+
+    .copy{
+      text-align:center;
+      margin-top:30px;
+      font-size:14px;
+      color: #aaa;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* WHATSAPP BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      padding: 15px 20px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+
+    .whatsapp-float i {
+      font-size: 24px;
+    }
+
+    /* GUARANTEE BADGE */
+    .guarantee-badge {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: var(--gold);
+      color: var(--green);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      max-width: 180px;
+      font-weight: 600;
+    }
+
+    .guarantee-badge i {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media(max-width: 1024px){
+      .hero h1{
+        font-size:2.8rem;
+      }
+      
+      .hero-wrap{
+        gap:40px;
+      }
+    }
+
+    @media(max-width: 768px){
+      .nav{
+        padding:0 20px;
+      }
+      
+      .hero{
+        padding:40px 20px;
+      }
+      
+      .hero-wrap{
+        flex-direction:column-reverse;
+        text-align:center;
+        gap:40px;
+      }
+      
+      .hero h1{
+        font-size:2.3rem;
+      }
+      
+      .hero p{
+        font-size:1.1rem;
+      }
+      
+      .why-grid,
+      .ing-grid,
+      .review-grid,
+      .trust-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+      }
+      
+      .trust-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+      
+      .hero-img img{
+        max-width:280px;
+      }
+      
+      .price .new{
+        font-size:36px;
+      }
+      
+      .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      
+      .guarantee-badge {
+        bottom: 20px;
+        left: 20px;
+        padding: 12px;
+        max-width: 150px;
+        font-size: 14px;
+      }
+      
+      .trust-item{
+        padding:15px;
+      }
+    }
+
+    @media(max-width: 480px){
+      .logo{
+        font-size:22px;
+      }
+      
+      .nav-cta{
+        padding:10px 20px;
+        font-size:14px;
+      }
+      
+      .hero h1{
+        font-size:2rem;
+      }
+      
+      .price .new{
+        font-size:32px;
+      }
+      
+      .main-cta{
+        padding:16px 32px;
+        font-size:1rem;
+        width: 100%;
+      }
+      
+      .trust-grid{
+        grid-template-columns:1fr;
+      }
+      
+      table {
+        font-size: 14px;
+      }
+      
+      th, td {
+        padding: 12px 8px;
+      }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text, .why-card, .ing-item, .review-card {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    /* LOADING OPTIMIZATION */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
 <!-- ================= STICKY HEADER ================= -->
 <header class="header">
   <div class="nav">
-    <div class="logo">BALWAAN<span>GOLD</span></div>
-    <a href="#order" class="nav-cta">Order Now</a>
+    <div class="logo">BALWAAN<span>मजून</span></div>
+    <a href="#order" class="nav-cta">
+      <i class="fas fa-shopping-cart"></i> अभी ऑर्डर करें
+    </a>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero">
+<section class="hero" id="order">
   <div class="hero-wrap">
 
     <!-- IMAGE FIRST ON MOBILE -->
     <div class="hero-img">
-      <img src="images/hero-product-1200x1200.png" alt="Product Bottle">
+      <img src="images/hero-product-1200x1200.png" alt="बलवान मजून - 100% आयुर्वेदिक शक्ति वर्धक" loading="lazy">
     </div>
 
     <div class="hero-text">
-      <span class="badge">100% Ayurvedic Formula</span>
-      <h1>Daily Strength.<br>Natural Power.</h1>
+      <span class="badge">
+        <i class="fas fa-certificate"></i> 100% आयुर्वेदिक फॉर्मूला
+      </span>
+      <h1>दैनिक शक्ति.<br>प्राकृतिक ऊर्जा.</h1>
       <p>
-        A premium herbal supplement designed for men who want
-        clean energy, stamina and confidence — without chemicals.
+        एक प्रीमियम आयुर्वेदिक सप्लीमेंट जो पुरुषों के लिए डिज़ाइन किया गया है जो चाहते हैं
+        स्वच्छ ऊर्जा, स्टैमिना और आत्मविश्वास — बिना रसायनों के।
       </p>
 
       <div class="price">
         <span class="new">₹1,499</span>
         <span class="old">₹1,999</span>
+        <span class="discount-tag">25% छूट</span>
       </div>
 
-      <a href="#order" class="main-cta">Buy Now</a>
+      <a href="https://wa.me/91YOUR_PHONE_NUMBER?text=मुझे%20बलवान%20मजून%20के%20बारे%20में%20जानकारी%20चाहिए" class="main-cta">
+        <i class="fas fa-bolt"></i> अभी खरीदें
+      </a>
+      
+      <div class="urgency">
+        <i class="fas fa-clock"></i> सीमित स्टॉक - केवल 27 बोतलें शेष
+      </div>
     </div>
 
   </div>
@@ -52,146 +792,116 @@
 <section class="trust-bar">
   <div class="trust-grid">
     <div class="trust-item">
-      <img src="images/icon-gmp-128.svg">
-      <span>GMP Certified</span>
+      <img src="images/icon-gmp-128.svg" alt="GMP Certified" loading="lazy">
+      <span>GMP सर्टिफाइड</span>
     </div>
     <div class="trust-item">
-      <img src="images/icon-organic-128.svg">
-      <span>100% Herbal</span>
+      <img src="images/icon-organic-128.svg" alt="100% Organic" loading="lazy">
+      <span>100% हर्बल</span>
     </div>
     <div class="trust-item">
-      <img src="images/icon-safe-128.svg">
-      <span>No Side Effects</span>
+      <img src="images/icon-safe-128.svg" alt="No Side Effects" loading="lazy">
+      <span>कोई साइड इफेक्ट नहीं</span>
     </div>
     <div class="trust-item">
-      <img src="images/icon-cod-128.svg">
-      <span>COD Available</span>
+      <img src="images/icon-cod-128.svg" alt="Cash On Delivery" loading="lazy">
+      <span>COD उपलब्ध</span>
     </div>
   </div>
 </section>
 
 <!-- ================= WHY / BENEFITS ================= -->
 <section class="why">
-  <h2>Why Choose This Formula?</h2>
+  <h2>इस फॉर्मूले को क्यों चुनें?</h2>
 
   <div class="why-grid">
     <div class="why-card">
-      <img src="images/benefit-energy.png">
-      <h3>All-Day Energy</h3>
-      <p>No crashes. No stimulants. Just balanced power.</p>
+      <img src="images/benefit-energy.png" alt="All-Day Energy" loading="lazy">
+      <h3>पूरे दिन की ऊर्जा</h3>
+      <p>कोई थकान नहीं। कोई उत्तेजक नहीं। बस संतुलित शक्ति।</p>
     </div>
 
     <div class="why-card">
-      <img src="images/benefit-strength.png">
-      <h3>Strength Support</h3>
-      <p>Supports muscle, stamina and daily performance.</p>
+      <img src="images/benefit-strength.png" alt="Strength Support" loading="lazy">
+      <h3>शक्ति सहायता</h3>
+      <p>मांसपेशियों, स्टैमिना और दैनिक प्रदर्शन का समर्थन करता है।</p>
     </div>
 
     <div class="why-card">
-      <img src="images/benefit-focus.png">
-      <h3>Mental Focus</h3>
-      <p>Clear mind, better confidence and calm control.</p>
+      <img src="images/benefit-focus.png" alt="Mental Focus" loading="lazy">
+      <h3>मानसिक फोकस</h3>
+      <p>स्पष्ट दिमाग, बेहतर आत्मविश्वास और शांत नियंत्रण।</p>
     </div>
   </div>
 </section>
 
 <!-- ================= INGREDIENTS ================= -->
 <section class="ingredients">
-  <h2>Ayurvedic Ingredients</h2>
+  <h2>आयुर्वेदिक सामग्री</h2>
 
   <div class="ing-grid">
     <div class="ing-item">
-      <img src="images/ashwagandha-600.png">
-      <h4>Ashwagandha</h4>
+      <img src="images/ashwagandha-600.png" alt="Ashwagandha" loading="lazy">
+      <h4>अश्वगंधा</h4>
+      <p>तनाव कम करता है, ऊर्जा बढ़ाता है और प्रतिरक्षा प्रणाली को मजबूत करता है।</p>
     </div>
     <div class="ing-item">
-      <img src="images/shilajit-600.png">
-      <h4>Shilajit</h4>
+      <img src="images/shilajit-600.png" alt="Shilajit" loading="lazy">
+      <h4>शिलाजीत</h4>
+      <p>शक्ति बढ़ाता है, स्टैमिना बढ़ाता है और समग्र स्वास्थ्य में सुधार करता है।</p>
     </div>
     <div class="ing-item">
-      <img src="images/safed-musli-600.png">
-      <h4>Safed Musli</h4>
+      <img src="images/safed-musli-600.png" alt="Safed Musli" loading="lazy">
+      <h4>सफेद मूसली</h4>
+      <p>प्रजनन स्वास्थ्य को बढ़ावा देता है और शरीर की ताकत बढ़ाता है।</p>
     </div>
   </div>
 </section>
 
 <!-- ================= REVIEWS ================= -->
 <section class="reviews">
-  <h2>Real Customer Reviews</h2>
+  <h2>वास्तविक ग्राहक समीक्षाएं</h2>
 
   <div class="review-grid">
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>“Energy feels natural. No side effects at all.”</p>
-      <span>– Rohit, Delhi</span>
+      <p>“ऊर्जा प्राकृतिक महसूस होती है। कोई साइड इफेक्ट नहीं। मैंने 2 महीने में असर देखा।”</p>
+      <span>– रोहित, दिल्ली</span>
     </div>
 
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p>“Confidence and stamina improved within weeks.”</p>
-      <span>– Arjun, Pune</span>
+      <p>“आत्मविश्वास और स्टैमिना कुछ हफ्तों में ही सुधर गया। उत्पाद की गुणवत्ता उत्कृष्ट है।”</p>
+      <span>– अर्जुन, पुणे</span>
     </div>
 
     <div class="review-card">
       <div class="stars">★★★★☆</div>
-      <p>“Good quality herbs. Premium packaging.”</p>
-      <span>– Sameer, Jaipur</span>
+      <p>“अच्छी गुणवत्ता वाली जड़ी-बूटियाँ। प्रीमियम पैकेजिंग। त्वरित डिलीवरी।”</p>
+      <span>– समीर, जयपुर</span>
     </div>
   </div>
 </section>
 
 <!-- ================= COMPARISON ================= -->
 <section class="compare">
-  <h2>Why We’re Better</h2>
+  <h2>हम बेहतर क्यों हैं?</h2>
 
   <table>
     <tr>
-      <th>Feature</th>
-      <th>Our Product</th>
-      <th>Regular Products</th>
+      <th>विशेषता</th>
+      <th>हमारा उत्पाद</th>
+      <th>सामान्य उत्पाद</th>
     </tr>
     <tr>
-      <td>Ayurvedic Herbs</td>
-      <td>✅</td>
-      <td>❌</td>
+      <td>आयुर्वेदिक जड़ी-बूटियाँ</td>
+      <td class="check">✅ शामिल</td>
+      <td class="cross">❌ नहीं</td>
     </tr>
     <tr>
-      <td>No Chemicals</td>
-      <td>✅</td>
-      <td>❌</td>
+      <td>रसायन मुक्त</td>
+      <td class="check">✅ 100% रसायन मुक्त</td>
+      <td class="cross">❌ रसायन युक्त</td>
     </tr>
     <tr>
-      <td>Clinically Tested</td>
-      <td>✅</td>
-      <td>❌</td>
-    </tr>
-  </table>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <h4>Support</h4>
-      <a href="#">Contact</a>
-      <a href="#">Refund Policy</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-
-    <div>
-      <h4>Company</h4>
-      <a href="#">About Us</a>
-      <a href="#">Disclaimer</a>
-    </div>
-
-    <div>
-      <h4>Secure Payments</h4>
-      <p>COD | UPI | Cards</p>
-    </div>
-  </div>
-
-  <p class="copy">© 2026 Premium Ayurvedic Wellness</p>
-</footer>
-
-</body>
-</html>
+      <td>नैदानिक रूप से परीक्षण किय
