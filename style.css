@@ -203,3 +203,49 @@ h1, h2, h3 {
         margin-top: 30px;
     }
 }
+/* Trust Cards Styling */
+.trust-card {
+    border: 1px solid #eee;
+    transition: 0.3s ease;
+    background: #fff;
+}
+
+.trust-card:hover {
+    border-color: var(--dark-gold);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+.trust-icon-box {
+    min-width: 70px;
+    text-align: center;
+}
+
+/* Footer & Disclaimer Styling */
+.footer-main h5 {
+    font-size: 1.1rem;
+    color: var(--gold-main);
+    margin-bottom: 20px;
+}
+
+.disclaimer-section {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.payment-icons i {
+    color: #666;
+    transition: 0.3s;
+}
+
+.payment-icons i:hover {
+    color: var(--gold-main);
+}
+
+/* Mobile responsive padding for footer */
+@media (max-width: 768px) {
+    .footer-main {
+        text-align: center;
+        padding-bottom: 80px; /* Sticky button ke liye jagah */
+    }
+}
