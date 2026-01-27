@@ -1,1276 +1,262 @@
-html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balwaan & Balyaan - Strength & Stamina Support | 100% Ayurvedic</title>
+    <title>Balwaan | Strength, Stamina & Confidence Boost</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Balwaan & Balyaan Ayurvedic Capsules - Boost strength, stamina, energy & confidence. 100% natural formula for men's health.">
-    <meta name="keywords" content="Balwaan, Balyaan, strength capsule, stamina booster, ayurvedic medicine, men's health, energy booster">
-    <meta name="author" content="Balwaan Ayurveda">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS -->
     <style>
-        /* ====== VARIABLES ====== */
         :root {
-            --primary-black: #000000;
-            --primary-gold: #D4AF37;
-            --secondary-gold: #F5E6B8;
-            --accent-red: #D32F2F;
-            --light-bg: #FAFAFA;
-            --white: #FFFFFF;
-            --text-dark: #222222;
-            --text-light: #666666;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary-green: #14452F;
+            --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --dark-gold: #D4AF37;
         }
-        
-        /* ====== RESET & BASE ====== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-        
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--light-bg);
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
             overflow-x: hidden;
-            padding-top: 80px; /* For fixed header */
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        h1, h2, h3, .navbar-brand {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--primary-black);
+            font-weight: 800;
         }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
+
+        /* --- Global Glowing & Floating Effects --- */
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #D4AF37; }
+            50% { box-shadow: 0 0 25px #D4AF37; }
+            100% { box-shadow: 0 0 5px #D4AF37; }
         }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-gold);
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
-        
-        /* ====== BUTTONS ====== */
-        .btn {
-            display: inline-block;
-            background: var(--primary-black);
-            color: var(--primary-gold);
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid var(--primary-gold);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: var(--primary-gold);
-            color: var(--primary-black);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .btn-gold {
-            background: var(--primary-gold);
-            color: var(--primary-black);
-        }
-        
-        .btn-gold:hover {
-            background: var(--primary-black);
-            color: var(--primary-gold);
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
+
+        .btn-gold-glow {
+            background: var(--gold-gradient);
+            color: var(--primary-green) !important;
             border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: glowing 2s infinite;
+            border-radius: 50px;
+            transition: 0.3s;
         }
-        
-        .whatsapp-btn:hover {
-            background: #128C7E;
+
+        .btn-gold-glow:hover {
+            transform: scale(1.05);
+            color: #000 !important;
+        }
+
+        /* --- Header & Hero --- */
+        .hero-section {
+            background-color: var(--primary-green);
             color: white;
+            padding: 80px 0 50px;
+            border-bottom: 5px solid var(--dark-gold);
         }
-        
-        /* ====== HEADER ====== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--primary-black);
-            padding: 15px 0;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+        .product-img-main {
+            max-width: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            animation: floating 4s ease-in-out infinite;
         }
-        
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--primary-gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .logo span {
-            color: var(--white);
-        }
-        
-        .nav-cta {
-            background: var(--primary-gold);
-            color: var(--primary-black);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
-        
-        .nav-cta:hover {
-            background: var(--secondary-gold);
-            transform: translateY(-2px);
-        }
-        
-        /* ====== HERO SECTION ====== */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-            padding: 120px 0 80px;
-        }
-        
-        .hero .container {
-            max-width: 800px;
-        }
-        
-        .hero-badge {
-            display: inline-block;
-            background: var(--primary-gold);
-            color: var(--primary-black);
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--secondary-gold);
-            margin-bottom: 30px;
-        }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* ====== PROBLEM SECTION ====== */
-        .problem {
-            background: var(--white);
-        }
-        
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .problem-box {
-            background: var(--light-bg);
-            padding: 40px;
-            border-radius: 15px;
-            border-left: 5px solid var(--accent-red);
-            box-shadow: var(--shadow);
-        }
-        
-        .solution-box {
-            background: var(--light-bg);
-            padding: 40px;
-            border-radius: 15px;
-            border-left: 5px solid var(--primary-gold);
-            box-shadow: var(--shadow);
-        }
-        
-        .problem-title, .solution-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--primary-black);
-        }
-        
-        .problem-list, .solution-list {
-            list-style: none;
-        }
-        
-        .problem-list li, .solution-list li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        .problem-list li:before {
-            content: '✖';
-            position: absolute;
-            left: 0;
-            color: var(--accent-red);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .solution-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-gold);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        /* ====== PRODUCTS SECTION ====== */
-        .products {
-            background: var(--light-bg);
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-        
-        .product-card {
-            background: var(--white);
+
+        /* --- Sections Style --- */
+        .section-padding { padding: 60px 0; }
+        .bg-green { background-color: var(--primary-green); color: white; }
+        .text-gold { color: var(--dark-gold); }
+
+        /* --- Comparison Table --- */
+        .table-custom {
+            background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-badge {
-            background: var(--accent-red);
-            color: var(--white);
-            padding: 10px 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        
-        .product-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary-black);
-        }
-        
-        .product-title {
-            font-size: 1.8rem;
-            color: var(--primary-black);
-            margin-bottom: 10px;
-        }
-        
-        .product-subtitle {
-            color: var(--primary-gold);
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .product-price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary-black);
-            margin: 20px 0;
-        }
-        
-        .product-old-price {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            text-decoration: line-through;
-            margin-right: 10px;
-        }
-        
-        .product-save {
-            color: var(--accent-red);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        /* ====== BENEFITS SECTION ====== */
-        .benefits {
-            background: var(--white);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .benefit-card {
-            background: var(--light-bg);
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-top: 5px solid var(--primary-gold);
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .benefit-icon {
-            font-size: 3.5rem;
-            color: var(--primary-gold);
-            margin-bottom: 25px;
-        }
-        
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        /* ====== INGREDIENTS SECTION ====== */
-        .ingredients {
-            background: var(--light-bg);
-        }
-        
-        .ingredients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .ingredient-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .ingredient-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .ingredient-icon {
-            font-size: 3rem;
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-        }
-        
-        .ingredient-card h4 {
-            color: var(--primary-black);
-            margin-bottom: 10px;
-        }
-        
-        /* ====== TESTIMONIALS SECTION ====== */
-        .testimonials {
-            background: var(--white);
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: var(--light-bg);
-            padding: 35px 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-        
-        .testimonial-stars {
-            color: var(--primary-gold);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary-black);
-        }
-        
-        /* ====== FAQ SECTION ====== */
-        .faq {
-            background: var(--light-bg);
-        }
-        
-        .faq-item {
-            background: var(--white);
-            margin-bottom: 15px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .faq-question {
-            padding: 20px 25px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--primary-black);
-            color: var(--white);
-        }
-        
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 25px;
-            max-height: 500px;
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        /* ====== COUNSELING SECTION ====== */
-        .counseling {
-            background: var(--primary-black);
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .counseling-title {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-        }
-        
-        .counseling-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .counseling-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 50px;
-            border-radius: 15px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .counseling-icon {
-            font-size: 4rem;
-            color: #25D366;
-            margin-bottom: 20px;
-        }
-        
-        /* ====== CTA SECTION ====== */
-        .cta-section {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .cta-title {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-        }
-        
-        .cta-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-offer {
-            background: rgba(212, 175, 55, 0.2);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
-            border: 2px solid var(--primary-gold);
-        }
-        
-        .offer-price {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary-gold);
-            margin: 10px 0;
-        }
-        
-        .offer-old-price {
-            font-size: 1.8rem;
-            color: var(--text-light);
-            text-decoration: line-through;
-            margin-right: 15px;
-        }
-        
-        /* ====== FOOTER ====== */
-        .footer {
-            background: var(--primary-black);
-            color: var(--white);
-            padding: 60px 0 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h4 {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #cccccc;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-gold);
-        }
-        
-        .disclaimer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-            font-size: 14px;
-            color: #aaaaaa;
-            line-height: 1.7;
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 20px;
-            color: #888888;
-            font-size: 14px;
-        }
-        
-        /* ====== FLOATING ELEMENTS ====== */
+
+        /* --- WhatsApp Sticky --- */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
+            bottom: 80px;
+            right: 20px;
+            background-color: #25d366;
             color: white;
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            font-size: 30px;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             text-decoration: none;
-            transition: var(--transition);
         }
-        
-        .whatsapp-float:hover {
-            background: #128C7E;
-            transform: scale(1.1);
-        }
-        
-        .guarantee-badge {
+
+        /* --- Mobile Sticky Bottom CTA --- */
+        .mobile-cta-bar {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--primary-gold);
-            color: var(--primary-black);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            max-width: 180px;
-            font-weight: 700;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            padding: 10px;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
-        
-        .guarantee-badge i {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        /* ====== RESPONSIVENESS ====== */
-        @media (max-width: 1024px) {
-            .problem-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
+
         @media (max-width: 768px) {
-            section {
-                padding: 60px 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .products-grid, .benefits-grid, .ingredients-grid, .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-            
-            .whatsapp-float, .guarantee-badge {
-                bottom: 20px;
-            }
-            
-            .whatsapp-float {
-                right: 20px;
-            }
-            
-            .guarantee-badge {
-                left: 20px;
-                max-width: 150px;
-                font-size: 14px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .product-card, .benefit-card, .ingredient-card, .testimonial-card {
-                padding: 25px 20px;
-            }
-            
-            .offer-price {
-                font-size: 2.5rem;
-            }
+            .mobile-cta-bar { display: block; }
+            .hero-section { text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">BALWAAN<span>GOLD</span></div>
-            <a href="#order" class="nav-cta">
-                <i class="fas fa-shopping-cart"></i> ORDER NOW
-            </a>
-        </div>
-    </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <span class="hero-badge">
-                <i class="fas fa-certificate"></i> 100% AYURVEDIC FORMULA
-            </span>
-            <h1 class="hero-title">Strength & Stamina Support</h1>
-            <h2 class="hero-subtitle">बलवान & बलयान कैप्सूल</h2>
-            <p class="hero-description">
-                प्राकृतिक आयुर्वेदिक फॉर्मूला जो शारीरिक शक्ति, स्टैमिना और आत्मविश्वास बढ़ाता है। 100% हर्बल, कोई साइड इफेक्ट नहीं।
-            </p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-gold">
-                    <i class="fas fa-capsules"></i> VIEW PRODUCTS
-                </a>
-                <a href="https://wa.me/91XXXXXXXXXX" class="btn whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> WHATSAPP ORDER
-                </a>
-            </div>
+            <a class="navbar-brand" href="#">BALWAAN</a>
+            <a href="#order" class="btn btn-gold-glow btn-sm px-4">Order Now</a>
         </div>
-    </section>
+    </nav>
 
-    <!-- PROBLEM & SOLUTION SECTION -->
-    <section class="problem" id="problem">
+    <section class="hero-section">
         <div class="container">
-            <h2 class="section-title">समस्या और समाधान</h2>
-            <div class="problem-grid">
-                <div class="problem-box">
-                    <h3 class="problem-title">सामान्य समस्याएं</h3>
-                    <ul class="problem-list">
-                        <li>थकान और कमजोरी</li>
-                        <li>स्टैमिना की कमी</li>
-                        <li>शारीरिक ऊर्जा में कमी</li>
-                        <li>मानसिक तनाव</li>
-                        <li>आत्मविश्वास की कमी</li>
-                        <li>प्रतिरक्षा प्रणाली कमजोर</li>
-                    </ul>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 mb-3">Apna <span class="text-gold">Confidence</span> aur Power Wapas Paayein!</h1>
+                    <p class="lead mb-4">India ka premium golden capsule formula jo aapke stamina, performance aur lifestyle ko badal dega.</p>
+                    <a href="#order" class="btn btn-gold-glow btn-lg px-5 py-3">Buy Now - Get 20% Off</a>
+                    <p class="mt-3 small text-light"><i class="fas fa-shield-alt"></i> 100% Ayurvedic | No Side Effects</p>
                 </div>
-                <div class="solution-box">
-                    <h3 class="solution-title">Balwaan समाधान</h3>
-                    <ul class="solution-list">
-                        <li>शारीरिक शक्ति में वृद्धि</li>
-                        <li>स्टैमिना और ऊर्जा बूस्ट</li>
-                        <li>मानसिक स्पष्टता</li>
-                        <li>आत्मविश्वास में सुधार</li>
-                        <li>प्रतिरक्षा प्रणाली मजबूत</li>
-                        <li>समग्र स्वास्थ्य में सुधार</li>
-                    </ul>
+                <div class="col-md-6 text-center">
+                    <img src="1000346718.png" alt="Balwaan Product" class="product-img-main">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUCTS SECTION -->
-    <section class="products" id="products">
-        <div class="container">
-            <h2 class="section-title">हमारे उत्पाद</h2>
-            <div class="products-grid">
-                <!-- Product 1: Balwaan -->
-                <div class="product-card">
-                    <div class="product-badge">BEST SELLER</div>
-                    <div class="product-image">
-                        <i class="fas fa-capsules"></i>
-                    </div>
-                    <h3 class="product-title">BALWAAN</h3>
-                    <p class="product-subtitle">Strength & Stamina Support</p>
-                    <div class="product-price">
-                        <span class="product-old-price">₹1999</span>
-                        <span>₹1499</span>
-                    </div>
-                    <p class="product-save">500₹ की बचत!</p>
-                    <p>60 कैप्सूल | 1 महीने की सप्लाई</p>
-                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20buy%20BALWAAN%20Capsule" class="btn" style="margin-top: 20px;">
-                        <i class="fas fa-shopping-cart"></i> BUY NOW
-                    </a>
+    <section class="section-padding container text-center">
+        <h2 class="mb-5">Sirf Supplement Nahi, <span class="text-success">Life Transformation!</span></h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fas fa-fire fa-3x text-gold mb-3"></i>
+                    <h4>Peak Performance</h4>
+                    <p>Natural Testosterone boost jo har pal mein energy bhare.</p>
                 </div>
-                
-                <!-- Product 2: Balyaan -->
-                <div class="product-card">
-                    <div class="product-badge">NEW LAUNCH</div>
-                    <div class="product-image">
-                        <i class="fas fa-capsules"></i>
-                    </div>
-                    <h3 class="product-title">BALYAAN</h3>
-                    <p class="product-subtitle">Strength & Stamina Support</p>
-                    <div class="product-price">
-                        <span class="product-old-price">₹1999</span>
-                        <span>₹1499</span>
-                    </div>
-                    <p class="product-save">500₹ की बचत!</p>
-                    <p>60 कैप्सूल | 1 महीने की सप्लाई</p>
-                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20buy%20BALYAAN%20Capsule" class="btn" style="margin-top: 20px;">
-                        <i class="fas fa-shopping-cart"></i> BUY NOW
-                    </a>
+            </div>
+            <div class="col-md-3">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fas fa-heart fa-3x text-gold mb-3"></i>
+                    <h4>Fertility Support</h4>
+                    <p>Sperm health aur sperm count ka natural aur effective solution.</p>
                 </div>
-                
-                <!-- Product 3: Combo Offer -->
-                <div class="product-card">
-                    <div class="product-badge" style="background: var(--primary-gold); color: var(--primary-black);">COMBO OFFER</div>
-                    <div class="product-image">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <h3 class="product-title">COMBO PACK</h3>
-                    <p class="product-subtitle">Balwaan + Balyaan</p>
-                    <div class="product-price">
-                        <span class="product-old-price">₹3998</span>
-                        <span>₹2799</span>
-                    </div>
-                    <p class="product-save">1199₹ की बचत!</p>
-                    <p>120 कैप्सूल | 2 महीने की सप्लाई</p>
-                    <a href="https://wa.me/919045182625?text=I%20want%20to%20buy%20COMBO%20PACK%20(Balwaan%2BBalyaan)" class="btn btn-gold" style="margin-top: 20px;">
-                        <i class="fas fa-gift"></i> BUY COMBO
-                    </a>
+            </div>
+            <div class="col-md-3">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fas fa-moon fa-3x text-gold mb-3"></i>
+                    <h4>Gehri Neend</h4>
+                    <p>Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fas fa-rocket fa-3x text-gold mb-3"></i>
+                    <h4>2x Productivity</h4>
+                    <p>Behtar focus aur mental clarity kaam aur life dono ke liye.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BENEFITS SECTION -->
-    <section class="benefits" id="benefits">
+    <section class="section-padding bg-light">
         <div class="container">
-            <h2 class="section-title">मुख्य लाभ</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-battery-full"></i>
-                    </div>
-                    <h3>ऊर्जा में वृद्धि</h3>
-                    <p>दिनभर ऊर्जा और स्टैमिना बनाए रखें, थकान महसूस न हो</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>शारीरिक शक्ति</h3>
-                    <p>मांसपेशियों की ताकत और सहनशक्ति में सुधार</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>मानसिक स्पष्टता</h3>
-                    <p>एकाग्रता और मानसिक स्पष्टता में सुधार</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>प्रतिरक्षा बूस्ट</h3>
-                    <p>प्राकृतिक रूप से प्रतिरक्षा प्रणाली मजबूत करें</p>
-                </div>
+            <h2 class="text-center mb-5">Balwaan vs <span class="text-danger">Aam Products</span></h2>
+            <div class="table-responsive">
+                <table class="table table-custom text-center align-middle">
+                    <thead class="bg-green text-white">
+                        <tr>
+                            <th>Features</th>
+                            <th>Balwaan Golden Capsule</th>
+                            <th>Ordinary Pills</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Result Quality</td>
+                            <td class="fw-bold">Long Lasting & Natural</td>
+                            <td>Temporary Energy</td>
+                        </tr>
+                        <tr>
+                            <td>Safety</td>
+                            <td class="text-success fw-bold">100% Ayurvedic</td>
+                            <td class="text-danger">Chemical Mixed</td>
+                        </tr>
+                        <tr>
+                            <td>Privacy</td>
+                            <td>Discreet Packaging</td>
+                            <td>Local Box</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <!-- INGREDIENTS SECTION -->
-    <section class="ingredients" id="ingredients">
-        <div class="container">
-            <h2 class="section-title">आयुर्वेदिक घटक</h2>
-            <div class="ingredients-grid">
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h4>अश्वगंधा</h4>
-                    <p>तनाव कम करता है, स्टैमिना बढ़ाता है</p>
-                </div>
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h4>सफेद मूसली</h4>
-                    <p>शारीरिक शक्ति और सहनशक्ति बढ़ाता है</p>
-                </div>
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h4>शिलाजीत</h4>
-                    <p>ऊर्जा और खनिजों का प्राकृतिक स्रोत</p>
-                </div>
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h4>गोखरू</h4>
-                    <p>मूत्र और प्रजनन स्वास्थ्य के लिए उत्तम</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">ग्राहक प्रतिक्रिया</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Balwaan कैप्सूल लेने के 2 हफ्ते बाद ही मुझे अंतर महसूस होने लगा। अब मैं जिम में ज्यादा देर तक वर्कआउट कर पाता हूं और दिनभर एनर्जेटिक रहता हूं।"</p>
-                    <p class="testimonial-author">- राहुल शर्मा, दिल्ली</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="testimonial-text">"मैं 3 महीने से Balyaan कैप्सूल ले रहा हूं। मेरा स्टैमिना बढ़ गया है और शारीरिक कमजोरी पूरी तरह से दूर हो गई है। आयुर्वेदिक होने के कारण कोई साइड इफेक्ट भी नहीं है।"</p>
-                    <p class="testimonial-author">- विजय पाटिल, मुंबई</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"कॉम्बो पैक खरीदा था। दोनों प्रोडक्ट्स बहुत असरदार हैं। मेरा आत्मविश्वास बढ़ गया है और शारीरिक परफॉर्मेंस में सुधार हुआ है। सच में बलवान बना देता है!"</p>
-                    <p class="testimonial-author">- संजय वर्मा, लखनऊ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2 class="section-title">सामान्य प्रश्न</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Balwaan कैप्सूल कैसे काम करता है?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Balwaan कैप्सूल आयुर्वेदिक जड़ी-बूटियों से बना है जो शरीर की मूल कमजोरी को दूर करता है। यह रक्त परिसंचरण में सुधार करता है, हार्मोन को संतुलित करता है और शारीरिक ऊर्जा बढ़ाता है।</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>क्या कोई साइड इफेक्ट है?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>नहीं, Balwaan कैप्सूल 100% आयुर्वेदिक और प्राकृतिक जड़ी-बूटियों से बना है। इसमें कोई केमिकल नहीं है, इसलिए कोई साइड इफेक्ट नहीं है।</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>कितने समय में परिणाम दिखाई देंगे?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>अधिकांश उपयोगकर्ताओं को 2-3 सप्ताह में अंतर महसूस होने लगता है। पूर्ण परिणाम के लिए कम से कम 3 महीने नियमित सेवन की सलाह दी जाती है।</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>क्या डिलीवरी पूरे भारत में उपलब्ध है?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>हाँ, हम पूरे भारत में डिलीवरी करते हैं। आमतौर पर ऑर्डर 3-7 कार्य दिवसों में डिलीवर हो जाता है।</p>
+    <section id="order" class="section-padding bg-green">
+        <div class="container text-center">
+            <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card p-4 border-warning shadow-lg">
+                        <img src="1000345777.png" alt="Combo Pack" class="img-fluid mb-3">
+                        <h3 class="text-dark">Mega Value Pack (60 Caps)</h3>
+                        <p class="text-muted mb-1"><del>MRP: ₹2999</del></p>
+                        <h2 class="text-success fw-bold">Special Price: ₹1499</h2>
+                        <div class="alert alert-warning py-1 mt-2"><b>Extra ₹50 Off</b> on Prepaid Orders!</div>
+                        <a href="#" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA SECTION -->
-    <section class="cta-section" id="order">
-        <div class="container">
-            <h2 class="section-title cta-title">आज ही ऑर्डर करें</h2>
-            <p class="cta-description">
-                सीमित समय की पेशकश! अभी ऑर्डर करें और विशेष छूट पाएं।
-            </p>
-            
-            <div class="cta-offer">
-                <h3>COMBO OFFER - सबसे बेहतर वैल्यू</h3>
-                <div class="product-price">
-                    <span class="offer-old-price">₹3998</span>
-                    <span class="offer-price">₹2799</span>
-                </div>
-                <p>Balwaan + Balyaan (120 कैप्सूल) | 2 महीने की सप्लाई</p>
-                <p style="color: var(--primary-gold); font-weight: 700; font-size: 1.2rem;">
-                    <i class="fas fa-tag"></i> 1199₹ की बचत!
-                </p>
-            </div>
-            
-            <div class="hero-buttons">
-                <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20buy%20COMBO%20PACK%20(Balwaan%2BBalyaan)%20for%20₹2799" class="btn whatsapp-btn" style="padding: 18px 45px; font-size: 1.2rem;">
-                    <i class="fab fa-whatsapp"></i> WHATSAPP पर ऑर्डर करें
-                </a>
-                <a href="tel:+91XXXXXXXXXX" class="btn btn-gold" style="padding: 18px 45px; font-size: 1.2rem;">
-                    <i class="fas fa-phone-alt"></i> कॉल करके ऑर्डर करें
-                </a>
-            </div>
-            
-            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                <div style="text-align: center;">
-                    <i class="fas fa-shipping-fast" style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px;"></i>
-                    <p>फ्री डिलीवरी</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px;"></i>
-                    <p>100% सुरक्षित</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-undo" style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px;"></i>
-                    <p>30 दिन रिटर्न</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container text-center section-padding">
+        <h3>Koi Sawal Hai? Expert Se Baat Karein</h3>
+        <p>Hamare health consultants se free counseling lein.</p>
+        <a href="https://wa.me/yournumber" class="btn btn-success btn-lg px-5 rounded-pill">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+    </div>
 
-    <!-- COUNSELING SECTION -->
-    <section class="counseling">
+    <footer class="bg-dark text-white text-center py-4 mb-5 mb-md-0">
         <div class="container">
-            <h2 class="section-title counseling-title">मुफ्त परामर्श</h2>
-            <p class="counseling-description">
-                क्या आपके मन में कोई सवाल है? हमारे आयुर्वेद विशेषज्ञ से मुफ्त परामर्श लें।
-            </p>
-            
-            <div class="counseling-box">
-                <div class="counseling-icon">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-                <h3>व्हाट्सएप पर चैट करें</h3>
-                <p>हमारे एक्सपर्ट से सीधे बात करें और अपनी समस्या का समाधान पाएं</p>
-                <a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20need%20free%20consultation%20for%20Balwaan%20Capsule" class="btn whatsapp-btn" style="margin-top: 20px; padding: 15px 40px;">
-                    <i class="fab fa-whatsapp"></i> चैट शुरू करें
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>BALWAAN</h4>
-                    <p style="color: #cccccc; margin-bottom: 20px;">
-                        100% आयुर्वेदिक शक्ति और स्टैमिना सपोर्ट कैप्सूल
-                    </p>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="#" style="color: var(--primary-gold); font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="color: var(--primary-gold); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="color: var(--primary-gold); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>उत्पाद</h4>
-                    <ul class="footer-links">
-                        <li><a href="#products">Balwaan कैप्सूल</a></li>
-                        <li><a href="#products">Balyaan कैप्सूल</a></li>
-                        <li><a href="#products">कॉम्बो ऑफर</a></li>
-                        <li><a href="#ingredients">घटक</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>लिंक्स</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">होम</a></li>
-                        <li><a href="#benefits">लाभ</a></li>
-                        <li><a href="#testimonials">प्रतिक्रिया</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>संपर्क</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-phone"></i> +91 XXXXX XXXXX</li>
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp</li>
-                        <li><i class="fas fa-envelope"></i> info@balwaan.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> दिल्ली, भारत</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="disclaimer">
-                <p>
-                    <strong>डिस्क्लेमर:</strong> यह उत्पाद एक आयुर्वेदिक पूरक है और किसी भी बीमारी के निदान, उपचार, इलाज या रोकथाम का दावा नहीं करता है। परिणाम व्यक्ति विशेष के स्वास्थ्य, उम्र और अन्य कारकों पर निर्भर कर सकते हैं। किसी भी चिकित्सीय स्थिति के लिए डॉक्टर से परामर्श अवश्य लें।
-                </p>
-            </div>
-            
-            <div class="copyright">
-                © 2023 Balwaan Ayurveda. सर्वाधिकार सुरक्षित।
-            </div>
+            <p class="mb-0">© 2026 Balwaan Health. 100% Ayurvedic & Safe Formula.</p>
+            <small>Privacy Policy | Terms & Conditions</small>
         </div>
     </footer>
 
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/918273896083" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- GUARANTEE BADGE -->
-    <div class="guarantee-badge">
-        <i class="fas fa-shield-alt"></i>
-        <div>100% सुरक्षित</div>
-        <div>आयुर्वेदिक</div>
+    <div class="mobile-cta-bar">
+        <div class="container">
+            <a href="#order" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</a>
+        </div>
     </div>
 
-    <!-- SCRIPT -->
-    <script>
-        // FAQ Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                
-                question.addEventListener('click', () => {
-                    // Close all other items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current item
-                    item.classList.toggle('active');
-                });
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // WhatsApp number replace - Replace XXXXXXXX with your actual number
-            const whatsappLinks = document.querySelectorAll('a[href*="wa.me/91XXXXXXXXXX"]');
-            const phoneLinks = document.querySelectorAll('a[href="tel:+91XXXXXXXXXX"]');
-            
-            const phoneNumber = 'YOUR_PHONE_NUMBER'; // Replace with your number
-            
-            whatsappLinks.forEach(link => {
-                link.href = link.href.replace('XXXXXXXXXX', phoneNumber);
-            });
-            
-            phoneLinks.forEach(link => {
-                link.href = `tel:+91${phoneNumber}`;
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
