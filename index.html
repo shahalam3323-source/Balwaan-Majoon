@@ -3,33 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balwaan Gold Capsule - Boost Fertility, Stamina & Confidence | 100% Ayurvedic</title>
+    <title>Balwaan & Balyaan - Strength & Stamina Support | 100% Ayurvedic</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Balwaan Gold Capsule - 100% Ayurvedic formula to boost sperm count, improve fertility, increase stamina & build confidence. Natural solution for men's health.">
-    <meta name="keywords" content="Balwaan Gold Capsule, increase sperm count, boost fertility, men's stamina, confidence booster, ayurvedic medicine, male health">
-    <meta name="author" content="Balwaan Gold">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Balwaan Gold Capsule - Boost Fertility, Stamina & Confidence">
-    <meta property="og:description" content="100% Ayurvedic formula to improve sperm health, increase stamina & build natural confidence.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://balwaangold.com">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="description" content="Balwaan & Balyaan Ayurvedic Capsules - Boost strength, stamina, energy & confidence. 100% natural formula for men's health.">
+    <meta name="keywords" content="Balwaan, Balyaan, strength capsule, stamina booster, ayurvedic medicine, men's health, energy booster">
+    <meta name="author" content="Balwaan Ayurveda">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- External CSS (हम बाद में बनाएंगे) -->
-    <link rel="stylesheet" href="style.css">
-    
+    <!-- CSS -->
     <style>
-        /* TEMPORARY CSS - बाद में style.css में मूव कर देंगे */
+        /* ====== VARIABLES ====== */
+        :root {
+            --primary-black: #000000;
+            --primary-gold: #D4AF37;
+            --secondary-gold: #F5E6B8;
+            --accent-red: #D32F2F;
+            --light-bg: #FAFAFA;
+            --white: #FFFFFF;
+            --text-dark: #222222;
+            --text-light: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* ====== RESET & BASE ====== */
         * {
             margin: 0;
             padding: 0;
@@ -38,13 +41,16 @@
         
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
-            color: #333;
+            color: var(--text-dark);
             line-height: 1.6;
+            background-color: var(--light-bg);
             overflow-x: hidden;
+            padding-top: 80px; /* For fixed header */
         }
         
         .container {
@@ -53,248 +59,667 @@
             padding: 0 20px;
         }
         
-        /* TEMPORARY - स्क्रॉलिंग चेक करने के लिए */
         section {
-            min-height: 100vh;
             padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-black);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+        }
+        
+        /* ====== BUTTONS ====== */
+        .btn {
+            display: inline-block;
+            background: var(--primary-black);
+            color: var(--primary-gold);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary-gold);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--primary-gold);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-gold {
+            background: var(--primary-gold);
+            color: var(--primary-black);
+        }
+        
+        .btn-gold:hover {
+            background: var(--primary-black);
+            color: var(--primary-gold);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            color: white;
+        }
+        
+        /* ====== HEADER ====== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-black);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header .container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
             font-size: 32px;
-            color: #0f3d2e;
+            font-weight: 900;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .logo span {
-            color: #c9a24d;
+            color: var(--white);
         }
         
-        /* स्क्रॉलिंग टेस्ट के लिए कलर्स */
-        #hero { background: #f0f8ff; }
-        #problem { background: #fff0f5; }
-        #benefits { background: #f0fff0; }
-        #ingredients { background: #fffaf0; }
-        #order { background: #f8f8ff; }
-        
-        h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            color: #0f3d2e;
-            margin-bottom: 20px;
-        }
-        
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #c9a24d;
-            color: #0f3d2e;
-            padding: 15px 35px;
+        .nav-cta {
+            background: var(--primary-gold);
+            color: var(--primary-black);
+            padding: 12px 30px;
             border-radius: 30px;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+        
+        .nav-cta:hover {
+            background: var(--secondary-gold);
+            transform: translateY(-2px);
+        }
+        
+        /* ====== HERO SECTION ====== */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0 80px;
+        }
+        
+        .hero .container {
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: var(--primary-black);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
             font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-gold);
+            margin-bottom: 30px;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* ====== PROBLEM SECTION ====== */
+        .problem {
+            background: var(--white);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .problem-box {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-red);
+            box-shadow: var(--shadow);
+        }
+        
+        .solution-box {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-gold);
+            box-shadow: var(--shadow);
+        }
+        
+        .problem-title, .solution-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-black);
+        }
+        
+        .problem-list, .solution-list {
+            list-style: none;
+        }
+        
+        .problem-list li, .solution-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .problem-list li:before {
+            content: '✖';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .solution-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* ====== PRODUCTS SECTION ====== */
+        .products {
+            background: var(--light-bg);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            background: var(--accent-red);
+            color: var(--white);
+            padding: 10px 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .product-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-black);
+        }
+        
+        .product-title {
+            font-size: 1.8rem;
+            color: var(--primary-black);
+            margin-bottom: 10px;
+        }
+        
+        .product-subtitle {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-black);
+            margin: 20px 0;
+        }
+        
+        .product-old-price {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .product-save {
+            color: var(--accent-red);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* ====== BENEFITS SECTION ====== */
+        .benefits {
+            background: var(--white);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: var(--light-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary-gold);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* ====== INGREDIENTS SECTION ====== */
+        .ingredients {
+            background: var(--light-bg);
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .ingredient-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .ingredient-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ingredient-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+        
+        .ingredient-card h4 {
+            color: var(--primary-black);
+            margin-bottom: 10px;
+        }
+        
+        /* ====== TESTIMONIALS SECTION ====== */
+        .testimonials {
+            background: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--light-bg);
+            padding: 35px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-stars {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-black);
+        }
+        
+        /* ====== FAQ SECTION ====== */
+        .faq {
+            background: var(--light-bg);
+        }
+        
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-black);
+            color: var(--white);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 25px;
+            max-height: 500px;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* ====== COUNSELING SECTION ====== */
+        .counseling {
+            background: var(--primary-black);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .counseling-title {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+        
+        .counseling-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .counseling-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .counseling-icon {
+            font-size: 4rem;
+            color: #25D366;
+            margin-bottom: 20px;
+        }
+        
+        /* ====== CTA SECTION ====== */
+        .cta-section {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-title {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-offer {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px solid var(--primary-gold);
+        }
+        
+        .offer-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            margin: 10px 0;
+        }
+        
+        .offer-old-price {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-right: 15px;
+        }
+        
+        /* ====== FOOTER ====== */
+        .footer {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+        
+        .disclaimer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #aaaaaa;
+            line-height: 1.7;
+        }
+        
+        .copyright {
+            text-align: center;
             margin-top: 20px;
-            transition: all 0.3s;
+            color: #888888;
+            font-size: 14px;
         }
         
-        .btn:hover {
-            background: #b8923a;
-            transform: translateY(-3px);
+        /* ====== FLOATING ELEMENTS ====== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .guarantee-badge {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary-gold);
+            color: var(--primary-black);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            max-width: 180px;
+            font-weight: 700;
+        }
+        
+        .guarantee-badge i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        /* ====== RESPONSIVENESS ====== */
+        @media (max-width: 1024px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
-            section {
-                padding: 60px 0;
-                min-height: auto;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
-    </style>
-</head>
-<body>
-    <!-- HEADER -->
-    <header style="position: fixed; width: 100%; background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
-        <div class="container">
-            <div class="logo">BALWAAN<span>GOLD</span></div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="hero" style="padding-top: 120px;">
-        <div class="container">
-            <div style="max-width: 800px;">
-                <h1>Boost Fertility, Stamina & Confidence</h1>
-                <p>Balwaan Gold Capsule is a powerful 100% Ayurvedic formula designed to naturally improve men's health. It works on the root causes of weakness to deliver real results you can feel.</p>
-                <div style="background: #c9a24d; color: #0f3d2e; display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                    <i class="fas fa-certificate"></i> 100% AYURVEDIC CAPSULES
-                </div>
-                <br>
-                <a href="#order" class="btn">
-                    <i class="fas fa-shopping-cart"></i> ORDER NOW
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROBLEM SECTION -->
-    <section id="problem">
-        <div class="container">
-            <h2>Common Problems We Solve</h2>
-            <p>Many men face these issues without knowing there's a natural solution...</p>
-            <ul style="margin-left: 20px; font-size: 1.1rem;">
-                <li>Low Sperm Count & Poor Motility</li>
-                <li>Lack of Stamina & Energy</li>
-                <li>Low Confidence & Performance Anxiety</li>
-                <li>Weak Immune System</li>
-                <li>Stress & Fatigue</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- BENEFITS SECTION -->
-    <section id="benefits">
-        <div class="container">
-            <h2>Key Benefits</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
-                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                    <i class="fas fa-seedling" style="font-size: 2.5rem; color: #c9a24d; margin-bottom: 15px;"></i>
-                    <h3>Increase Sperm Count</h3>
-                    <p>Naturally boosts sperm production and improves motility.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                    <i class="fas fa-battery-full" style="font-size: 2.5rem; color: #c9a24d; margin-bottom: 15px;"></i>
-                    <h3>Boost Stamina</h3>
-                    <p>Enhances physical energy and reduces fatigue.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                    <i class="fas fa-heart" style="font-size: 2.5rem; color: #c9a24d; margin-bottom: 15px;"></i>
-                    <h3>Improve Confidence</h3>
-                    <p>Builds mental strength and self-assurance.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INGREDIENTS SECTION -->
-    <section id="ingredients">
-        <div class="container">
-            <h2>Powerful Ayurvedic Ingredients</h2>
-            <p>Our formula contains time-tested herbs known for their effectiveness:</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 40px;">
-                <div style="text-align: center;">
-                    <div style="width: 100px; height: 100px; background: #c9a24d; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h4>Ashwagandha</h4>
-                    <p>Stress relief & stamina</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="width: 100px; height: 100px; background: #c9a24d; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h4>Safed Musli</h4>
-                    <p>Vitality booster</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="width: 100px; height: 100px; background: #c9a24d; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        <i class="fas fa-spa"></i>
-                    </div>
-                    <h4>Shilajit</h4>
-                    <p>Energy & minerals</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ORDER SECTION -->
-    <section id="order" style="background: linear-gradient(135deg, #0f3d2e 0%, #1a4d3c 100%); color: white;">
-        <div class="container">
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <h2 style="color: #f5e6b8;">Ready to Transform Your Life?</h2>
-                <p style="font-size: 1.2rem; opacity: 0.9;">Take the first step towards better health and confidence today.</p>
-                
-                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin: 40px 0;">
-                    <h3 style="color: #c9a24d;">Special Offer</h3>
-                    <p style="font-size: 2.5rem; font-weight: bold; color: #f5e6b8;">₹999 <span style="font-size: 1rem; text-decoration: line-through; opacity: 0.7;">₹1999</span></p>
-                    <p style="color: #c9a24d; font-weight: 600;"><i class="fas fa-tag"></i> 50% OFF Limited Time</p>
-                </div>
-                
-                <a href="https://wa.me/91YOURNUMBER" style="background: #25D366; color: white; padding: 18px 45px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1.2rem; display: inline-block; margin: 20px 0;">
-                    <i class="fab fa-whatsapp"></i> ORDER ON WHATSAPP
-                </a>
-                
-                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
-                    <i class="fas fa-shield-alt"></i> 100% Secure Payment | 
-                    <i class="fas fa-truck"></i> Free Delivery | 
-                    <i class="fas fa-undo"></i> 30-Day Return
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer style="background: #102721; color: white; padding: 60px 0 30px;">
-        <div class="container">
-            <div style="text-align: center;">
-                <div class="logo" style="color: #c9a24d; margin-bottom: 20px;">BALWAAN<span style="color: white;">GOLD</span></div>
-                <p style="opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
-                    Balwaan Gold Capsule - 100% Ayurvedic solution for men's health, fertility, and confidence.
-                </p>
-                
-                <div style="margin: 30px 0;">
-                    <a href="#" style="color: #c9a24d; margin: 0 15px; text-decoration: none;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: #c9a24d; margin: 0 15px; text-decoration: none;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: #c9a24d; margin: 0 15px; text-decoration: none;"><i class="fab fa-youtube"></i></a>
-                </div>
-                
-                <p style="opacity: 0.6; font-size: 0.9rem; margin-top: 40px;">
-                    © 2023 Balwaan Gold. All rights reserved. 
-                    <br>This product is not intended to diagnose, treat, cure, or prevent any disease. 
-                    <br>Results may vary from person to person.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/91YOURNUMBER" style="position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); z-index: 1000; text-decoration: none;">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- SIMPLE SCROLL TEST SCRIPT -->
-    <script>
-        // Simple script to ensure everything works
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Balwaan Gold website loaded successfully!');
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if(targetId !== '#') {
-                        const targetElement = document.querySelector(targetId);
-                        if(targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+        
+        @media (
