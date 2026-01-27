@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -722,4 +723,554 @@
             }
         }
         
-        @media (
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid, .benefits-grid, .ingredients-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .whatsapp-float, .guarantee-badge {
+                bottom: 20px;
+            }
+            
+            .whatsapp-float {
+                right: 20px;
+            }
+            
+            .guarantee-badge {
+                left: 20px;
+                max-width: 150px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .product-card, .benefit-card, .ingredient-card, .testimonial-card {
+                padding: 25px 20px;
+            }
+            
+            .offer-price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">BALWAAN<span>GOLD</span></div>
+            <a href="#order" class="nav-cta">
+                <i class="fas fa-shopping-cart"></i> ORDER NOW
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <span class="hero-badge">
+                <i class="fas fa-certificate"></i> 100% AYURVEDIC FORMULA
+            </span>
+            <h1 class="hero-title">Strength & Stamina Support</h1>
+            <h2 class="hero-subtitle">बलवान & बलयान कैप्सूल</h2>
+            <p class="hero-description">
+                प्राकृतिक आयुर्वेदिक फॉर्मूला जो शारीरिक शक्ति, स्टैमिना और आत्मविश्वास बढ़ाता है। 100% हर्बल, कोई साइड इफेक्ट नहीं।
+            </p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-gold">
+                    <i class="fas fa-capsules"></i> VIEW PRODUCTS
+                </a>
+                <a href="https://wa.me/91XXXXXXXXXX" class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WHATSAPP ORDER
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM & SOLUTION SECTION -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <h2 class="section-title">समस्या और समाधान</h2>
+            <div class="problem-grid">
+                <div class="problem-box">
+                    <h3 class="problem-title">सामान्य समस्याएं</h3>
+                    <ul class="problem-list">
+                        <li>थकान और कमजोरी</li>
+                        <li>स्टैमिना की कमी</li>
+                        <li>शारीरिक ऊर्जा में कमी</li>
+                        <li>मानसिक तनाव</li>
+                        <li>आत्मविश्वास की कमी</li>
+                        <li>प्रतिरक्षा प्रणाली कमजोर</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3 class="solution-title">Balwaan समाधान</h3>
+                    <ul class="solution-list">
+                        <li>शारीरिक शक्ति में वृद्धि</li>
+                        <li>स्टैमिना और ऊर्जा बूस्ट</li>
+                        <li>मानसिक स्पष्टता</li>
+                        <li>आत्मविश्वास में सुधार</li>
+                        <li>प्रतिरक्षा प्रणाली मजबूत</li>
+                        <li>समग्र स्वास्थ्य में सुधार</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">हमारे उत्पाद</h2>
+            <div class="products-grid">
+                <!-- Product 1: Balwaan -->
+                <div class="product-card">
+                    <div class="product-badge">BEST SELLER</div>
+                    <div class="product-image">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <h3 class="product-title">BALWAAN</h3>
+                    <p class="product-subtitle">Strength & Stamina Support</p>
+                    <div class="product-price">
+                        <span class="product-old-price">₹1999</span>
+                        <span>₹1499</span>
+                    </div>
+                    <p class="product-save">500₹ की बचत!</p>
+                    <p>60 कैप्सूल | 1 महीने की सप्लाई</p>
+                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20buy%20BALWAAN%20Capsule" class="btn" style="margin-top: 20px;">
+                        <i class="fas fa-shopping-cart"></i> BUY NOW
+                    </a>
+                </div>
+                
+                <!-- Product 2: Balyaan -->
+                <div class="product-card">
+                    <div class="product-badge">NEW LAUNCH</div>
+                    <div class="product-image">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <h3 class="product-title">BALYAAN</h3>
+                    <p class="product-subtitle">Strength & Stamina Support</p>
+                    <div class="product-price">
+                        <span class="product-old-price">₹1999</span>
+                        <span>₹1499</span>
+                    </div>
+                    <p class="product-save">500₹ की बचत!</p>
+                    <p>60 कैप्सूल | 1 महीने की सप्लाई</p>
+                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20buy%20BALYAAN%20Capsule" class="btn" style="margin-top: 20px;">
+                        <i class="fas fa-shopping-cart"></i> BUY NOW
+                    </a>
+                </div>
+                
+                <!-- Product 3: Combo Offer -->
+                <div class="product-card">
+                    <div class="product-badge" style="background: var(--primary-gold); color: var(--primary-black);">COMBO OFFER</div>
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="product-title">COMBO PACK</h3>
+                    <p class="product-subtitle">Balwaan + Balyaan</p>
+                    <div class="product-price">
+                        <span class="product-old-price">₹3998</span>
+                        <span>₹2799</span>
+                    </div>
+                    <p class="product-save">1199₹ की बचत!</p>
+                    <p>120 कैप्सूल | 2 महीने की सप्लाई</p>
+                    <a href="https://wa.me/919045182625?text=I%20want%20to%20buy%20COMBO%20PACK%20(Balwaan%2BBalyaan)" class="btn btn-gold" style="margin-top: 20px;">
+                        <i class="fas fa-gift"></i> BUY COMBO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">मुख्य लाभ</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>ऊर्जा में वृद्धि</h3>
+                    <p>दिनभर ऊर्जा और स्टैमिना बनाए रखें, थकान महसूस न हो</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>शारीरिक शक्ति</h3>
+                    <p>मांसपेशियों की ताकत और सहनशक्ति में सुधार</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>मानसिक स्पष्टता</h3>
+                    <p>एकाग्रता और मानसिक स्पष्टता में सुधार</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>प्रतिरक्षा बूस्ट</h3>
+                    <p>प्राकृतिक रूप से प्रतिरक्षा प्रणाली मजबूत करें</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INGREDIENTS SECTION -->
+    <section class="ingredients" id="ingredients">
+        <div class="container">
+            <h2 class="section-title">आयुर्वेदिक घटक</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>अश्वगंधा</h4>
+                    <p>तनाव कम करता है, स्टैमिना बढ़ाता है</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>सफेद मूसली</h4>
+                    <p>शारीरिक शक्ति और सहनशक्ति बढ़ाता है</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h4>शिलाजीत</h4>
+                    <p>ऊर्जा और खनिजों का प्राकृतिक स्रोत</p>
+                </div>
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h4>गोखरू</h4>
+                    <p>मूत्र और प्रजनन स्वास्थ्य के लिए उत्तम</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">ग्राहक प्रतिक्रिया</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Balwaan कैप्सूल लेने के 2 हफ्ते बाद ही मुझे अंतर महसूस होने लगा। अब मैं जिम में ज्यादा देर तक वर्कआउट कर पाता हूं और दिनभर एनर्जेटिक रहता हूं।"</p>
+                    <p class="testimonial-author">- राहुल शर्मा, दिल्ली</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"मैं 3 महीने से Balyaan कैप्सूल ले रहा हूं। मेरा स्टैमिना बढ़ गया है और शारीरिक कमजोरी पूरी तरह से दूर हो गई है। आयुर्वेदिक होने के कारण कोई साइड इफेक्ट भी नहीं है।"</p>
+                    <p class="testimonial-author">- विजय पाटिल, मुंबई</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"कॉम्बो पैक खरीदा था। दोनों प्रोडक्ट्स बहुत असरदार हैं। मेरा आत्मविश्वास बढ़ गया है और शारीरिक परफॉर्मेंस में सुधार हुआ है। सच में बलवान बना देता है!"</p>
+                    <p class="testimonial-author">- संजय वर्मा, लखनऊ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">सामान्य प्रश्न</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Balwaan कैप्सूल कैसे काम करता है?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Balwaan कैप्सूल आयुर्वेदिक जड़ी-बूटियों से बना है जो शरीर की मूल कमजोरी को दूर करता है। यह रक्त परिसंचरण में सुधार करता है, हार्मोन को संतुलित करता है और शारीरिक ऊर्जा बढ़ाता है।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>क्या कोई साइड इफेक्ट है?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>नहीं, Balwaan कैप्सूल 100% आयुर्वेदिक और प्राकृतिक जड़ी-बूटियों से बना है। इसमें कोई केमिकल नहीं है, इसलिए कोई साइड इफेक्ट नहीं है।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>कितने समय में परिणाम दिखाई देंगे?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>अधिकांश उपयोगकर्ताओं को 2-3 सप्ताह में अंतर महसूस होने लगता है। पूर्ण परिणाम के लिए कम से कम 3 महीने नियमित सेवन की सलाह दी जाती है।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>क्या डिलीवरी पूरे भारत में उपलब्ध है?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>हाँ, हम पूरे भारत में डिलीवरी करते हैं। आमतौर पर ऑर्डर 3-7 कार्य दिवसों में डिलीवर हो जाता है।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="order">
+        <div class="container">
+            <h2 class="section-title cta-title">आज ही ऑर्डर करें</h2>
+            <p class="cta-description">
+                सीमित समय की पेशकश! अभी ऑर्डर करें और विशेष छूट पाएं।
+            </p>
+            
+            <div class="cta-offer">
+                <h3>COMBO OFFER - सबसे बेहतर वैल्यू</h3>
+                <div class="product-price">
+                    <span class="offer-old-price">₹3998</span>
+                    <span class="offer-price">₹2799</span>
+                </div>
+                <p>Balwaan + Balyaan (120 कैप्सूल) | 2 महीने की सप्लाई</p>
+                <p style="color: var(--primary-gold); font-weight: 700; font-size: 1.2rem;">
+                    <i class="fas fa-tag"></i> 1199₹ की बचत!
+                </p>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20buy%20COMBO%20PACK%20(Balwaan%2BBalyaan)%20for%20₹2799" class="btn whatsapp-btn" style="padding: 18px 45px; font-size: 1.2rem;">
+                    <i class="fab fa-whatsapp"></i> WHATSAPP पर ऑर्डर करें
+                </a>
+                <a href="tel:+91XXXXXXXXXX" class="btn btn-gold" style="padding: 18px 45px; font-size: 1.2rem;">
+                    <i class="fas fa-phone-alt"></i> कॉल करके ऑर्डर करें
+                </a>
+            </div>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <i class="fas fa-shipping-fast" style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px;"></i>
+                    <p>फ्री डिलीवरी</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px;"></i>
+                    <p>100% सुरक्षित</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-undo" style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px;"></i>
+                    <p>30 दिन रिटर्न</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNSELING SECTION -->
+    <section class="counseling">
+        <div class="container">
+            <h2 class="section-title counseling-title">मुफ्त परामर्श</h2>
+            <p class="counseling-description">
+                क्या आपके मन में कोई सवाल है? हमारे आयुर्वेद विशेषज्ञ से मुफ्त परामर्श लें।
+            </p>
+            
+            <div class="counseling-box">
+                <div class="counseling-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>व्हाट्सएप पर चैट करें</h3>
+                <p>हमारे एक्सपर्ट से सीधे बात करें और अपनी समस्या का समाधान पाएं</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20need%20free%20consultation%20for%20Balwaan%20Capsule" class="btn whatsapp-btn" style="margin-top: 20px; padding: 15px 40px;">
+                    <i class="fab fa-whatsapp"></i> चैट शुरू करें
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>BALWAAN</h4>
+                    <p style="color: #cccccc; margin-bottom: 20px;">
+                        100% आयुर्वेदिक शक्ति और स्टैमिना सपोर्ट कैप्सूल
+                    </p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: var(--primary-gold); font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--primary-gold); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--primary-gold); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>उत्पाद</h4>
+                    <ul class="footer-links">
+                        <li><a href="#products">Balwaan कैप्सूल</a></li>
+                        <li><a href="#products">Balyaan कैप्सूल</a></li>
+                        <li><a href="#products">कॉम्बो ऑफर</a></li>
+                        <li><a href="#ingredients">घटक</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>लिंक्स</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">होम</a></li>
+                        <li><a href="#benefits">लाभ</a></li>
+                        <li><a href="#testimonials">प्रतिक्रिया</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>संपर्क</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +91 XXXXX XXXXX</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp</li>
+                        <li><i class="fas fa-envelope"></i> info@balwaan.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> दिल्ली, भारत</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p>
+                    <strong>डिस्क्लेमर:</strong> यह उत्पाद एक आयुर्वेदिक पूरक है और किसी भी बीमारी के निदान, उपचार, इलाज या रोकथाम का दावा नहीं करता है। परिणाम व्यक्ति विशेष के स्वास्थ्य, उम्र और अन्य कारकों पर निर्भर कर सकते हैं। किसी भी चिकित्सीय स्थिति के लिए डॉक्टर से परामर्श अवश्य लें।
+                </p>
+            </div>
+            
+            <div class="copyright">
+                © 2023 Balwaan Ayurveda. सर्वाधिकार सुरक्षित।
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- GUARANTEE BADGE -->
+    <div class="guarantee-badge">
+        <i class="fas fa-shield-alt"></i>
+        <div>100% सुरक्षित</div>
+        <div>आयुर्वेदिक</div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // FAQ Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // WhatsApp number replace - Replace XXXXXXXX with your actual number
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me/91XXXXXXXXXX"]');
+            const phoneLinks = document.querySelectorAll('a[href="tel:+91XXXXXXXXXX"]');
+            
+            const phoneNumber = 'YOUR_PHONE_NUMBER'; // Replace with your number
+            
+            whatsappLinks.forEach(link => {
+                link.href = link.href.replace('XXXXXXXXXX', phoneNumber);
+            });
+            
+            phoneLinks.forEach(link => {
+                link.href = `tel:+91${phoneNumber}`;
+            });
+        });
+    </script>
+</body>
+</html>
