@@ -9,115 +9,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* --- AAPKA ORIGINAL DESIGN (UNCHANGED) --- */
         :root {
             --primary-green: #14452F;
             --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             --dark-gold: #D4AF37;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f9f9f9; color: #333; overflow-x: hidden; }
+        h1, h2, h3, .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; }
 
-        h1, h2, h3, .navbar-brand {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-        }
-
-        /* --- Global Glowing & Floating Effects --- */
-        @keyframes glowing {
-            0% { box-shadow: 0 0 5px #D4AF37; }
-            50% { box-shadow: 0 0 25px #D4AF37; }
-            100% { box-shadow: 0 0 5px #D4AF37; }
-        }
-
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+        @keyframes glowing { 0% { box-shadow: 0 0 5px #D4AF37; } 50% { box-shadow: 0 0 25px #D4AF37; } 100% { box-shadow: 0 0 5px #D4AF37; } }
+        @keyframes floating { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
         .btn-gold-glow {
-            background: var(--gold-gradient);
-            color: var(--primary-green) !important;
-            border: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: glowing 2s infinite;
-            border-radius: 50px;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: var(--gold-gradient); color: var(--primary-green) !important;
+            border: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+            animation: glowing 2s infinite; border-radius: 50px; transition: 0.3s; text-decoration: none;
         }
+        .btn-gold-glow:hover { transform: scale(1.05); color: #000 !important; cursor: pointer; }
 
-        .btn-gold-glow:hover {
-            transform: scale(1.05);
-            color: #000 !important;
-        }
-
-        /* --- Header & Hero --- */
-        .hero-section {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 80px 0 50px;
-            border-bottom: 5px solid var(--dark-gold);
-        }
-
-        .product-img-main {
-            max-width: 100%;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-            animation: floating 4s ease-in-out infinite;
-        }
-
-        /* --- Sections Style --- */
+        .hero-section { background-color: var(--primary-green); color: white; padding: 80px 0 50px; border-bottom: 5px solid var(--dark-gold); }
+        .product-img-main { max-width: 100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); animation: floating 4s ease-in-out infinite; }
         .section-padding { padding: 60px 0; }
         .bg-green { background-color: var(--primary-green); color: white; }
         .text-gold { color: var(--dark-gold); }
 
-        /* --- Custom Modal (Popup) Style --- */
+        .table-custom { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .whatsapp-float { position: fixed; bottom: 80px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; }
+        .mobile-cta-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; display: none; z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) { .mobile-cta-bar { display: block; } .hero-section { text-align: center; } }
+
+        /* --- NEW POPUP STYLING (GoKwik Style) --- */
         #orderPopup {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 10000;
+            background: rgba(0,0,0,0.85); z-index: 10001;
             display: none; align-items: center; justify-content: center;
         }
         .popup-content {
             background: white; padding: 30px; border-radius: 20px;
-            width: 90%; max-width: 450px; position: relative;
-            border: 3px solid #D4AF37;
+            width: 90%; max-width: 420px; position: relative;
+            border: 3px solid var(--dark-gold); text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-        .close-popup {
-            position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #888;
-        }
-
-        /* --- WhatsApp Sticky --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;
-        }
-
-        .mobile-cta-bar {
-            position: fixed; bottom: 0; width: 100%;
-            background: white; padding: 10px; display: none;
-            z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .mobile-cta-bar { display: block; }
-            .hero-section { text-align: center; }
-        }
+        .close-popup { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #999; }
+        .form-control-lg { border-radius: 12px; border: 1px solid #ddd; font-size: 1rem; margin-bottom: 15px; }
+        .step-indicator { font-size: 0.75rem; font-weight: bold; color: var(--primary-green); letter-spacing: 1px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -148,34 +86,10 @@
     <section class="section-padding container text-center">
         <h2 class="mb-5">Sirf Supplement Nahi, <span class="text-success">Life Transformation!</span></h2>
         <div class="row g-4">
-            <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
-                    <i class="fas fa-fire fa-3x text-gold mb-3"></i>
-                    <h4>Peak Performance</h4>
-                    <p>Natural Testosterone boost jo har pal mein energy bhare.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
-                    <i class="fas fa-heart fa-3x text-gold mb-3"></i>
-                    <h4>Fertility Support</h4>
-                    <p>Sperm health aur sperm count ka natural aur effective solution.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
-                    <i class="fas fa-moon fa-3x text-gold mb-3"></i>
-                    <h4>Gehri Neend</h4>
-                    <p>Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
-                    <i class="fas fa-rocket fa-3x text-gold mb-3"></i>
-                    <h4>2x Productivity</h4>
-                    <p>Behtar focus aur mental clarity kaam aur life dono ke liye.</p>
-                </div>
-            </div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-fire fa-3x text-gold mb-3"></i><h4>Peak Performance</h4><p>Natural Testosterone boost jo har pal mein energy bhare.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-heart fa-3x text-gold mb-3"></i><h4>Fertility Support</h4><p>Sperm health aur sperm count ka natural aur effective solution.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-moon fa-3x text-gold mb-3"></i><h4>Gehri Neend</h4><p>Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-rocket fa-3x text-gold mb-3"></i><h4>2x Productivity</h4><p>Behtar focus aur mental clarity kaam aur life dono ke liye.</p></div></div>
         </div>
     </section>
 
@@ -183,14 +97,8 @@
         <div class="container">
             <h2 class="text-center mb-5">Balwaan vs <span class="text-danger">Aam Products</span></h2>
             <div class="table-responsive">
-                <table class="table text-center align-middle bg-white shadow rounded">
-                    <thead class="bg-green text-white">
-                        <tr>
-                            <th>Features</th>
-                            <th>Balwaan Golden Capsule</th>
-                            <th>Ordinary Pills</th>
-                        </tr>
-                    </thead>
+                <table class="table table-custom text-center align-middle">
+                    <thead class="bg-green text-white"><tr><th>Features</th><th>Balwaan Golden Capsule</th><th>Ordinary Pills</th></tr></thead>
                     <tbody>
                         <tr><td>Result Quality</td><td class="fw-bold">Long Lasting & Natural</td><td>Temporary Energy</td></tr>
                         <tr><td>Safety</td><td class="text-success fw-bold">100% Ayurvedic</td><td class="text-danger">Chemical Mixed</td></tr>
@@ -201,35 +109,17 @@
         </div>
     </section>
 
-    <section class="trust-icons-section section-padding bg-white">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center p-4 shadow-sm rounded border">
-                        <i class="fas fa-undo-alt fa-3x text-gold me-3"></i>
-                        <div><h4 class="mb-1">7-Day Easy Returns</h4><p class="mb-0 text-muted">Agar satisfied nahi hain, toh asaan return karein.</p></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center p-4 shadow-sm rounded border">
-                        <i class="fas fa-box-open fa-3x text-gold me-3"></i>
-                        <div><h4 class="mb-1">Discreet Packaging</h4><p class="mb-0 text-muted">Product plain box mein aayega, koi label nahi hoga.</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="order" class="section-padding bg-green">
-        <div class="container text-center text-white">
+        <div class="container text-center">
             <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                    <div class="card p-4 shadow-lg text-dark">
+                    <div class="card p-4 border-warning shadow-lg text-dark">
                         <img src="1000345777.png" alt="Combo Pack" class="img-fluid mb-3">
-                        <h3>Mega Value Pack (60 Caps)</h3>
-                        <p class="mb-1"><del>MRP: ₹2999</del></p>
-                        <h2 class="text-success fw-bold">Price: ₹1499</h2>
+                        <h3 class="text-dark">Mega Value Pack (60 Caps)</h3>
+                        <p class="text-muted mb-1"><del>MRP: ₹2999</del></p>
+                        <h2 class="text-success fw-bold">Special Price: ₹1499</h2>
+                        <div class="alert alert-warning py-1 mt-2"><b>Extra ₹50 Off</b> on Prepaid Orders!</div>
                         <button onclick="openPopup()" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</button>
                     </div>
                 </div>
@@ -242,57 +132,39 @@
             <span class="close-popup" onclick="closePopup()">&times;</span>
             
             <div id="step1">
-                <h3 class="text-gold text-center mb-3">Order Shuru Karein</h3>
-                <p class="text-center small mb-4">Kripya apna naam aur WhatsApp number dein.</p>
-                <div class="mb-3">
-                    <input type="text" id="leadName" class="form-control form-control-lg" placeholder="Aapka Naam" required>
-                </div>
-                <div class="mb-4">
-                    <input type="tel" id="leadPhone" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
-                </div>
+                <div class="step-indicator">STEP 1/2: CONTACT DETAILS</div>
+                <h3 class="text-gold mb-3">Order Shuru Karein</h3>
+                <p class="small text-muted mb-4">Apna naam aur WhatsApp number bharein.</p>
+                <input type="text" id="leadName" class="form-control form-control-lg" placeholder="Aapka Naam" required>
+                <input type="tel" id="leadPhone" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
                 <button onclick="goToStep2()" class="btn btn-gold-glow w-100 py-3">NEXT: ADDRESS BHAREIN</button>
             </div>
 
             <div id="step2" style="display:none;">
-                <h3 class="text-gold text-center mb-3">Kahan Bhejna Hai?</h3>
-                <div class="mb-3">
-                    <textarea id="orderAddress" class="form-control" placeholder="Pura Pata (Gali, City, State, Pincode)" rows="3" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <select id="orderProduct" class="form-select">
-                        <option value="Combo Pack (60 Caps) - ₹1499">Combo Pack (60 Caps) - ₹1499 [Best Seller]</option>
-                        <option value="Single Pack (30 Caps) - ₹899">Single Pack (30 Caps) - ₹899</option>
-                    </select>
-                </div>
-                <div class="alert alert-warning py-2 small">✓ Cash on Delivery Available!</div>
+                <div class="step-indicator">STEP 2/2: DELIVERY DETAILS</div>
+                <h3 class="text-gold mb-3">Kahan Bhejna Hai?</h3>
+                <textarea id="orderAddress" class="form-control form-control-lg" placeholder="Gali, Mohalla, City, State, Pincode" rows="3" required></textarea>
+                <select id="orderProduct" class="form-select form-select-lg mb-4">
+                    <option value="Combo Pack (2 Bottles) - ₹1499">Combo Pack (2 Bottles) - ₹1499 [Best Seller]</option>
+                    <option value="Single Pack (1 Bottle) - ₹899">Single Pack (1 Bottle) - ₹899</option>
+                </select>
                 <button onclick="finishOrder()" class="btn btn-gold-glow w-100 py-3">CONFIRM ORDER (COD)</button>
+                <p class="small text-muted mt-2"><i class="fas fa-truck"></i> Cash on Delivery Available</p>
+            </div>
+
+            <div id="step3" style="display:none;">
+                <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                <h3 class="text-success">Order Processing!</h3>
+                <p>Humne aapka order confirm karne ke liye WhatsApp khol diya hai. Kripya wahan message send karein.</p>
+                <button onclick="closePopup()" class="btn btn-dark w-100 mt-2">CLOSE</button>
             </div>
         </div>
     </div>
 
-    <footer class="footer-main bg-dark text-white pt-5 pb-3 mt-5">
-        <div class="container text-center text-md-start">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4 class="text-gold">BALWAAN</h4>
-                    <p class="small text-secondary">Premium Ayurvedic formulation for strength & stamina.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled small text-secondary">
-                        <li>Terms & Conditions | Privacy Policy</li>
-                        <li>Refund Policy | Shipping Info</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Support</h5>
-                    <p class="small text-secondary">Chat with experts on WhatsApp for free counseling.</p>
-                    <a href="https://wa.me/918273896083" class="text-gold text-decoration-none fw-bold">918273896083</a>
-                </div>
-            </div>
-            <hr class="border-secondary">
-            <p class="small text-secondary text-center italic">Disclaimer: Balwaan is a dietary supplement. Results may vary. Consult an expert before use.</p>
-            <p class="small text-secondary text-center mb-0">© 2026 Balwaan Health. All Rights Reserved.</p>
+    <footer class="footer-main bg-dark text-white pt-5 pb-3">
+        <div class="container text-center">
+            <h4 class="text-gold">BALWAAN</h4>
+            <p class="small text-secondary">© 2026 Balwaan Health. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -307,8 +179,8 @@
     </div>
 
     <script>
-        let leadName = "";
-        let leadPhone = "";
+        let userName = "";
+        let userPhone = "";
 
         function openPopup() {
             document.getElementById('orderPopup').style.display = 'flex';
@@ -316,17 +188,21 @@
 
         function closePopup() {
             document.getElementById('orderPopup').style.display = 'none';
+            // Reset to step 1
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'none';
         }
 
         function goToStep2() {
-            leadName = document.getElementById('leadName').value;
-            leadPhone = document.getElementById('leadPhone').value;
+            userName = document.getElementById('leadName').value;
+            userPhone = document.getElementById('leadPhone').value;
 
-            if(leadName.trim() === "" || leadPhone.trim() === "") {
-                alert("Kripya Naam aur WhatsApp Number sahi se bharein!");
+            if(userName.trim() === "" || userPhone.trim() === "") {
+                alert("Kripya Naam aur WhatsApp Number bharein!");
                 return;
             }
-            // Step Switch
+            // Switch steps
             document.getElementById('step1').style.display = 'none';
             document.getElementById('step2').style.display = 'block';
         }
@@ -341,18 +217,18 @@
             }
 
             let message = `*NAYA ORDER (BALWAAN)*%0A%0A` +
-                          `*Naam:* ${leadName}%0A` +
-                          `*Phone:* ${leadPhone}%0A` +
+                          `*Naam:* ${userName}%0A` +
+                          `*Phone:* ${userPhone}%0A` +
                           `*Address:* ${address}%0A` +
                           `*Product:* ${product}%0A` +
                           `*Payment:* Cash on Delivery`;
 
-            // WhatsApp link open
+            // Redirect to WhatsApp
             window.open(`https://wa.me/918273896083?text=${message}`, '_blank');
             
-            // Success alert and close
-            alert("Shukriya! Aapka order confirm karne ke liye WhatsApp khul raha hai.");
-            closePopup();
+            // Show Success screen
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
