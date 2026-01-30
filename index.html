@@ -50,6 +50,8 @@
             animation: glowing 2s infinite;
             border-radius: 50px;
             transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-gold-glow:hover {
@@ -76,12 +78,19 @@
         .bg-green { background-color: var(--primary-green); color: white; }
         .text-gold { color: var(--dark-gold); }
 
-        /* --- Comparison Table --- */
-        .table-custom {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* --- Custom Modal (Popup) Style --- */
+        #orderPopup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 10000;
+            display: none; align-items: center; justify-content: center;
+        }
+        .popup-content {
+            background: white; padding: 30px; border-radius: 20px;
+            width: 90%; max-width: 450px; position: relative;
+            border: 3px solid #D4AF37;
+        }
+        .close-popup {
+            position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #888;
         }
 
         /* --- WhatsApp Sticky --- */
@@ -94,25 +103,15 @@
             width: 60px;
             height: 60px;
             border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-decoration: none;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;
         }
 
-        /* --- Mobile Sticky Bottom CTA --- */
         .mobile-cta-bar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: white;
-            padding: 10px;
-            display: none;
-            z-index: 999;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            position: fixed; bottom: 0; width: 100%;
+            background: white; padding: 10px; display: none;
+            z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
@@ -126,7 +125,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">BALWAAN</a>
-            <a href="#order" class="btn btn-gold-glow btn-sm px-4">Order Now</a>
+            <button onclick="openPopup()" class="btn btn-gold-glow btn-sm px-4">Order Now</button>
         </div>
     </nav>
 
@@ -136,7 +135,7 @@
                 <div class="col-md-6">
                     <h1 class="display-4 mb-3">Apna <span class="text-gold">Confidence</span> aur Power Wapas Paayein!</h1>
                     <p class="lead mb-4">India ka premium golden capsule formula jo aapke stamina, performance aur lifestyle ko badal dega.</p>
-                    <a href="#order" class="btn btn-gold-glow btn-lg px-5 py-3">Buy Now - Get 20% Off</a>
+                    <button onclick="openPopup()" class="btn btn-gold-glow btn-lg px-5 py-3">Buy Now - Get 20% Off</button>
                     <p class="mt-3 small text-light"><i class="fas fa-shield-alt"></i> 100% Ayurvedic | No Side Effects</p>
                 </div>
                 <div class="col-md-6 text-center">
@@ -150,28 +149,28 @@
         <h2 class="mb-5">Sirf Supplement Nahi, <span class="text-success">Life Transformation!</span></h2>
         <div class="row g-4">
             <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100">
+                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
                     <i class="fas fa-fire fa-3x text-gold mb-3"></i>
                     <h4>Peak Performance</h4>
                     <p>Natural Testosterone boost jo har pal mein energy bhare.</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100">
+                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
                     <i class="fas fa-heart fa-3x text-gold mb-3"></i>
                     <h4>Fertility Support</h4>
                     <p>Sperm health aur sperm count ka natural aur effective solution.</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100">
+                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
                     <i class="fas fa-moon fa-3x text-gold mb-3"></i>
                     <h4>Gehri Neend</h4>
                     <p>Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="p-4 shadow-sm rounded bg-white h-100">
+                <div class="p-4 shadow-sm rounded bg-white h-100 border-bottom">
                     <i class="fas fa-rocket fa-3x text-gold mb-3"></i>
                     <h4>2x Productivity</h4>
                     <p>Behtar focus aur mental clarity kaam aur life dono ke liye.</p>
@@ -184,7 +183,7 @@
         <div class="container">
             <h2 class="text-center mb-5">Balwaan vs <span class="text-danger">Aam Products</span></h2>
             <div class="table-responsive">
-                <table class="table table-custom text-center align-middle">
+                <table class="table text-center align-middle bg-white shadow rounded">
                     <thead class="bg-green text-white">
                         <tr>
                             <th>Features</th>
@@ -193,121 +192,109 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Result Quality</td>
-                            <td class="fw-bold">Long Lasting & Natural</td>
-                            <td>Temporary Energy</td>
-                        </tr>
-                        <tr>
-                            <td>Safety</td>
-                            <td class="text-success fw-bold">100% Ayurvedic</td>
-                            <td class="text-danger">Chemical Mixed</td>
-                        </tr>
-                        <tr>
-                            <td>Privacy</td>
-                            <td>Discreet Packaging</td>
-                            <td>Local Box</td>
-                        </tr>
+                        <tr><td>Result Quality</td><td class="fw-bold">Long Lasting & Natural</td><td>Temporary Energy</td></tr>
+                        <tr><td>Safety</td><td class="text-success fw-bold">100% Ayurvedic</td><td class="text-danger">Chemical Mixed</td></tr>
+                        <tr><td>Privacy</td><td>Discreet Packaging</td><td>Local Box</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
-<section class="trust-icons-section section-padding bg-white">
-    <div class="container">
-        <div class="row g-4 align-items-center">
-            <div class="col-md-6">
-                <div class="trust-card d-flex align-items-center p-4 shadow-sm rounded">
-                    <div class="trust-icon-box me-3">
-                        <i class="fas fa-undo-alt fa-3x text-gold"></i>
-                    </div>
-                    <div>
-                        <h4 class="mb-1">7-Day Easy Returns</h4>
-                        <p class="mb-0 text-muted">Agar aap satisfied nahi hain, toh 7 dinon ke andar asaan return karein. No questions asked!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="trust-card d-flex align-items-center p-4 shadow-sm rounded">
-                    <div class="trust-icon-box me-3">
-                        <i class="fas fa-box-open fa-3x text-gold"></i>
-                    </div>
-                    <div>
-                        <h4 class="mb-1">100% Discreet Packaging</h4>
-                        <p class="mb-0 text-muted">Aapki privacy hamari priority hai. Product ek plain box mein aayega, jis par koi label nahi hoga.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-    <section id="order" class="section-padding bg-green">
-        <div class="container text-center">
-            <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="card p-4 border-warning shadow-lg">
-                        <img src="1000345777.png" alt="Combo Pack" class="img-fluid mb-3">
-                        <h3 class="text-dark">Mega Value Pack (60 Caps)</h3>
-                        <p class="text-muted mb-1"><del>MRP: ₹2999</del></p>
-                        <h2 class="text-success fw-bold">Special Price: ₹1499</h2>
-                        <div class="alert alert-warning py-1 mt-2"><b>Extra ₹50 Off</b> on Prepaid Orders!</div>
-                        <a href="#" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</a>
+    <section class="trust-icons-section section-padding bg-white">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center p-4 shadow-sm rounded border">
+                        <i class="fas fa-undo-alt fa-3x text-gold me-3"></i>
+                        <div><h4 class="mb-1">7-Day Easy Returns</h4><p class="mb-0 text-muted">Agar satisfied nahi hain, toh asaan return karein.</p></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center p-4 shadow-sm rounded border">
+                        <i class="fas fa-box-open fa-3x text-gold me-3"></i>
+                        <div><h4 class="mb-1">Discreet Packaging</h4><p class="mb-0 text-muted">Product plain box mein aayega, koi label nahi hoga.</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container text-center section-padding">
-        <h3>Koi Sawal Hai? Expert Se Baat Karein</h3>
-        <p>Hamare health consultants se free counseling lein.</p>
-        <a href="https://wa.me/918273896083" class="btn btn-success btn-lg px-5 rounded-pill">
-            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-    </div>
-
- <footer class="footer-main bg-dark text-white pt-5 pb-3">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-md-4 mb-4">
-                <h4 class="text-gold">BALWAAN</h4>
-                <p class="small text-secondary">Premium Ayurvedic formulation for modern men. Built for strength, stamina, and confidence.</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled small text-secondary">
-                    <li><a href="#" class="text-secondary text-decoration-none">Terms & Conditions</a></li>
-                    <li><a href="#" class="text-secondary text-decoration-none">Privacy Policy</a></li>
-                    <li><a href="#" class="text-secondary text-decoration-none">Refund & Return Policy</a></li>
-                    <li><a href="#" class="text-secondary text-decoration-none">Shipping Info</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Payment Methods</h5>
-                <p class="small text-secondary">We accept UPI, Debit/Credit Cards & Cash on Delivery (COD).</p>
-                <div class="payment-icons">
-                    <i class="fab fa-google-pay fa-2x me-2"></i>
-                    <i class="fab fa-amazon-pay fa-2x me-2"></i>
-                    <i class="fas fa-money-bill-wave fa-2x"></i>
+    <section id="order" class="section-padding bg-green">
+        <div class="container text-center text-white">
+            <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card p-4 shadow-lg text-dark">
+                        <img src="1000345777.png" alt="Combo Pack" class="img-fluid mb-3">
+                        <h3>Mega Value Pack (60 Caps)</h3>
+                        <p class="mb-1"><del>MRP: ₹2999</del></p>
+                        <h2 class="text-success fw-bold">Price: ₹1499</h2>
+                        <button onclick="openPopup()" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <hr class="border-secondary">
-        
-        <div class="disclaimer-section text-center py-3">
-            <p class="small text-secondary mb-0" style="line-height: 1.4; font-style: italic;">
-                <strong>Disclaimer:</strong> Balwaan ek Ayurvedic dietary supplement hai. Yeh product kisi bhi bimari ka ilaaj, diagnosis ya prevention karne ke liye nahi hai. Results har vyakti ke sharir aur lifestyle ke hisaab se alag ho sakte hain. Istemal se pehle label dhyan se padhein ya kisi healthcare expert se salah lein.
-            </p>
-        </div>
-        
-        <div class="text-center mt-3">
-            <p class="small text-secondary mb-0">© 2026 Balwaan Health. All Rights Reserved.</p>
+    </section>
+
+    <div id="orderPopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            
+            <div id="step1">
+                <h3 class="text-gold text-center mb-3">Order Shuru Karein</h3>
+                <p class="text-center small mb-4">Kripya apna naam aur WhatsApp number dein.</p>
+                <div class="mb-3">
+                    <input type="text" id="leadName" class="form-control form-control-lg" placeholder="Aapka Naam" required>
+                </div>
+                <div class="mb-4">
+                    <input type="tel" id="leadPhone" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
+                </div>
+                <button onclick="goToStep2()" class="btn btn-gold-glow w-100 py-3">NEXT: ADDRESS BHAREIN</button>
+            </div>
+
+            <div id="step2" style="display:none;">
+                <h3 class="text-gold text-center mb-3">Kahan Bhejna Hai?</h3>
+                <div class="mb-3">
+                    <textarea id="orderAddress" class="form-control" placeholder="Pura Pata (Gali, City, State, Pincode)" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <select id="orderProduct" class="form-select">
+                        <option value="Combo Pack (60 Caps) - ₹1499">Combo Pack (60 Caps) - ₹1499 [Best Seller]</option>
+                        <option value="Single Pack (30 Caps) - ₹899">Single Pack (30 Caps) - ₹899</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning py-2 small">✓ Cash on Delivery Available!</div>
+                <button onclick="finishOrder()" class="btn btn-gold-glow w-100 py-3">CONFIRM ORDER (COD)</button>
+            </div>
         </div>
     </div>
-</footer>
+
+    <footer class="footer-main bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-gold">BALWAAN</h4>
+                    <p class="small text-secondary">Premium Ayurvedic formulation for strength & stamina.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled small text-secondary">
+                        <li>Terms & Conditions | Privacy Policy</li>
+                        <li>Refund Policy | Shipping Info</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Support</h5>
+                    <p class="small text-secondary">Chat with experts on WhatsApp for free counseling.</p>
+                    <a href="https://wa.me/918273896083" class="text-gold text-decoration-none fw-bold">918273896083</a>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="small text-secondary text-center italic">Disclaimer: Balwaan is a dietary supplement. Results may vary. Consult an expert before use.</p>
+            <p class="small text-secondary text-center mb-0">© 2026 Balwaan Health. All Rights Reserved.</p>
+        </div>
+    </footer>
 
     <a href="https://wa.me/918273896083" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -315,10 +302,59 @@
 
     <div class="mobile-cta-bar">
         <div class="container">
-            <a href="#order" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</a>
+            <button onclick="openPopup()" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</button>
         </div>
     </div>
 
+    <script>
+        let leadName = "";
+        let leadPhone = "";
+
+        function openPopup() {
+            document.getElementById('orderPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('orderPopup').style.display = 'none';
+        }
+
+        function goToStep2() {
+            leadName = document.getElementById('leadName').value;
+            leadPhone = document.getElementById('leadPhone').value;
+
+            if(leadName.trim() === "" || leadPhone.trim() === "") {
+                alert("Kripya Naam aur WhatsApp Number sahi se bharein!");
+                return;
+            }
+            // Step Switch
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+
+        function finishOrder() {
+            let address = document.getElementById('orderAddress').value;
+            let product = document.getElementById('orderProduct').value;
+
+            if(address.trim() === "") {
+                alert("Kripya Delivery Address bharein!");
+                return;
+            }
+
+            let message = `*NAYA ORDER (BALWAAN)*%0A%0A` +
+                          `*Naam:* ${leadName}%0A` +
+                          `*Phone:* ${leadPhone}%0A` +
+                          `*Address:* ${address}%0A` +
+                          `*Product:* ${product}%0A` +
+                          `*Payment:* Cash on Delivery`;
+
+            // WhatsApp link open
+            window.open(`https://wa.me/918273896083?text=${message}`, '_blank');
+            
+            // Success alert and close
+            alert("Shukriya! Aapka order confirm karne ke liye WhatsApp khul raha hai.");
+            closePopup();
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
