@@ -249,3 +249,13 @@ h1, h2, h3 {
         padding-bottom: 80px; /* Sticky button ke liye jagah */
     }
 }
+.border-gold { border: 2px solid var(--dark-gold) !important; }
+.rounded-15 { border-radius: 15px; }
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-green);
+    color: white;
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--dark-gold);
+}
