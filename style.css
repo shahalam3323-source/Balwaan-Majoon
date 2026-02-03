@@ -1,4 +1,4 @@
-/* --- Variables & Reset --- */
+/* --- Variables & Reset (Aapka Original) --- */
 :root {
     --primary-green: #14452F; /* Deep Forest Green */
     --gold-bright: #FCF6BA;
@@ -22,6 +22,10 @@ body {
     background-color: var(--light-bg);
 }
 
+/* --- Global Utilities --- */
+.section-padding { padding: 80px 0; }
+.bg-green { background-color: var(--primary-green) !important; color: white; }
+
 /* --- Typography --- */
 h1, h2, h3 {
     font-family: 'Montserrat', sans-serif;
@@ -37,7 +41,7 @@ h1, h2, h3 {
     font-weight: 800;
 }
 
-/* --- Golden Glossy Button (Main CTA) --- */
+/* --- Golden Glossy Button (Aapka Original) --- */
 .btn-gold-glow {
     background: var(--gold-gradient);
     background-size: 200% auto;
@@ -59,19 +63,6 @@ h1, h2, h3 {
     box-shadow: 0 8px 25px rgba(181, 146, 33, 0.6);
 }
 
-/* --- Animations --- */
-@keyframes glowing {
-    0% { box-shadow: 0 0 5px #D4AF37; }
-    50% { box-shadow: 0 0 25px #D4AF37; }
-    100% { box-shadow: 0 0 5px #D4AF37; }
-}
-
-@keyframes floating {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(2deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-
 /* --- Hero Section Styling --- */
 .hero-section {
     background: radial-gradient(circle at top, #1e5e41, var(--primary-green));
@@ -87,175 +78,58 @@ h1, h2, h3 {
     filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
 }
 
-/* --- Benefit Cards --- */
-.benefit-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 30px;
-    border-bottom: 4px solid transparent;
-    transition: 0.3s;
-    height: 100%;
+/* --- Naye Sections ke Liye Brand Sync --- */
+
+/* 1. How it Works Boxes */
+.border-gold { 
+    border: 2px solid var(--gold-main) !important; 
+}
+.rounded-15 { border-radius: 15px; }
+
+/* 2. Ingredient Images Styling */
+.ingredient-img {
+    border: 3px solid var(--gold-main);
+    box-shadow: 0 5px 15px rgba(179, 135, 40, 0.2);
 }
 
-.benefit-card:hover {
-    border-bottom: 4px solid var(--gold-main);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+/* 3. FAQ (Accordion) Brand Sync */
+.accordion-item {
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    margin-bottom: 10px;
 }
 
-.benefit-card i {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
-/* --- Combo Offer Section --- */
-.combo-card {
-    background: var(--white);
-    border: 2px solid var(--gold-main);
-    border-radius: 25px;
-    padding: 40px;
-    position: relative;
-    transition: 0.4s;
-}
-
-.combo-card::before {
-    content: 'BEST VALUE';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold-gradient);
-    padding: 5px 20px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.8rem;
+.accordion-button {
+    font-weight: 600;
     color: var(--primary-green);
 }
 
-/* --- Pricing Styling --- */
-.old-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 1.2rem;
-}
-
-.new-price {
-    color: #28a745;
-    font-size: 2.5rem;
-    font-weight: 800;
-}
-
-/* --- WhatsApp Sticky --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 90px;
-    right: 25px;
-    background: #25d366;
-    color: white;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 35px;
-    box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    color: white;
-}
-
-/* --- Mobile Sticky Footer --- */
-.mobile-cta-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: var(--white);
-    padding: 12px 20px;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
-    z-index: 1000;
-    display: none; /* Only visible on small screens */
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .mobile-cta-bar {
-        display: block;
-    }
-    
-    .hero-section {
-        padding: 60px 0;
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .product-img-main {
-        max-width: 300px;
-        margin-top: 30px;
-    }
-}
-/* Trust Cards Styling */
-.trust-card {
-    border: 1px solid #eee;
-    transition: 0.3s ease;
-    background: #fff;
-}
-
-.trust-card:hover {
-    border-color: var(--dark-gold);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
-}
-
-.trust-icon-box {
-    min-width: 70px;
-    text-align: center;
-}
-
-/* Footer & Disclaimer Styling */
-.footer-main h5 {
-    font-size: 1.1rem;
-    color: var(--gold-main);
-    margin-bottom: 20px;
-}
-
-.disclaimer-section {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.payment-icons i {
-    color: #666;
-    transition: 0.3s;
-}
-
-.payment-icons i:hover {
-    color: var(--gold-main);
-}
-
-/* Mobile responsive padding for footer */
-@media (max-width: 768px) {
-    .footer-main {
-        text-align: center;
-        padding-bottom: 80px; /* Sticky button ke liye jagah */
-    }
-}
-.border-gold { border: 2px solid var(--dark-gold) !important; }
-.rounded-15 { border-radius: 15px; }
 .accordion-button:not(.collapsed) {
+    background-color: var(--primary-green) !important;
+    color: var(--gold-bright) !important;
+}
+
+/* --- Footer Adjustments --- */
+.footer-main {
     background-color: var(--primary-green);
     color: white;
+    padding: 60px 0;
 }
-.accordion-button:focus {
-    box-shadow: none;
-    border-color: var(--dark-gold);
+
+/* --- Animations (Aapka Original) --- */
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px #D4AF37; }
+    50% { box-shadow: 0 0 25px #D4AF37; }
+    100% { box-shadow: 0 0 5px #D4AF37; }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+    .section-padding { padding: 40px 0; }
+    .hero-section { padding: 60px 0; text-align: center; }
 }
