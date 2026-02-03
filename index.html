@@ -299,10 +299,10 @@
 <section class="py-4 border-top border-bottom bg-white text-center">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></div>
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none">Terms of Service</a></div>
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none">Refund Policy</a></div>
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none">Contact Us</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a></div>
         </div>
     </div>
 </section>
@@ -312,7 +312,70 @@
             <p class="small text-secondary">© 2026 Balwaan Health. All Rights Reserved.</p>
         </div>
     </footer>
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Privacy Policy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <p><strong>Your Privacy Matters:</strong> We only collect your name, phone number, and address to deliver your order. We do not sell or share your data with any third party.</p>
+                <p><strong>Safe Shopping:</strong> Our website is secured with SSL encryption to ensure your personal information remains 100% private and protected.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Terms & Conditions</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <ul>
+                    <li>You must be at least 18 years old to purchase this product.</li>
+                    <li>Balwaan is a natural supplement. If you have any serious medical condition, please consult a doctor before use.</li>
+                    <li>Individual results may vary based on lifestyle and diet.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="refundModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Refund & Return Policy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <p><strong>7-Day Money Back Guarantee:</strong> We offer a 7-day return policy for unused and sealed products.</p>
+                <p><strong>Easy Returns:</strong> If you receive a damaged product or are unhappy with your purchase, contact us on WhatsApp (+91 8273896083) within 7 days of delivery.</p>
+                <p><strong>Fast Refund:</strong> Once approved, your refund will be processed to your original payment mode or UPI within 48 hours.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="shippingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Shipping Policy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <p><strong>Fast Delivery:</strong> We deliver all across India within 3 to 5 business days.</p>
+                <p><strong>Discreet Packaging:</strong> Your privacy is our priority. Your order will arrive in a plain box with no product name or details mentioned on the outside.</p>
+                <p><strong>Free Shipping:</strong> Currently, we are providing FREE shipping on all orders.</p>
+            </div>
+        </div>
+    </div>
+</div>
     <a href="https://wa.me/918273896083" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
