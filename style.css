@@ -1,4 +1,6 @@
-/* --- Variables & Reset (Aapka Original) --- */
+/* =========================================
+   1. VARIABLES & GLOBAL RESET
+   ========================================= */
 :root {
     --primary-green: #14452F; /* Deep Forest Green */
     --gold-bright: #FCF6BA;
@@ -15,23 +17,34 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden; /* SABSE ZAROORI: Mobile par site left-right nahi bhagegi */
+    width: 100%;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: var(--light-bg);
+    padding-bottom: 80px; /* Mobile CTA bar ke liye jagah */
 }
 
-/* --- Global Utilities --- */
-.section-padding { padding: 80px 0; }
-.bg-green { background-color: var(--primary-green) !important; color: white; }
-
-/* --- Typography --- */
+/* =========================================
+   2. TYPOGRAPHY & UTILITIES
+   ========================================= */
 h1, h2, h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* Mobile par Text zyada bada na ho */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
 }
 
 .text-gold {
@@ -41,7 +54,14 @@ h1, h2, h3 {
     font-weight: 800;
 }
 
-/* --- Golden Glossy Button (Aapka Original) --- */
+.section-padding { padding: 80px 0; }
+.bg-green { background-color: var(--primary-green) !important; color: white; }
+
+/* =========================================
+   3. COMPONENTS (Buttons, FAQ, Modals)
+   ========================================= */
+
+/* Golden Button Animation */
 .btn-gold-glow {
     background: var(--gold-gradient);
     background-size: 200% auto;
@@ -63,10 +83,46 @@ h1, h2, h3 {
     box-shadow: 0 8px 25px rgba(181, 146, 33, 0.6);
 }
 
-/* --- Hero Section Styling --- */
+/* FAQ Accordion Styling */
+.accordion-item {
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-button {
+    font-weight: 600;
+    color: var(--primary-green);
+    font-size: 0.95rem; /* Mobile friendly text */
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-green) !important;
+    color: var(--gold-bright) !important;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--gold-main);
+}
+
+/* Modal / Popup Styling */
+.modal-content {
+    border: 2px solid var(--gold-main);
+    border-radius: 15px;
+    overflow: hidden;
+}
+.modal-header { border-bottom: 1px solid var(--gold-dark); }
+
+/* =========================================
+   4. SECTIONS (Hero, Ingredients, Footer)
+   ========================================= */
+
+/* Hero Section */
 .hero-section {
     background: radial-gradient(circle at top, #1e5e41, var(--primary-green));
-    padding: 100px 0;
+    padding: 100px 0 60px;
     position: relative;
     overflow: hidden;
 }
@@ -74,94 +130,100 @@ h1, h2, h3 {
 .product-img-main {
     max-width: 450px;
     width: 100%;
+    height: auto;
     animation: floating 4s ease-in-out infinite;
     filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
 }
 
-/* --- Naye Sections ke Liye Brand Sync --- */
-
-/* 1. How it Works Boxes */
-.border-gold { 
-    border: 2px solid var(--gold-main) !important; 
-}
+/* How it Works Boxes */
+.border-gold { border: 2px solid var(--gold-main) !important; }
 .rounded-15 { border-radius: 15px; }
 
-/* 2. Ingredient Images Styling */
-.ingredient-img {
-    border: 3px solid var(--gold-main);
-    box-shadow: 0 5px 15px rgba(179, 135, 40, 0.2);
-}
-
-/* 3. FAQ (Accordion) Brand Sync */
-.accordion-item {
-    border: 1px solid rgba(212, 175, 55, 0.3) !important;
-    margin-bottom: 10px;
-}
-
-.accordion-button {
-    font-weight: 600;
-    color: var(--primary-green);
-}
-
-.accordion-button:not(.collapsed) {
-    background-color: var(--primary-green) !important;
-    color: var(--gold-bright) !important;
-}
-
-/* --- Footer Adjustments --- */
+/* Footer */
 .footer-main {
     background-color: var(--primary-green);
     color: white;
-    padding: 60px 0;
+    padding: 60px 0 30px;
 }
 
-/* --- Animations (Aapka Original) --- */
+/* =========================================
+   5. INGREDIENTS SECTION (Fixed)
+   ========================================= */
+
+/* Wrapper for Circle Images */
+.ingredient-img-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border: 3px solid var(--gold-main);
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex; /* Flex use kiya taaki image center rahe */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* Image Fit Logic */
+.ingredient-img-wrapper img {
+    width: 85% !important;  /* Thoda padding internal */
+    height: 85% !important;
+    object-fit: contain !important; /* Image kategi nahi, puri dikhegi */
+    display: block;
+}
+
+.ingredient-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--primary-green);
+}
+
+/* =========================================
+   6. ANIMATIONS
+   ========================================= */
 @keyframes glowing {
     0% { box-shadow: 0 0 5px #D4AF37; }
-    50% { box-shadow: 0 0 25px #D4AF37; }
+    50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
     100% { box-shadow: 0 0 5px #D4AF37; }
 }
 
 @keyframes floating {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(2deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
 
-/* --- Mobile Adjustments --- */
+/* =========================================
+   7. MOBILE SPECIFIC FIXES (Sabse neeche)
+   ========================================= */
 @media (max-width: 768px) {
+    /* Padding kam karein taaki screen bhare na */
     .section-padding { padding: 40px 0; }
-    .hero-section { padding: 60px 0; text-align: center; }
-}
-/* --- Ingredients Section Fix --- */
-
-/* Wrapper: Isse size control hoga aur frame banega */
-.ingredient-img-wrapper {
-    width: 120px !important;   /* Size thoda chota kiya taaki fit rahe */
-    height: 120px !important;
-    margin: 0 auto 15px;
-    border: 4px solid #D4AF37 !important; /* Direct Gold Color for Frame */
-    border-radius: 50% !important;        /* Perfect Circle */
-    overflow: hidden !important;          /* Isse image bahar nahi niklegi */
-    background-color: #fff;               /* Background white rahega */
-    display: block !important;            /* Layout fix */
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-/* Image: Isse image "Half" dikhna band ho jayegi */
-.ingredient-img-wrapper img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important; /* 'cover' ki jagah 'contain' use karo agar image kat rahi hai */
-    padding: 10px;                  /* Image aur border ke beech thodi jagah (Frame look) */
-    display: block;
-}
-
-/* Mobile ke liye thoda aur chota size */
-@media (max-width: 768px) {
+    
+    /* Hero section center karein */
+    .hero-section { padding: 50px 0; text-align: center; }
+    .hero-section h1 { font-size: 1.8rem; line-height: 1.3; }
+    
+    /* Product Image mobile par thodi choti */
+    .product-img-main { max-width: 80%; margin-bottom: 30px; }
+    
+    /* Ingredients: Size thoda chota taaki row mein fit ho */
     .ingredient-img-wrapper {
-        width: 100px !important;
-        height: 100px !important;
+        width: 100px;
+        height: 100px;
+        border-width: 2px;
     }
+    
+    /* Font sizes adjustment */
+    .lead { font-size: 1rem; }
+    .btn-gold-glow { padding: 12px 25px; font-size: 0.9rem; }
+    
+    /* Footer links spacing */
+    .footer-main { padding: 40px 0; }
+    
+    /* Modal adjustment */
+    .modal-dialog { margin: 10px; }
 }
