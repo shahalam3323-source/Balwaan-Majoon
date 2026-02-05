@@ -133,51 +133,35 @@ h1, h2, h3 {
     .section-padding { padding: 40px 0; }
     .hero-section { padding: 60px 0; text-align: center; }
 }
-/* --- Ingredients Section Styling --- */
+/* --- Ingredients Section Fix --- */
 
-/* Wrapper jo image ko perfect circle mein rakhega */
+/* Wrapper: Isse size control hoga aur frame banega */
 .ingredient-img-wrapper {
-    width: 140px;      /* Fixed size taaki sab ek jaise dikhein */
-    height: 140px;
+    width: 120px !important;   /* Size thoda chota kiya taaki fit rahe */
+    height: 120px !important;
     margin: 0 auto 15px;
-    border: 3px solid var(--gold-main); /* Aapka brand Gold color */
-    border-radius: 50%; /* Perfect Round */
-    overflow: hidden;   
-    background-color: #ffffff; /* PNG agar transparent ho toh piche white base milega */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
+    border: 4px solid #D4AF37 !important; /* Direct Gold Color for Frame */
+    border-radius: 50% !important;        /* Perfect Circle */
+    overflow: hidden !important;          /* Isse image bahar nahi niklegi */
+    background-color: #fff;               /* Background white rahega */
+    display: block !important;            /* Layout fix */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Hover karne par halka sa zoom effect */
-.ingredient-img-wrapper:hover {
-    transform: translateY(-5px) scale(1.05);
-    border-color: var(--gold-bright);
-    box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
-}
-
-/* Image ko box ke andar fit karne ke liye */
+/* Image: Isse image "Half" dikhna band ho jayegi */
 .ingredient-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Isse image stretch nahi hogi */
-}
-
-/* Ingredient ka naam (Shilajit etc.) */
-.ingredient-card h5 {
-    color: var(--primary-green); /* Aapka brand Green color */
-    font-weight: 800;
-    margin-top: 12px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-/* Chota description text */
-.ingredient-card small {
-    color: #666;
-    font-style: italic;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; /* 'cover' ki jagah 'contain' use karo agar image kat rahi hai */
+    padding: 10px;                  /* Image aur border ke beech thodi jagah (Frame look) */
     display: block;
-    margin-top: -5px;
+}
+
+/* Mobile ke liye thoda aur chota size */
+@media (max-width: 768px) {
+    .ingredient-img-wrapper {
+        width: 100px !important;
+        height: 100px !important;
+    }
 }
