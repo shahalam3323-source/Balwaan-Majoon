@@ -133,3 +133,51 @@ h1, h2, h3 {
     .section-padding { padding: 40px 0; }
     .hero-section { padding: 60px 0; text-align: center; }
 }
+/* --- Ingredients Section Styling --- */
+
+/* Wrapper jo image ko perfect circle mein rakhega */
+.ingredient-img-wrapper {
+    width: 140px;      /* Fixed size taaki sab ek jaise dikhein */
+    height: 140px;
+    margin: 0 auto 15px;
+    border: 3px solid var(--gold-main); /* Aapka brand Gold color */
+    border-radius: 50%; /* Perfect Round */
+    overflow: hidden;   
+    background-color: #ffffff; /* PNG agar transparent ho toh piche white base milega */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+}
+
+/* Hover karne par halka sa zoom effect */
+.ingredient-img-wrapper:hover {
+    transform: translateY(-5px) scale(1.05);
+    border-color: var(--gold-bright);
+    box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Image ko box ke andar fit karne ke liye */
+.ingredient-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Isse image stretch nahi hogi */
+}
+
+/* Ingredient ka naam (Shilajit etc.) */
+.ingredient-card h5 {
+    color: var(--primary-green); /* Aapka brand Green color */
+    font-weight: 800;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Chota description text */
+.ingredient-card small {
+    color: #666;
+    font-style: italic;
+    display: block;
+    margin-top: -5px;
+}
