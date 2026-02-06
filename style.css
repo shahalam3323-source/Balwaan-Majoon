@@ -1,103 +1,181 @@
-/* =========================================
-   1. GLOBAL RESET (White Space Hatane ke liye)
-   ========================================= */
-html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    -webkit-overflow-scrolling: touch;
+/* =================================================
+   GLOBAL BASE (Safe & Bootstrap-friendly)
+   ================================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Bootstrap Container Fix */
+/* Container – Bootstrap ko respect karte hue */
 .container {
-    width: 100% !important;
-    max-width: 1200px !important;
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
+    max-width: 1200px;
 }
 
-.row {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    margin-right: -15px !important;
-    margin-left: -15px !important;
-    width: auto !important; /* Row ko stretch hone se rokega */
+/* =================================================
+   NAVBAR
+   ================================================= */
+
+.navbar {
+    width: 100%;
 }
 
-/* =========================================
-   2. HERO SECTION FIX (Half Screen Fix)
-   ========================================= */
+/* =================================================
+   HERO SECTION (Desktop + Mobile PERFECT)
+   ================================================= */
+
 .hero-section {
-    width: 100% !important;
-    min-height: auto;
-    background: radial-gradient(circle at top, #1e5e41, #14452F) !important;
-    display: block !important;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1e5e41, #14452F);
+    display: flex;
+    align-items: center;
+    color: #fff;
 }
 
+.hero-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile hero stacking */
 @media (max-width: 768px) {
-    .hero-section .col-md-6 {
-        width: 100% !important; /* Mobile par pura 100% lega */
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
+    .hero-section {
+        padding: 60px 0;
+        text-align: center;
     }
 }
 
-/* =========================================
-   3. INGREDIENTS FIX (Ab honge Circles)
-   ========================================= */
-/* Container jo grid ko sambhalega */
-.ingredient-card {
+/* =================================================
+   BUTTONS
+   ================================================= */
+
+.btn-gold-glow {
+    background: linear-gradient(135deg, #D4AF37, #f5e27a);
+    color: #1e1e1e;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.btn-gold-glow:hover {
+    background: linear-gradient(135deg, #f5e27a, #D4AF37);
+    color: #000;
+}
+
+/* =================================================
+   INGREDIENTS SECTION (Circle Images – SAFE)
+   ================================================= */
+
+.ingredients-section .ingredient-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.ingredient-img-wrapper {
-    width: 110px !important; /* Fixed size */
-    height: 110px !important;
-    border: 3px solid #D4AF37 !important;
-    border-radius: 50% !important; /* Circle banane ke liye */
-    overflow: hidden !important;
-    background: #fff !important;
-    display: flex !important;
+.ingredients-section .ingredient-img-wrapper {
+    width: 110px;
+    height: 110px;
+    border: 3px solid #D4AF37;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 10px !important;
+    margin-bottom: 10px;
 }
 
-.ingredient-img-wrapper img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important; /* Image stretch nahi hogi */
+.ingredients-section .ingredient-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Mobile par 2 images ek line mein */
+/* Mobile – 2 items per row */
 @media (max-width: 768px) {
-    .col-6 {
-        flex: 0 0 50% !important;
-        max-width: 50% !important;
+    .ingredients-section .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
-    .ingredient-img-wrapper {
-        width: 90px !important;
-        height: 90px !important;
+
+    .ingredients-section .ingredient-img-wrapper {
+        width: 90px;
+        height: 90px;
     }
 }
 
-/* =========================================
-   4. NAVBAR & BUTTON FIX
-   ========================================= */
-.navbar { width: 100% !important; }
-.btn-gold-glow { width: auto !important; max-width: 100%; }
+/* =================================================
+   TABLE & SECTIONS
+   ================================================= */
 
-/* Mobile Sticky Bar Fix */
+.section-padding {
+    padding: 70px 0;
+}
+
+.bg-green {
+    background-color: #14452F;
+}
+
+.text-gold {
+    color: #D4AF37;
+}
+
+/* =================================================
+   MOBILE CTA BAR
+   ================================================= */
+
 .mobile-cta-bar {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100% !important;
+    width: 100%;
+    background: #14452F;
+    z-index: 9999;
+    padding: 10px 0;
+}
+
+/* =================================================
+   POPUP
+   ================================================= */
+
+#orderPopup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.popup-content {
+    background: #ffffff;
+    width: 95%;
+    max-width: 420px;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+/* =================================================
+   WHATSAPP FLOAT
+   ================================================= */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #25D366;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
     z-index: 9999;
 }
