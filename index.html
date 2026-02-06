@@ -4,201 +4,441 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balwaan | Strength, Stamina & Confidence Boost</title>
-
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- AAPKA ORIGINAL DESIGN (UNCHANGED) --- */
+        :root {
+            --primary-green: #14452F;
+            --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --dark-gold: #D4AF37;
+        }
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+        body { font-family: 'Poppins', sans-serif; background-color: #f9f9f9; color: #333; overflow-x: hidden; }
+        h1, h2, h3, .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+
+        @keyframes glowing { 0% { box-shadow: 0 0 5px #D4AF37; } 50% { box-shadow: 0 0 25px #D4AF37; } 100% { box-shadow: 0 0 5px #D4AF37; } }
+        @keyframes floating { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+
+        .btn-gold-glow {
+            background: var(--gold-gradient); color: var(--primary-green) !important;
+            border: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+            animation: glowing 2s infinite; border-radius: 50px; transition: 0.3s; text-decoration: none;
+        }
+        .btn-gold-glow:hover { transform: scale(1.05); color: #000 !important; cursor: pointer; }
+
+        .hero-section { background-color: var(--primary-green); color: white; padding: 80px 0 50px; border-bottom: 5px solid var(--dark-gold); }
+        .product-img-main { max-width: 100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); animation: floating 4s ease-in-out infinite; }
+        .section-padding { padding: 60px 0; }
+        .bg-green { background-color: var(--primary-green); color: white; }
+        .text-gold { color: var(--dark-gold); }
+
+        .table-custom { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .whatsapp-float { position: fixed; bottom: 80px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; }
+        .mobile-cta-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; display: none; z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) { .mobile-cta-bar { display: block; } .hero-section { text-align: center; } }
+
+        /* --- NEW POPUP STYLING (GoKwik Style) --- */
+        #orderPopup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 10001;
+            display: none; align-items: center; justify-content: center;
+        }
+        .popup-content {
+            background: white; padding: 30px; border-radius: 20px;
+            width: 90%; max-width: 420px; position: relative;
+            border: 3px solid var(--dark-gold); text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .close-popup { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #999; }
+        .form-control-lg { border-radius: 12px; border: 1px solid #ddd; font-size: 1rem; margin-bottom: 15px; }
+        .step-indicator { font-size: 0.75rem; font-weight: bold; color: var(--primary-green); letter-spacing: 1px; margin-bottom: 10px; }
+    </style>
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-dark bg-dark sticky-top">
-    <div class="container d-flex justify-content-between">
-        <a class="navbar-brand" href="#">BALWAAN</a>
-        <button onclick="openPopup()" class="btn btn-gold-glow btn-sm px-4">Order Now</button>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">BALWAAN</a>
+            <button onclick="openPopup()" class="btn btn-gold-glow btn-sm px-4">Order Now</button>
+        </div>
+    </nav>
 
-<!-- ================= HERO ================= -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h1 class="display-4 mb-3">
-                    Apna <span class="text-gold">Confidence</span> aur Power Wapas Paayein!
-                </h1>
-                <p class="lead mb-4">
-                    India ka premium golden capsule formula jo aapke stamina, performance aur lifestyle ko badal dega.
-                </p>
-                <button onclick="openPopup()" class="btn btn-gold-glow btn-lg px-5 py-3">
-                    Buy Now - Get 20% Off
-                </button>
-                <p class="mt-3 small text-light">
-                    <i class="fas fa-shield-alt"></i> 100% Ayurvedic | No Side Effects
-                </p>
-            </div>
-            <div class="col-md-6 text-center">
-                <img src="images/1000346718.png" alt="Balwaan Product" class="img-fluid">
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 mb-3">Apna <span class="text-gold">Confidence</span> aur Power Wapas Paayein!</h1>
+                    <p class="lead mb-4">India ka premium golden capsule formula jo aapke stamina, performance aur lifestyle ko badal dega.</p>
+                    <button onclick="openPopup()" class="btn btn-gold-glow btn-lg px-5 py-3">Buy Now - Get 20% Off</button>
+                    <p class="mt-3 small text-light"><i class="fas fa-shield-alt"></i> 100% Ayurvedic | No Side Effects</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="images/1000346718.png" alt="Balwaan Product" class="product-img-main">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ================= BENEFITS ================= -->
-<section class="section-padding container text-center">
-    <h2 class="mb-5">
-        Sirf Supplement Nahi, <span class="text-success">Life Transformation!</span>
-    </h2>
-    <div class="row g-4">
-        <div class="col-md-3">
-            <div class="p-4 shadow-sm rounded bg-white h-100">
-                <i class="fas fa-fire fa-3x text-gold mb-3"></i>
-                <h4>Peak Performance</h4>
-                <p>Natural energy aur stamina support.</p>
-            </div>
+    <section class="section-padding container text-center">
+        <h2 class="mb-5">Sirf Supplement Nahi, <span class="text-success">Life Transformation!</span></h2>
+        <div class="row g-4">
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-fire fa-3x text-gold mb-3"></i><h4>Peak Performance</h4><p>Natural Testosterone boost jo har pal mein energy bhare.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-heart fa-3x text-gold mb-3"></i><h4>Fertility Support</h4><p>Sperm health aur sperm count ka natural aur effective solution.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-moon fa-3x text-gold mb-3"></i><h4>Gehri Neend</h4><p>Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-rocket fa-3x text-gold mb-3"></i><h4>2x Productivity</h4><p>Behtar focus aur mental clarity kaam aur life dono ke liye.</p></div></div>
         </div>
-        <div class="col-md-3">
-            <div class="p-4 shadow-sm rounded bg-white h-100">
-                <i class="fas fa-heart fa-3x text-gold mb-3"></i>
-                <h4>Fertility Support</h4>
-                <p>Sperm health aur vitality support.</p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="p-4 shadow-sm rounded bg-white h-100">
-                <i class="fas fa-moon fa-3x text-gold mb-3"></i>
-                <h4>Gehri Neend</h4>
-                <p>Stress kam kare aur neend behtar banaye.</p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="p-4 shadow-sm rounded bg-white h-100">
-                <i class="fas fa-rocket fa-3x text-gold mb-3"></i>
-                <h4>Better Focus</h4>
-                <p>Mental clarity aur productivity support.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- ================= INGREDIENTS ================= -->
-<section class="section-padding container text-center ingredients-section">
-    <h2 class="mb-5">
-        Prakritik Shakti <span class="text-gold">(Ingredients)</span>
-    </h2>
-    <div class="row g-4">
-        <div class="col-md-3 col-6 ingredient-card">
-            <div class="ingredient-img-wrapper">
-                <img src="images/shilajit.png" alt="Shilajit">
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Balwaan vs <span class="text-danger">Aam Products</span></h2>
+            <div class="table-responsive">
+                <table class="table table-custom text-center align-middle">
+                    <thead class="bg-green text-white"><tr><th>Features</th><th>Balwaan Golden Capsule</th><th>Ordinary Pills</th></tr></thead>
+                    <tbody>
+                        <tr><td>Result Quality</td><td class="fw-bold">Long Lasting & Natural</td><td>Temporary Energy</td></tr>
+                        <tr><td>Safety</td><td class="text-success fw-bold">100% Ayurvedic</td><td class="text-danger">Chemical Mixed</td></tr>
+                        <tr><td>Privacy</td><td>Discreet Packaging</td><td>Local Box</td></tr>
+                    </tbody>
+                </table>
             </div>
-            <h5>Shilajit</h5>
-            <small class="text-muted">Stamina & Power</small>
         </div>
-        <div class="col-md-3 col-6 ingredient-card">
-            <div class="ingredient-img-wrapper">
-                <img src="images/ashwagandha.png" alt="Ashwagandha">
+    </section>
+
+    <section id="order" class="section-padding bg-green">
+        <div class="container text-center">
+            <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card p-4 border-warning shadow-lg text-dark">
+                        <img src="images/1000345777.png" alt="Combo Pack" class="img-fluid mb-3">
+                        <h3 class="text-dark">Mega Value Pack (60 Caps)</h3>
+                        <p class="text-muted mb-1"><del>MRP: ₹2999</del></p>
+                        <h2 class="text-success fw-bold">Special Price: ₹1499</h2>
+                        <div class="alert alert-warning py-1 mt-2"><b>Extra ₹50 Off</b> on Prepaid Orders!</div>
+                        <button onclick="openPopup()" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</button>
+                    </div>
+                </div>
             </div>
-            <h5>Ashwagandha</h5>
-            <small class="text-muted">Stress Relief</small>
         </div>
-        <div class="col-md-3 col-6 ingredient-card">
-            <div class="ingredient-img-wrapper">
-                <img src="images/musli.png" alt="Safed Musli">
+    </section>
+
+    <div id="orderPopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            
+            <div id="step1">
+                <div class="step-indicator">STEP 1/2: CONTACT DETAILS</div>
+                <h3 class="text-gold mb-3">Order Shuru Karein</h3>
+                <p class="small text-muted mb-4">Apna naam aur WhatsApp number bharein.</p>
+                <input type="text" id="leadName" class="form-control form-control-lg" placeholder="Aapka Naam" required>
+                <input type="tel" id="leadPhone" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
+                <button onclick="goToStep2()" class="btn btn-gold-glow w-100 py-3">NEXT: ADDRESS BHAREIN</button>
             </div>
-            <h5>Safed Musli</h5>
-            <small class="text-muted">Vitality</small>
-        </div>
-        <div class="col-md-3 col-6 ingredient-card">
-            <div class="ingredient-img-wrapper">
-                <img src="images/gokshura.png" alt="Gokshura">
+
+            <div id="step2" style="display:none;">
+                <div class="step-indicator">STEP 2/2: DELIVERY DETAILS</div>
+                <h3 class="text-gold mb-3">Kahan Bhejna Hai?</h3>
+                <textarea id="orderAddress" class="form-control form-control-lg" placeholder="Gali, Mohalla, City, State, Pincode" rows="3" required></textarea>
+                <select id="orderProduct" class="form-select form-select-lg mb-4">
+                    <option value="Combo Pack (2 Bottles) - ₹1499">Combo Pack (2 Bottles) - ₹1499 [Best Seller]</option>
+                    <option value="Single Pack (1 Bottle) - ₹899">Single Pack (1 Bottle) - ₹899</option>
+                </select>
+                <button onclick="finishOrder()" class="btn btn-gold-glow w-100 py-3">CONFIRM ORDER (COD)</button>
+                <p class="small text-muted mt-2"><i class="fas fa-truck"></i> Cash on Delivery Available</p>
             </div>
-            <h5>Gokshura</h5>
-            <small class="text-muted">Strength</small>
+
+            <div id="step3" style="display:none;">
+                <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                <h3 class="text-success">Order Processing!</h3>
+                <p>Humne aapka order confirm karne ke liye WhatsApp khol diya hai. Kripya wahan message send karein.</p>
+                <button onclick="closePopup()" class="btn btn-dark w-100 mt-2">CLOSE</button>
+            </div>
         </div>
     </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer-main bg-dark text-white py-4">
+<section class="section-padding bg-green text-white">
     <div class="container text-center">
-        <h4 class="text-gold">BALWAAN</h4>
-        <p class="small text-secondary mb-0">
-            © 2026 Balwaan Health. All Rights Reserved.
-        </p>
-    </div>
-</footer>
-
-<!-- ================= POPUP ================= -->
-<div id="orderPopup">
-    <div class="popup-content">
-        <span class="close-popup" onclick="closePopup()">&times;</span>
-
-        <div id="step1">
-            <h4 class="text-gold mb-3">Order Shuru Karein</h4>
-            <input id="leadName" class="form-control mb-2" placeholder="Aapka Naam">
-            <input id="leadPhone" class="form-control mb-3" placeholder="WhatsApp Number">
-            <button onclick="goToStep2()" class="btn btn-gold-glow w-100">Next</button>
-        </div>
-
-        <div id="step2" style="display:none;">
-            <textarea id="orderAddress" class="form-control mb-3" placeholder="Address"></textarea>
-            <button onclick="finishOrder()" class="btn btn-gold-glow w-100">
-                Confirm Order
-            </button>
-        </div>
-
-        <div id="step3" style="display:none;">
-            <h4 class="text-success">Order Processing!</h4>
-            <p>WhatsApp open ho raha hai…</p>
-            <button onclick="closePopup()" class="btn btn-dark w-100">Close</button>
+        <h2 class="mb-5 text-gold">Kaise Kaam Karta Hai?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="p-4 border-gold rounded-15 h-100">
+                    <h3 class="text-gold">1. Absorption</h3>
+                    <p>Hamari natural capsules aapke khoon mein ghul kar taqat ko cells tak pahuchati hain.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-4 border-gold rounded-15 h-100">
+                    <h3 class="text-gold">2. Vitality</h3>
+                    <p>Ingredients jaise Shilajit aur Ashwagandha energy aur stamina ko 2x boost karte hain.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-4 border-gold rounded-15 h-100">
+                    <h3 class="text-gold">3. Peak Results</h3>
+                    <p>Regular istemal se aap apne partner ke saath confident aur khush-haal life enjoy karte hain.</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- ================= MOBILE CTA ================= -->
-<div class="mobile-cta-bar">
+<section class="section-padding container text-center">
+    <h2 class="mb-5">Prakritik Shakti (Ingredients)</h2>
+    <div class="row">
+        <div class="col-md-3 col-6 mb-4">
+            <img src="images/shilajit.jpg" class="rounded-circle mb-3 border-gold" width="120" height="120" alt="Shilajit">
+            <h5>Shilajit</h5>
+            <small>Stamina & Power</small>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <img src="images/ashwagandha.jpg" class="rounded-circle mb-3 border-gold" width="120" height="120" alt="Ashwagandha">
+            <h5>Ashwagandha</h5>
+            <small>Stress Relief</small>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <img src="images/musli.jpg" class="rounded-circle mb-3 border-gold" width="120" height="120" alt="Safed Musli">
+            <h5>Safed Musli</h5>
+            <small>Vigor & Vitality</small>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <img src="images/gokshura.jpg" class="rounded-circle mb-3 border-gold" width="120" height="120" alt="Gokshura">
+            <h5>Gokshura</h5>
+            <small>Muscle Strength</small>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
     <div class="container">
-        <button onclick="openPopup()" class="btn btn-gold-glow w-100">
-            ORDER NOW – ₹1499
-        </button>
+        <h2 class="text-center mb-5">Aksar Pooche Jane Wale Sawal</h2>
+        <div class="accordion" id="faqAccordion">
+            
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Kya iska koi side effect hai?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Nahi, Balwaan 100% Ayurvedic ingredients se bana hai aur bilkul safe hai.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Result kab tak dikhega?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Behtar result ke liye ise kam se kam 30 din tak regular dudh ke saath lein.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        Balwaan capsule kab aur kaise leni chahiye?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Best result ke liye 1 capsule roz raat ko sone se pehle gungune doodh (warm milk) ke saath lein.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        Kya ye product 100% vegetarian hai?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Haan, Balwaan capsules 100% veg hain aur inme sirf shuddh ayurvedic jadibootiyon ka istemal kiya gaya hai.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                        Kya packing secret (discrete) hogi?
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Bilkul! Hum privacy ka pura dhyan rakhte hain. Box par product ka naam nahi hoga, packing ekdum plain aur confidential hogi.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                        Ise kitne din tak lena chahiye?
+                    </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Hum recommend karte hain ki behtar aur lambe samay tak chalne wale results ke liye aap ise kam se kam 2-3 mahine tak regular lein.
+                    </div>
+                </div>
+            </div>
+
+        </div> </div> </section>
+<section class="py-4 border-top border-bottom bg-white text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></div>
+            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a></div>
+        </div>
+    </div>
+</section>
+    <footer class="footer-main bg-dark text-white pt-5 pb-3">
+        <div class="container text-center">
+            <h4 class="text-gold">BALWAAN</h4>
+            <p class="small text-secondary">© 2026 Balwaan Health. All Rights Reserved.</p>
+        </div>
+    </footer>
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Privacy Policy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <p><strong>Your Privacy Matters:</strong> We only collect your name, phone number, and address to deliver your order. We do not sell or share your data with any third party.</p>
+                <p><strong>Safe Shopping:</strong> Our website is secured with SSL encryption to ensure your personal information remains 100% private and protected.</p>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- ================= JS ================= -->
-<script>
-function openPopup() {
-    document.getElementById("orderPopup").style.display = "flex";
-}
+<div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Terms & Conditions</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <ul>
+                    <li>You must be at least 18 years old to purchase this product.</li>
+                    <li>Balwaan is a natural supplement. If you have any serious medical condition, please consult a doctor before use.</li>
+                    <li>Individual results may vary based on lifestyle and diet.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-function closePopup() {
-    document.getElementById("orderPopup").style.display = "none";
-    document.getElementById("step1").style.display = "block";
-    document.getElementById("step2").style.display = "none";
-    document.getElementById("step3").style.display = "none";
-}
+<div class="modal fade" id="refundModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Refund & Return Policy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <p><strong>7-Day Money Back Guarantee:</strong> We offer a 7-day return policy for unused and sealed products.</p>
+                <p><strong>Easy Returns:</strong> If you receive a damaged product or are unhappy with your purchase, contact us on WhatsApp (+91 8273896083) within 7 days of delivery.</p>
+                <p><strong>Fast Refund:</strong> Once approved, your refund will be processed to your original payment mode or UPI within 48 hours.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-function goToStep2() {
-    document.getElementById("step1").style.display = "none";
-    document.getElementById("step2").style.display = "block";
-}
+<div class="modal fade" id="shippingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-gold">
+            <div class="modal-header bg-green text-white">
+                <h5 class="modal-title">Shipping Policy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <p><strong>Fast Delivery:</strong> We deliver all across India within 3 to 5 business days.</p>
+                <p><strong>Discreet Packaging:</strong> Your privacy is our priority. Your order will arrive in a plain box with no product name or details mentioned on the outside.</p>
+                <p><strong>Free Shipping:</strong> Currently, we are providing FREE shipping on all orders.</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <a href="https://wa.me/918273896083" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-function finishOrder() {
-    document.getElementById("step2").style.display = "none";
-    document.getElementById("step3").style.display = "block";
-    window.open("https://wa.me/918273896083", "_blank");
-}
-</script>
+    <div class="mobile-cta-bar">
+        <div class="container">
+            <button onclick="openPopup()" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</button>
+        </div>
+    </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let userName = "";
+        let userPhone = "";
 
+        function openPopup() {
+            document.getElementById('orderPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('orderPopup').style.display = 'none';
+            // Reset to step 1
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'none';
+        }
+
+        function goToStep2() {
+            userName = document.getElementById('leadName').value;
+            userPhone = document.getElementById('leadPhone').value;
+
+            if(userName.trim() === "" || userPhone.trim() === "") {
+                alert("Kripya Naam aur WhatsApp Number bharein!");
+                return;
+            }
+            // Switch steps
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+
+        function finishOrder() {
+            let address = document.getElementById('orderAddress').value;
+            let product = document.getElementById('orderProduct').value;
+
+            if(address.trim() === "") {
+                alert("Kripya Delivery Address bharein!");
+                return;
+            }
+
+            let message = `*NAYA ORDER (BALWAAN)*%0A%0A` +
+                          `*Naam:* ${userName}%0A` +
+                          `*Phone:* ${userPhone}%0A` +
+                          `*Address:* ${address}%0A` +
+                          `*Product:* ${product}%0A` +
+                          `*Payment:* Cash on Delivery`;
+
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/918273896083?text=${message}`, '_blank');
+            
+            // Show Success screen
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
