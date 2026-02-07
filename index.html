@@ -403,13 +403,30 @@
         }
 
         function goToStep2() {
-            userName = document.getElementById('leadName').value;
-            userPhone = document.getElementById('leadPhone').value;
+    const name = document.getElementById("leadName").value.trim();
+    const phone = document.getElementById("leadPhone").value.trim();
 
-            if(userName.trim() === "" || userPhone.trim() === "") {
-                alert("Kripya Naam aur WhatsApp Number bharein!");
-                return;
-            }
+    if (!name || !phone) {
+        alert("Kripya Naam aur WhatsApp Number bharein!");
+        return;
+    }
+
+    // 🔹 Google Form background submit (Lead saved instantly)
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSe8612jHV6kvhBP38_msmn_PE_hPER4fmLilKO5yoo7YsiUbQ/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body:
+            "entry.143785946=" + encodeURIComponent(name) +
+            "&entry.305823714=" + encodeURIComponent(phone)
+    });
+
+    // 🔹 Switch steps (same UI as before)
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+}
             // Switch steps
             document.getElementById('step1').style.display = 'none';
             document.getElementById('step2').style.display = 'block';
