@@ -693,7 +693,7 @@ src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
             document.getElementById('step3').style.display = 'none';
         }
 
-        function goToStep2() {
+       function goToStep2() {
     const name = document.getElementById("leadName").value.trim();
     const phone = document.getElementById("leadPhone").value.trim();
 
@@ -702,17 +702,31 @@ src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
         return;
     }
 
-    // 🔹 Google Form background submit (Lead saved instantly)
+    // 🔥 LEAD EVENT
+    fbq('track', 'Lead', {
+        content_name: 'BALWAAN Interested',
+        content_category: 'Form Step 1'
+    });
+
+    // ✅ Google Form background submit (YEHI PEHLE WORKING THA)
     fetch("https://docs.google.com/forms/d/e/1FAIpQLSe8612jHV6kvhBP38_msmn_PE_hPER4fmLilKO5yoo7YsiUbQ/formResponse", {
         method: "POST",
         mode: "no-cors",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        body:
-            "entry.143785946=" + encodeURIComponent(name) +
-            "&entry.305823714=" + encodeURIComponent(phone)
+        body: "entry.143785946=" + encodeURIComponent(name) + "&entry.305823714=" + encodeURIComponent(phone)
     });
+
+    // Save for later
+    userName = name;
+    userPhone = phone;
+
+    // Switch to address step
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+}
+
 
             // Switch steps
             document.getElementById('step1').style.display = 'none';
