@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balwaan Gold - Secure Checkout</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1997936307798671');
+    fbq('track', 'PageView');
+    fbq('track', 'InitiateCheckout');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1997936307798671&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <!-- Google Analytics - Will add later -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .checkout-container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(20, 69, 47, 0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #14452F 0%, #1a5a3a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .header h1 span { color: #D4AF37; }
+        .header p { color: #e0e0e0; font-size: 14px; }
+        
+        .secure-badge {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .secure-badge i { color: #D4AF37; margin-right: 5px; }
+        
+        .product-section { padding: 30px; border-bottom: 1px solid #e0e0e0; }
+        .product-section h3 { color: #14452F; margin-bottom: 20px; font-size: 20px; }
+        
+        .variant-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .variant-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .variant-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .variant-card.selected {
+            border-color: #D4AF37;
+            background: #faf6e7;
+        }
+        
+        .variant-card .popular {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #D4AF37;
+            color: #14452F;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        
+        .variant-card h4 { font-size: 16px; margin-bottom: 8px; color: #14452F; }
+        .variant-card .price { font-size: 20px; font-weight: 700; color: #14452F; }
+        .variant-card .mrp { font-size: 14px; color: #999; text-decoration: line-through; }
+        .variant-card .saving { font-size: 12px; color: #27ae60; font-weight: 600; }
+        
+        .order-summary {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .order-summary .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .order-summary .total {
+            font-size: 20px;
+            font-weight: 700;
+            color: #14452F;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        .form-section { padding: 30px; }
+        .form-section h3 { color: #14452F; margin-bottom: 20px; font-size: 20px; }
+        
+        .form-group { margin-bottom: 20px; }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #D4AF37;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .payment-section { margin: 20px 0; }
+        
+        .payment-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .payment-option.selected { border-color: #D4AF37; background: #faf6e7; }
+        .payment-option input[type="radio"] { width: 20px; height: 20px; accent-color: #D4AF37; }
+        
+        .order-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #D4AF37 0%, #b38f2c 100%);
+            color: #14452F;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .whatsapp-info {
+            background: #25D36610;
+            border: 1px solid #25D366;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .whatsapp-info i { font-size: 40px; color: #25D366; }
+        .footer {
+            background: #14452F;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .footer a { color: #D4AF37; text-decoration: none; }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active { display: flex; }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            text-align: center;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-content i { font-size: 80px; color: #27ae60; margin-bottom: 20px; }
+        .modal-content h2 { color: #14452F; margin-bottom: 10px; }
+        .modal-content p { color: #666; margin-bottom: 15px; }
+        
+        .modal-content .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-content .whatsapp-btn:hover {
+            transform: scale(1.05);
+            background: #20b859;
+        }
+        
+        .close-btn {
+            background: #f0f0f0;
+            color: #333;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 24px; }
+            .variant-options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="header">
+            <h1>Balwaan <span>Gold</span></h1>
+            <p>Secure Checkout - 100% Ayurvedic Guarantee</p>
+            <div class="secure-badge">
+                <i class="fas fa-lock"></i> Secure Payment • COD Available
+            </div>
+        </div>
+        
+        <div class="product-section">
+            <h3>2️⃣ Choose Your Package</h3>
+            <div class="variant-options">
+                <div class="variant-card" data-id="starter" data-price="549" data-savings="0">
+                    <h4>Starter Pack</h4>
+                    <div class="price">₹549</div>
+                    <div class="mrp">MRP ₹899</div>
+                    <div class="saving">30 Capsules (15 Days)</div>
+                </div>
+                
+                <div class="variant-card" data-id="regular" data-price="899" data-savings="0">
+                    <h4>Regular Pack</h4>
+                    <div class="price">₹899</div>
+                    <div class="mrp">MRP ₹1299</div>
+                    <div class="saving">60 Capsules (30 Days)</div>
+                </div>
+                
+                <div class="variant-card selected" data-id="combo" data-price="1499" data-savings="1500">
+                    <span class="popular">⚡ Best Seller</span>
+                    <h4>Combo Pack</h4>
+                    <div class="price">₹1499</div>
+                    <div class="mrp">MRP ₹2999</div>
+                    <div class="saving">Save ₹1500 (50% off)</div>
+                </div>
+                
+                <div class="variant-card" data-id="family" data-price="2799" data-savings="3199">
+                    <h4>Family Pack</h4>
+                    <div class="price">₹2799</div>
+                    <div class="mrp">MRP ₹5998</div>
+                    <div class="saving">Save ₹3199 (53% off)</div>
+                </div>
+            </div>
+            
+            <div class="order-summary">
+                <div class="row"><span>Selected Package:</span> <span id="selectedVariantName">Combo Pack</span></div>
+                <div class="row"><span>Price:</span> <span id="selectedPrice">₹1499</span></div>
+                <div class="row"><span>You Save:</span> <span id="selectedSavings">₹1500</span></div>
+                <div class="row total"><span>Total Amount:</span> <span id="totalAmount">₹1499</span></div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>3️⃣ Your Details</h3>
+            
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name *</label>
+                    <input type="text" id="fullName" placeholder="e.g. Rahul Kumar" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-phone-alt"></i> Mobile Number *</label>
+                    <input type="tel" id="mobile" placeholder="10 digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Full Address *</label>
+                    <textarea id="address" rows="3" placeholder="House no, Street, City, Pincode" required></textarea>
+                </div>
+                
+                <div class="payment-section">
+                    <h4>Payment Method</h4>
+                    <div class="payment-option selected">
+                        <input type="radio" name="payment" id="cod" checked>
+                        <div class="details">
+                            <h4>Cash on Delivery (COD)</h4>
+                            <p>Pay when you receive your order</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="order-btn" id="placeOrderBtn">
+                    <i class="fas fa-shield-alt"></i> Confirm Order
+                </button>
+            </form>
+            
+            <div class="whatsapp-info">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <p><strong>Join us on WhatsApp after ordering</strong><br>
+                    Get tracking updates, free consultation & offers</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; color: #666; font-size: 13px;">
+                <i class="fas fa-shield-alt"></i> 100% Secure Checkout • COD Available
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 Balwaan Gold. All Rights Reserved.</p>
+            <p>This is an Ayurvedic supplement, not a medicine. Results may vary from person to person.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a> | <a href="#">Contact Us</a></p>
+        </div>
+    </div>
+    
+    <!-- Thank You Modal -->
+    <div class="modal" id="thankYouModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Order Confirmed! ✅</h2>
+            <p>Thank you! Your order has been placed successfully.</p>
+            <p id="orderNumber" style="background: #f0f0f0; padding: 8px; border-radius: 5px; font-weight: bold;">Order #: BALWAAN2026001</p>
+            <p>📞 We'll contact you soon</p>
+            
+            <a href="https://wa.me/918273896083?text=Hi%2C%20I%20just%20placed%20an%20order%20for%20Balwaan%20Gold" class="whatsapp-btn" target="_blank" id="whatsappJoinBtn">
+                <i class="fab fa-whatsapp"></i> Join WhatsApp
+            </a>
+            
+            <button class="close-btn" onclick="closeModal()">Return to Home</button>
+        </div>
+    </div>
+
+    <script>
+        // Variant selection
+        const variantCards = document.querySelectorAll('.variant-card');
+        const selectedVariantName = document.getElementById('selectedVariantName');
+        const selectedPrice = document.getElementById('selectedPrice');
+        const selectedSavings = document.getElementById('selectedSavings');
+        const totalAmount = document.getElementById('totalAmount');
+        
+        variantCards.forEach(card => {
+            card.addEventListener('click', function() {
+                variantCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const name = this.querySelector('h4').innerText;
+                const price = this.dataset.price;
+                const savings = this.dataset.savings;
+                
+                selectedVariantName.innerText = name;
+                selectedPrice.innerText = '₹' + price;
+                totalAmount.innerText = '₹' + price;
+                
+                if(savings > 0) {
+                    selectedSavings.innerText = '₹' + savings;
+                } else {
+                    selectedSavings.innerText = 'No savings';
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('fullName').value;
+            const mobile = document.getElementById('mobile').value;
+            const address = document.getElementById('address').value;
+            
+            if(!name || !mobile || !address) {
+                alert('Please fill all details');
+                return;
+            }
+            
+            if(mobile.length !== 10) {
+                alert('Please enter a valid 10-digit mobile number');
+                return;
+            }
+            
+            // Get selected variant
+            const selectedCard = document.querySelector('.variant-card.selected');
+            const variantName = selectedCard.querySelector('h4').innerText;
+            const amount = selectedCard.dataset.price;
+            
+            // Generate order number
+            const orderNum = 'BWG' + Date.now().toString().slice(-8);
+            document.getElementById('orderNumber').innerText = 'Order #: ' + orderNum;
+            
+            // Track Purchase with Meta Pixel
+            fbq('track', 'Purchase', {
+                value: amount,
+                currency: 'INR',
+                content_name: variantName,
+                content_type: 'product'
+            });
+            
+            // Store order in localStorage (for CRM later)
+            const orderData = {
+                orderId: orderNum,
+                name: name,
+                mobile: mobile,
+                address: address,
+                variant: variantName,
+                amount: amount,
+                timestamp: new Date().toISOString()
+            };
+            
+            let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+            
+            // Update WhatsApp link with order details
+            const whatsappMsg = `Hi%2C%20I%20just%20placed%20an%20order%20for%20${variantName}%20(Order%3A%20${orderNum})`;
+            document.getElementById('whatsappJoinBtn').href = `https://wa.me/918273896083?text=${whatsappMsg}`;
+            
+            // Show modal
+            document.getElementById('thankYouModal').classList.add('active');
+        });
+        
+        function closeModal() {
+            document.getElementById('thankYouModal').classList.remove('active');
+            window.location.href = '/'; // Redirect to home page
+        }
+        
+        // Initialize - set default selected
+        window.onload = function() {
+            // Meta Pixel track
+            fbq('track', 'ViewContent', {
+                content_name: 'Checkout Page',
+                content_category: 'Checkout'
+            });
+        }
+    </script>
+</body>
+</html>
