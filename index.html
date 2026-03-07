@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- AAPKA ORIGINAL DESIGN (UNCHANGED) --- */
         :root {
             --primary-green: #14452F;
             --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
@@ -33,6 +32,7 @@
             background: var(--gold-gradient); color: var(--primary-green) !important;
             border: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
             animation: glowing 2s infinite; border-radius: 50px; transition: 0.3s; text-decoration: none;
+            display: inline-block; text-align: center;
         }
         .btn-gold-glow:hover { transform: scale(1.05); color: #000 !important; cursor: pointer; }
 
@@ -47,47 +47,32 @@
         .mobile-cta-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; display: none; z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
 
         @media (max-width: 768px) { .mobile-cta-bar { display: block; } .hero-section { text-align: center; } }
-
-        /* --- NEW POPUP STYLING (GoKwik Style) --- */
-        #orderPopup {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 10001;
-            display: none; align-items: center; justify-content: center;
-        }
-        .popup-content {
-            background: white; padding: 30px; border-radius: 20px;
-            width: 90%; max-width: 420px; position: relative;
-            border: 3px solid var(--dark-gold); text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .close-popup { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #999; }
-        .form-control-lg { border-radius: 12px; border: 1px solid #ddd; font-size: 1rem; margin-bottom: 15px; }
-        .step-indicator { font-size: 0.75rem; font-weight: bold; color: var(--primary-green); letter-spacing: 1px; margin-bottom: 10px; }
     </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1755273888449371');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1755273888449371');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">BALWAAN</a>
-            <button onclick="openPopup()" class="btn btn-gold-glow btn-sm px-4">Order Now</button>
+            <a href="checkout.html" class="btn btn-gold-glow btn-sm px-4">Order Now</a>
         </div>
     </nav>
 
@@ -97,7 +82,7 @@ src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
                 <div class="col-md-6">
                     <h1 class="display-4 mb-3">Apna <span class="text-gold">Confidence</span> aur Power Wapas Paayein!</h1>
                     <p class="lead mb-4">India ka premium golden capsule formula jo aapke stamina, performance aur lifestyle ko badal dega.</p>
-                    <button onclick="openPopup()" class="btn btn-gold-glow btn-lg px-5 py-3">Buy Now - Get 20% Off</button>
+                    <a href="checkout.html" class="btn btn-gold-glow btn-lg px-5 py-3">Buy Now - Get 20% Off</a>
                     <p class="mt-3 small text-light"><i class="fas fa-shield-alt"></i> 100% Ayurvedic | No Side Effects</p>
                 </div>
                 <div class="col-md-6 text-center">
@@ -144,464 +129,440 @@ src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
                         <p class="text-muted mb-1"><del>MRP: ₹2999</del></p>
                         <h2 class="text-success fw-bold">Special Price: ₹1499</h2>
                         <div class="alert alert-warning py-1 mt-2"><b>Extra ₹50 Off</b> on Prepaid Orders!</div>
-                        <button onclick="openPopup()" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</button>
+                        <a href="checkout.html" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="orderPopup">
-        <div class="popup-content">
-            <span class="close-popup" onclick="closePopup()">&times;</span>
+    <!-- POPUP CODE पूरी तरह हटा दिया गया है -->
+
+    <section class="section-padding bg-green text-white">
+        <div class="container text-center">
+            <h2 class="mb-5 text-gold">Kaise Kaam Karta Hai?</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="p-4 border-gold rounded-15 h-100">
+                        <h3 class="text-gold">1. Absorption</h3>
+                        <p>Hamari natural capsules aapke khoon mein ghul kar taqat ko cells tak pahuchati hain.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="p-4 border-gold rounded-15 h-100">
+                        <h3 class="text-gold">2. Vitality</h3>
+                        <p>Ingredients jaise Shilajit aur Ashwagandha energy aur stamina ko 2x boost karte hain.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="p-4 border-gold rounded-15 h-100">
+                        <h3 class="text-gold">3. Peak Results</h3>
+                        <p>Regular istemal se aap apne partner ke saath confident aur khush-haal life enjoy karte hain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container text-center">
+        <h2 class="mb-3">Nature's <span class="text-gold">Pure Power</span></h2>
+        <p class="text-muted mb-4">Complete blend of Ayurvedic herbs & ingredients</p>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- Shilajit -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/shilajit.png" class="rounded-circle border border-warning" width="120" height="120" alt="Shilajit" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Shilajit</h5>
+                    <p class="small text-muted mb-3">Natural testosterone booster, energy ka source</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Energy</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Stamina</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark small">Immunity</span>
+                    </div>
+                </div>
+            </div>
             
-            <div id="step1">
-                <div class="step-indicator">STEP 1/2: CONTACT DETAILS</div>
-                <h3 class="text-gold mb-3">Order Shuru Karein</h3>
-                <p class="small text-muted mb-4">Apna naam aur WhatsApp number bharein.</p>
-                <input type="text" id="leadName" class="form-control form-control-lg" placeholder="Aapka Naam" required>
-                <input type="tel" id="leadPhone" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
-                <button onclick="goToStep2()" class="btn btn-gold-glow w-100 py-3">NEXT: ADDRESS BHAREIN</button>
-            </div>
-
-            <div id="step2" style="display:none;">
-                <div class="step-indicator">STEP 2/2: DELIVERY DETAILS</div>
-                <h3 class="text-gold mb-3">Kahan Bhejna Hai?</h3>
-                <textarea id="orderAddress" class="form-control form-control-lg" placeholder="Gali, Mohalla, City, State, Pincode" rows="3" required></textarea>
-                <select id="orderProduct" class="form-select form-select-lg mb-4">
-                    <option value="Combo Pack (2 Bottles) - ₹1499">Combo Pack (2 Bottles) - ₹1499 [Best Seller]</option>
-                    <option value="Single Pack (1 Bottle) - ₹899">Single Pack (1 Bottle) - ₹899</option>
-                </select>
-                <button onclick="finishOrder()" class="btn btn-gold-glow w-100 py-3">CONFIRM ORDER (COD)</button>
-                <p class="small text-muted mt-2"><i class="fas fa-truck"></i> Cash on Delivery Available</p>
-            </div>
-
-            <div id="step3" style="display:none;">
-                <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
-                <h3 class="text-success">Order Processing!</h3>
-                <p>Humne aapka order confirm karne ke liye WhatsApp khol diya hai. Kripya wahan message send karein.</p>
-                <button onclick="closePopup()" class="btn btn-dark w-100 mt-2">CLOSE</button>
-            </div>
-        </div>
-    </div>
-<section class="section-padding bg-green text-white">
-    <div class="container text-center">
-        <h2 class="mb-5 text-gold">Kaise Kaam Karta Hai?</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="p-4 border-gold rounded-15 h-100">
-                    <h3 class="text-gold">1. Absorption</h3>
-                    <p>Hamari natural capsules aapke khoon mein ghul kar taqat ko cells tak pahuchati hain.</p>
+            <!-- Ashwagandha -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/ashwagandha.png" class="rounded-circle border border-warning" width="120" height="120" alt="Ashwagandha" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Ashwagandha</h5>
+                    <p class="small text-muted mb-3">Stress kam kare, sleep improve kare, mental peace</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Stress</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Sleep</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark small">Focus</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="p-4 border-gold rounded-15 h-100">
-                    <h3 class="text-gold">2. Vitality</h3>
-                    <p>Ingredients jaise Shilajit aur Ashwagandha energy aur stamina ko 2x boost karte hain.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="p-4 border-gold rounded-15 h-100">
-                    <h3 class="text-gold">3. Peak Results</h3>
-                    <p>Regular istemal se aap apne partner ke saath confident aur khush-haal life enjoy karte hain.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section-padding container text-center">
-    <h2 class="mb-3">Nature's <span class="text-gold">Pure Power</span></h2>
-    <p class="text-muted mb-4">Complete blend of Ayurvedic herbs & ingredients</p>
-    
-    <div class="row g-4 justify-content-center">
-        <!-- Shilajit -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/shilajit.png" class="rounded-circle border border-warning" width="120" height="120" alt="Shilajit" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Shilajit</h5>
-                <p class="small text-muted mb-3">Natural testosterone booster, energy ka source</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Energy</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Stamina</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark small">Immunity</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Ashwagandha -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/ashwagandha.png" class="rounded-circle border border-warning" width="120" height="120" alt="Ashwagandha" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Ashwagandha</h5>
-                <p class="small text-muted mb-3">Stress kam kare, sleep improve kare, mental peace</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Stress</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Sleep</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark small">Focus</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Safed Musli -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/musli.png" class="rounded-circle border border-warning" width="120" height="120" alt="Safed Musli" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Safed Musli</h5>
-                <p class="small text-muted mb-3">Physical capacity badhaye, semen quality improve kare</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Semen</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Vitality</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark small">Energy</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Gokshura -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/gokshura.png" class="rounded-circle border border-warning" width="120" height="120" alt="Gokshura" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Gokshura</h5>
-                <p class="small text-muted mb-3">Muscles ko strong kare, endurance badhaye</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Muscles</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Endurance</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark small">Recovery</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Additional Ingredients in 2nd Row -->
-    <div class="row g-4 justify-content-center mt-3">
-        <!-- Kaunch Beej -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/kaunch.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Kaunch Beej" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Kaunch Beej</h5>
-                <p class="small text-muted mb-3">Sex drive badhaye, hormones balance kare</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Libido</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Hormones</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Vidari Khand -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/vidari.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Vidari Khand" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Vidari Khand</h5>
-                <p class="small text-muted mb-3">Body ko phir se young kare, energy ka store</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Youth</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Energy</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Shatavari -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/shatawari.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Shatavari" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Shatavari</h5>
-                <p class="small text-muted mb-3">Nutrition provide kare, body ko strength de</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Nourishment</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Strength</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Moringa -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
-                <div class="mx-auto mb-3">
-                    <img src="images/moringa.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Moringa" style="object-fit: cover;">
-                </div>
-                <h5 class="text-gold mb-2">Moringa</h5>
-                <p class="small text-muted mb-3">65+ nutrients se bharpur, natural multivitamin</p>
-                <div class="mt-auto">
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Nutrition</span>
-                    <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Immunity</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Scientific Proof Section -->
-    <div class="row mt-5 pt-4">
-        <div class="col-lg-6 mb-4">
-            <div class="p-4 bg-light rounded-3 border-start border-4 border-warning">
-                <h5 class="text-gold mb-3"><i class="fas fa-medal me-2"></i>Why Choose Balwaan?</h5>
-                <ul class="list-unstyled mb-0">
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>100% Natural & Herbal</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>No Side Effects</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Made in GMP Certified Factory</li>
-                    <li><i class="fas fa-check-circle text-success me-2"></i>Based on Scientific Research</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <div class="p-4">
-                <h5 class="text-gold mb-3"><i class="fas fa-flask me-2"></i>Scientific Proof</h5>
-                <p class="small mb-1">Ashwagandha: Can reduce stress by up to 44%</p>
-                <div class="progress mb-3" style="height: 8px;">
-                    <div class="progress-bar bg-warning" style="width: 44%"></div>
-                </div>
-                <p class="small mb-1">Shilajit: Can improve physical performance by up to 21%</p>
-                <div class="progress" style="height: 8px;">
-                    <div class="progress-bar bg-warning" style="width: 21%"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section-padding bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Aksar Pooche Jane Wale Sawal</h2>
-        <div class="accordion" id="faqAccordion">
             
-            <div class="accordion-item mb-3 border-0 shadow-sm">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                        Kya iska koi side effect hai?
-                    </button>
-                </h2>
-                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Nahi, Balwaan 100% Ayurvedic ingredients se bana hai aur bilkul safe hai.
+            <!-- Safed Musli -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/musli.png" class="rounded-circle border border-warning" width="120" height="120" alt="Safed Musli" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Safed Musli</h5>
+                    <p class="small text-muted mb-3">Physical capacity badhaye, semen quality improve kare</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Semen</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Vitality</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark small">Energy</span>
                     </div>
                 </div>
             </div>
-
-            <div class="accordion-item mb-3 border-0 shadow-sm">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                        Result kab tak dikhega?
-                    </button>
-                </h2>
-                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Behtar result ke liye ise kam se kam 30 din tak regular dudh ke saath lein.
+            
+            <!-- Gokshura -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/gokshura.png" class="rounded-circle border border-warning" width="120" height="120" alt="Gokshura" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Gokshura</h5>
+                    <p class="small text-muted mb-3">Muscles ko strong kare, endurance badhaye</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Muscles</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Endurance</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark small">Recovery</span>
                     </div>
                 </div>
             </div>
-
-            <div class="accordion-item mb-3 border-0 shadow-sm">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                        Balwaan capsule kab aur kaise leni chahiye?
-                    </button>
-                </h2>
-                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Best result ke liye 1 capsule roz raat ko sone se pehle gungune doodh (warm milk) ke saath lein.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item mb-3 border-0 shadow-sm">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                        Kya ye product 100% vegetarian hai?
-                    </button>
-                </h2>
-                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Haan, Balwaan capsules 100% veg hain aur inme sirf shuddh ayurvedic jadibootiyon ka istemal kiya gaya hai.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item mb-3 border-0 shadow-sm">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                        Kya packing secret (discrete) hogi?
-                    </button>
-                </h2>
-                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Bilkul! Hum privacy ka pura dhyan rakhte hain. Box par product ka naam nahi hoga, packing ekdum plain aur confidential hogi.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item mb-3 border-0 shadow-sm">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                        Ise kitne din tak lena chahiye?
-                    </button>
-                </h2>
-                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Hum recommend karte hain ki behtar aur lambe samay tak chalne wale results ke liye aap ise kam se kam 2-3 mahine tak regular lein.
-                    </div>
-                </div>
-            </div>
-
-        </div> </div> </section>
-<section class="py-4 border-top border-bottom bg-white text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></div>
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a></div>
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></div>
-            <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a></div>
         </div>
-    </div>
-</section>
+        
+        <!-- Additional Ingredients in 2nd Row -->
+        <div class="row g-4 justify-content-center mt-3">
+            <!-- Kaunch Beej -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/kaunch.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Kaunch Beej" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Kaunch Beej</h5>
+                    <p class="small text-muted mb-3">Sex drive badhaye, hormones balance kare</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Libido</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Hormones</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vidari Khand -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/vidari.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Vidari Khand" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Vidari Khand</h5>
+                    <p class="small text-muted mb-3">Body ko phir se young kare, energy ka store</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Youth</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Energy</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shatavari -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/shatawari.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Shatavari" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Shatavari</h5>
+                    <p class="small text-muted mb-3">Nutrition provide kare, body ko strength de</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Nourishment</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Strength</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Moringa -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
+                    <div class="mx-auto mb-3">
+                        <img src="images/moringa.webp" class="rounded-circle border border-warning" width="120" height="120" alt="Moringa" style="object-fit: cover;">
+                    </div>
+                    <h5 class="text-gold mb-2">Moringa</h5>
+                    <p class="small text-muted mb-3">65+ nutrients se bharpur, natural multivitamin</p>
+                    <div class="mt-auto">
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Nutrition</span>
+                        <span class="badge bg-warning bg-opacity-25 text-dark me-1 small">Immunity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scientific Proof Section -->
+        <div class="row mt-5 pt-4">
+            <div class="col-lg-6 mb-4">
+                <div class="p-4 bg-light rounded-3 border-start border-4 border-warning">
+                    <h5 class="text-gold mb-3"><i class="fas fa-medal me-2"></i>Why Choose Balwaan?</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>100% Natural & Herbal</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>No Side Effects</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Made in GMP Certified Factory</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i>Based on Scientific Research</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="p-4">
+                    <h5 class="text-gold mb-3"><i class="fas fa-flask me-2"></i>Scientific Proof</h5>
+                    <p class="small mb-1">Ashwagandha: Can reduce stress by up to 44%</p>
+                    <div class="progress mb-3" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: 44%"></div>
+                    </div>
+                    <p class="small mb-1">Shilajit: Can improve physical performance by up to 21%</p>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: 21%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Aksar Pooche Jane Wale Sawal</h2>
+            <div class="accordion" id="faqAccordion">
+                
+                <div class="accordion-item mb-3 border-0 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Kya iska koi side effect hai?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Nahi, Balwaan 100% Ayurvedic ingredients se bana hai aur bilkul safe hai.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-3 border-0 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Result kab tak dikhega?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Behtar result ke liye ise kam se kam 30 din tak regular dudh ke saath lein.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-3 border-0 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Balwaan capsule kab aur kaise leni chahiye?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Best result ke liye 1 capsule roz raat ko sone se pehle gungune doodh (warm milk) ke saath lein.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-3 border-0 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Kya ye product 100% vegetarian hai?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Haan, Balwaan capsules 100% veg hain aur inme sirf shuddh ayurvedic jadibootiyon ka istemal kiya gaya hai.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-3 border-0 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Kya packing secret (discrete) hogi?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Bilkul! Hum privacy ka pura dhyan rakhte hain. Box par product ka naam nahi hoga, packing ekdum plain aur confidential hogi.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-3 border-0 shadow-sm">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            Ise kitne din tak lena chahiye?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Hum recommend karte hain ki behtar aur lambe samay tak chalne wale results ke liye aap ise kam se kam 2-3 mahine tak regular lein.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 border-top border-bottom bg-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></div>
+                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a></div>
+                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></div>
+                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a></div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== FOOTER WITH DISCLAIMER ========== -->
-<footer class="footer-main bg-dark text-white pt-5 pb-3">
-    <div class="container">
-        <!-- Main Footer Content -->
-        <div class="row mb-4">
-            <div class="col-md-4 mb-4">
-                <h4 class="text-gold mb-3">BALWAAN</h4>
-                <p class="small text-light">
-                    India's premium Ayurvedic supplement for men's health, strength, and confidence.
-                </p>
-                <div class="mt-3">
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="https://wa.me/918273896083" class="text-white me-3" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
-                    <a href="tel:+918273896083" class="text-white"><i class="fas fa-phone fa-lg"></i></a>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <h5 class="text-gold mb-3">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#menu" class="text-light text-decoration-none">Products</a></li>
-                    <li class="mb-2"><a href="#about" class="text-light text-decoration-none">How It Works</a></li>
-                    <li class="mb-2"><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
-                    <li><a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#faqModal">FAQs</a></li>
-                </ul>
-            </div>
-            
-            <div class="col-md-4 mb-4">
-                <h5 class="text-gold mb-3">Contact Info</h5>
-                <ul class="list-unstyled text-light">
-                    <li class="mb-2"><i class="fas fa-phone-alt me-2 text-gold"></i> +91 8273896083</li>
-                    <li class="mb-2"><i class="fas fa-envelope me-2 text-gold"></i> support@balwaanhealth.com</li>
-                    <li><i class="fas fa-clock me-2 text-gold"></i> Support: Mon-Sat, 10 AM - 7 PM</li>
-                </ul>
-                <a href="https://wa.me/918273896083" class="btn btn-sm btn-success mt-2" target="_blank">
-                    <i class="fab fa-whatsapp me-1"></i> Chat on WhatsApp
-                </a>
-            </div>
-        </div>
-        
-        <!-- Policy Links -->
-        <div class="row py-3 border-top border-bottom border-secondary">
-            <div class="col-md-3 col-6 mb-2 text-center">
-                <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
-            </div>
-            <div class="col-md-3 col-6 mb-2 text-center">
-                <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
-            </div>
-            <div class="col-md-3 col-6 mb-2 text-center">
-                <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a>
-            </div>
-            <div class="col-md-3 col-6 mb-2 text-center">
-                <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a>
-            </div>
-        </div>
-        
-        <!-- Detailed Disclaimer Section -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="p-3 bg-dark border border-warning rounded">
-                    <h6 class="text-gold mb-2"><i class="fas fa-exclamation-triangle me-2"></i>IMPORTANT DISCLAIMER</h6>
-                    <p class="small text-light mb-2">
-                        <strong>Medical Disclaimer:</strong> Balwaan is a 100% Ayurvedic herbal supplement. It is not intended to diagnose, treat, cure, or prevent any disease. The information provided on this website is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-                    </p>
-                    <p class="small text-light mb-2">
-                        <strong>Results May Vary:</strong> Individual results may vary based on age, health condition, lifestyle, and other factors. The testimonials and examples on this website are exceptional results and are not intended to represent or guarantee that anyone will achieve the same or similar results.
-                    </p>
-                    <p class="small text-light mb-2">
-                        <strong>FDA Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-                    </p>
-                    <p class="small text-light mb-2">
-                        <strong>Consult Your Doctor:</strong> If you are pregnant, nursing, taking medication, or have a medical condition, consult your doctor before using this product. Do not exceed the recommended dosage. Keep out of reach of children. Store in a cool, dry place.
-                    </p>
+    <footer class="footer-main bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4">
+                    <h4 class="text-gold mb-3">BALWAAN</h4>
                     <p class="small text-light">
-                        <strong>© 2024 Balwaan Health.</strong> All rights reserved. The content, images, and product information on this website are the property of Balwaan Health and may not be reproduced without permission.
+                        India's premium Ayurvedic supplement for men's health, strength, and confidence.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://wa.me/918273896083" class="text-white me-3" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="tel:+918273896083" class="text-white"><i class="fas fa-phone fa-lg"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-gold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#menu" class="text-light text-decoration-none">Products</a></li>
+                        <li class="mb-2"><a href="#about" class="text-light text-decoration-none">How It Works</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#faqModal">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-gold mb-3">Contact Info</h5>
+                    <ul class="list-unstyled text-light">
+                        <li class="mb-2"><i class="fas fa-phone-alt me-2 text-gold"></i> +91 8273896083</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2 text-gold"></i> support@balwaanhealth.com</li>
+                        <li><i class="fas fa-clock me-2 text-gold"></i> Support: Mon-Sat, 10 AM - 7 PM</li>
+                    </ul>
+                    <a href="https://wa.me/918273896083" class="btn btn-sm btn-success mt-2" target="_blank">
+                        <i class="fab fa-whatsapp me-1"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Policy Links -->
+            <div class="row py-3 border-top border-bottom border-secondary">
+                <div class="col-md-3 col-6 mb-2 text-center">
+                    <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                </div>
+                <div class="col-md-3 col-6 mb-2 text-center">
+                    <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
+                </div>
+                <div class="col-md-3 col-6 mb-2 text-center">
+                    <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a>
+                </div>
+                <div class="col-md-3 col-6 mb-2 text-center">
+                    <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a>
+                </div>
+            </div>
+            
+            <!-- Detailed Disclaimer Section -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="p-3 bg-dark border border-warning rounded">
+                        <h6 class="text-gold mb-2"><i class="fas fa-exclamation-triangle me-2"></i>IMPORTANT DISCLAIMER</h6>
+                        <p class="small text-light mb-2">
+                            <strong>Medical Disclaimer:</strong> Balwaan is a 100% Ayurvedic herbal supplement. It is not intended to diagnose, treat, cure, or prevent any disease. The information provided on this website is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                        </p>
+                        <p class="small text-light mb-2">
+                            <strong>Results May Vary:</strong> Individual results may vary based on age, health condition, lifestyle, and other factors. The testimonials and examples on this website are exceptional results and are not intended to represent or guarantee that anyone will achieve the same or similar results.
+                        </p>
+                        <p class="small text-light mb-2">
+                            <strong>FDA Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+                        </p>
+                        <p class="small text-light mb-2">
+                            <strong>Consult Your Doctor:</strong> If you are pregnant, nursing, taking medication, or have a medical condition, consult your doctor before using this product. Do not exceed the recommended dosage. Keep out of reach of children. Store in a cool, dry place.
+                        </p>
+                        <p class="small text-light">
+                            <strong>© 2024 Balwaan Health.</strong> All rights reserved. The content, images, and product information on this website are the property of Balwaan Health and may not be reproduced without permission.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="small text-secondary mb-0">
+                        © 2024 Balwaan Health | Made in India | GMP Certified
+                    </p>
+                    <p class="small text-secondary">
+                        Last Updated: December 2024
                     </p>
                 </div>
             </div>
         </div>
-        
-        <!-- Copyright -->
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <p class="small text-secondary mb-0">
-                    © 2024 Balwaan Health | Made in India | GMP Certified
-                </p>
-                <p class="small text-secondary">
-                    Last Updated: December 2024
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- FAQ Modal (Additional) -->
-<div class="modal fade" id="faqModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-gold">
-            <div class="modal-header bg-green text-white">
-                <h5 class="modal-title">Frequently Asked Questions</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="accordion" id="faqModalAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqModal1">
-                                How long does shipping take?
-                            </button>
-                        </h2>
-                        <div id="faqModal1" class="accordion-collapse collapse show" data-bs-parent="#faqModalAccordion">
-                            <div class="accordion-body">
-                                We deliver all across India within 3-7 business days. Metro cities usually receive orders within 3-4 days.
+    <!-- FAQ Modal (Additional) -->
+    <div class="modal fade" id="faqModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-gold">
+                <div class="modal-header bg-green text-white">
+                    <h5 class="modal-title">Frequently Asked Questions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="faqModalAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqModal1">
+                                    How long does shipping take?
+                                </button>
+                            </h2>
+                            <div id="faqModal1" class="accordion-collapse collapse show" data-bs-parent="#faqModalAccordion">
+                                <div class="accordion-body">
+                                    We deliver all across India within 3-7 business days. Metro cities usually receive orders within 3-4 days.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqModal2">
-                                Is the packaging discreet?
-                            </button>
-                        </h2>
-                        <div id="faqModal2" class="accordion-collapse collapse" data-bs-parent="#faqModalAccordion">
-                            <div class="accordion-body">
-                                Yes, absolutely. Your privacy is our priority. All orders are shipped in plain packaging without any product name or brand mention on the outside.
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqModal2">
+                                    Is the packaging discreet?
+                                </button>
+                            </h2>
+                            <div id="faqModal2" class="accordion-collapse collapse" data-bs-parent="#faqModalAccordion">
+                                <div class="accordion-body">
+                                    Yes, absolutely. Your privacy is our priority. All orders are shipped in plain packaging without any product name or brand mention on the outside.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqModal3">
-                                What is the return policy?
-                            </button>
-                        </h2>
-                        <div id="faqModal3" class="accordion-collapse collapse" data-bs-parent="#faqModalAccordion">
-                            <div class="accordion-body">
-                                We offer a 7-day return policy for unused and sealed products. Please contact our support team via WhatsApp for return requests.
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqModal3">
+                                    What is the return policy?
+                                </button>
+                            </h2>
+                            <div id="faqModal3" class="accordion-collapse collapse" data-bs-parent="#faqModalAccordion">
+                                <div class="accordion-body">
+                                    We offer a 7-day return policy for unused and sealed products. Please contact our support team via WhatsApp for return requests.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -609,157 +570,83 @@ src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-gold">
-            <div class="modal-header bg-green text-white">
-                <h5 class="modal-title">Privacy Policy</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-start">
-                <p><strong>Your Privacy Matters:</strong> We only collect your name, phone number, and address to deliver your order. We do not sell or share your data with any third party.</p>
-                <p><strong>Safe Shopping:</strong> Our website is secured with SSL encryption to ensure your personal information remains 100% private and protected.</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-gold">
-            <div class="modal-header bg-green text-white">
-                <h5 class="modal-title">Terms & Conditions</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-start">
-                <ul>
-                    <li>You must be at least 18 years old to purchase this product.</li>
-                    <li>Balwaan is a natural supplement. If you have any serious medical condition, please consult a doctor before use.</li>
-                    <li>Individual results may vary based on lifestyle and diet.</li>
-                </ul>
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-gold">
+                <div class="modal-header bg-green text-white">
+                    <h5 class="modal-title">Privacy Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <p><strong>Your Privacy Matters:</strong> We only collect your name, phone number, and address to deliver your order. We do not sell or share your data with any third party.</p>
+                    <p><strong>Safe Shopping:</strong> Our website is secured with SSL encryption to ensure your personal information remains 100% private and protected.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="refundModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-gold">
-            <div class="modal-header bg-green text-white">
-                <h5 class="modal-title">Refund & Return Policy</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-start">
-                <p><strong>7-Day Money Back Guarantee:</strong> We offer a 7-day return policy for unused and sealed products.</p>
-                <p><strong>Easy Returns:</strong> If you receive a damaged product or are unhappy with your purchase, contact us on WhatsApp (+91 8273896083) within 7 days of delivery.</p>
-                <p><strong>Fast Refund:</strong> Once approved, your refund will be processed to your original payment mode or UPI within 48 hours.</p>
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-gold">
+                <div class="modal-header bg-green text-white">
+                    <h5 class="modal-title">Terms & Conditions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <ul>
+                        <li>You must be at least 18 years old to purchase this product.</li>
+                        <li>Balwaan is a natural supplement. If you have any serious medical condition, please consult a doctor before use.</li>
+                        <li>Individual results may vary based on lifestyle and diet.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="shippingModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-gold">
-            <div class="modal-header bg-green text-white">
-                <h5 class="modal-title">Shipping Policy</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-start">
-                <p><strong>Fast Delivery:</strong> We deliver all across India within 3 to 5 business days.</p>
-                <p><strong>Discreet Packaging:</strong> Your privacy is our priority. Your order will arrive in a plain box with no product name or details mentioned on the outside.</p>
-                <p><strong>Free Shipping:</strong> Currently, we are providing FREE shipping on all orders.</p>
+    <div class="modal fade" id="refundModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-gold">
+                <div class="modal-header bg-green text-white">
+                    <h5 class="modal-title">Refund & Return Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <p><strong>7-Day Money Back Guarantee:</strong> We offer a 7-day return policy for unused and sealed products.</p>
+                    <p><strong>Easy Returns:</strong> If you receive a damaged product or are unhappy with your purchase, contact us on WhatsApp (+91 8273896083) within 7 days of delivery.</p>
+                    <p><strong>Fast Refund:</strong> Once approved, your refund will be processed to your original payment mode or UPI within 48 hours.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="modal fade" id="shippingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-gold">
+                <div class="modal-header bg-green text-white">
+                    <h5 class="modal-title">Shipping Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <p><strong>Fast Delivery:</strong> We deliver all across India within 3 to 5 business days.</p>
+                    <p><strong>Discreet Packaging:</strong> Your privacy is our priority. Your order will arrive in a plain box with no product name or details mentioned on the outside.</p>
+                    <p><strong>Free Shipping:</strong> Currently, we are providing FREE shipping on all orders.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <a href="https://wa.me/918273896083" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <div class="mobile-cta-bar">
         <div class="container">
-            <button onclick="openPopup()" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</button>
+            <a href="checkout.html" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</a>
         </div>
     </div>
 
-    <script>
-        let userName = "";
-        let userPhone = "";
-
-        function openPopup() {
-            document.getElementById('orderPopup').style.display = 'flex';
-        }
-
-        function closePopup() {
-            document.getElementById('orderPopup').style.display = 'none';
-            // Reset to step 1
-            document.getElementById('step1').style.display = 'block';
-            document.getElementById('step2').style.display = 'none';
-            document.getElementById('step3').style.display = 'none';
-        }
-
-       function goToStep2() {
-    const name = document.getElementById("leadName").value.trim();
-    const phone = document.getElementById("leadPhone").value.trim();
-
-    if (!name || !phone) {
-        alert("Kripya Naam aur WhatsApp Number bharein!");
-        return;
-    }
-
-    // 🔥 SABSE PEHLE: LEAD EVENT FIRE KARO META KO
-    fbq('track', 'Lead', {
-        content_name: 'BALWAAN Interested',
-        content_category: 'Form Step 1'
-    });
-
-    // 🔹 Google Form background submit (Lead saved instantly)
-    fetch("https://docs.google.com/forms/d/e/1FAIpQLSe8612jHV6kvhBP38_msmn_PE_hPER4fmLilKO5yoo7YsiUbQ/formResponse", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body:
-            "entry.143785946=" + encodeURIComponent(name) +
-            "&entry.305823714=" + encodeURIComponent(phone)
-    });
-
-    // Save for later (address step ke liye)
-    userName = name;
-    userPhone = phone;
-
-    // Switch steps
-    document.getElementById('step1').style.display = 'none';
-    document.getElementById('step2').style.display = 'block';
-}
-
-        function finishOrder() {
-            let address = document.getElementById('orderAddress').value;
-            let product = document.getElementById('orderProduct').value;
-
-            if(address.trim() === "") {
-                alert("Kripya Delivery Address bharein!");
-                return;
-            }
-
-            let message = `*NAYA ORDER (BALWAAN)*%0A%0A` +
-                          `*Naam:* ${userName}%0A` +
-                          `*Phone:* ${userPhone}%0A` +
-                          `*Address:* ${address}%0A` +
-                          `*Product:* ${product}%0A` +
-                          `*Payment:* Cash on Delivery`;
-
-            // Redirect to WhatsApp
-            window.open(`https://wa.me/918273896083?text=${message}`, '_blank');
-            
-            // Show Success screen
-            document.getElementById('step2').style.display = 'none';
-            document.getElementById('step3').style.display = 'block';
-        }
-    </script>
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
