@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balwaan Gold - Secure Checkout</title>
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code (Old Pixel ID) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,12 +15,13 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1997936307798671');
+    
+    fbq('init', '1755273888449371');
     fbq('track', 'PageView');
     fbq('track', 'InitiateCheckout');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1997936307798671&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1755273888449371&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
 
@@ -394,7 +395,7 @@
             </div>
         </div>
 
-        <!-- Footer with landing page style -->
+        <!-- Footer with copyright -->
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
@@ -479,7 +480,7 @@
             const orderNum = 'BWG' + Date.now().toString().slice(-8);
             document.getElementById('orderNumber').innerText = 'Order ID: ' + orderNum;
 
-            // Meta Purchase Event
+            // ✅ Purchase Event (Old Pixel)
             fbq('track', 'Purchase', {
                 value: amount,
                 currency: 'INR',
