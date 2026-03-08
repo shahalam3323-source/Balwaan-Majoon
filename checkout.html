@@ -478,27 +478,87 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
             const orderNum = 'BWG' + Date.now().toString().slice(-8);
             document.getElementById('orderNumber').innerText = 'Order ID: ' + orderNum;
 
-            // ✅ Purchase Event (Old Pixel)
-            fbq('track', 'Purchase', {
-                value: amount,
-                currency: 'INR',
-                content_name: variantName,
-                content_type: 'product'
-            });
+            // ✅ Purchase Event (Pixel) – तुम्हारा पुराना code
+fbq('track', 'Purchase', {
+    value: amount,
+    currency: 'INR',
+    content_name: variantName,
+    content_type: 'product'
+}, { eventID: orderNum });  // eventID added for deduplication
 
-            // Save order locally
-            const orderData = {
-                orderId: orderNum,
-                name: name,
-                mobile: mobile,
-                address: address,
-                variant: variantName,
-                amount: amount,
-                timestamp: new Date().toISOString()
-            };
-            let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-            orders.push(orderData);
-            localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+// ✅ Save order locally (तुम्हारा पुराना code)
+const orderData = {
+    orderId: orderNum,
+    name: name,
+    mobile: mobile,
+    address: address,
+    variant: variantName,
+    amount: amount,
+    timestamp: new Date().toISOString()
+};
+let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+orders.push(orderData);
+localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+
+// ==================================================
+// ✅ NEW: CAPI (Conversions API) via Client-side fetch
+// ==================================================
+
+// Access Token – इसे अपने असली token से बदलो
+const accessToken = 'EAAP0aqEdD0sBQZCKXtgEXEzgPmGRwDO3yMOCZAjtQjDPs0rkvUks0Lh9Q4UwL2GEKxd4ar8eeT7kr6sR7RdUpZBQBUFILLZCGxBnjPrcE0mZCRZCXlyLvFvSXG68Ocm54tQU7cDHRbnKY9s1g38bGfoE4wtl8f57I0ENapYE3TZA4JQOqSnAz0XdZCQoroWAVoVS5gZDZD';
+const pixelId = '1997936307798671';
+
+// Hash function for phone (SHA256)
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Send to CAPI
+(async function sendToCapi() {
+    try {
+        // Hash mobile number (required by Meta)
+        const hashedPhone = await sha256(mobile);
+
+        const payload = {
+            data: [{
+                event_name: 'Purchase',
+                event_time: Math.floor(Date.now() / 1000),
+                event_id: orderNum,  // same ID as Pixel
+                action_source: 'website',
+                event_source_url: window.location.href,
+                user_data: {
+                    client_ip_address: '',  // Facebook can use IP from request
+                    client_user_agent: navigator.userAgent,
+                    ph: hashedPhone,
+                    fn: name ? await sha256(name.split(' ')[0]) : '', // first name (optional)
+                    // Email not collected – can be omitted
+                },
+                custom_data: {
+                    value: amount,
+                    currency: 'INR',
+                    content_name: variantName,
+                    content_type: 'product',
+                    order_id: orderNum
+                }
+            }],
+            access_token: accessToken
+        };
+
+        const response = await fetch(`https://graph.facebook.com/v18.0/${pixelId}/events`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        console.log('CAPI Response:', result);
+    } catch (error) {
+        console.error('CAPI Error:', error);
+    }
+})();
 
             // WhatsApp messages
             const whatsappMsg = `Hi,%0AI just placed an order for Balwaan Gold%0A%0AOrder ID: ${orderNum}%0AName: ${name}%0A%0APlease confirm my order.`;
