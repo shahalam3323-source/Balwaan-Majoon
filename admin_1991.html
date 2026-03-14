@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balwaan Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 25px;
+        }
+        h1 {
+            color: #14452F;
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 img {
+            height: 40px;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #14452F 0%, #1e6b4c 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(20,69,47,0.2);
+            flex: 1;
+            min-width: 200px;
+        }
+        .stat-card h3 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .btn {
+            background: #D4AF37;
+            color: #14452F;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background: #b38f2c;
+            transform: scale(1.02);
+        }
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .btn-secondary:hover {
+            background: #ccc;
+        }
+        .last-check {
+            color: #666;
+            font-size: 13px;
+            margin-left: auto;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 14px;
+        }
+        th {
+            background: #14452F;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr.new-order {
+            background: #e8f5e8;
+            font-weight: 500;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { background-color: #e8f5e8; }
+            50% { background-color: #c8e6c9; }
+            100% { background-color: #e8f5e8; }
+        }
+        .badge {
+            background: #D4AF37;
+            color: #14452F;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+        .whatsapp-btn:hover {
+            background: #20b859;
+        }
+        .empty-msg {
+            text-align: center;
+            padding: 50px;
+            color: #999;
+            font-size: 16px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>📦 Balwaan Orders</span>
+            <span class="badge">Admin</span>
+        </h1>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Orders</h3>
+                <div class="value" id="totalOrders">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's Orders</h3>
+                <div class="value" id="todayOrders">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>New (Unseen)</h3>
+                <div class="value" id="newOrders">0</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="checkNewOrders()">
+                🔄 Refresh Now
+            </button>
+            <button class="btn btn-secondary" onclick="exportCSV()">
+                📥 Export CSV
+            </button>
+            <span class="last-check" id="lastCheck">Last auto-check: --</span>
+        </div>
+
+        <div class="table-responsive" id="ordersTableContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Order Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <tr>
+                        <td colspan="8" class="empty-msg">No orders yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            ⚡ Auto-refresh every 30 seconds • <a href="#" onclick="clearAllOrders(); return false;">Clear all orders</a> (use carefully)
+        </footer>
+    </div>
+
+    <script>
+        // ------------------- SIMPLE PASSWORD PROTECTION -------------------
+        (function() {
+            if (localStorage.getItem('admin_auth') !== 'yes') {
+                let pass = prompt('Enter admin password:');
+                if (pass === 'Balwaan@2026') {
+                    localStorage.setItem('admin_auth', 'yes');
+                } else {
+                    document.body.innerHTML = '<h1 style="color:red; text-align:center; margin-top:100px;">⛔ Access Denied</h1>';
+                    throw new Error('Unauthorized access');
+                }
+            }
+        })();
+
+        // ------------------- GLOBAL VARIABLES -------------------
+        let lastOrderCount = 0;
+        let previousOrders = [];
+
+        // ------------------- HELPER FUNCTIONS -------------------
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function isToday(timestamp) {
+            const today = new Date();
+            const orderDate = new Date(timestamp);
+            return orderDate.toDateString() === today.toDateString();
+        }
+
+        // ------------------- LOAD ORDERS FROM LOCALSTORAGE -------------------
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+            const tbody = document.getElementById('ordersBody');
+            const totalSpan = document.getElementById('totalOrders');
+            const todaySpan = document.getElementById('todayOrders');
+            const newSpan = document.getElementById('newOrders');
+
+            // Update stats
+            totalSpan.innerText = orders.length;
+            const todayCount = orders.filter(o => isToday(o.timestamp)).length;
+            todaySpan.innerText = todayCount;
+
+            // Check for new orders
+            let newCount = 0;
+            if (orders.length > lastOrderCount) {
+                newCount = orders.length - lastOrderCount;
+                // Optional: play sound
+                try {
+                    let audio = new Audio('https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3');
+                    audio.play().catch(e => console.log('Audio play failed:', e));
+                } catch (e) {}
+                // Show browser notification if supported
+                if (Notification.permission === 'granted') {
+                    new Notification('🆕 New Order!', {
+                        body: `${newCount} new order(s) received.`
+                    });
+                } else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission();
+                }
+            }
+            newSpan.innerText = newCount;
+
+            // Reverse to show newest first
+            const sorted = [...orders].reverse();
+
+            // Build table
+            if (sorted.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="empty-msg">No orders yet</td></tr>`;
+            } else {
+                let html = '';
+                sorted.forEach((order, index) => {
+                    const isNew = (index < newCount); // first 'newCount' rows are new
+                    const rowClass = isNew ? 'class="new-order"' : '';
+                    const paymentMethod = order.paymentMethod || 'COD';
+                    const amount = order.amount || '—';
+                    const variant = order.variant || order.product || '—';
+
+                    html += `<tr ${rowClass}>
+                        <td><strong>${order.orderId || '—'}</strong></td>
+                        <td>${order.name || '—'}</td>
+                        <td>${order.mobile || '—'}</td>
+                        <td>${variant}</td>
+                        <td>₹${amount}</td>
+                        <td>${paymentMethod}</td>
+                        <td>${order.timestamp ? formatDate(order.timestamp) : '—'}</td>
+                        <td>
+                            <button class="whatsapp-btn" onclick="openWhatsApp('${order.mobile || ''}', '${order.orderId || ''}', '${order.name || ''}')">
+                                📱 WhatsApp
+                            </button>
+                        </td>
+                    </tr>`;
+                });
+                tbody.innerHTML = html;
+            }
+
+            // Update last order count for next comparison
+            lastOrderCount = orders.length;
+            document.getElementById('lastCheck').innerText = 'Last auto-check: ' + new Date().toLocaleTimeString();
+        }
+
+        // ------------------- WHATSAPP BUTTON -------------------
+        function openWhatsApp(mobile, orderId, name) {
+            if (!mobile) return alert('No mobile number');
+            const msg = `Hi, I am checking order ${orderId} for ${name}.`;
+            window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // ------------------- EXPORT CSV -------------------
+        function exportCSV() {
+            const orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+            if (orders.length === 0) {
+                alert('No orders to export');
+                return;
+            }
+            const headers = ['Order ID', 'Name', 'Mobile', 'Product', 'Amount', 'Payment', 'Timestamp'];
+            const rows = orders.map(o => [
+                o.orderId,
+                o.name,
+                o.mobile,
+                o.variant || o.product,
+                o.amount,
+                o.paymentMethod || 'COD',
+                o.timestamp
+            ]);
+            const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `balwaan_orders_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ------------------- MANUAL REFRESH -------------------
+        function checkNewOrders() {
+            loadOrders();
+        }
+
+        // ------------------- CLEAR ALL ORDERS (DANGER) -------------------
+        function clearAllOrders() {
+            if (confirm('⚠️ Are you sure you want to DELETE all orders? This cannot be undone.')) {
+                localStorage.removeItem('balwaanOrders');
+                loadOrders();
+                alert('All orders cleared.');
+            }
+        }
+
+        // ------------------- AUTO REFRESH EVERY 30 SECONDS -------------------
+        setInterval(loadOrders, 30000);
+
+        // ------------------- INITIAL LOAD & NOTIFICATION PERMISSION -------------------
+        window.onload = function() {
+            loadOrders();
+            if (Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        };
+    </script>
+</body>
+</html>
