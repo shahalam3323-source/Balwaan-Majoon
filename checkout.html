@@ -313,44 +313,50 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
             </div>
         </div>
 
-        <div class="product-section">
-            <h3>2️⃣ Choose Your Package</h3>
-            <div class="variant-options">
-                <div class="variant-card" data-id="starter" data-price="549" data-savings="0">
-                    <h4>Starter Pack</h4>
-                    <div class="price">₹549</div>
-                    <div class="mrp">MRP ₹899</div>
-                    <div class="saving">30 Capsules (15 Days)</div>
-                </div>
-                <div class="variant-card" data-id="regular" data-price="899" data-savings="0">
-                    <h4>Regular Pack</h4>
-                    <div class="price">₹899</div>
-                    <div class="mrp">MRP ₹1299</div>
-                    <div class="saving">60 Capsules (30 Days)</div>
-                </div>
-                <div class="variant-card selected" data-id="combo" data-price="1499" data-savings="1500">
-                    <span class="popular">⚡ Best Seller</span>
-                    <h4>Combo Pack</h4>
-                    <div class="price">₹1499</div>
-                    <div class="mrp">MRP ₹2999</div>
-                    <div class="saving">Save ₹1500 (50% off)</div>
-                </div>
-                <div class="variant-card" data-id="family" data-price="2799" data-savings="3199">
-                    <h4>Family Pack</h4>
-                    <div class="price">₹2799</div>
-                    <div class="mrp">MRP ₹5998</div>
-                    <div class="saving">Save ₹3199 (53% off)</div>
-                </div>
-            </div>
-
-            <div class="order-summary">
-                <div class="row"><span>Selected Package:</span> <span id="selectedVariantName">Combo Pack</span></div>
-                <div class="row"><span>Price:</span> <span id="selectedPrice">₹1499</span></div>
-                <div class="row"><span>You Save:</span> <span id="selectedSavings">₹1500</span></div>
-                <div class="row total"><span>Total Amount:</span> <span id="totalAmount">₹1499</span></div>
-            </div>
+      <div class="product-section">
+    <h3>2️⃣ Choose Your Package</h3>
+    <div class="variant-options">
+        <!-- Starter Pack -->
+        <div class="variant-card" data-id="starter" data-price="550" data-savings="0">
+            <h4>Starter Pack</h4>
+            <div class="price">₹550</div>
+            <div class="mrp">MRP ₹900</div>
+            <div class="saving">15 Capsules (15 Days)</div>
         </div>
+        
+        <!-- Regular Pack (आपके दिए अनुसार) -->
+        <div class="variant-card" data-id="regular" data-price="990" data-savings="0">
+            <h4>Regular Pack</h4>
+            <div class="price">₹990</div>
+            <div class="mrp">MRP ₹1500</div>
+            <div class="saving">30 Capsules (30 Days)</div>   <!-- आपके अनुसार 30 Capsules -->
+        </div>
+        
+        <!-- Combo Pack – MRP सुधारा -->
+        <div class="variant-card selected" data-id="combo" data-price="1499" data-savings="1500">
+            <span class="popular">⚡ Best Seller</span>
+            <h4>Combo Pack</h4>
+            <div class="price">₹1499 (50% off)</div>         <!-- आपके अनुसार (50% off) सहित -->
+            <div class="mrp">MRP ₹3000</div>                 <!-- ✅ "3000/2" को सही किया -->
+            <div class="saving">60 Capsules (60 Days)</div>   <!-- आपके अनुसार 60 Capsules -->
+        </div>
+        
+        <!-- Dr Rana Programme – savings और class सुधारा -->
+        <div class="variant-card" data-id="family" data-price="7700" data-savings="0">   <!-- ✅ savings="0" किया -->
+            <h4>Dr Rana Personal Vitality Programme</h4>
+            <div class="price">₹7700</div>
+            <div class="speciality">Fully Customized Program</div>
+            <div class="programme-duration">50 Days</div>     <!-- ✅ hyphen लगाया -->
+        </div>
+    </div>
 
+    <div class="order-summary">
+        <div class="row"><span>Selected Package:</span> <span id="selectedVariantName">Combo Pack</span></div>
+        <div class="row"><span>Price:</span> <span id="selectedPrice">₹1499</span></div>
+        <div class="row"><span>You Save:</span> <span id="selectedSavings">₹1500</span></div>
+        <div class="row total"><span>Total Amount:</span> <span id="totalAmount">₹1499</span></div>
+    </div>
+</div>
         <div class="form-section">
             <h3>3️⃣ Your Details</h3>
             <form id="checkoutForm">
