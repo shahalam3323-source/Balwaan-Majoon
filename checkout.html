@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balwaan Gold - Secure Checkout</title>
 
-    <!-- Meta Pixel Code (already existing) -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,9 +20,6 @@
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -181,10 +177,11 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            cursor: pointer; /* Clickable banaya taaki user ko feel ho */
         }
 
         .payment-option.selected { border-color: #D4AF37; background: #faf6e7; }
-        .payment-option input[type="radio"] { width: 20px; height: 20px; accent-color: #D4AF37; }
+        .payment-option input[type="radio"] { width: 20px; height: 20px; accent-color: #D4AF37; cursor: pointer; }
 
         .order-btn {
             width: 100%;
@@ -329,7 +326,6 @@
         <div class="product-section">
             <h3>2️⃣ Choose Your Package</h3>
             <div class="variant-options">
-                <!-- Starter Pack -->
                 <div class="variant-card" data-id="starter" data-price="550" data-savings="0" data-value="Starter Pack">
                     <h4>Starter Pack</h4>
                     <div class="price">₹550</div>
@@ -337,7 +333,6 @@
                     <div class="saving">15 Capsules (15 Days)</div>
                 </div>
                 
-                <!-- Regular Pack -->
                 <div class="variant-card" data-id="regular" data-price="990" data-savings="0" data-value="Regular Pack">
                     <h4>Regular Pack</h4>
                     <div class="price">₹990</div>
@@ -345,7 +340,6 @@
                     <div class="saving">30 Capsules (30 Days)</div>
                 </div>
                 
-                <!-- Combo Pack -->
                 <div class="variant-card selected" data-id="combo" data-price="1499" data-savings="1500" data-value="Combo Pack">
                     <span class="popular">⚡ Best Seller</span>
                     <h4>Combo Pack</h4>
@@ -354,7 +348,6 @@
                     <div class="saving">60 Capsules (60 Days)</div>
                 </div>
                 
-                <!-- Dr Rana Programme -->
                 <div class="variant-card" data-id="family" data-price="7700" data-savings="0" data-value="Dr Rana Programme">
                     <h4>Dr Rana Personal Vitality Programme</h4>
                     <div class="price">₹7700</div>
@@ -420,7 +413,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="container">
                 <div class="footer-content">
@@ -431,7 +423,6 @@
         </footer>
     </div>
 
-    <!-- Thank You Modal -->
     <div class="modal" id="thankYouModal">
         <div class="modal-content">
             <i class="fas fa-check-circle"></i>
@@ -452,8 +443,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Section -->
-   <script>
+    <script>
 
 function submitToGoogleForm(orderData){
 
@@ -476,7 +466,7 @@ body:formData
 
 }
 
-        // ================== UPI DEEP LINK FUNCTIONS (ADDED) ==================
+        // ================== UPI DEEP LINK FUNCTIONS START ==================
         const YOUR_UPI_ID = "9045182625@ibl";  // Aapki UPI ID
 
         function initiateUPIPayment(amount, orderId, name) {
@@ -601,7 +591,17 @@ body:formData
             });
         });
 
-        // ------------------- FORM SUBMIT HANDLER (UPDATED WITH UPI LOGIC) -------------------
+        // ================== FIX: PAYMENT OPTION CLICK LOGIC ==================
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input[type="radio"]').checked = true;
+            });
+        });
+
+        // ------------------- FORM SUBMIT HANDLER -------------------
         document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -622,7 +622,7 @@ body:formData
 
             // Get selected product
             const selectedCard = document.querySelector('.variant-card.selected');
-            const productValue = selectedCard.dataset.value;  // e.g., "Combo Pack"
+            const productValue = selectedCard.dataset.value;  // e.g., "Combo Pack (₹1499)"
             const amount = selectedCard.dataset.price;
 
             // Get payment method
@@ -641,7 +641,7 @@ body:formData
                 paymentValue: paymentValue
             });
 
-            // ✅ Facebook Pixel Purchase Event (optional, agar chahiye)
+            // ✅ Facebook Pixel Purchase Event
             if (typeof fbq === 'function') {
                 fbq('track', 'Purchase', {
                     value: amount,
@@ -651,7 +651,7 @@ body:formData
                 }, { eventID: orderId });
             }
 
-            // ✅ Save to localStorage (optional, agar aapka admin dashboard localStorage use karta hai)
+            // ✅ Save to localStorage
             const orderData = {
                 orderId: orderId,
                 name: name,
