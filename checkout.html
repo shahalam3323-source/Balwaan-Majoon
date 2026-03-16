@@ -457,48 +457,22 @@
 
 function submitToGoogleForm(orderData){
 
-    const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
+const googleFormURL="https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
 
-    const iframeName = "hidden_iframe";
+const formData=new FormData();
 
-    let iframe = document.querySelector('iframe[name="'+iframeName+'"]');
+formData.append("entry.108304216",orderData.orderId);
+formData.append("entry.2108179602",orderData.name);
+formData.append("entry.1684860991",orderData.mobile);
+formData.append("entry.1774647451",orderData.address);
+formData.append("entry.1664049382",orderData.productValue);
+formData.append("entry.1326902597",orderData.paymentValue);
 
-    if(!iframe){
-        iframe = document.createElement("iframe");
-        iframe.name = iframeName;
-        iframe.style.display = "none";
-        document.body.appendChild(iframe);
-    }
-
-    const form = document.createElement("form");
-
-    form.method = "POST";
-    form.action = googleFormURL;
-    form.target = iframeName;
-    form.style.display = "none";
-
-    function addField(name,value){
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = name;
-        input.value = value || "";
-        form.appendChild(input);
-    }
-
-    addField("entry.108304216", orderData.orderId);      // Order ID
-    addField("entry.2108179602", orderData.name);        // Name
-    addField("entry.1684860991", orderData.mobile);      // Mobile
-    addField("entry.1774647451", orderData.address);     // Address
-    addField("entry.1664049382", orderData.productValue);// Package
-    addField("entry.1326902597", orderData.paymentValue);// Payment Method
-
-    document.body.appendChild(form);
-
-    form.submit();
-
-    setTimeout(()=>{
-        document.body.removeChild(form);
-    },2000);
+fetch(googleFormURL,{
+method:"POST",
+mode:"no-cors",
+body:formData
+});
 
 }
 
