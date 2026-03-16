@@ -453,41 +453,56 @@
     </div>
 
     <!-- JavaScript Section -->
-    <script>
-        // ------------------- GOOGLE FORM SUBMIT FUNCTION -------------------
-        function submitToGoogleForm(orderData) {
-            const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
-            
-            // Current timestamp
-            const currentTimestamp = new Date().toLocaleString('en-IN', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
+   <script>
 
-            // Form body with entry IDs
-            const formBody = new URLSearchParams({
-                "entry.108304216": orderData.orderId,        // Order ID (hidden)
-                "entry.2108179602": orderData.name,          // Full Name
-                "entry.1684860991": orderData.mobile,        // Mobile Number
-                "entry.1774647451": orderData.address,       // Full Address
-                "entry.1664049382": orderData.productValue,  // Selected Package (with price)
-                "entry.1326902597": orderData.paymentValue,  // Payment Method
-            }).toString();
+function submitToGoogleForm(orderData){
 
-            // POST request
-            fetch(googleFormURL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: formBody
-            })
-            .catch(error => console.log("Google Form error:", error));
-        }
+    const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
 
+    const iframeName = "hidden_iframe";
+
+    let iframe = document.querySelector('iframe[name="'+iframeName+'"]');
+
+    if(!iframe){
+        iframe = document.createElement("iframe");
+        iframe.name = iframeName;
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+    }
+
+    const form = document.createElement("form");
+
+    form.method = "POST";
+    form.action = googleFormURL;
+    form.target = iframeName;
+    form.style.display = "none";
+
+    function addField(name,value){
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value || "";
+        form.appendChild(input);
+    }
+
+    addField("entry.108304216", orderData.orderId);      // Order ID
+    addField("entry.2108179602", orderData.name);        // Name
+    addField("entry.1684860991", orderData.mobile);      // Mobile
+    addField("entry.1774647451", orderData.address);     // Address
+    addField("entry.1664049382", orderData.productValue);// Package
+    addField("entry.1326902597", orderData.paymentValue);// Payment Method
+
+    document.body.appendChild(form);
+
+    form.submit();
+
+    setTimeout(()=>{
+        document.body.removeChild(form);
+    },2000);
+
+}
+
+</script>
         // ------------------- VARIANT SELECTION LOGIC -------------------
         const variantCards = document.querySelectorAll('.variant-card');
         const selectedVariantName = document.getElementById('selectedVariantName');
