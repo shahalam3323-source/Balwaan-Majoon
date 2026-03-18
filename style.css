@@ -179,3 +179,30 @@ body {
     font-size: 28px;
     z-index: 9999;
 }
+<style>
+    /* Existing CSS (jo already hai) */
+    :root { ... }
+    body { ... }
+    .btn-gold-glow { ... }
+    /* ... aapki saari purani CSS ... */
+
+    /* ===== नया CSS यहाँ से शुरू ===== */
+    .hero-section {
+        background: radial-gradient(circle at 70% 30%, #1e5e41, #0f3824);
+        color: white;
+        padding: 70px 0 60px;
+        border-bottom: 5px solid #D4AF37;
+    }
+
+    .small-uppercase {
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #D4AF37;
+        font-weight: 600;
+    }
+
+    /* ... baaki saari nayi CSS lines ... */
+    /* ===== नया CSS यहाँ खतम ===== */
+
+</style>
