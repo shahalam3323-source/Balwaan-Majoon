@@ -16,6 +16,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <link rel="stylesheet" href="style.css">
+    
     <style>
         :root {
             --primary-green: #14452F;
@@ -37,7 +39,6 @@
         }
         .btn-gold-glow:hover { transform: scale(1.05); color: #000 !important; cursor: pointer; }
 
-        .hero-section { background-color: var(--primary-green); color: white; padding: 80px 0 50px; border-bottom: 5px solid var(--dark-gold); }
         .product-img-main { max-width: 100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); animation: floating 4s ease-in-out infinite; }
         .section-padding { padding: 60px 0; }
         .bg-green { background-color: var(--primary-green); color: white; }
@@ -47,11 +48,10 @@
         .whatsapp-float { position: fixed; bottom: 80px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; }
         .mobile-cta-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; display: none; z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
 
-        @media (max-width: 768px) { .mobile-cta-bar { display: block; } .hero-section { text-align: center; } }
+        @media (max-width: 768px) { .mobile-cta-bar { display: block; } }
     </style>
 
-    <!-- Meta Pixel Code -->
-<script>
+    <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -66,8 +66,6 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-
 </head>
 <body>
 
@@ -77,170 +75,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
             <a href="checkout.html" class="btn btn-gold-glow btn-sm px-4">Order Now</a>
         </div>
     </nav>
-
-  <style>
-  /* Ye CSS sirf is hero section par apply hogi, baaki site safe rahegi */
-  .balwaan-premium-hero {
-    background: radial-gradient(circle at top right, #1e5e41, #0f3824);
-    padding: 80px 0;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    overflow: hidden;
-  }
-  .balwaan-premium-hero .top-badge {
-    color: #D4AF37;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    display: inline-block;
-  }
-  .balwaan-premium-hero h1.hero-headline {
-    font-size: 42px;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-  .balwaan-premium-hero p.hero-sub {
-    font-size: 18px;
-    color: #e0e0e0;
-    margin-bottom: 25px;
-    line-height: 1.5;
-  }
-  /* Force removing default bullets */
-  .balwaan-premium-hero ul.hero-list {
-    list-style: none !important; 
-    padding-left: 0 !important;
-    margin-bottom: 30px;
-  }
-  .balwaan-premium-hero ul.hero-list li {
-    font-size: 16px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff;
-  }
-  .balwaan-premium-hero .price-wrap {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    background: rgba(0,0,0,0.25);
-    padding: 12px 20px;
-    border-radius: 8px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-  }
-  .balwaan-premium-hero .old-price {
-    text-decoration: line-through;
-    color: #aaa;
-    font-size: 18px;
-  }
-  .balwaan-premium-hero .new-price {
-    color: #D4AF37;
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 1;
-  }
-  .balwaan-premium-hero .discount-badge {
-    background: #e74c3c;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: bold;
-  }
-  .balwaan-premium-hero .button-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-  }
-  /* Force Button Styles */
-  .balwaan-premium-hero a.btn-main {
-    background: linear-gradient(135deg, #D4AF37 0%, #b8962e 100%) !important;
-    color: #000 !important;
-    padding: 16px 30px !important;
-    border-radius: 50px !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-    text-decoration: none !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    transition: all 0.3s ease;
-    border: none;
-  }
-  .balwaan-premium-hero a.btn-main:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-  }
-  .balwaan-premium-hero a.btn-outline {
-    background: rgba(255,255,255,0.05) !important;
-    color: #D4AF37 !important;
-    padding: 16px 30px !important;
-    border-radius: 50px !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-    text-decoration: none !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 2px solid #D4AF37 !important;
-    transition: all 0.3s ease;
-  }
-  .balwaan-premium-hero a.btn-outline:hover {
-    background: #D4AF37 !important;
-    color: #000 !important;
-  }
-  .balwaan-premium-hero .trust-strip {
-    font-size: 14px;
-    color: #bbb;
-  }
-  .balwaan-premium-hero .trust-strip span {
-    margin-right: 15px;
-    display: inline-block;
-    margin-bottom: 5px;
-  }
-  .balwaan-premium-hero .hero-image-wrap img {
-    max-width: 85%;
-    height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-  }
-  
-  /* Mobile Responsive */
-  @media (max-width: 991px) {
-    .balwaan-premium-hero {
-      text-align: center;
-      padding: 50px 15px;
-    }
-    .balwaan-premium-hero h1.hero-headline {
-      font-size: 28px;
-    }
-    .balwaan-premium-hero ul.hero-list li {
-      justify-content: center;
-    }
-    .balwaan-premium-hero .price-wrap {
-      justify-content: center;
-    }
-    .balwaan-premium-hero .button-group {
-      flex-direction: column;
-    }
-    .balwaan-premium-hero a.btn-main, 
-    .balwaan-premium-hero a.btn-outline {
-      width: 100%;
-    }
-    .balwaan-premium-hero .hero-image-wrap {
-      margin-top: 40px;
-    }
-  }
-</style>
 
 <section class="balwaan-premium-hero">
   <div class="container">
@@ -343,8 +177,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
         </div>
     </section>
 
-    <!-- POPUP CODE पूरी तरह हटा दिया गया है -->
-
     <section class="section-padding bg-green text-white">
         <div class="container text-center">
             <h2 class="mb-5 text-gold">Kaise Kaam Karta Hai?</h2>
@@ -376,7 +208,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
         <p class="text-muted mb-4">Complete blend of Ayurvedic herbs & ingredients</p>
         
         <div class="row g-4 justify-content-center">
-            <!-- Shilajit -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -392,7 +223,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Ashwagandha -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -408,7 +238,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Safed Musli -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -424,7 +253,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Gokshura -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -441,9 +269,7 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
             </div>
         </div>
         
-        <!-- Additional Ingredients in 2nd Row -->
         <div class="row g-4 justify-content-center mt-3">
-            <!-- Kaunch Beej -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -458,7 +284,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Vidari Khand -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -473,7 +298,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Shatavari -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -488,7 +312,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Moringa -->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="bg-white rounded-3 p-4 shadow-sm h-100 d-flex flex-column">
                     <div class="mx-auto mb-3">
@@ -504,7 +327,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
             </div>
         </div>
         
-        <!-- Scientific Proof Section -->
         <div class="row mt-5 pt-4">
             <div class="col-lg-6 mb-4">
                 <div class="p-4 bg-light rounded-3 border-start border-4 border-warning">
@@ -631,10 +453,8 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
         </div>
     </section>
 
-    <!-- ========== FOOTER WITH DISCLAIMER ========== -->
     <footer class="footer-main bg-dark text-white pt-5 pb-3">
         <div class="container">
-            <!-- Main Footer Content -->
             <div class="row mb-4">
                 <div class="col-md-4 mb-4">
                     <h4 class="text-gold mb-3">BALWAAN</h4>
@@ -672,7 +492,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Policy Links -->
             <div class="row py-3 border-top border-bottom border-secondary">
                 <div class="col-md-3 col-6 mb-2 text-center">
                     <a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
@@ -688,7 +507,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Detailed Disclaimer Section -->
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="p-3 bg-dark border border-warning rounded">
@@ -712,7 +530,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
                 </div>
             </div>
             
-            <!-- Copyright -->
             <div class="row mt-3">
                 <div class="col-12 text-center">
                     <p class="small text-secondary mb-0">
@@ -726,7 +543,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
         </div>
     </footer>
 
-    <!-- FAQ Modal (Additional) -->
     <div class="modal fade" id="faqModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-gold">
@@ -853,7 +669,6 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
