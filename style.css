@@ -29,17 +29,32 @@ body {
 }
 
 /* =================================================
-   PREMIUM HERO SECTION
+   ANIMATIONS
    ================================================= */
-.balwaan-premium-hero {
+@keyframes glowing { 
+    0% { box-shadow: 0 0 5px #D4AF37; } 
+    50% { box-shadow: 0 0 20px #D4AF37; } 
+    100% { box-shadow: 0 0 5px #D4AF37; } 
+}
+@keyframes floating { 
+    0% { transform: translateY(0px); } 
+    50% { transform: translateY(-15px); } 
+    100% { transform: translateY(0px); } 
+}
+
+/* =================================================
+   PREMIUM HERO SECTION (Matched with HTML Classes)
+   ================================================= */
+.hero-section {
     background: radial-gradient(circle at top right, #1e5e41, #0f3824);
     padding: 80px 0;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     width: 100%;
     overflow: hidden;
+    border-bottom: 4px solid #D4AF37;
 }
-.balwaan-premium-hero .top-badge {
+.small-uppercase {
     color: #D4AF37;
     font-size: 14px;
     font-weight: 600;
@@ -47,26 +62,31 @@ body {
     letter-spacing: 1px;
     margin-bottom: 15px;
     display: inline-block;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 6px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
-.balwaan-premium-hero h1.hero-headline {
+.hero-title {
     font-size: 42px;
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 20px;
     color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
 }
-.balwaan-premium-hero p.hero-sub {
+.hero-sub {
     font-size: 18px;
     color: #e0e0e0;
     margin-bottom: 25px;
     line-height: 1.5;
 }
-.balwaan-premium-hero ul.hero-list {
+.hero-points {
     list-style: none !important; 
     padding-left: 0 !important;
     margin-bottom: 30px;
 }
-.balwaan-premium-hero ul.hero-list li {
+.hero-points li {
     font-size: 16px;
     margin-bottom: 12px;
     display: flex;
@@ -74,28 +94,29 @@ body {
     gap: 10px;
     color: #fff;
 }
-.balwaan-premium-hero .price-wrap {
+.price-box {
     display: inline-flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 30px;
-    background: rgba(0,0,0,0.25);
-    padding: 12px 20px;
+    background: rgba(0,0,0,0.3);
+    padding: 12px 25px;
     border-radius: 8px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-.balwaan-premium-hero .old-price {
+.old-price {
     text-decoration: line-through;
     color: #aaa;
     font-size: 18px;
 }
-.balwaan-premium-hero .new-price {
+.new-price {
     color: #D4AF37;
     font-size: 32px;
     font-weight: bold;
     line-height: 1;
 }
-.balwaan-premium-hero .discount-badge {
+.discount {
     background: #e74c3c;
     color: #fff;
     padding: 4px 8px;
@@ -103,64 +124,70 @@ body {
     font-size: 13px;
     font-weight: bold;
 }
-.balwaan-premium-hero .button-group {
+.hero-btn-group {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     margin-bottom: 25px;
 }
-.balwaan-premium-hero a.btn-main {
+.btn-hero {
+    padding: 16px 30px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.primary-btn {
     background: linear-gradient(135deg, #D4AF37 0%, #b8962e 100%) !important;
     color: #000 !important;
-    padding: 16px 30px !important;
-    border-radius: 50px !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-    text-decoration: none !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
     border: none;
+    animation: glowing 2s infinite;
 }
-.balwaan-premium-hero a.btn-main:hover {
+.primary-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
 }
-.balwaan-premium-hero a.btn-outline {
+.secondary-btn {
     background: rgba(255,255,255,0.05) !important;
     color: #D4AF37 !important;
-    padding: 16px 30px !important;
-    border-radius: 50px !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
-    text-decoration: none !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     border: 2px solid #D4AF37 !important;
-    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
-.balwaan-premium-hero a.btn-outline:hover {
+.secondary-btn:hover {
     background: #D4AF37 !important;
     color: #000 !important;
+    transform: translateY(-3px);
 }
-.balwaan-premium-hero .trust-strip {
+.hero-trust {
     font-size: 14px;
     color: #bbb;
 }
-.balwaan-premium-hero .trust-strip span {
+.hero-trust span {
     margin-right: 15px;
     display: inline-block;
     margin-bottom: 5px;
 }
-.balwaan-premium-hero .hero-image-wrap img {
+.hero-img {
     max-width: 85%;
     height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+    animation: floating 4s ease-in-out infinite;
+}
+.hero-proof {
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(5px);
 }
 
 /* =================================================
@@ -168,14 +195,20 @@ body {
    ================================================= */
 .btn-gold-glow {
     background: linear-gradient(135deg, #D4AF37, #f5e27a);
-    color: #1e1e1e;
+    color: #1e1e1e !important;
     border: none;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: 0.3s;
 }
 .btn-gold-glow:hover {
+    transform: scale(1.05);
     background: linear-gradient(135deg, #f5e27a, #D4AF37);
-    color: #000;
+    color: #000 !important;
 }
 
 /* =================================================
@@ -198,6 +231,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .ingredients-section .ingredient-img-wrapper img {
     width: 100%;
@@ -213,9 +247,11 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #14452F;
+    background: #ffffff;
     z-index: 9999;
-    padding: 10px 0;
+    padding: 10px 15px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+    display: none; /* Desktop me hide rahega */
 }
 #orderPopup {
     position: fixed;
@@ -235,46 +271,60 @@ body {
 }
 .whatsapp-float {
     position: fixed;
-    bottom: 90px;
+    bottom: 80px;
     right: 20px;
     background: #25D366;
     color: #fff;
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 30px;
     z-index: 9999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-decoration: none;
+}
+.whatsapp-float:hover {
+    color: #fff;
+    transform: scale(1.1);
 }
 
 /* =================================================
    MOBILE RESPONSIVE (Media Queries)
    ================================================= */
 @media (max-width: 991px) {
-    .balwaan-premium-hero {
+    .hero-section {
         text-align: center;
         padding: 50px 15px;
     }
-    .balwaan-premium-hero h1.hero-headline {
-        font-size: 28px;
+    .hero-title {
+        font-size: 32px;
     }
-    .balwaan-premium-hero ul.hero-list li {
+    .hero-points li {
         justify-content: center;
+        text-align: left;
     }
-    .balwaan-premium-hero .price-wrap {
+    .price-box {
         justify-content: center;
-    }
-    .balwaan-premium-hero .button-group {
-        flex-direction: column;
-    }
-    .balwaan-premium-hero a.btn-main, 
-    .balwaan-premium-hero a.btn-outline {
         width: 100%;
+        max-width: 350px;
     }
-    .balwaan-premium-hero .hero-image-wrap {
+    .hero-btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-hero {
+        width: 100%;
+        max-width: 350px;
+    }
+    .hero-img {
         margin-top: 40px;
+        width: 90%;
+    }
+    .mobile-cta-bar {
+        display: block; /* Mobile me show karega */
     }
 }
 
