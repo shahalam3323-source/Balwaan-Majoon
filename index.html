@@ -78,71 +78,219 @@ src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
         </div>
     </nav>
 
-    <section class="hero-section">
+  <style>
+  /* Ye CSS sirf is hero section par apply hogi, baaki site safe rahegi */
+  .balwaan-premium-hero {
+    background: radial-gradient(circle at top right, #1e5e41, #0f3824);
+    padding: 80px 0;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    overflow: hidden;
+  }
+  .balwaan-premium-hero .top-badge {
+    color: #D4AF37;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+  .balwaan-premium-hero h1.hero-headline {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  .balwaan-premium-hero p.hero-sub {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+  /* Force removing default bullets */
+  .balwaan-premium-hero ul.hero-list {
+    list-style: none !important; 
+    padding-left: 0 !important;
+    margin-bottom: 30px;
+  }
+  .balwaan-premium-hero ul.hero-list li {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+  }
+  .balwaan-premium-hero .price-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: rgba(0,0,0,0.25);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .balwaan-premium-hero .old-price {
+    text-decoration: line-through;
+    color: #aaa;
+    font-size: 18px;
+  }
+  .balwaan-premium-hero .new-price {
+    color: #D4AF37;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  .balwaan-premium-hero .discount-badge {
+    background: #e74c3c;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .balwaan-premium-hero .button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+  }
+  /* Force Button Styles */
+  .balwaan-premium-hero a.btn-main {
+    background: linear-gradient(135deg, #D4AF37 0%, #b8962e 100%) !important;
+    color: #000 !important;
+    padding: 16px 30px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+  }
+  .balwaan-premium-hero a.btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  }
+  .balwaan-premium-hero a.btn-outline {
+    background: rgba(255,255,255,0.05) !important;
+    color: #D4AF37 !important;
+    padding: 16px 30px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px solid #D4AF37 !important;
+    transition: all 0.3s ease;
+  }
+  .balwaan-premium-hero a.btn-outline:hover {
+    background: #D4AF37 !important;
+    color: #000 !important;
+  }
+  .balwaan-premium-hero .trust-strip {
+    font-size: 14px;
+    color: #bbb;
+  }
+  .balwaan-premium-hero .trust-strip span {
+    margin-right: 15px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .balwaan-premium-hero .hero-image-wrap img {
+    max-width: 85%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 991px) {
+    .balwaan-premium-hero {
+      text-align: center;
+      padding: 50px 15px;
+    }
+    .balwaan-premium-hero h1.hero-headline {
+      font-size: 28px;
+    }
+    .balwaan-premium-hero ul.hero-list li {
+      justify-content: center;
+    }
+    .balwaan-premium-hero .price-wrap {
+      justify-content: center;
+    }
+    .balwaan-premium-hero .button-group {
+      flex-direction: column;
+    }
+    .balwaan-premium-hero a.btn-main, 
+    .balwaan-premium-hero a.btn-outline {
+      width: 100%;
+    }
+    .balwaan-premium-hero .hero-image-wrap {
+      margin-top: 40px;
+    }
+  }
+</style>
+
+<section class="balwaan-premium-hero">
   <div class="container">
     <div class="row align-items-center">
 
-      <!-- Left Content -->
       <div class="col-lg-6 text-center text-lg-start">
+        
+        <div class="top-badge">⚡ 20–35 saal ke men ki common problem</div>
 
-        <!-- Top Hook -->
-        <p class="small-uppercase mb-2">
-          ⚡ 20–35 saal ke men ki common problem
-        </p>
-
-        <!-- Headline -->
-        <h1 class="hero-title mb-3">
+        <h1 class="hero-headline">
           Kya aap stamina ki kami ya kamzor performance se pareshan hain?
         </h1>
 
-        <!-- Subheadline -->
-        <p class="hero-sub mb-3">
-          <span class="text-gold fw-bold">Balwaan Gold</span> – powerful Ayurvedic blend jo 
-          stamina, strength aur confidence ko naturally wapas lane me madad kare
+        <p class="hero-sub">
+          <strong style="color:#D4AF37;">Balwaan Gold</strong> – powerful Ayurvedic blend jo stamina, strength aur confidence ko naturally wapas lane me madad kare.
         </p>
 
-        <!-- Points -->
-        <ul class="hero-points mb-4">
+        <ul class="hero-list">
           <li>✔ Stamina & Performance me sudhar</li>
           <li>✔ Energy & Strength support</li>
           <li>✔ 100% Ayurvedic • No Side Effects</li>
         </ul>
 
-        <!-- Price -->
-        <div class="price-box mb-3">
+        <div class="price-wrap">
           <span class="old-price">₹2999</span>
           <span class="new-price">₹1499</span>
-          <span class="discount">50% OFF</span>
+          <span class="discount-badge">50% OFF</span>
         </div>
 
-        <!-- CTA Buttons -->
-        <div class="hero-btn-group">
-          
-          <!-- Buy Now -->
-          <a href="checkout.html" class="btn btn-hero primary-btn">
+        <div class="button-group">
+          <a href="checkout.html" class="btn-main">
             👉 Buy Now
           </a>
-
-          <!-- WhatsApp -->
-          <a href="https://wa.me/918273896083?text=Hello%20Doctor,%20mujhe%20Balwaan%20Gold%20ke%20baare%20me%20jaanna%20hai%20aur%20apni%20health%20issue%20discuss%20karni%20hai" 
-             class="btn btn-hero secondary-btn">
+          <a href="https://wa.me/918273896083?text=Hello%20Doctor,%20mujhe%20Balwaan%20Gold%20ke%20baare%20me%20jaanna%20hai%20aur%20apni%20health%20issue%20discuss%20karni%20hai" class="btn-outline">
             💬 Doctor se baat karein
           </a>
-
         </div>
 
-        <!-- Trust -->
-        <p class="hero-trust mt-3">
-          🔒 100% Private Packaging • 🚚 Free Shipping • 🌿 Ayurvedic Formula
-        </p>
+        <div class="trust-strip">
+          <span>🔒 100% Private Packaging</span>
+          <span>🚚 Free Shipping</span>
+          <span>🌿 Ayurvedic Formula</span>
+        </div>
 
       </div>
 
-      <!-- Right Image -->
-      <div class="col-lg-6 text-center mt-4 mt-lg-0">
-        <img src="images/product.png" alt="Balwaan Gold Ayurvedic Supplement for Men" class="hero-img img-fluid">
-
-        <div class="hero-proof mt-3">
+      <div class="col-lg-6 text-center hero-image-wrap">
+        <img src="images/product.png" alt="Balwaan Gold Ayurvedic Supplement for Men">
+        
+        <div style="margin-top: 15px; font-size: 14px; color: #ddd;">
           ⭐ 4.8/5 Rating • 10,000+ Men Trust Balwaan Gold
         </div>
       </div>
