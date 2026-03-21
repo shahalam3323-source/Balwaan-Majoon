@@ -368,3 +368,12 @@ h1, h2, h3, .navbar-brand {
         height: 90px;
     }
 }
+.hero-title {
+    font-size: 42px;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 26px;
+    }
+}
