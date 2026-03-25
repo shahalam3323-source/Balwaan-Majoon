@@ -564,23 +564,103 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function changeImage(element) {
-            document.getElementById('mainImg').src = element.src;
-            let thumbs = document.querySelectorAll('.thumb');
-            thumbs.forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
-        }
-        function openZoom(imageSrc) { document.getElementById('zoomedImage').src = imageSrc; document.getElementById('imageZoomModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeZoom() { document.getElementById('imageZoomModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
-        document.getElementById('imageZoomModal').addEventListener('click', function(e) { if (e.target === this) closeZoom(); });
+        // 🚀 1. NAYA SMART SWIPE IMAGE GALLERY LOGIC
+        let currentImgIndex = 0;
+        let isSwiping = false; // Swipe aur Tap ke beech farq karne ke liye
+        const thumbs = document.querySelectorAll('.thumb');
+        const mainImg = document.getElementById('mainImg');
+        const mainImgWrapper = document.querySelector('.main-image-wrapper');
 
-        // LEAD GATE SUBMISSION SCRIPT (LIVE NUMBER)
+        // Thumbnail Click Logic
+        function changeImage(element) {
+            mainImg.src = element.src;
+            thumbs.forEach((t, i) => {
+                t.classList.remove('active');
+                if(t.src === element.src) currentImgIndex = i;
+            });
+            element.classList.add('active');
+            // Choti image ko auto-center karne ke liye
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // Mobile Swipe Detection Logic
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        mainImgWrapper.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            isSwiping = false; // Touch start par isey false rakhein
+        }, {passive: true});
+
+        mainImgWrapper.addEventListener('touchmove', e => {
+            isSwiping = true; // Agar ungli screen par hili, toh matlab customer swipe kar raha hai
+        }, {passive: true});
+
+        mainImgWrapper.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            const swipeThreshold = 40; // Kitna lamba swipe zaroori hai
+            if (touchStartX - touchEndX > swipeThreshold) {
+                // 👉 Left Swipe kiya (Next Image)
+                currentImgIndex = (currentImgIndex + 1) % thumbs.length;
+                updateMainImage();
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                // 👈 Right Swipe kiya (Previous Image)
+                currentImgIndex = (currentImgIndex - 1 + thumbs.length) % thumbs.length;
+                updateMainImage();
+            }
+        }
+
+        function updateMainImage() {
+            mainImg.src = thumbs[currentImgIndex].src;
+            thumbs.forEach(t => t.classList.remove('active'));
+            thumbs[currentImgIndex].classList.add('active');
+            // Niche ki thumbnail list bhi automatically slide hogi
+            thumbs[currentImgIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // Zoom Logic (Ab swipe karne par galti se zoom nahi khulega)
+        function openZoom(imageSrc) { 
+            if(isSwiping) return; // Agar swipe tha, toh zoom mat kholo
+            document.getElementById('zoomedImage').src = imageSrc; 
+            document.getElementById('imageZoomModal').classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeZoom() { 
+            document.getElementById('imageZoomModal').classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+        }
+        document.getElementById('imageZoomModal').addEventListener('click', function(e) { 
+            if (e.target === this) closeZoom(); 
+        });
+
+        // 🚀 2. LEAD GATE SUBMISSION SCRIPT (Google Sheet + Pixel Integration)
         document.getElementById('leadGateForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('lgName').value;
+            
+            const name = document.getElementById('lgName').value.trim();
+            const mobile = document.getElementById('lgMobile').value.trim();
+            
+            const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
+            const formData = new FormData();
+            formData.append("entry.108304216", "LEAD-" + Date.now().toString().slice(-4)); 
+            formData.append("entry.2108179602", name); 
+            formData.append("entry.1684860991", mobile); 
+            formData.append("entry.1774647451", "N/A (WhatsApp Lead)"); 
+            formData.append("entry.1664049382", "Free Consultation Inquiry"); 
+            formData.append("entry.1326902597", "Lead / Inquiry"); 
+            
+            fetch(googleFormURL, { method: "POST", mode: "no-cors", body: formData });
+
+            if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+
             const modal = bootstrap.Modal.getInstance(document.getElementById('leadGateModal'));
             modal.hide();
-            // LIVE WhatsApp Number
+            
+            // Naye Doctor ka WhatsApp Number (Abhi 9808669522 set hai)
             const msg = `Hi, I am ${name}. I need a free consultation regarding Balwaan Gold.`;
             window.open(`https://wa.me/919808669522?text=${msg}`, '_blank');
         });
