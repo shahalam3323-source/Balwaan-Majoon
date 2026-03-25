@@ -4,24 +4,18 @@
     <meta name="facebook-domain-verification" content="dv7wktuumuyr35lwe1esvlzcx84n38" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balwaan | Strength, Stamina & Confidence Boost</title>
+    <title>Balwaan Gold | Premium Strength & Stamina Boost</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     
-    <!-- Fonts & Bootstrap -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Your custom CSS (external) – make sure this file exists and contains the new hero styles -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Meta Pixel Code (same as original) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -31,113 +25,350 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '916924051189893');
+    fbq('init', '916924051189893'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
     /></noscript>
+
+    <style>
+        /* GLOBAL BASE & FONTS */
+        :root { --primary-green: #14452F; --gold-gradient: linear-gradient(135deg, #D4AF37, #f5e27a); --dark-gold: #D4AF37; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f9f9f9; color: #333; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+
+        @keyframes glowing { 0% { box-shadow: 0 0 5px #D4AF37; } 50% { box-shadow: 0 0 20px #D4AF37; } 100% { box-shadow: 0 0 5px #D4AF37; } }
+        .btn-gold-glow {
+            background: var(--gold-gradient); color: #1e1e1e !important; border: none; font-weight: bold; 
+            text-transform: uppercase; letter-spacing: 1px; animation: glowing 2s infinite; 
+            border-radius: 50px; transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;
+        }
+        .btn-gold-glow:hover { background: linear-gradient(135deg, #f5e27a, #D4AF37); transform: scale(1.05); color: #000 !important; cursor: pointer; }
+
+        .hero-section { background: radial-gradient(circle at top, #1e5e41, #14452F); color: white; padding: 60px 0; border-bottom: 5px solid var(--dark-gold); min-height: 80vh; display: flex; align-items: center; }
+        .price-box { background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 15px; display: inline-block; margin: 15px 0; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .price-box .new-price { font-size: 32px; font-weight: 800; color: #D4AF37; }
+        
+        .product-gallery { position: relative; max-width: 450px; margin: 0 auto; }
+        .main-image-wrapper { position: relative; background: rgba(255,255,255,0.05); border-radius: 15px; padding: 10px; cursor: zoom-in; border: 1px solid rgba(212, 175, 55, 0.2); transition: 0.3s; }
+        .main-image-wrapper:hover { border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+        .product-img-main { width: 100%; height: auto; border-radius: 10px; }
+        .zoom-hint { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 20px; font-size: 12px; pointer-events: none; }
+        .thumbnail-container { display: flex; gap: 10px; margin-top: 15px; justify-content: center; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        .thumbnail-container::-webkit-scrollbar { display: none; }
+        .thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid transparent; cursor: pointer; opacity: 0.6; transition: 0.3s; }
+        .thumb.active, .thumb:hover { opacity: 1; border-color: #D4AF37; }
+
+        #imageZoomModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100000; align-items: center; justify-content: center; }
+        #imageZoomModal.active { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        #zoomedImage { max-width: 95%; max-height: 90vh; border-radius: 10px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+        .close-zoom { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; cursor: pointer; background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+
+        .trust-banner { background: #fff; border-bottom: 1px solid #e9ecef; padding: 15px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .trust-item { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--primary-green); margin: 5px 15px; }
+        .trust-item i { font-size: 20px; color: var(--dark-gold); }
+        .section-padding { padding: 70px 0; }
+        .bg-green { background-color: var(--primary-green); color: white; }
+        .text-gold { color: var(--dark-gold); }
+
+        .issue-badge { font-size: 16px; letter-spacing: 1px; padding: 10px 25px !important; text-transform: uppercase; font-weight: 700; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); margin-bottom: 20px !important; display: inline-block; }
+        .problem-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; height: 100%; display: flex; flex-direction: column; text-align: center; border: 1px solid #eee;}
+        .problem-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2); border-color: #D4AF37;}
+        
+        .problem-header { position: relative; padding: 35px 20px; background-size: cover; background-position: center; color: white; z-index: 1; border-bottom: 3px solid #D4AF37;}
+        .problem-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: -1; }
+        
+        /* Local path references based on user's GitHub repo structure */
+        .bg-prob-1 { background-image: url('images/fatigue.webp'); }
+        .bg-prob-2 { background-image: url('images/intimacy.webp'); }
+        .bg-prob-3 { background-image: url('images/stress.webp'); }
+        .bg-prob-4 { background-image: url('images/focus.webp'); }
+
+        .problem-header h5 { color: #fff !important; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .problem-header p { color: #f0f0f0 !important; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .problem-icon { width: 60px; height: 60px; background: rgba(255, 255, 255, 0.15); color: #ffcccc; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        
+        .solution-cta-box { padding: 25px 20px; background: #fafafa; margin-top: auto; }
+        .btn-reveal { background: #14452F; color: #fff; border: 2px solid #14452F; border-radius: 50px; padding: 10px 20px; font-weight: 600; font-size: 14px; transition: 0.3s; width: 100%; }
+        .btn-reveal:hover { background: #D4AF37; border-color: #D4AF37; color: #000; box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);}
+        
+        .solution-modal-header { background: linear-gradient(135deg, #14452F, #0a2418); color: white; border-bottom: 3px solid #D4AF37; }
+        .herb-highlight { display: inline-block; background: #fdf5d3; color: #856404; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 13px; margin-bottom: 10px; border: 1px solid #ffeeba;}
+
+        .ingredient-box { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column; text-align: center; }
+        .ingredient-img { width: 110px; height: 110px; object-fit: cover; border: 3px solid #D4AF37; border-radius: 50%; margin: 0 auto 15px; }
+
+        .dr-rana-banner { background: linear-gradient(135deg, #0a2418 0%, #14452F 100%); border-top: 3px solid #D4AF37; padding: 40px 0; margin-top: 30px; }
+
+        .whatsapp-float { position: fixed; bottom: 80px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; cursor: pointer; transition: 0.3s;}
+        .whatsapp-float:hover { transform: scale(1.1); color:white;}
+        .mobile-cta-bar { position: fixed; bottom: 0; width: 100%; background: #14452F; padding: 10px; display: none; z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); }
+        
+        .lead-modal-header { background: #14452F; color: white; border-bottom: 2px solid #D4AF37; }
+        .lead-input { border: 2px solid #eee; padding: 12px; border-radius: 8px; width: 100%; margin-bottom: 15px; }
+        .lead-input:focus { border-color: #D4AF37; outline: none; }
+
+        @media (max-width: 768px) { 
+            .mobile-cta-bar { display: block; } 
+            .hero-section { text-align: center; padding: 40px 0 80px 0; } 
+            .ingredient-box { padding: 12px 8px !important; }
+            .ingredient-img { width: 90px; height: 90px; border-width: 2px; }
+            .ingredient-box h5 { font-size: 14px; margin-bottom: 5px; }
+            .ingredient-box p { font-size: 11px; margin-bottom: 8px; }
+            .ingredient-box .badge { font-size: 9px !important; padding: 3px 5px !important; margin-bottom: 3px; display: inline-block;}
+            .issue-badge { font-size: 14px; padding: 8px 20px !important; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Navigation (exactly as your original) -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">BALWAAN GOLD</a>
-            <a href="checkout.html" class="btn-gold-glow btn-sm px-4">Order Now</a>
+            <a href="checkout.html" class="btn btn-gold-glow btn-sm px-4">Order Now</a>
         </div>
     </nav>
 
-    <!-- ========== NEW PREMIUM HERO SECTION (using your style.css classes) ========== -->
     <section class="hero-section">
-  <div class="container">
-    <div class="row align-items-center">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-md-row">
+                <div class="col-md-6 mt-4 mt-md-0 text-center text-md-start">
+                    <p class="text-gold mb-2" style="font-weight: 600; letter-spacing: 1px;">NATURAL POWER & VITALITY</p>
+                    <h1 class="display-5 mb-3">Unlock Your <span class="text-gold">Peak Energy, Strength & Confidence!</span></h1>
+                    <p class="lead mb-3" style="font-size: 16px; opacity: 0.9;">Ayurveda ki asli taaqat se apni andaruni kamzori door karein aur bina kisi side effect ke long-lasting results feel karein.</p>
+                    
+                    <div class="mb-3">
+                        <span class="badge bg-warning text-dark me-2 py-2"><i class="fas fa-star text-dark"></i> 10,000+ Happy Men</span>
+                        <span class="badge bg-success py-2"><i class="fas fa-truck-fast"></i> Fast Delivery in UP</span>
+                    </div>
 
-      <!-- IMAGE (TOP IN MOBILE) -->
-      <div class="col-lg-6 text-center mb-4 mb-lg-0">
-        <img src="images/hero-product-1200x1200.png" alt="Balwaan Gold" class="hero-img">
-        
-        <div class="hero-proof mt-3">
-          ⭐⭐⭐⭐⭐ 4.8/5 Rating • 5,000+ Users
-        </div>
-      </div>
-
-      <!-- CONTENT -->
-      <div class="col-lg-6 text-center text-lg-start">
-
-        <!-- HOOK LINE -->
-        <div class="small-uppercase mb-3">
-          Energy low… confidence down?
-        </div>
-
-        <!-- HEADLINE -->
-        <h1 class="hero-title">
-          2–5 din me stamina & performance me noticeable farq
-        </h1>
-
-        <!-- SUB -->
-        <p class="hero-sub">
-          100% Ayurvedic formula — bina side effects ke natural result feel karein
-        </p>
-
-        <!-- PRICE -->
-        <div class="price-box">
-          <span class="old-price">₹2999</span>
-          <span class="new-price">₹1499</span>
-          <span class="discount">50% OFF</span>
-        </div>
-
-        <!-- CTA -->
-        <div class="hero-btn-group">
-          <a href="checkout.html" class="btn-hero primary-btn">
-            Order Now (COD Available)
-          </a>
-        </div>
-
-        <!-- TRUST -->
-        <div class="hero-trust mt-3">
-          <span>🔒 Discreet Packaging</span>
-          <span>🚚 Fast Delivery</span>
-          <span>🌿 100% Ayurvedic</span>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-
-    <!-- ========== ALL ORIGINAL SECTIONS (unchanged) ========== -->
-
-    <!-- Features Section (4 boxes) -->
-    <section class="section-padding container text-center">
-        <h2 class="mb-5">Sirf Supplement Nahi, <span class="text-success">Life Transformation!</span></h2>
-        <div class="row g-4">
-            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-fire fa-3x text-gold mb-3"></i><h4>Peak Performance</h4><p>Natural Testosterone boost jo har pal mein energy bhare.</p></div></div>
-            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-heart fa-3x text-gold mb-3"></i><h4>Fertility Support</h4><p>Sperm health aur sperm count ka natural aur effective solution.</p></div></div>
-            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-moon fa-3x text-gold mb-3"></i><h4>Gehri Neend</h4><p>Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p></div></div>
-            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-rocket fa-3x text-gold mb-3"></i><h4>2x Productivity</h4><p>Behtar focus aur mental clarity kaam aur life dono ke liye.</p></div></div>
+                    <div class="price-box">
+                        <span class="d-block text-light mb-1" style="font-size:14px;">Trial Packs starting at just</span>
+                        <span class="new-price">₹550</span>
+                        <span class="ms-2 badge bg-success">COD Available</span>
+                    </div>
+                    <br>
+                    <a href="checkout.html" class="btn btn-gold-glow btn-lg px-5 py-3 mt-2">Order Now (Pay on Delivery)</a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="product-gallery">
+                        <div class="main-image-wrapper" onclick="openZoom(document.getElementById('mainImg').src)">
+                            <img id="mainImg" src="images/gallery-1.webp" alt="Balwaan Product" class="product-img-main">
+                            <div class="zoom-hint"><i class="fas fa-search-plus"></i> Tap to Zoom</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="images/gallery-1.webp" class="thumb active" onclick="changeImage(this)">
+                            <img src="images/gallery-2.webp" class="thumb" onclick="changeImage(this)">
+                            <img src="images/gallery-3.webp" class="thumb" onclick="changeImage(this)">
+                            <img src="images/gallery-4.webp" class="thumb" onclick="changeImage(this)">
+                            <img src="images/vitality-boost.webp" class="thumb" onclick="changeImage(this)">
+                            <img src="images/stress-relief.webp" class="thumb" onclick="changeImage(this)">
+                            <img src="images/active-family.webp" class="thumb" onclick="changeImage(this)">
+                            <img src="images/mental-focus.webp" class="thumb" onclick="changeImage(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Comparison Table -->
+    <div id="imageZoomModal">
+        <div class="close-zoom" onclick="closeZoom()">&times;</div>
+        <img id="zoomedImage" src="">
+    </div>
+
+    <div class="trust-banner text-center">
+        <div class="container">
+            <div class="trust-item"><i class="fas fa-leaf"></i> 100% Ayurvedic</div>
+            <div class="trust-item"><i class="fas fa-certificate"></i> GMP Certified</div>
+            <div class="trust-item"><i class="fas fa-check-circle"></i> Ayush Approved</div>
+            <div class="trust-item"><i class="fas fa-box-open"></i> Secret Packaging</div>
+        </div>
+    </div>
+
     <section class="section-padding bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Balwaan vs <span class="text-danger">Aam Products</span></h2>
+            <div class="text-center mb-5">
+                <span class="badge bg-danger issue-badge rounded-pill">Identified Core Issues</span>
+                <h2>Are You Secretly Facing These <span class="text-danger">Daily Struggles?</span></h2>
+                <p class="text-muted mt-2">Pehchaniye apni asli problem, aur janiye Balwaan kaise inko jad se khatam karta hai.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="problem-card">
+                        <div class="problem-header bg-prob-1">
+                            <div class="problem-icon"><i class="fas fa-battery-empty"></i></div>
+                            <h5 class="fw-bold mb-2">Constant Fatigue & Weakness</h5>
+                            <p class="small mb-0">Raat aate-aate sari energy khatam ho jana aur perform na kar pana?</p>
+                        </div>
+                        <div class="solution-cta-box">
+                            <button class="btn-reveal" data-bs-toggle="modal" data-bs-target="#solutionModal1">
+                                <i class="fas fa-lock me-2"></i> Reveal Secret
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="problem-card">
+                        <div class="problem-header bg-prob-2">
+                            <div class="problem-icon"><i class="fas fa-heart-broken"></i></div>
+                            <h5 class="fw-bold mb-2">Low Vitality & Confidence</h5>
+                            <p class="small mb-0">Sperm count ki kami, andaruni kamzori aur asantushti?</p>
+                        </div>
+                        <div class="solution-cta-box">
+                            <button class="btn-reveal" data-bs-toggle="modal" data-bs-target="#solutionModal2">
+                                <i class="fas fa-lock me-2"></i> Reveal Secret
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="problem-card">
+                        <div class="problem-header bg-prob-3">
+                            <div class="problem-icon"><i class="fas fa-bed"></i></div>
+                            <h5 class="fw-bold mb-2">High Stress & Poor Sleep</h5>
+                            <p class="small mb-0">Din bhar overthinking, tension aur raat ko theek se nind na aana?</p>
+                        </div>
+                        <div class="solution-cta-box">
+                            <button class="btn-reveal" data-bs-toggle="modal" data-bs-target="#solutionModal3">
+                                <i class="fas fa-lock me-2"></i> Reveal Secret
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="problem-card">
+                        <div class="problem-header bg-prob-4">
+                            <div class="problem-icon"><i class="fas fa-brain"></i></div>
+                            <h5 class="fw-bold mb-2">Lack of Focus & Energy</h5>
+                            <p class="small mb-0">Kaam me man na lagna, brain fog aur hamesha susti feel karna?</p>
+                        </div>
+                        <div class="solution-cta-box">
+                            <button class="btn-reveal" data-bs-toggle="modal" data-bs-target="#solutionModal4">
+                                <i class="fas fa-lock me-2"></i> Reveal Secret
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="solutionModal1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header solution-modal-header">
+                    <h5 class="modal-title"><i class="fas fa-bolt text-warning me-2"></i> Solution: Unstoppable Energy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <span class="herb-highlight">Active Herb: Himalayan Shilajit</span>
+                    <h4 class="mb-3">Testosterone Boost Ka Jadu</h4>
+                    <p class="text-muted small mb-4">Umar badhne ke sath Testosterone (Male Hormone) girne lagta hai jisse thakan hoti hai. Balwaan me maujood <strong>Shilajit</strong> natural tarike se Testosterone level badhata hai, jisse aapko milti hai fauladi strength.</p>
+                    <a href="checkout.html" class="btn btn-gold-glow w-100 py-3">Order Now & Boost Stamina</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="solutionModal2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header solution-modal-header">
+                    <h5 class="modal-title"><i class="fas fa-shield-alt text-warning me-2"></i> Solution: Inner Power & Fertility</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <span class="herb-highlight">Active Herbs: Safed Musli & Kaunch Beej</span>
+                    <h4 class="mb-3">Sperm Health Ka Natural Ilaaj</h4>
+                    <p class="text-muted small mb-4">Kharab lifestyle se andaruni system kamzor ho jata hai. <strong>Safed Musli aur Kaunch Beej</strong> reproductive system ko deeply nourish karte hain, semen quality improve karte hain aur aapka khoya hua confidence wapas laate hain.</p>
+                    <a href="checkout.html" class="btn btn-gold-glow w-100 py-3">Order Now & Regain Confidence</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="solutionModal3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header solution-modal-header">
+                    <h5 class="modal-title"><i class="fas fa-moon text-warning me-2"></i> Solution: Stress-Free Deep Sleep</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <span class="herb-highlight">Active Herb: KSM-66 Ashwagandha</span>
+                    <h4 class="mb-3">Cortisol (Stress) Ko Control Kare</h4>
+                    <p class="text-muted small mb-4">Dimag me tension hone se Cortisol level badh jata hai. Balwaan ka <strong>Ashwagandha</strong> scientifically proven hai ki ye stress ko 44% tak kam karta hai, mind ko relax karta hai jisse aapko subah uthne par fresh feel hota hai.</p>
+                    <a href="checkout.html" class="btn btn-gold-glow w-100 py-3">Order Now for Better Sleep</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="solutionModal4" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header solution-modal-header">
+                    <h5 class="modal-title"><i class="fas fa-rocket text-warning me-2"></i> Solution: 2X Focus & Productivity</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <span class="herb-highlight">Active Herbs: Moringa & Gokshura</span>
+                    <h4 class="mb-3">Brain Fog & Susti Ka Khatma</h4>
+                    <p class="text-muted small mb-4">Body me sahi blood flow aur nutrients na hone se susti aati hai. <strong>Moringa aur Gokshura</strong> blood flow ko behtar banate hain aur mental clarity dete hain. Kaam me man lagega aur body active rahegi.</p>
+                    <a href="checkout.html" class="btn btn-gold-glow w-100 py-3">Order Now to Boost Focus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-padding container text-center">
+        <h2 class="mb-5">Not Just A Supplement, <span class="text-success">A Complete Life Transformation!</span></h2>
+        <div class="row g-4">
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-fire fa-3x text-gold mb-3"></i><h4 class="fw-bold">Peak Performance</h4><p class="text-muted">Natural Testosterone boost jo har pal mein energy bhare.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-heart fa-3x text-gold mb-3"></i><h4 class="fw-bold">Fertility Support</h4><p class="text-muted">Sperm health aur sperm count ka natural aur effective solution.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-moon fa-3x text-gold mb-3"></i><h4 class="fw-bold">Deep Sleep</h4><p class="text-muted">Stress kam kare aur sleeping habits sudhare taaki aap active rahein.</p></div></div>
+            <div class="col-md-3"><div class="p-4 shadow-sm rounded bg-white h-100"><i class="fas fa-rocket fa-3x text-gold mb-3"></i><h4 class="fw-bold">2x Productivity</h4><p class="text-muted">Behtar focus aur mental clarity kaam aur life dono ke liye.</p></div></div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Balwaan Gold vs <span class="text-danger">Ordinary Products</span></h2>
             <div class="table-responsive">
-                <table class="table table-custom text-center align-middle">
-                    <thead class="bg-green text-white"><tr><th>Features</th><th>Balwaan Golden Capsule</th><th>Ordinary Pills</th></tr></thead>
+                <table class="table table-custom text-center align-middle border shadow-sm rounded">
+                    <thead class="bg-green text-white"><tr><th class="py-3">Features</th><th class="py-3">Balwaan Golden Capsule</th><th class="py-3">Ordinary Pills</th></tr></thead>
                     <tbody>
-                        <tr><td>Result Quality</td><td class="fw-bold">Long Lasting & Natural</td><td>Temporary Energy</td></tr>
-                        <tr><td>Safety</td><td class="text-success fw-bold">100% Ayurvedic</td><td class="text-danger">Chemical Mixed</td></tr>
-                        <tr><td>Privacy</td><td>Discreet Packaging</td><td>Local Box</td></tr>
+                        <tr><td class="py-3">Result Quality</td><td class="fw-bold py-3 text-success">Long Lasting & Natural</td><td class="py-3 text-muted">Temporary Energy</td></tr>
+                        <tr><td class="py-3">Safety</td><td class="text-success fw-bold py-3">100% Ayurvedic</td><td class="text-danger py-3">Chemical Mixed</td></tr>
+                        <tr><td class="py-3">Privacy</td><td class="py-3 text-success fw-bold">Discreet Packaging</td><td class="py-3 text-muted">Local Box</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- Pricing / Combo Offer -->
+    <section class="section-padding container text-center">
+        <h2 class="mb-3">Nature's <span class="text-gold">Pure Power</span></h2>
+        <p class="text-muted mb-5">Hamare formula me shamil hain 8 premium jadibootiyan jo seedha root cause par kaam karti hain.</p>
+        
+        <div class="row g-3 justify-content-center">
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/shilajit.webp" class="ingredient-img" alt="Shilajit"><h5 class="text-gold fw-bold">Shilajit</h5><p class="small text-muted d-none d-sm-block">Natural testosterone booster</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Energy</span> <span class="badge bg-warning bg-opacity-25 text-dark">Stamina</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/ashwagandha.webp" class="ingredient-img" alt="Ashwagandha"><h5 class="text-gold fw-bold">Ashwagandha</h5><p class="small text-muted d-none d-sm-block">Stress kam kare, sleep improve kare</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Stress</span> <span class="badge bg-warning bg-opacity-25 text-dark">Sleep</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/musli.webp" class="ingredient-img" alt="Safed Musli"><h5 class="text-gold fw-bold">Safed Musli</h5><p class="small text-muted d-none d-sm-block">Physical capacity badhaye</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Semen</span> <span class="badge bg-warning bg-opacity-25 text-dark">Vitality</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/gokshura.webp" class="ingredient-img" alt="Gokshura"><h5 class="text-gold fw-bold">Gokshura</h5><p class="small text-muted d-none d-sm-block">Muscles ko strong kare</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Muscles</span> <span class="badge bg-warning bg-opacity-25 text-dark">Endurance</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/kaunch.webp" class="ingredient-img" alt="Kaunch Beej"><h5 class="text-gold fw-bold">Kaunch Beej</h5><p class="small text-muted d-none d-sm-block">Sex drive badhaye, hormones balance</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Libido</span> <span class="badge bg-warning bg-opacity-25 text-dark">Hormones</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/vidari.webp" class="ingredient-img" alt="Vidari Khand"><h5 class="text-gold fw-bold">Vidari Khand</h5><p class="small text-muted d-none d-sm-block">Body ko phir se young kare</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Youth</span> <span class="badge bg-warning bg-opacity-25 text-dark">Power</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/shatawari.webp" class="ingredient-img" alt="Shatavari"><h5 class="text-gold fw-bold">Shatavari</h5><p class="small text-muted d-none d-sm-block">Nutrition provide kare</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Nourish</span> <span class="badge bg-warning bg-opacity-25 text-dark">Health</span></div></div></div>
+            <div class="col-lg-3 col-md-4 col-6"><div class="ingredient-box"><img src="images/moringa.webp" class="ingredient-img" alt="Moringa"><h5 class="text-gold fw-bold">Moringa</h5><p class="small text-muted d-none d-sm-block">65+ nutrients se bharpur</p><div class="mt-auto"><span class="badge bg-warning bg-opacity-25 text-dark">Nutrition</span> <span class="badge bg-warning bg-opacity-25 text-dark">Immunity</span></div></div></div>
+        </div>
+    </section>
+
     <section id="order" class="section-padding bg-green">
         <div class="container text-center">
             <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
@@ -156,131 +387,11 @@
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="section-padding bg-green text-white">
-        <div class="container text-center">
-            <h2 class="mb-5 text-gold">Kaise Kaam Karta Hai?</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 border-gold rounded-15 h-100">
-                        <h3 class="text-gold">1. Absorption</h3>
-                        <p>Hamari natural capsules aapke khoon mein ghul kar taqat ko cells tak pahuchati hain.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 border-gold rounded-15 h-100">
-                        <h3 class="text-gold">2. Vitality</h3>
-                        <p>Ingredients jaise Shilajit aur Ashwagandha energy aur stamina ko 2x boost karte hain.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 border-gold rounded-15 h-100">
-                        <h3 class="text-gold">3. Peak Results</h3>
-                        <p>Regular istemal se aap apne partner ke saath confident aur khush-haal life enjoy karte hain.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ingredients Section (8 herbs) -->
-    <section class="section-padding container text-center ingredients-section">
-        <h2 class="mb-3">Nature's <span class="text-gold">Pure Power</span></h2>
-        <p class="text-muted mb-4">Complete blend of Ayurvedic herbs & ingredients</p>
-        
-        <div class="row g-4 justify-content-center">
-            <!-- Shilajit -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/shilajit.png" alt="Shilajit">
-                    </div>
-                    <h5 class="text-gold">Shilajit</h5>
-                    <p class="small text-muted">Natural testosterone booster, energy ka source</p>
-                </div>
-            </div>
-            <!-- Ashwagandha -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/ashwagandha.png" alt="Ashwagandha">
-                    </div>
-                    <h5 class="text-gold">Ashwagandha</h5>
-                    <p class="small text-muted">Stress kam kare, sleep improve kare, mental peace</p>
-                </div>
-            </div>
-            <!-- Safed Musli -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/musli.png" alt="Safed Musli">
-                    </div>
-                    <h5 class="text-gold">Safed Musli</h5>
-                    <p class="small text-muted">Physical capacity badhaye, semen quality improve kare</p>
-                </div>
-            </div>
-            <!-- Gokshura -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/gokshura.png" alt="Gokshura">
-                    </div>
-                    <h5 class="text-gold">Gokshura</h5>
-                    <p class="small text-muted">Muscles ko strong kare, endurance badhaye</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4 justify-content-center mt-3">
-            <!-- Kaunch Beej -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/kaunch.webp" alt="Kaunch Beej">
-                    </div>
-                    <h5 class="text-gold">Kaunch Beej</h5>
-                    <p class="small text-muted">Sex drive badhaye, hormones balance kare</p>
-                </div>
-            </div>
-            <!-- Vidari Khand -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/vidari.webp" alt="Vidari Khand">
-                    </div>
-                    <h5 class="text-gold">Vidari Khand</h5>
-                    <p class="small text-muted">Body ko phir se young kare, energy ka store</p>
-                </div>
-            </div>
-            <!-- Shatavari -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/shatawari.webp" alt="Shatavari">
-                    </div>
-                    <h5 class="text-gold">Shatavari</h5>
-                    <p class="small text-muted">Nutrition provide kare, body ko strength de</p>
-                </div>
-            </div>
-            <!-- Moringa -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="ingredient-card">
-                    <div class="ingredient-img-wrapper">
-                        <img src="images/moringa.webp" alt="Moringa">
-                    </div>
-                    <h5 class="text-gold">Moringa</h5>
-                    <p class="small text-muted">65+ nutrients se bharpur, natural multivitamin</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scientific Proof Section (your original) -->
     <section class="section-padding bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <div class="p-4 bg-light rounded-3 border-start border-4 border-warning">
+                    <div class="p-4 bg-white rounded-3 border-start border-4 border-warning shadow-sm">
                         <h5 class="text-gold mb-3"><i class="fas fa-medal me-2"></i>Why Choose Balwaan?</h5>
                         <ul class="list-unstyled mb-0">
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>100% Natural & Herbal</li>
@@ -291,7 +402,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <div class="p-4">
+                    <div class="p-4 bg-white rounded-3 shadow-sm h-100">
                         <h5 class="text-gold mb-3"><i class="fas fa-flask me-2"></i>Scientific Proof</h5>
                         <p class="small mb-1">Ashwagandha: Can reduce stress by up to 44%</p>
                         <div class="progress mb-3" style="height: 8px;">
@@ -307,153 +418,179 @@
         </div>
     </section>
 
-    <!-- FAQ Section (6 questions) -->
-    <section class="section-padding bg-light">
+    <section class="section-padding bg-white">
         <div class="container">
-            <h2 class="text-center mb-5">Aksar Pooche Jane Wale Sawal</h2>
+            <h2 class="text-center mb-5">Frequently Asked Questions (FAQs)</h2>
             <div class="accordion" id="faqAccordion">
-                <div class="accordion-item mb-3 border-0 shadow-sm">
+                <div class="accordion-item mb-3 border border-light shadow-sm rounded">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Kya iska koi side effect hai?</button>
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Kya iska koi side effect hai?</button>
                     </h2>
                     <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">Nahi, Balwaan 100% Ayurvedic ingredients se bana hai aur bilkul safe hai.</div>
+                        <div class="accordion-body text-muted small">Nahi, Balwaan 100% Ayurvedic ingredients se bana hai aur bilkul safe hai. Isme koi chemical nahi hai.</div>
                     </div>
                 </div>
-                <div class="accordion-item mb-3 border-0 shadow-sm">
+                <div class="accordion-item mb-3 border border-light shadow-sm rounded">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Result kab tak dikhega?</button>
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Result kab tak dikhega?</button>
                     </h2>
                     <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">Behtar result ke liye ise kam se kam 30 din tak regular dudh ke saath lein.</div>
+                        <div class="accordion-body text-muted small">Behtar aur lambe samay tak chalne wale result ke liye ise kam se kam 30 din tak regular dudh ke saath lein.</div>
                     </div>
                 </div>
-                <div class="accordion-item mb-3 border-0 shadow-sm">
+                <div class="accordion-item mb-3 border border-light shadow-sm rounded">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Balwaan capsule kab aur kaise leni chahiye?</button>
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Balwaan capsule kab aur kaise leni chahiye?</button>
                     </h2>
                     <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">Best result ke liye 1 capsule roz raat ko sone se pehle gungune doodh (warm milk) ke saath lein.</div>
+                        <div class="accordion-body text-muted small">Best result ke liye 1 capsule roz raat ko sone se pehle gungune doodh (warm milk) ke saath lein.</div>
                     </div>
                 </div>
-                <div class="accordion-item mb-3 border-0 shadow-sm">
+                <div class="accordion-item mb-3 border border-light shadow-sm rounded">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Kya packing secret (discrete) hogi?</button>
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Kya packing secret (discrete) hogi?</button>
                     </h2>
                     <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">Bilkul! Hum privacy ka pura dhyan rakhte hain. Box par product ka naam nahi hoga, packing ekdum plain hogi.</div>
+                        <div class="accordion-body text-muted small">Bilkul! Hum privacy ka pura dhyan rakhte hain. Box par product ka naam nahi hoga, packing ekdum plain aur discreet hogi.</div>
                     </div>
                 </div>
-                <div class="accordion-item mb-3 border-0 shadow-sm">
+                <div class="accordion-item mb-3 border border-light shadow-sm rounded">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Kya ye product 100% vegetarian hai?</button>
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Kya ye product 100% vegetarian hai?</button>
                     </h2>
                     <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">Haan, Balwaan capsules 100% veg hain aur inme sirf shuddh ayurvedic jadibootiyon ka istemal kiya gaya hai.</div>
+                        <div class="accordion-body text-muted small">Haan, Balwaan capsules 100% veg hain aur inme sirf shuddh ayurvedic jadibootiyon ka istemal kiya gaya hai.</div>
                     </div>
                 </div>
-                <div class="accordion-item mb-3 border-0 shadow-sm">
+                <div class="accordion-item mb-3 border border-light shadow-sm rounded">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Ise kitne din tak lena chahiye?</button>
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Ise kitne din tak lena chahiye?</button>
                     </h2>
                     <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">Hum recommend karte hain ki behtar aur lambe samay tak chalne wale results ke liye aap ise kam se kam 2-3 mahine tak regular lein.</div>
+                        <div class="accordion-body text-muted small">Hum recommend karte hain ki behtar aur lambe samay tak chalne wale results ke liye aap ise kam se kam 2 se 3 mahine tak regular lein.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Policy Links -->
-    <section class="py-4 border-top border-bottom bg-white text-center">
+    <section class="dr-rana-banner">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></div>
-                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a></div>
-                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></div>
-                <div class="col-md-3 col-6 mb-2"><a href="#" class="text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping Policy</a></div>
+            <div class="row align-items-center">
+                <div class="col-md-8 text-center text-md-start mb-4 mb-md-0">
+                    <h3 class="text-gold mb-2"><i class="fas fa-user-md me-2"></i> Dr. Rana Personal Vitality Programme</h3>
+                    <p class="text-light mb-0" style="font-size: 15px; opacity: 0.9;">Kya normal supplements asar nahi kar rahe? Get a 50-day fully customized Ayurvedic treatment plan from our senior expert doctor.</p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <a href="dr-rana-program.html" class="btn btn-gold-glow px-4 py-3" style="font-size: 14px;">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer-main bg-dark text-white pt-5 pb-3">
         <div class="container">
-            <!-- Main Footer Content (original) -->
             <div class="row mb-4">
                 <div class="col-md-4 mb-4">
-                    <h4 class="text-gold mb-3">BALWAAN</h4>
+                    <h4 class="text-gold mb-3">BALWAAN GOLD</h4>
                     <p class="small text-light">India's premium Ayurvedic supplement for men's health, strength, and confidence.</p>
                     <div class="mt-3">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://wa.me/918273896083" class="text-white me-3" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
-                        <a href="tel:+918273896083" class="text-white"><i class="fas fa-phone fa-lg"></i></a>
+                        <a href="https://wa.me/919808669522" class="text-white me-3" target="_blank" title="Chat with us"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="tel:+919808669522" class="text-white" title="Request a Call"><i class="fas fa-phone fa-lg"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="text-gold mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#menu" class="text-light text-decoration-none">Products</a></li>
-                        <li class="mb-2"><a href="#about" class="text-light text-decoration-none">How It Works</a></li>
-                        <li class="mb-2"><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
-                        <li><a href="#" class="text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#faqModal">FAQs</a></li>
+                        <li class="mb-2"><a href="checkout.html" class="text-light text-decoration-none">Products</a></li>
+                        <li class="mb-2"><a href="privacy-policy.html" class="text-light text-decoration-none" target="_blank">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Refund Policy</a></li>
                     </ul>
                 </div>
+                
                 <div class="col-md-4 mb-4">
-                    <h5 class="text-gold mb-3">Contact Info</h5>
-                    <ul class="list-unstyled text-light">
-                        <li class="mb-2"><i class="fas fa-phone-alt me-2 text-gold"></i> +91 8273896083</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2 text-gold"></i> support@balwaanhealth.com</li>
-                        <li><i class="fas fa-clock me-2 text-gold"></i> Support: Mon-Sat, 10 AM - 7 PM</li>
-                    </ul>
-                    <a href="https://wa.me/918273896083" class="btn btn-sm btn-success mt-2" target="_blank"><i class="fab fa-whatsapp me-1"></i> Chat on WhatsApp</a>
+                    <h5 class="text-gold mb-3">Consult Support Team</h5>
+                    <p class="small text-light mb-3">Consultation ke liye hamare Ayurvedic Experts se connect karein. Humari team aapki puri sahayata karegi.</p>
+                    <button class="btn btn-gold-glow mt-2 w-100 py-2" style="font-size: 14px; text-transform: none; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#leadGateModal">
+                        <i class="fab fa-whatsapp me-2"></i> Click Here to Chat on WhatsApp
+                    </button>
                 </div>
             </div>
             
-            <!-- Detailed Disclaimer (original) -->
-            <div class="row mt-4">
+            <div class="row mt-3">
                 <div class="col-12">
-                    <div class="p-3 bg-dark border border-warning rounded">
-                        <h6 class="text-gold mb-2"><i class="fas fa-exclamation-triangle me-2"></i>IMPORTANT DISCLAIMER</h6>
-                        <p class="small text-light mb-2"><strong>Medical Disclaimer:</strong> Balwaan is a 100% Ayurvedic herbal supplement. It is not intended to diagnose, treat, cure, or prevent any disease. The information provided on this website is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
-                        <p class="small text-light mb-2"><strong>Results May Vary:</strong> Individual results may vary based on age, health condition, lifestyle, and other factors. The testimonials and examples on this website are exceptional results and are not intended to represent or guarantee that anyone will achieve the same or similar results.</p>
-                        <p class="small text-light mb-2"><strong>FDA Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
-                        <p class="small text-light mb-2"><strong>Consult Your Doctor:</strong> If you are pregnant, nursing, taking medication, or have a medical condition, consult your doctor before using this product. Do not exceed the recommended dosage. Keep out of reach of children. Store in a cool, dry place.</p>
-                        <p class="small text-light"><strong>© 2024 Balwaan Health.</strong> All rights reserved. The content, images, and product information on this website are the property of Balwaan Health and may not be reproduced without permission.</p>
+                    <div class="p-3 border border-secondary rounded" style="background-color: #1a1a1a;">
+                        <div data-bs-toggle="collapse" data-bs-target="#collapseDisclaimer" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                            <h6 class="text-warning mb-0" style="font-size: 14px;"><i class="fas fa-exclamation-triangle me-2"></i> IMPORTANT DISCLAIMER 
+                                <span class="text-muted ms-2 fw-normal" style="font-size:12px;">(Tap to read)</span>
+                            </h6>
+                            <i class="fas fa-chevron-down text-warning"></i>
+                        </div>
+                        <div class="collapse mt-3" id="collapseDisclaimer">
+                            <div class="text-light" style="font-size: 12px; opacity: 0.8;">
+                                <p class="mb-2"><strong>Medical Disclaimer:</strong> Balwaan is a 100% Ayurvedic herbal supplement. It is not intended to diagnose, treat, cure, or prevent any disease. The information provided is for educational purposes only and is not a substitute for professional medical advice.</p>
+                                <p class="mb-2"><strong>Results May Vary:</strong> Individual results may vary based on age, health condition, and lifestyle. Testimonials are exceptional results and do not guarantee the same results for everyone.</p>
+                                <p class="mb-2"><strong>FDA Disclaimer:</strong> These statements have not been evaluated by the FDA. Consult your doctor before using if you have any medical conditions.</p>
+                                <p class="mb-0"><strong>© 2026 Balwaan Health.</strong> All rights reserved. Content reproduction without permission is prohibited.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Copyright -->
-            <div class="row mt-3">
-                <div class="col-12 text-center">
-                    <p class="small text-secondary mb-0">© 2024 Balwaan Health | Made in India | GMP Certified</p>
-                    <p class="small text-secondary">Last Updated: December 2024</p>
-                </div>
-            </div>
+            <div class="row mt-4"><div class="col-12 text-center"><p class="small text-secondary mb-0">© 2026 Balwaan Health | Made in India | GMP Certified</p></div></div>
         </div>
     </footer>
 
-    <!-- Modals (original) -->
-    <div class="modal fade" id="faqModal" tabindex="-1" aria-hidden="true"><!-- ... content ... --></div>
-    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true"><!-- ... content ... --></div>
-    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true"><!-- ... content ... --></div>
-    <div class="modal fade" id="refundModal" tabindex="-1" aria-hidden="true"><!-- ... content ... --></div>
-    <div class="modal fade" id="shippingModal" tabindex="-1" aria-hidden="true"><!-- ... content ... --></div>
-
-    <!-- Floating WhatsApp & Mobile CTA (original) -->
-    <a href="https://wa.me/918273896083" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <div class="mobile-cta-bar">
-        <div class="container">
-            <a href="checkout.html" class="btn btn-gold-glow w-100 py-3 shadow">ORDER NOW - ₹1499</a>
+    <div class="modal fade" id="leadGateModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header lead-modal-header">
+                    <h5 class="modal-title"><i class="fab fa-whatsapp text-success me-2 bg-white rounded-circle p-1"></i> Unlock Support</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <h4 class="mb-3 text-dark">Get Free Consultation</h4>
+                    <p class="text-muted small mb-4">Please enter your details to connect with our Ayurvedic expert on WhatsApp.</p>
+                    <form id="leadGateForm">
+                        <input type="text" id="lgName" class="lead-input" placeholder="Your Full Name *" required>
+                        <input type="tel" id="lgMobile" class="lead-input" placeholder="Your Mobile Number *" pattern="[0-9]{10}" required>
+                        <button type="submit" class="btn btn-success w-100 py-3 fw-bold rounded-pill">
+                            <i class="fab fa-whatsapp me-2"></i> START CHAT NOW
+                        </button>
+                    </form>
+                    <p class="mt-3 small text-muted"><i class="fas fa-lock me-1"></i> Your details are 100% secure.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <div class="whatsapp-float" data-bs-toggle="modal" data-bs-target="#leadGateModal"><i class="fab fa-whatsapp"></i></div>
+
+    <div class="mobile-cta-bar"><div class="container"><a href="checkout.html" class="btn btn-gold-glow w-100 py-3 shadow" style="font-size: 16px;">ORDER NOW (COD AVAILABLE)</a></div></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changeImage(element) {
+            document.getElementById('mainImg').src = element.src;
+            let thumbs = document.querySelectorAll('.thumb');
+            thumbs.forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+        function openZoom(imageSrc) { document.getElementById('zoomedImage').src = imageSrc; document.getElementById('imageZoomModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeZoom() { document.getElementById('imageZoomModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('imageZoomModal').addEventListener('click', function(e) { if (e.target === this) closeZoom(); });
+
+        // LEAD GATE SUBMISSION SCRIPT (LIVE NUMBER)
+        document.getElementById('leadGateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('lgName').value;
+            const modal = bootstrap.Modal.getInstance(document.getElementById('leadGateModal'));
+            modal.hide();
+            // LIVE WhatsApp Number
+            const msg = `Hi, I am ${name}. I need a free consultation regarding Balwaan Gold.`;
+            window.open(`https://wa.me/919808669522?text=${msg}`, '_blank');
+        });
+    </script>
 </body>
 </html>
