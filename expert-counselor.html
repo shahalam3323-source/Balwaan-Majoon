@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Expert Counselor - Balwaan Gold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary-green: #14452F; --dark-gold: #D4AF37; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7f6; color: #333; }
+        .header-banner { background: var(--primary-green); color: white; padding: 50px 0 80px 0; text-align: center; }
+        .header-banner h1 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--dark-gold); }
+        
+        .profile-card { 
+            background: white; 
+            border-radius: 15px; 
+            padding: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            margin-top: -50px; 
+            position: relative; 
+            border-top: 5px solid var(--dark-gold);
+        }
+        
+        .counselor-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--dark-gold);
+            margin-bottom: 20px;
+        }
+
+        .stats-box { background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px; border: 1px solid #eee;}
+        .stats-box h3 { color: var(--primary-green); font-weight: 700; margin-bottom: 5px; font-size: 24px;}
+        .stats-box p { margin: 0; font-size: 14px; color: #666; font-weight: 600;}
+
+        .specialty-list li { margin-bottom: 10px; font-size: 16px; list-style: none;}
+        .specialty-list li i { color: var(--primary-green); margin-right: 10px; }
+
+        .btn-whatsapp { 
+            background-color: #25D366; 
+            color: white; 
+            font-weight: 600; 
+            padding: 15px 30px; 
+            border-radius: 50px; 
+            font-size: 18px;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover { background-color: #1DA851; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);}
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <div class="container">
+            <h1>Meet Our Expert Counselor</h1>
+            <p>Guiding you towards a healthier, confident, and more fulfilling life.</p>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="profile-card text-center">
+                    
+                    <img src="images/counselor-profile.jpg" alt="Expert Counselor" class="counselor-img" onerror="this.src='https://via.placeholder.com/150/14452F/D4AF37?text=Expert'">
+                    
+                    <h2 style="font-family: 'Montserrat', sans-serif; color: var(--primary-green); font-weight: 700;">Hakeem Basit Khan</h2>
+                    <p class="text-muted fw-bold">Senior Ayurvedic Sexologist & Wellness Expert</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="stats-box">
+                                <h3>25+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stats-box">
+                                <h3>10,000+</h3>
+                                <p>Happy Patients</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-start mt-4">
+                        <h4 style="color: var(--primary-green); font-weight: 600;">About The Expert</h4>
+                        <p style="color: #555; line-height: 1.8;">With over two decades of dedicated practice in Ayurvedic Sexology, Hakeem Basit Khan is one of the most trusted names in men's intimate health and wellness. Based in Saharanpur, his mission is to provide 100% natural, tailored solutions that bring joy and confidence back into relationships without any side effects.</p>
+                        
+                        <h4 class="mt-4 mb-3" style="color: var(--primary-green); font-weight: 600;">Core Specialties:</h4>
+                        <ul class="specialty-list p-0">
+                            <li><i class="fas fa-check-circle"></i> Ayurvedic Treatment for Inner Weakness</li>
+                            <li><i class="fas fa-check-circle"></i> Stamina & Vigor Enhancement</li>
+                            <li><i class="fas fa-check-circle"></i> Stress & Performance Anxiety Counseling</li>
+                            <li><i class="fas fa-check-circle"></i> Natural De-Addiction & Recovery</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-5">
+                        <p class="mb-2 text-muted">Need personalized advice for Balwaan Gold?</p>
+                        <a href="https://wa.me/919897371502?text=Hi, I am looking for a free expert consultation regarding my health and Balwaan Gold." target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp fa-lg me-2"></i> Chat with Expert Now
+                        </a>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="index.html" class="text-decoration-none" style="color: var(--primary-green); font-weight: 600;">&larr; Back to Home</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
