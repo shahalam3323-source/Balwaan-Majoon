@@ -3,55 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Consultation - Hakeem Basit Khan | Balwaan Gold</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Hakeem Basit Khan | Chief Medical Advisor - Balwaan Ayurveda</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --primary-green: #14452F; --dark-gold: #D4AF37; --light-gold: #FBF5E6; }
-        body { font-family: 'Poppins', sans-serif; background-color: #fff; color: #333; line-height: 1.7; }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--primary-green); font-weight: 800; }
+        :root { --primary-green: #14452F; --dark-gold: #D4AF37; --light-bg: #f8f9fa; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light-bg); color: #333; }
         
-        .hero-section { background: linear-gradient(135deg, #14452F 0%, #0a2418 100%); color: white; padding: 60px 0; border-bottom: 5px solid var(--dark-gold); }
-        .hero-section h1 { color: var(--dark-gold); font-size: 32px; text-transform: uppercase;}
+        .header-bar { background: var(--primary-green); color: white; padding: 15px 0; border-bottom: 3px solid var(--dark-gold); }
+        .header-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 1px; text-decoration: none; color: white; }
         
-        .doctor-img { border-radius: 12px; border: 4px solid var(--dark-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px;}
+        .profile-hero { background: white; padding: 60px 0; border-bottom: 1px solid #eee; }
+        .doctor-img-wrapper { position: relative; display: inline-block; }
+        .doctor-img { width: 280px; height: 280px; object-fit: cover; border-radius: 50%; border: 6px solid var(--light-bg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .verified-badge { position: absolute; bottom: 20px; right: 20px; background: #25D366; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 4px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
-        .highlight-box { background: var(--light-gold); padding: 30px; border-left: 5px solid var(--dark-gold); border-radius: 8px; margin: 30px 0; }
+        .stats-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-bottom: 3px solid var(--dark-gold); height: 100%; }
+        .stats-icon { font-size: 30px; color: var(--primary-green); margin-bottom: 10px; }
         
-        .feature-list li { margin-bottom: 15px; font-size: 16px; list-style: none; display: flex; align-items: flex-start;}
-        .feature-list li i { color: var(--dark-gold); font-size: 20px; margin-right: 15px; margin-top: 4px;}
-
-        .form-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--primary-green); }
-        .form-control { padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; }
-        .form-control:focus { border-color: var(--primary-green); box-shadow: 0 0 0 0.2rem rgba(20, 69, 47, 0.2); }
+        .btn-consult { background: linear-gradient(135deg, #14452F, #0a2418); color: white; font-weight: 700; padding: 16px 30px; border-radius: 50px; font-size: 18px; border: 2px solid var(--dark-gold); transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 8px 20px rgba(20, 69, 47, 0.2); }
+        .btn-consult:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(20, 69, 47, 0.3); color: var(--dark-gold); }
         
-        .btn-action { background: #25D366; color: white; font-weight: 700; padding: 16px; border-radius: 8px; font-size: 18px; width: 100%; border: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;}
-        .btn-action:hover { background: #1DA851; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); color: white;}
+        .lead-modal-header { background: var(--primary-green); color: white; border-bottom: 3px solid var(--dark-gold); }
+        .form-control { padding: 14px; border-radius: 8px; border: 2px solid #eee; }
+        .form-control:focus { border-color: var(--dark-gold); box-shadow: none; }
+        .bot-trap { display: none !important; }
     </style>
 </head>
 <body>
 
-    <section class="hero-section">
+    <div class="header-bar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="header-brand"><i class="fas fa-arrow-left me-2 small"></i> BALWAAN AYURVEDA</a>
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2">MEDICAL ADVISORY BOARD</span>
+        </div>
+    </div>
+
+    <section class="profile-hero">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7 mb-4 mb-lg-0">
-                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 fw-bold" style="font-size: 14px;">100% Confidential & Free Consultation</span>
-                    <h1>Personalized Ayurvedic Vitality Program</h1>
-                    <p class="lead mt-3" style="opacity: 0.9; font-size: 18px;">Don't rely on generic supplements. Get a customized 50-Day treatment plan designed specifically for your body type by Senior Ayurvedic Sexologist, Hakeem Basit Khan.</p>
-                    <div class="d-flex align-items-center mt-4">
-                        <div class="me-4 text-center">
-                            <h3 class="text-white mb-0">25+</h3>
-                            <span style="font-size: 12px; opacity: 0.8;">Years Exp.</span>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-white mb-0">10k+</h3>
-                            <span style="font-size: 12px; opacity: 0.8;">Happy Patients</span>
-                        </div>
+                <div class="col-lg-5 text-center mb-5 mb-lg-0">
+                    <div class="doctor-img-wrapper">
+                        <img src="images/dr-basit.jpg" alt="Hakeem Basit Khan" class="doctor-img" onerror="this.src='https://placehold.co/280x280/14452F/D4AF37?text=Hakeem+Basit'">
+                        <div class="verified-badge" title="Verified Expert"><i class="fas fa-check"></i></div>
                     </div>
                 </div>
-                <div class="col-lg-5 text-center">
-                    <img src="images/dr-basit.jpg" alt="Hakeem Basit Khan" class="doctor-img" onerror="this.src='https://via.placeholder.com/400x500/14452F/D4AF37?text=Hakeem+Basit+Khan'">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 38px;">Hakeem Basit Khan</h1>
+                    <h4 class="text-muted mb-4 fw-bold">Senior Ayurvedic Sexologist & Chief Advisor</h4>
+                    
+                    <p class="lead mb-4" style="font-size: 17px; opacity: 0.8; line-height: 1.8;">
+                        Hakeem Basit Khan is the guiding force behind the purity and efficacy of <strong>Balwaan Ayurveda</strong>. With a profound understanding of classical herbs and Dosha-balancing, he ensures that every formulation meets the highest standards of men's wellness.
+                    </p>
+                    
+                    <button class="btn btn-consult" data-bs-toggle="modal" data-bs-target="#consultModal">
+                        <i class="fab fa-whatsapp me-2 fa-lg"></i> Consult Hakeem Sahab
+                    </button>
+                    <p class="mt-3 small text-muted fw-bold"><i class="fas fa-lock text-success me-1"></i> 100% Private & Confidential Consultation</p>
                 </div>
             </div>
         </div>
@@ -59,87 +71,136 @@
 
     <section class="py-5">
         <div class="container">
-            <div class="row justify-content-between">
-                
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h2>Why Normal Supplements Fail?</h2>
-                    <p class="text-muted">Har mard ka sharir alag hota hai (Every man's body is different). Jo dawa kisi ek par asar karti hai, zaroori nahi wo aap par bhi kare. Asli taaqat aur stamina ke liye aapko apne 'Dosha' (Vata, Pitta, Kapha) ke hisaab se sahi combination chahiye hota hai.</p>
-                    
-                    <div class="highlight-box">
-                        <h4 style="color: var(--primary-green); font-weight: 700; font-size: 20px;">The 50-Day Custom Program</h4>
-                        <p class="mb-0 text-dark">Hakeem Basit Khan will personally analyze your symptoms, lifestyle, and root cause of weakness to create a targeted 50-Day Balwaan Gold + Diet routine for maximum, side-effect-free results.</p>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="stats-box">
+                        <i class="fas fa-award stats-icon"></i>
+                        <h3 class="fw-bold text-dark mb-1">25+ Years</h3>
+                        <p class="text-muted small fw-bold mb-0">Clinical Experience</p>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-box">
+                        <i class="fas fa-leaf stats-icon"></i>
+                        <h3 class="fw-bold text-dark mb-1">Root Cause</h3>
+                        <p class="text-muted small fw-bold mb-0">Ayurvedic Diagnosis</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-box">
+                        <i class="fas fa-user-shield stats-icon"></i>
+                        <h3 class="fw-bold text-dark mb-1">10,000+</h3>
+                        <p class="text-muted small fw-bold mb-0">Patients Guided</p>
+                    </div>
+                </div>
+            </div>
 
-                    <h3 class="mt-5 mb-4">What You Will Get:</h3>
-                    <ul class="feature-list p-0">
-                        <li><i class="fas fa-shield-alt"></i> <span><strong>Root Cause Analysis:</strong> We don't just treat the symptom; we find out WHY you are feeling weak or stressed.</span></li>
-                        <li><i class="fas fa-leaf"></i> <span><strong>Customized Herb Dosage:</strong> Sahi matra mein Shilajit aur Ashwagandha ka combination aapki age aur health ke hisaab se.</span></li>
-                        <li><i class="fas fa-apple-alt"></i> <span><strong>Diet & Lifestyle Guide:</strong> Kya khana hai aur kya nahi, iski poori guide taaki result life-long rahe.</span></li>
-                        <li><i class="fas fa-user-lock"></i> <span><strong>100% Privacy:</strong> Aapki saari jankari aur problems bilkul safe aur private rakhi jayengi.</span></li>
+            <div class="row bg-white p-5 rounded-4 shadow-sm border" style="border-left: 5px solid var(--primary-green) !important;">
+                <div class="col-12">
+                    <h3 style="color: var(--primary-green); font-weight: 800; font-family: 'Montserrat', sans-serif;" class="mb-4">Role at Balwaan Ayurveda</h3>
+                    <p class="text-muted mb-3">As a key member of our Medical Advisory Board, Hakeem Sahab plays a crucial role in:</p>
+                    <ul class="list-unstyled mb-0 text-muted">
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Approving the selection of premium herbs like Shilajit and Ashwagandha.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Ensuring exact formulation ratios for maximum male vitality without side effects.</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Providing private counseling to men facing chronic fatigue, stamina loss, and confidence issues.</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Recommending natural diet and lifestyle changes alongside Balwaan supplements.</li>
                     </ul>
                 </div>
-
-                <div class="col-lg-5">
-                    <div class="form-card sticky-lg-top" style="top: 20px;">
-                        <h3 class="text-center mb-2">Book Free Consultation</h3>
-                        <p class="text-center text-muted small mb-4">Fill details to chat directly with Hakeem Basit Khan on WhatsApp.</p>
-                        
-                        <form id="expertLeadForm">
-                            <div class="mb-3">
-                                <label class="form-label fw-bold" style="font-size: 14px; color: var(--primary-green);">Your Full Name *</label>
-                                <input type="text" class="form-control" id="expertName" placeholder="Enter your name" required>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-bold" style="font-size: 14px; color: var(--primary-green);">WhatsApp Number *</label>
-                                <input type="tel" class="form-control" id="expertMobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
-                            </div>
-                            
-                            <button type="submit" class="btn-action">
-                                <i class="fab fa-whatsapp me-2"></i> Start Private Chat
-                            </button>
-                            <p class="text-center mt-3 mb-0" style="font-size: 11px; color: #888;"><i class="fas fa-lock me-1"></i> Your information is end-to-end encrypted.</p>
-                        </form>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <div class="bg-dark text-white text-center py-3">
-        <p class="mb-0 small" style="opacity: 0.7;">© 2026 Balwaan Ayurveda | All Rights Reserved</p>
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-1" style="font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--dark-gold); font-size: 20px;">BALWAAN AYURVEDA</p>
+            <p class="small text-muted mb-0">© 2026 Balwaan Health. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="consultModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 overflow-hidden">
+                <div class="modal-header lead-modal-header border-0 py-3">
+                    <h5 class="modal-title fw-bold" style="font-family: 'Montserrat';"><i class="fas fa-user-md me-2"></i> Patient Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 bg-white">
+                    <p class="text-center text-muted small fw-bold mb-4">Aapki details 100% private rahengi. Kripya sahi jankari bharein taaki Hakeem Sahab aapko sahi salah de sakein.</p>
+                    
+                    <form id="doctorLeadForm">
+                        <input type="text" id="spam_trap" class="bot-trap" autocomplete="off" tabindex="-1">
+                        
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="patientName" placeholder="Aapka Poora Naam *" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" id="patientMobile" placeholder="WhatsApp Number *" maxlength="10" required>
+                            <div id="mobileError" class="text-danger small mt-1 fw-bold" style="display: none;">❌ Please enter a valid 10-digit number.</div>
+                        </div>
+                        <div class="mb-4">
+                            <input type="number" class="form-control" id="patientAge" placeholder="Aapki Umar (Age) *" min="18" max="99" required>
+                        </div>
+                        
+                        <button type="submit" class="btn w-100 py-3 fw-bold text-uppercase" id="submitBtn" style="background: #25D366; color: white; border-radius: 8px; font-size: 16px;">
+                            <i class="fab fa-whatsapp me-2"></i> Proceed to WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('expertLeadForm').addEventListener('submit', function(e) {
+        document.getElementById('doctorLeadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('expertName').value.trim();
-            const mobile = document.getElementById('expertMobile').value.trim();
+            if(document.getElementById('spam_trap').value !== '') return; 
+
+            const mobile = document.getElementById('patientMobile').value.trim();
+            const indianMobileRegex = /^[6789]\d{9}$/;
+            const isAllSame = mobile.split('').every(char => char === mobile[0]);
+            const errorDiv = document.getElementById('mobileError');
+
+            if(!indianMobileRegex.test(mobile) || isAllSame) {
+                errorDiv.style.display = 'block';
+                return;
+            }
+            errorDiv.style.display = 'none';
+
+            const name = document.getElementById('patientName').value.trim();
+            const age = document.getElementById('patientAge').value.trim();
+            const btn = document.getElementById('submitBtn');
             
-            const btn = document.querySelector('.btn-action');
             btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Connecting...';
             btn.disabled = true;
 
-            // Send Data to Google Sheet
+            // 1. Send Lead to Backend (Google Sheet)
             const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
             const formData = new FormData();
-            formData.append("entry.108304216", "EXPERT-" + Date.now().toString().slice(-4)); 
+            formData.append("entry.108304216", "DOC-LEAD-" + Date.now().toString().slice(-4)); 
             formData.append("entry.2108179602", name); 
             formData.append("entry.1684860991", mobile); 
-            formData.append("entry.1774647451", "Hakeem Basit Dedicated Page"); 
-            formData.append("entry.1664049382", "50-Day Program Request"); 
-            formData.append("entry.1326902597", "Lead"); 
+            formData.append("entry.1774647451", "Hakeem Basit Profile Page"); 
+            formData.append("entry.1664049382", "Age: " + age + " (General Consultation)"); 
+            formData.append("entry.1326902597", "Expert Lead"); 
             
             fetch(googleFormURL, { method: "POST", mode: "no-cors", body: formData });
 
+            // Fire FB Pixel if present
             if (typeof fbq === 'function') { fbq('track', 'Lead'); }
 
-            // Redirect to WhatsApp after 1 second
+            // 2. Redirect to Hakeem Basit's WhatsApp after 1 second
             setTimeout(() => {
-                const msg = `Hi Hakeem Sahab, I am ${name}. I read about your 50-Day customized vitality program on Balwaan Gold and need your expert advice.`;
-                window.location.href = `https://wa.me/919897371502?text=${msg}`;
+                const msg = `Salaam Hakeem Sahab,\n\nI want to consult you regarding my health. Here are my details:\n\n*Name:* ${name}\n*Age:* ${age}\n\nPlease guide me.`;
+                window.location.href = `https://wa.me/919897371502?text=${encodeURIComponent(msg)}`;
+                
+                // Reset Modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('consultModal'));
+                modal.hide();
+                document.getElementById('doctorLeadForm').reset();
+                btn.innerHTML = '<i class="fab fa-whatsapp me-2"></i> Proceed to WhatsApp';
+                btn.disabled = false;
             }, 1000);
         });
     </script>
