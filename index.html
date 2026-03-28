@@ -100,7 +100,8 @@
         .ingredient-box { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column; text-align: center; }
         .ingredient-img { width: 110px; height: 110px; object-fit: cover; border: 3px solid #D4AF37; border-radius: 50%; margin: 0 auto 15px; }
 
-        .dr-rana-banner { background: linear-gradient(135deg, #0a2418 0%, #14452F 100%); border-top: 3px solid #D4AF37; padding: 40px 0; margin-top: 30px; }
+        /* Naye section ke liye CSS addition */
+        .advisory-card { background: white; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #D4AF37 !important; height: 100%;}
 
         .whatsapp-float { position: fixed; bottom: 80px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; cursor: pointer; transition: 0.3s;}
         .whatsapp-float:hover { transform: scale(1.1); color:white;}
@@ -130,6 +131,23 @@
             <a href="checkout.html" class="btn btn-gold-glow btn-sm px-4">Order Now</a>
         </div>
     </nav>
+
+    <section class="vitality-top-banner" style="background: linear-gradient(135deg, #14452F 0%, #0a2418 100%); padding: 50px 0; border-bottom: 5px solid #D4AF37;">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-9 mb-4 mb-md-0">
+                    <span class="badge bg-danger text-white px-3 py-1 fw-bold text-uppercase mb-3" style="font-size: 12px; letter-spacing: 1px;">EXCLUSIVELY FOR MEN</span>
+                    <h2 class="mb-2" style="color: #D4AF37; font-weight: 800; font-family: 'Montserrat', sans-serif; font-size: 28px;">India's 1st Customized Ayurvedic Vitality Program</h2>
+                    <p class="text-white mb-0" style="font-size: 16px; opacity: 0.9; max-width: 800px;">Stop using generic supplements. Get a 50-Day Personalized treatment compounded specifically for your body type, age, and lifestyle.</p>
+                </div>
+                <div class="col-md-3 text-center text-md-end">
+                    <a href="balwaan-custom-protocol.html" class="btn w-100 py-3 fw-bold text-uppercase" style="background: #25D366; color: white; border-radius: 8px; font-size: 15px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);">
+                        Take Free Quiz <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="hero-section">
         <div class="container">
@@ -474,19 +492,40 @@
         </div>
     </section>
 
-    <section class="dr-rana-banner">
+    <section class="medical-advisory-board py-5" style="background-color: #f4f7f6; border-top: 1px solid #eee;">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8 text-center text-md-start mb-4 mb-md-0">
-                    <h3 class="text-gold mb-2"><i class="fas fa-user-md me-2"></i> Expert Personal Vitality Programme</h3>
-                    <p class="text-light mb-0" style="font-size: 15px; opacity: 0.9;">Kya normal supplements asar nahi kar rahe? Get a fully customized Ayurvedic treatment plan from our 25+ years experienced senior counselor.</p>
+            <div class="text-center mb-5">
+                <h2 style="color: #14452F; font-weight: 800; font-family: 'Montserrat', sans-serif;">Our Medical Advisory Board</h2>
+                <p class="text-muted fw-bold">Guided by India's Top Ayurvedic Sexologists with decades of experience.</p>
+            </div>
+            <div class="row justify-content-center">
+                
+                <div class="col-md-5 mb-4">
+                    <div class="advisory-card">
+                        <img src="images/dr-basit.jpg" alt="Hakeem Basit Khan" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #14452F;" onerror="this.src='https://placehold.co/100x100/14452F/D4AF37?text=Hakeem+B.'">
+                        <h4 style="color: #14452F; font-weight: 700;">Hakeem Basit Khan</h4>
+                        <p class="text-muted small fw-bold mb-2">Senior Ayurvedic Sexologist</p>
+                        <span class="badge bg-light text-dark border mb-3">25+ Years Experience</span>
+                        <p class="small text-muted mb-4">Expert in root-cause analysis, dosha-balancing, and personalized Ayurvedic compounding.</p>
+                        <a href="expert-counselor.html" class="btn btn-outline-dark btn-sm rounded-pill px-4 fw-bold">View Full Profile</a>
+                    </div>
                 </div>
-                <div class="col-md-4 text-center text-md-end">
-                    <a href="expert-counselor.html" class="btn btn-gold-glow px-4 py-3" style="font-size: 14px;">Consult Expert <i class="fas fa-arrow-right ms-1"></i></a>
+                
+                <div class="col-md-5 mb-4">
+                    <div class="advisory-card">
+                        <img src="images/dr-rana.jpg" alt="Dr. Rana" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #14452F;" onerror="this.src='https://placehold.co/100x100/14452F/D4AF37?text=Dr.+Rana'">
+                        <h4 style="color: #14452F; font-weight: 700;">Dr. Rana</h4>
+                        <p class="text-muted small fw-bold mb-2">Ayurvedic Wellness Expert</p>
+                        <span class="badge bg-light text-dark border mb-3">Senior Consultant</span>
+                        <p class="small text-muted mb-4">Specialist in men's vitality, stamina building, and natural lifestyle correction.</p>
+                        <a href="dr-rana.html" class="btn btn-outline-dark btn-sm rounded-pill px-4 fw-bold">View Full Profile</a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
+
     <footer class="footer-main bg-dark text-white pt-5 pb-3">
         <div class="container">
             <div class="row mb-4">
@@ -659,9 +698,9 @@
             const modal = bootstrap.Modal.getInstance(document.getElementById('leadGateModal'));
             modal.hide();
             
-            // Naye Doctor ka WhatsApp Number (Abhi 9808669522 set hai)
+            // 🚀 3. UPDATED DOCTOR WHATSAPP NUMBER (Hakeem Basit Khan)
             const msg = `Hi, I am ${name}. I need a free consultation regarding Balwaan Gold.`;
-            window.open(`https://wa.me/919808669522?text=${msg}`, '_blank');
+            window.open(`https://wa.me/919897371502?text=${msg}`, '_blank');
         });
     </script>
 </body>
