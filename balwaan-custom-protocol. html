@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Assessment - Balwaan Vitality Program</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Poppins:wght@300;400;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '916924051189893'); 
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"
+    /></noscript>
+
+    <style>
+        :root { --primary-green: #14452F; --dark-gold: #D4AF37; --light-bg: #f4f7f6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light-bg); color: #333; }
+        .devnagari { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.95em; color: #555; margin-top: 2px; }
+        .eng-bold { font-weight: 700; font-size: 16px; color: #111; }
+        
+        .header-bar { background: var(--primary-green); color: white; padding: 15px 0; text-align: center; border-bottom: 4px solid var(--dark-gold); }
+        
+        /* Quiz Card Styling */
+        .quiz-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 5px solid var(--dark-gold); border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;}
+        .q-number { font-weight: 900; color: var(--primary-green); font-size: 18px; margin-right: 8px; }
+        
+        /* Custom Radio Options */
+        .option-label { display: block; padding: 12px 15px; border: 2px solid #eaeaea; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fff; margin-bottom: 10px; line-height: 1.4; }
+        .option-label:hover { border-color: var(--dark-gold); background: #fdfbf5; }
+        .form-check-input:checked + .option-label { border-color: var(--primary-green); background: #eef5f1; box-shadow: inset 0 0 0 1px var(--primary-green); }
+        .form-check-input { display: none; }
+        
+        .bot-trap { display: none !important; }
+
+        /* Loader & Result Screen */
+        #loaderScreen, #resultScreen { display: none; text-align: center; padding: 40px 15px; }
+        .spinner-border { width: 3.5rem; height: 3.5rem; color: var(--dark-gold); }
+        
+        /* Offer Box */
+        .offer-box { background: linear-gradient(135deg, #14452F 0%, #0a2418 100%); color: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 2px solid var(--dark-gold); text-align: left; }
+        .scarcity-badge { background: #dc3545; color: white; padding: 8px 15px; border-radius: 50px; font-weight: 700; font-size: 14px; display: inline-block; margin-bottom: 15px; animation: pulse 2s infinite; border: 1px solid #ff4d4d;}
+        
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        
+        .btn-action { background: #25D366; color: white; font-weight: 800; padding: 18px; border-radius: 8px; font-size: 18px; width: 100%; border: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);}
+        .btn-action:hover { background: #1DA851; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar sticky-top">
+        <h4 class="mb-0" style="font-family: 'Montserrat', sans-serif; font-weight: 900; letter-spacing: 1px;">CLINICAL ASSESSMENT FILE</h4>
+        <p class="mb-0 small devnagari text-white" style="opacity: 0.8;">Medical Advisory Board (25+ Years Exp.)</p>
+    </div>
+
+    <div class="container py-4" style="max-width: 650px;">
+        
+        <div id="quizSection">
+            <div class="text-center mb-4">
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold mb-2">100% SECURE & PRIVATE</span>
+                <p class="text-muted fw-bold">Fill your details carefully to generate your customized protocol.<br><span class="devnagari">कस्टमाइज्ड आयुर्वेदिक उपाय के लिए कृपया सही जानकारी दें।</span></p>
+            </div>
+            
+            <form id="clinicalQuizForm">
+                <input type="text" id="spam_trap_field" class="bot-trap" autocomplete="off" tabindex="-1">
+
+                <div class="quiz-card">
+                    <div class="mb-4">
+                        <label class="eng-bold"><i class="fas fa-user text-secondary me-2"></i>Full Name <br><span class="devnagari ms-4">पूरा नाम *</span></label>
+                        <input type="text" class="form-control form-control-lg mt-1" id="userName" placeholder="Enter your name" required>
+                    </div>
+                    <div>
+                        <label class="eng-bold"><i class="fab fa-whatsapp text-success me-2"></i>WhatsApp Number <br><span class="devnagari ms-4">व्हाट्सएप नंबर (10-digit) *</span></label>
+                        <input type="tel" class="form-control form-control-lg mt-1" id="userMobile" placeholder="e.g. 9876543210" maxlength="10" required>
+                        <div id="mobileError" class="text-danger small mt-2 fw-bold" style="display: none;"><i class="fas fa-exclamation-circle me-1"></i> Please enter a valid 10-digit Indian mobile number.</div>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="eng-bold"><span class="q-number">Q1.</span> What is your age?</div>
+                    <div class="devnagari mb-3 ms-4">आपकी उम्र क्या है?</div>
+                    <div class="row">
+                        <div class="col-6"><label><input type="radio" name="q1_age" value="18-25" class="form-check-input" required><div class="option-label eng-bold text-center">18 - 25 <br><span class="devnagari fw-normal">१८-२५ साल</span></div></label></div>
+                        <div class="col-6"><label><input type="radio" name="q1_age" value="26-35" class="form-check-input"><div class="option-label eng-bold text-center">26 - 35 <br><span class="devnagari fw-normal">२६-३५ साल</span></div></label></div>
+                        <div class="col-6"><label><input type="radio" name="q1_age" value="36-45" class="form-check-input"><div class="option-label eng-bold text-center">36 - 45 <br><span class="devnagari fw-normal">३६-४५ साल</span></div></label></div>
+                        <div class="col-6"><label><input type="radio" name="q1_age" value="45+" class="form-check-input"><div class="option-label eng-bold text-center">45+ <br><span class="devnagari fw-normal">४५ साल से ज्यादा</span></div></label></div>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="eng-bold"><span class="q-number">Q2.</span> What is your primary health goal?</div>
+                    <div class="devnagari mb-3 ms-4">आपकी मुख्य परेशानी या लक्ष्य क्या है?</div>
+                    
+                    <label><input type="radio" name="q2_goal" value="Boost Stamina" class="form-check-input" required><div class="option-label eng-bold">Boost Stamina <br><span class="devnagari fw-normal">स्टैमिना और ऊर्जा बढ़ाना</span></div></label>
+                    <label><input type="radio" name="q2_goal" value="Better Control & Timing" class="form-check-input"><div class="option-label eng-bold">Better Control & Timing <br><span class="devnagari fw-normal">बेहतर कंट्रोल और टाइमिंग</span></div></label>
+                    <label><input type="radio" name="q2_goal" value="Erectile Dysfunction" class="form-check-input"><div class="option-label eng-bold">Erectile Dysfunction <br><span class="devnagari fw-normal">ढीलापन या इरेक्शन की समस्या</span></div></label>
+                    <label><input type="radio" name="q2_goal" value="Hardness" class="form-check-input"><div class="option-label eng-bold">Hardness <br><span class="devnagari fw-normal">सख्ती और कड़कपन लाना</span></div></label>
+                    <label><input type="radio" name="q2_goal" value="Increase Sperm Count" class="form-check-input"><div class="option-label eng-bold">Increase Sperm Count <br><span class="devnagari fw-normal">स्पर्म काउंट बढ़ाना</span></div></label>
+                    <label><input type="radio" name="q2_goal" value="Overcome Daily Fatigue" class="form-check-input"><div class="option-label eng-bold">Overcome Daily Fatigue <br><span class="devnagari fw-normal">दिनभर की थकान और कमजोरी मिटाना</span></div></label>
+                    <label><input type="radio" name="q2_goal" value="Focus & Deep Sleep" class="form-check-input"><div class="option-label eng-bold">Focus & Deep Sleep <br><span class="devnagari fw-normal">दिमागी फोकस और गहरी नींद</span></div></label>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="eng-bold"><span class="q-number">Q3.</span> How is your daily routine/lifestyle?</div>
+                    <div class="devnagari mb-3 ms-4">आपकी दिनचर्या या काम कैसा है?</div>
+                    
+                    <label><input type="radio" name="q3_life" value="Heavy Physical Work" class="form-check-input" required><div class="option-label eng-bold">Heavy Physical Work <br><span class="devnagari fw-normal">भारी शारीरिक मेहनत वाला काम</span></div></label>
+                    <label><input type="radio" name="q3_life" value="Desk Job / Sitting" class="form-check-input"><div class="option-label eng-bold">Desk Job / Sitting Work <br><span class="devnagari fw-normal">कुर्सी पर बैठकर करने वाला काम</span></div></label>
+                    <label><input type="radio" name="q3_life" value="High Stress" class="form-check-input"><div class="option-label eng-bold">High Stress / Tension <br><span class="devnagari fw-normal">बहुत ज्यादा तनाव या टेंशन</span></div></label>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="eng-bold"><span class="q-number">Q4.</span> Do you have any existing medical issues?</div>
+                    <div class="devnagari mb-3 ms-4">क्या आपको कोई अन्य स्वास्थ्य समस्या है?</div>
+                    <div class="row">
+                        <div class="col-4"><label><input type="radio" name="q4_med" value="None" class="form-check-input" required><div class="option-label eng-bold text-center">None <br><span class="devnagari fw-normal">कोई नहीं</span></div></label></div>
+                        <div class="col-4"><label><input type="radio" name="q4_med" value="Diabetes" class="form-check-input"><div class="option-label eng-bold text-center">Diabetes <br><span class="devnagari fw-normal">शुगर</span></div></label></div>
+                        <div class="col-4"><label><input type="radio" name="q4_med" value="BP" class="form-check-input"><div class="option-label eng-bold text-center">B.P. <br><span class="devnagari fw-normal">ब्लड प्रेशर</span></div></label></div>
+                    </div>
+                </div>
+
+                <div class="quiz-card">
+                    <div class="eng-bold"><span class="q-number">Q5.</span> Are you married?</div>
+                    <div class="devnagari mb-3 ms-4">क्या आप शादीशुदा हैं?</div>
+                    <div class="row">
+                        <div class="col-6"><label><input type="radio" name="q5_married" value="Yes" class="form-check-input" required><div class="option-label eng-bold text-center">Yes <br><span class="devnagari fw-normal">हाँ</span></div></label></div>
+                        <div class="col-6"><label><input type="radio" name="q5_married" value="No" class="form-check-input"><div class="option-label eng-bold text-center">No <br><span class="devnagari fw-normal">नहीं</span></div></label></div>
+                    </div>
+
+                    <div id="yearsBox" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 2px dashed #eee;">
+                        <div class="eng-bold" style="font-size: 14px;">How many years has it been since your marriage?</div>
+                        <div class="devnagari mb-3">आपकी शादी को कितने साल हो गए हैं?</div>
+                        <div class="row g-2">
+                            <div class="col-4"><label><input type="radio" name="q5_years" value="1-3 Years" class="form-check-input"><div class="option-label eng-bold text-center" style="font-size: 13px; padding: 10px 5px;">1-3 Years <br><span class="devnagari fw-normal">१-३ साल</span></div></label></div>
+                            <div class="col-4"><label><input type="radio" name="q5_years" value="3-7 Years" class="form-check-input"><div class="option-label eng-bold text-center" style="font-size: 13px; padding: 10px 5px;">3-7 Years <br><span class="devnagari fw-normal">३-७ साल</span></div></label></div>
+                            <div class="col-4"><label><input type="radio" name="q5_years" value="7+ Years" class="form-check-input"><div class="option-label eng-bold text-center" style="font-size: 13px; padding: 10px 5px;">7+ Years <br><span class="devnagari fw-normal">७+ साल</span></div></label></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100 py-3 fw-bold shadow" style="font-size: 18px; border-radius: 8px; font-family: 'Montserrat', sans-serif;">
+                    Submit Profile File <i class="fas fa-file-medical ms-2"></i>
+                </button>
+                <div class="text-center mt-3 small text-muted"><i class="fas fa-lock me-1"></i> End-to-End Encrypted</div>
+            </form>
+        </div>
+
+        <div id="loaderScreen">
+            <div class="spinner-border mb-4" role="status"></div>
+            <h3 style="color: var(--primary-green); font-family: 'Montserrat'; font-weight: 900;">Analyzing Your File...</h3>
+            <p class="text-muted fw-bold">Balwaan Clinical System is reviewing your Dosha profile.</p>
+            <div class="text-start mt-5 mx-auto p-4 bg-white rounded-4 shadow-sm" style="max-width: 300px; border: 1px solid #eee;">
+                <p class="mb-3 text-success fw-bold"><i class="fas fa-check-circle me-2 fa-lg"></i> Age & Lifestyle Analyzed</p>
+                <p class="mb-3 text-success fw-bold"><i class="fas fa-check-circle me-2 fa-lg"></i> Root Cause Identified</p>
+                <p class="mb-2 text-secondary fw-bold" id="prepText"><i class="fas fa-cog fa-spin me-2 fa-lg"></i> Preparing Protocol...</p>
+            </div>
+        </div>
+
+        <div id="resultScreen">
+            <h2 class="mb-2" style="font-family: 'Montserrat'; font-weight: 900; color: var(--primary-green);">Diagnosis Complete <i class="fas fa-check-circle text-success ms-1"></i></h2>
+            <p class="mb-4 fw-bold text-muted px-2">Based on the guidelines of our Medical Advisory Board, normal generic pills will not work for you. Here is your Customized Protocol:</p>
+
+            <div class="offer-box position-relative">
+                <div class="text-center">
+                    <div class="scarcity-badge shadow"><i class="fas fa-fire me-1"></i> Special Vitality Scheme - Only 5 Packs Left Today!</div>
+                </div>
+                
+                <h4 class="text-center" style="color: var(--dark-gold); font-weight: 800; font-family: 'Montserrat'; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; margin-bottom: 20px;">
+                    30-Day Customized Protocol + Starter Pack
+                </h4>
+                
+                <div class="ps-2">
+                    <p class="mb-3" style="font-size: 15px;"><i class="fas fa-prescription-bottle-alt text-warning me-2 fa-lg"></i> <strong>Specially Formulated for You:</strong> Balwaan Gold (Made-to-order based on your form data).</p>
+                    <p class="mb-3" style="font-size: 15px;"><i class="fas fa-file-pdf text-danger me-2 fa-lg"></i> <strong>FREE VIP Diet Plan PDF:</strong> Foods to eat & avoid for faster recovery.</p>
+                    <p class="mb-0" style="font-size: 15px;"><i class="fas fa-book text-info me-2 fa-lg"></i> <strong>FREE Secret Stamina Guide PDF:</strong> Expert tips for long-lasting results.</p>
+                </div>
+                
+                <div class="p-4 mt-4 text-center" style="background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <span class="text-decoration-line-through text-light opacity-75 small">Regular Combo Price: ₹2,999</span>
+                    <h1 class="mb-2 text-white fw-bold display-5">₹1,499</h1>
+                    
+                    <div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+                        <span class="badge bg-dark border border-secondary p-2"><i class="fas fa-box text-muted me-1"></i> 100% Discreet</span>
+                        <span class="badge bg-dark border border-secondary p-2"><i class="fas fa-truck text-muted me-1"></i> Free Delivery</span>
+                    </div>
+
+                    <div class="alert alert-warning py-2 px-3 mb-0 text-start" style="font-size: 12px; border-radius: 8px;">
+                        <i class="fas fa-info-circle me-1 text-dark"></i> <strong>Why Prepaid Only?</strong> Because this powerful combination is customized specifically for your body type, we cannot offer Cash on Delivery on this special pack.
+                    </div>
+                </div>
+
+                <button id="whatsappOrderBtn" class="btn-action">
+                    <i class="fab fa-whatsapp fa-lg me-2"></i> Confirm Prepaid Order
+                </button>
+            </div>
+            
+            <a href="index.html" class="d-block text-center mt-4 text-muted text-decoration-none fw-bold small"><i class="fas fa-arrow-left me-1"></i> Back to Home</a>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Logic to show/hide Marriage Years
+        document.querySelectorAll('input[name="q5_married"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if(this.value === 'Yes') {
+                    document.getElementById('yearsBox').style.display = 'block';
+                } else {
+                    document.getElementById('yearsBox').style.display = 'none';
+                    // Uncheck years if they select No
+                    document.querySelectorAll('input[name="q5_years"]').forEach(r => r.checked = false);
+                }
+            });
+        });
+
+        // Form Submission & Flow Logic
+        let userData = {};
+
+        document.getElementById('clinicalQuizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 1. Anti-Spam Check (Honeypot)
+            if(document.getElementById('spam_trap_field').value !== '') return; 
+
+            // 2. Mobile Validation
+            const mobile = document.getElementById('userMobile').value.trim();
+            const indianMobileRegex = /^[6789]\d{9}$/;
+            const isAllSame = mobile.split('').every(char => char === mobile[0]);
+            const errorDiv = document.getElementById('mobileError');
+
+            if(!indianMobileRegex.test(mobile) || isAllSame) {
+                errorDiv.style.display = 'block';
+                document.getElementById('userMobile').focus();
+                return;
+            }
+            errorDiv.style.display = 'none';
+
+            // 3. Save Data for WhatsApp
+            userData.name = document.getElementById('userName').value.trim();
+            userData.mobile = mobile;
+            userData.age = document.querySelector('input[name="q1_age"]:checked').value;
+            userData.goal = document.querySelector('input[name="q2_goal"]:checked').value;
+
+            // Optional: Get Marital Status info if needed
+            const marriedStatus = document.querySelector('input[name="q5_married"]:checked').value;
+            let marriageYears = "";
+            if(marriedStatus === 'Yes') {
+                const checkedYear = document.querySelector('input[name="q5_years"]:checked');
+                if(checkedYear) marriageYears = " (" + checkedYear.value + ")";
+            }
+            userData.fullGoal = userData.goal + " | Married: " + marriedStatus + marriageYears;
+
+            // 4. Show Loader
+            document.getElementById('quizSection').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('loaderScreen').style.display = 'block';
+
+            // 5. Send Lead Data to Google Sheet (Optional backend tracking during analysis)
+            const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
+            const formData = new FormData();
+            formData.append("entry.108304216", "QUIZ-" + Date.now().toString().slice(-4)); 
+            formData.append("entry.2108179602", userData.name); 
+            formData.append("entry.1684860991", userData.mobile); 
+            formData.append("entry.1774647451", "Custom Protocol Quiz Form"); 
+            formData.append("entry.1664049382", userData.fullGoal + " | Age: " + userData.age); 
+            formData.append("entry.1326902597", "Quiz Completed (Pre-Order)"); 
+            fetch(googleFormURL, { method: "POST", mode: "no-cors", body: formData });
+
+            // 6. Fake Processing Time (3 Seconds) -> Then Show Offer
+            setTimeout(() => {
+                document.getElementById('loaderScreen').style.display = 'none';
+                document.getElementById('resultScreen').style.display = 'block';
+                
+                // Track Quiz Completed Event in Facebook
+                if (typeof fbq === 'function') { fbq('track', 'Customize_Profile_Completed'); }
+            }, 3000);
+        });
+
+        // Final WhatsApp Order Button
+        document.getElementById('whatsappOrderBtn').addEventListener('click', function() {
+            
+            // Send FINAL ORDER Intent to Sheet (Tracking intent to buy prepaid)
+            const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
+            const formData = new FormData();
+            formData.append("entry.108304216", "PREPAID-" + Date.now().toString().slice(-4)); 
+            formData.append("entry.2108179602", userData.name); 
+            formData.append("entry.1684860991", userData.mobile); 
+            formData.append("entry.1774647451", "1499 Prepaid Offer Clicked"); 
+            formData.append("entry.1664049382", userData.goal + " (Age: " + userData.age + ")"); 
+            formData.append("entry.1326902597", "High Intent Prepaid Order"); 
+            fetch(googleFormURL, { method: "POST", mode: "no-cors", body: formData });
+
+            // Ready the WhatsApp Message (using updated Hakeem Basit / Order Team Number)
+            const msg = `Hi,\n\nMy profile has been analyzed and I want to confirm my order for the *Special Vitality Scheme (₹1,499 Prepaid)*.\n\n*Name:* ${userData.name}\n*Age:* ${userData.age}\n*Main Issue:* ${userData.goal}\n\nPlease share the payment details/QR code so I can complete my order.`;
+            
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/919897371502?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
