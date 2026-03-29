@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | Balwaan Ayurveda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
+        .thank-you-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 500px; width: 90%; border-top: 5px solid #14452F; }
+        .success-icon { font-size: 60px; color: #25D366; margin-bottom: 20px; }
+        .timer-text { font-size: 18px; color: #666; font-weight: 600; margin-top: 20px; }
+        #countdown { color: #D4AF37; font-size: 24px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-card">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h2 style="font-family: 'Montserrat', sans-serif; color: #14452F; font-weight: 800;">Order Confirmed!</h2>
+        <p class="text-muted mt-2">Aapka Balwaan Customized Protocol safaltapoorvak book ho gaya hai.</p>
+        
+        <div class="timer-text">
+            Kripya wait karein...<br>
+            Aapko <span id="countdown">5</span> seconds mein Balwaan Ayurveda ke official WhatsApp par redirect kiya ja raha hai.
+        </div>
+        
+        <div class="spinner-border mt-4" style="color: #14452F;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        // 5 Second Countdown & Redirect Logic
+        let timeLeft = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                // Redirect to official number with an automated message
+                const officialNumber = "919557133307";
+                const message = encodeURIComponent("Hello Balwaan Ayurveda, mera order confirm ho gaya hai. Kripya aage ka process batayein.");
+                window.location.href = `https://wa.me/${officialNumber}?text=${message}`;
+            }
+        }, 1000); // 1000ms = 1 second
+    </script>
+</body>
+</html>
