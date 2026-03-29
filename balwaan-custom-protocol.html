@@ -246,14 +246,14 @@
         if (marriedStatus === 'Yes') { const yr = document.querySelector('input[name="q5_years"]:checked'); if (yr) marriageYears = ` (${yr.value})`; }
         userData.fullGoal = `${userData.goals} | Married: ${marriedStatus}${marriageYears}`;
         // Google Sheet quiz
-        const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse";
+        const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
         const fd = new FormData();
-        fd.append("entry.108304216", "QUIZ-" + Date.now().toString().slice(-4));
-        fd.append("entry.2108179602", userData.name);
-        fd.append("entry.1684860991", userData.mobile);
-        fd.append("entry.1774647451", "Custom Protocol Quiz");
-        fd.append("entry.1664049382", userData.fullGoal + " | Age: " + userData.age);
-        fd.append("entry.1326902597", "Quiz Completed");
+        fd.append("entry.824555788", "QUIZ-" + Date.now().toString().slice(-4));
+        fd.append("entry.663270106", userData.name);
+        fd.append("entry.524473692", userData.mobile);
+        fd.append("entry.1423033745", "Custom Protocol Quiz");
+        fd.append("entry.1963041526", userData.fullGoal + " | Age: " + userData.age);
+        fd.append("entry.585522013", "Quiz Completed");
         fetch(googleFormURL, { method: "POST", mode: "no-cors", body: fd });
         if (typeof fbq === 'function') fbq('track', 'Customize_Profile_Completed');
         showStep(3);
@@ -280,14 +280,15 @@
             status: 'pending'
         }));
         // Send order pending to Google Sheet
+        // Send order pending to Google Sheet
         const fd = new FormData();
-        fd.append("entry.108304216", "ORDER-" + orderId);
-        fd.append("entry.2108179602", userData.name);
-        fd.append("entry.1684860991", userData.mobile);
-        fd.append("entry.1774647451", "Prepaid Order - Pending");
-        fd.append("entry.1664049382", `${userData.goals} | Age: ${userData.age} | Amount: ₹${total}`);
-        fd.append("entry.1326902597", "Payment Pending");
-        fetch("https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse", { method: "POST", mode: "no-cors", body: fd });
+        fd.append("entry.824555788", "ORDER-" + orderId);
+        fd.append("entry.663270106", userData.name);
+        fd.append("entry.524473692", userData.mobile);
+        fd.append("entry.1423033745", "Prepaid Order - Pending");
+        fd.append("entry.1963041526", `${userData.goals} | Age: ${userData.age} | Amount: ₹${total}`);
+        fd.append("entry.585522013", "Payment Pending");
+        fetch("https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse", { method: "POST", mode: "no-cors", body: fd });
         // Redirect to UPI
         const upiLink = `upi://pay?pa=${YOUR_UPI_ID}&pn=BalwaanGold&am=${total}&cu=INR&tn=Order${orderId}`;
         window.location.href = upiLink;
@@ -310,13 +311,13 @@
                 window.currentPendingOrder = order;
                 // Update sheet with "Payment Pending - User Returned"
                 const fd = new FormData();
-                fd.append("entry.108304216", "ORDER-" + order.orderId);
-                fd.append("entry.2108179602", order.name);
-                fd.append("entry.1684860991", order.mobile);
-                fd.append("entry.1774647451", "User Returned from UPI");
-                fd.append("entry.1664049382", `${order.goals} | Age: ${order.age} | Amount: ₹${order.amount}`);
-                fd.append("entry.1326902597", "Payment Pending - Returned");
-                fetch("https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse", { method: "POST", mode: "no-cors", body: fd });
+                fd.append("entry.824555788", "ORDER-" + order.orderId);
+                fd.append("entry.663270106", order.name);
+                fd.append("entry.524473692", order.mobile);
+                fd.append("entry.1423033745", "User Returned from UPI");
+                fd.append("entry.1963041526", `${order.goals} | Age: ${order.age} | Amount: ₹${order.amount}`);
+                fd.append("entry.585522013", "Payment Pending - Returned");
+                fetch("https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse", { method: "POST", mode: "no-cors", body: fd });
             }, 3000);
         }
     }
@@ -334,13 +335,13 @@
         }
         // Update Google Sheet with Confirmed via WhatsApp
         const fd = new FormData();
-        fd.append("entry.108304216", "ORDER-" + order.orderId);
-        fd.append("entry.2108179602", order.name);
-        fd.append("entry.1684860991", order.mobile);
-        fd.append("entry.1774647451", "Prepaid Order - Confirmed via WhatsApp");
-        fd.append("entry.1664049382", `${order.goals} | Age: ${order.age} | Amount: ₹${order.amount}`);
-        fd.append("entry.1326902597", "Confirmed via WhatsApp");
-        fetch("https://docs.google.com/forms/d/e/1FAIpQLSeZSFeTXwo6QnZ6NfKs1V2ZFK9YBP29FEQ0YvI0AzPceL0UFw/formResponse", { method: "POST", mode: "no-cors", body: fd });
+        fd.append("entry.824555788", "ORDER-" + order.orderId);
+        fd.append("entry.663270106", order.name);
+        fd.append("entry.524473692", order.mobile);
+        fd.append("entry.1423033745", "Prepaid Order - Confirmed via WhatsApp");
+        fd.append("entry.1963041526", `${order.goals} | Age: ${order.age} | Amount: ₹${order.amount}`);
+        fd.append("entry.585522013", "Confirmed via WhatsApp");
+        fetch("https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse", { method: "POST", mode: "no-cors", body: fd });
         // Mark order as confirmed in localStorage
         order.status = 'confirmed';
         localStorage.setItem('balwaan_pending_order', JSON.stringify(order));
