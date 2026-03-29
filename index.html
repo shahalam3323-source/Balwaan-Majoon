@@ -387,23 +387,21 @@
         </div>
     </section>
 
-    <section id="order" class="section-padding bg-green">
-        <div class="container text-center">
-            <h2 class="text-gold mb-4">Limited Time Combo Offer!</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <div class="card p-4 border-warning shadow-lg text-dark">
-                        <img src="images/1000345777.png" alt="Combo Pack" class="img-fluid mb-3">
-                        <h3 class="text-dark">Mega Value Pack (60 Caps)</h3>
-                        <p class="text-muted mb-1"><del>MRP: ₹2999</del></p>
-                        <h2 class="text-success fw-bold">Special Price: ₹1499</h2>
-                        <div class="alert alert-warning py-1 mt-2"><b>Extra ₹50 Off</b> on Prepaid Orders!</div>
-                        <a href="checkout.html" class="btn btn-gold-glow btn-lg w-100 mt-3">Buy Combo Now</a>
-                    </div>
-                </div>
-            </div>
+    <form id="leadForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeg42aa2K2hgH4qxlL6w_gwd9zkYeplPkOkaWdSoUPCZ7xY4w/formResponse" class="bg-white p-4 rounded shadow-sm border-top border-warning border-3" style="max-width: 500px; margin: 0 auto;">
+        <h5 class="fw-bold mb-3 text-center" style="color: var(--primary-green);">Pehle Apni Details Darj Karein</h5>
+        
+        <input type="hidden" name="entry.874446555" value="Home Page Lead">
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="entry.1592787915" placeholder="Aapka Naam" required>
         </div>
-    </section>
+        <div class="mb-3">
+            <input type="tel" class="form-control" name="entry.961226740" placeholder="WhatsApp Number" pattern="[0-9]{10}" required>
+        </div>
+        <button type="submit" id="submitBtn" class="btn btn-success w-100 fw-bold py-2" style="border-radius: 5px;">
+            START FREE DOSHA TEST <i class="fas fa-arrow-right ms-2"></i>
+        </button>
+    </form>
 
     <section class="section-padding bg-light">
         <div class="container">
@@ -701,6 +699,30 @@
             // 🚀 3. UPDATED DOCTOR WHATSAPP NUMBER (Hakeem Basit Khan)
             const msg = `Hi, I am ${name}. I need a free consultation regarding Balwaan Gold.`;
             window.open(`https://wa.me/919897371502?text=${msg}`, '_blank');
+        });
+    </script>
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = 'Processing...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            const googleFormURL = this.action; 
+
+            fetch(googleFormURL, {
+                method: 'POST',
+                mode: 'no-cors', 
+                body: formData
+            }).then(() => {
+                window.location.href = 'balwaan-custom-protocol.html';
+            }).catch(error => {
+                console.error('Error!', error.message);
+                btn.innerHTML = 'START FREE DOSHA TEST <i class="fas fa-arrow-right ms-2"></i>';
+                btn.disabled = false;
+            });
         });
     </script>
 </body>
