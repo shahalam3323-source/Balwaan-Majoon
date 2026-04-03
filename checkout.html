@@ -33,7 +33,32 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f5 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .checkout-container { max-width: 800px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(20, 69, 47, 0.15); overflow: hidden; }
+        .checkout-container { max-width: 800px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(20, 69, 47, 0.15); overflow: hidden; position: relative; }
+        
+        /* Back Button Styles */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.05);
+        }
         .header { background: linear-gradient(135deg, #14452F 0%, #1a5a3a 100%); color: white; padding: 30px; text-align: center; }
         .header h1 { font-family: 'Montserrat', sans-serif; font-size: 28px; margin-bottom: 5px; }
         .header h1 span { color: #D4AF37; }
@@ -82,6 +107,9 @@
 </head>
 <body>
     <div class="checkout-container">
+        <!-- Back Button -->
+        <a href="#" id="backBtn" class="back-button"><i class="fas fa-arrow-left"></i></a>
+
         <div class="header">
             <h1>Balwaan <span>Gold</span></h1>
             <p>Secure Checkout - 100% Ayurvedic Guarantee</p>
@@ -168,10 +196,21 @@
     </div>
 
     <script>
+        // ========== BACK BUTTON FUNCTIONALITY ==========
+        document.getElementById('backBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Go back in history if available, else go to index.html
+            if (document.referrer && document.referrer !== '') {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+
         // ========== GLOBAL ==========
         const YOUR_UPI_ID = "9808669522@ybl";
         let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        let currentPendingOrder = null; // store order details for payment confirmation
+        let currentPendingOrder = null;
 
         // ========== VARIANT SELECTION & SUMMARY ==========
         function updateSummary() {
@@ -189,7 +228,6 @@
             }
             document.getElementById('totalAmount').innerText = '₹' + basePrice;
             
-            // Handle payment method restrictions
             const isPrepaidOnly = selectedCard.dataset.prepaidOnly === 'true';
             const codOption = document.querySelector('.payment-option[data-method="cod"]');
             const prepaidOption = document.querySelector('.payment-option[data-method="prepaid"]');
@@ -217,7 +255,6 @@
             });
         });
         
-        // Payment method click (only if not disabled)
         const paymentOptions = document.querySelectorAll('.payment-option');
         paymentOptions.forEach(option => {
             option.addEventListener('click', function() {
@@ -249,7 +286,6 @@
             localStorage.setItem('balwaanOrders', JSON.stringify(existingOrders));
         }
         
-        // ========== SUCCESS MODAL (with WhatsApp message asking for screenshot) ==========
         function showSuccess(orderId, name, amount, productValue) {
             document.getElementById('orderNumber').innerText = 'Order ID: ' + orderId;
             if (document.getElementById('bumpCheck').checked) {
@@ -258,7 +294,6 @@
             } else {
                 document.getElementById('ebookDownloadBtn').style.display = 'none';
             }
-            // WhatsApp message includes request for payment screenshot
             const whatsappMsg = `Hi, I have completed the payment for my order.%0A%0AOrder ID: ${orderId}%0AName: ${name}%0AAmount: ₹${amount}%0AProduct: ${productValue}%0A%0APlease find attached payment screenshot. Kindly confirm my order.`;
             document.getElementById('whatsappJoinBtn').href = `https://wa.me/919557133307?text=${encodeURIComponent(whatsappMsg)}`;
             const consultMsg = `Hi, I have placed an order (ID: ${orderId}) and need free consultation.`;
@@ -266,13 +301,11 @@
             document.getElementById('thankYouModal').classList.add('active');
         }
         
-        // ========== CLOSE PAYMENT MODAL ==========
         function closePaymentModal() {
             document.getElementById('paymentModal').classList.remove('active');
             currentPendingOrder = null;
         }
         
-        // ========== HANDLE "I HAVE PAID" BUTTON ==========
         function onPaidClick() {
             if (currentPendingOrder) {
                 closePaymentModal();
@@ -283,7 +316,7 @@
             }
         }
         
-        // ========== FORM SUBMIT HANDLER ==========
+        // ========== FORM SUBMIT ==========
         document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('fullName').value.trim();
@@ -307,7 +340,6 @@
             const orderId = 'BWG' + Date.now().toString().slice(-6);
             const orderData = { orderId, name, mobile, address, productValue, paymentValue, amount };
             
-            // Save to Google Sheet and localStorage
             submitToGoogleForm(orderData);
             saveOrderToLocalStorage({
                 orderId, name, mobile, product: productValue, amount, paymentMethod: paymentValue, timestamp: Date.now()
@@ -315,7 +347,6 @@
             if (typeof fbq === 'function') fbq('track', 'Purchase', { value: amount, currency: 'INR' });
             
             if (paymentValue === 'Prepaid') {
-                // Store pending order for manual confirmation
                 currentPendingOrder = { orderId, name, amount, productValue };
                 const upiLink = `upi://pay?pa=${YOUR_UPI_ID}&pn=BalwaanGold&am=${amount}&cu=INR&tn=Order${orderId}`;
                 const modal = document.getElementById('paymentModal');
@@ -323,27 +354,21 @@
                 const upiContainer = document.getElementById('upiButtonContainer');
                 const paidBtn = document.getElementById('paidButton');
                 
-                // Clear previous content
                 qrContainer.innerHTML = '';
                 upiContainer.innerHTML = '';
                 paidBtn.style.display = 'none';
                 
                 if (isMobile) {
-                    // Mobile: show UPI button
                     const upiBtn = document.createElement('button');
                     upiBtn.className = 'btn-upi';
                     upiBtn.innerHTML = '<i class="fab fa-google-pay me-2"></i> Pay via UPI';
                     upiBtn.onclick = () => {
                         window.location.href = upiLink;
-                        // After redirect, user will return to page. The modal stays open; they can click "I have paid".
-                        // We show a small instruction.
                         alert('Please complete payment in your UPI app, then come back and click "I have paid".');
                     };
                     upiContainer.appendChild(upiBtn);
-                    // Show paid button as well
                     paidBtn.style.display = 'block';
                 } else {
-                    // Desktop: show QR code
                     const qrImg = document.createElement('img');
                     qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiLink)}`;
                     qrImg.className = 'qr-img';
@@ -351,16 +376,13 @@
                     paidBtn.style.display = 'block';
                 }
                 modal.classList.add('active');
-                // Attach paid button event (remove previous listeners to avoid duplicates)
                 const newPaidBtn = paidBtn.cloneNode(true);
                 paidBtn.parentNode.replaceChild(newPaidBtn, paidBtn);
                 newPaidBtn.id = 'paidButton';
                 newPaidBtn.addEventListener('click', onPaidClick);
-                // Also attach close button
                 document.querySelector('.close-payment').onclick = closePaymentModal;
                 document.querySelector('.btn-back').onclick = closePaymentModal;
             } else {
-                // COD: directly show success
                 showSuccess(orderId, name, amount, productValue);
             }
         });
@@ -378,7 +400,6 @@
             } catch(e) {}
         }
         
-        // Initialize: select Starter Pack by default
         document.querySelector('.variant-card[data-value="Starter Pack"]').click();
     </script>
 </body>
