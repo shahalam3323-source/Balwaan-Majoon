@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balwaan Ayurveda - Custom Protocol Checkout</title>
+    
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '916924051189893');
+        fbq('track', 'PageView');
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f0f4f7; padding: 20px; }
+        .checkout-container { max-width: 600px; width: 100%; background: white; border-radius: 20px; margin: 0 auto; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: #14452F; color: white; padding: 25px; text-align: center; border-bottom: 4px solid #D4AF37; }
+        .header h1 { font-family: 'Montserrat', sans-serif; font-size: 24px; }
+        .header span { color: #D4AF37; }
+        .content { padding: 25px; }
+        .order-summary { background: #f9f9f9; border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px dashed #D4AF37; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 500; }
+        .total-row { border-top: 1px solid #ddd; padding-top: 10px; font-size: 20px; font-weight: 800; color: #14452F; }
+        h3 { color: #14452F; margin-bottom: 15px; font-size: 18px; border-left: 4px solid #D4AF37; padding-left: 10px; }
+        .form-group { margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 12px 15px; border: 2px solid #eee; border-radius: 10px; font-family: inherit; font-size: 15px; }
+        input:focus { border-color: #D4AF37; outline: none; }
+        .payment-option { border: 2px solid #eee; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; margin-bottom: 10px; transition: 0.2s; }
+        .payment-option.selected { border-color: #D4AF37; background: #fffcf0; }
+        .order-btn { width: 100%; padding: 16px; background: #D4AF37; color: #14452F; border: none; border-radius: 50px; font-size: 18px; font-weight: 700; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center; }
+        .modal.active { display: flex; }
+        .modal-content { background:white; padding:30px; border-radius:20px; text-align:center; max-width:400px; width:90%; }
+        .qr-img { width: 200px; height: 200px; margin: 15px auto; display: block; border: 1px solid #ddd; padding: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <div class="header">
+            <h1>Balwaan <span>Custom Protocol</span></h1>
+            <p>Clinical Assessment Based Plan</p>
+        </div>
+
+        <div class="content">
+            <div class="order-summary">
+                <div class="summary-row"><span>Product:</span> <span>Vitality Custom Course</span></div>
+                <div class="summary-row"><span>Duration:</span> <span>30 Days (Personalised)</span></div>
+                <div class="summary-row total-row"><span>Total Amount:</span> <span>₹1599</span></div>
+            </div>
+
+            <form id="customCheckoutForm">
+                <h3><i class="fas fa-truck me-2"></i> Delivery Address</h3>
+                <div class="form-group"><input type="text" id="custName" placeholder="Full Name *" required></div>
+                <div class="form-group"><input type="tel" id="custMobile" placeholder="WhatsApp Number *" pattern="[0-9]{10}" required></div>
+                <div class="form-group"><textarea id="custAddress" rows="3" placeholder="Complete Home Address (House No, Area, City, Pincode) *" required></textarea></div>
+
+                <h3><i class="fas fa-wallet me-2"></i> Payment Method</h3>
+                <div class="payment-option selected" onclick="selectPay('Prepaid')">
+                    <input type="radio" name="payMethod" value="Prepaid" checked> 
+                    <div><b>Prepaid (Online)</b><br><small>Safe & Fast Delivery</small></div>
+                </div>
+                <div class="payment-option" onclick="selectPay('Cash on Delivery')">
+                    <input type="radio" name="payMethod" value="Cash on Delivery"> 
+                    <div><b>Cash on Delivery (COD)</b><br><small>Pay when you receive</small></div>
+                </div>
+
+                <button type="submit" class="order-btn">Confirm Order Now</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="payModal" class="modal">
+        <div class="modal-content">
+            <h3 style="border:none">Complete Payment</h3>
+            <div id="qrPlace"></div>
+            <p class="small text-muted">Scan QR or use UPI to pay ₹1599</p>
+            <button onclick="finalSubmit('Prepaid')" class="order-btn" style="background:#25D366; color:white">I Have Paid ✅</button>
+            <button onclick="closeModal()" style="background:none; border:none; margin-top:10px; color:red; cursor:pointer">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
+        const UPI_ID = "9808669522@ybl";
+
+        // 1. Pre-fill data from Quiz
+        window.onload = function() {
+            const quizData = JSON.parse(sessionStorage.getItem('checkout_userData') || '{}');
+            if (quizData.name) document.getElementById('custName').value = quizData.name;
+            if (quizData.mobile) document.getElementById('custMobile').value = quizData.mobile;
+        };
+
+        function selectPay(method) {
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            event.currentTarget.querySelector('input').checked = true;
+        }
+
+        function closeModal() { document.getElementById('payModal').classList.remove('active'); }
+
+        document.getElementById('customCheckoutForm').onsubmit = function(e) {
+            e.preventDefault();
+            const method = document.querySelector('input[name="payMethod"]:checked').value;
+            
+            if (method === 'Prepaid') {
+                const upi = `upi://pay?pa=${UPI_ID}&pn=BalwaanGold&am=1599&cu=INR&tn=CustomProtocol`;
+                document.getElementById('qrPlace').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upi)}" class="qr-img">`;
+                document.getElementById('payModal').classList.add('active');
+            } else {
+                finalSubmit('Cash on Delivery');
+            }
+        };
+
+        function finalSubmit(method) {
+            const name = document.getElementById('custName').value;
+            const mobile = document.getElementById('custMobile').value;
+            const address = document.getElementById('custAddress').value;
+            const orderId = 'BWG-C' + Date.now().toString().slice(-6);
+
+            // Same mapping as original checkout
+            const fd = new FormData();
+            fd.append("entry.824555788", orderId);
+            fd.append("entry.663270106", name);
+            fd.append("entry.524473692", mobile);
+            fd.append("entry.1423033745", address);
+            fd.append("entry.1963041526", "Vitality Custom Protocol");
+            fd.append("entry.585522013", method);
+
+            fetch(FORM_URL, { method: "POST", mode: "no-cors", body: fd });
+
+            // Store in LocalStorage for Admin Dashboard
+            let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+            orders.push({ orderId, name, mobile, product: "Vitality Custom Protocol", amount: 1599, paymentMethod: method, timestamp: Date.now() });
+            localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+
+            if (typeof fbq === 'function') fbq('track', 'Purchase', { value: 1599, currency: 'INR' });
+
+            // Redirect to Thank You
+            const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${orderId}\nName: ${name}`);
+            window.location.href = `https://wa.me/919557133307?text=${msg}`;
+        }
+    </script>
+</body>
+</html>
