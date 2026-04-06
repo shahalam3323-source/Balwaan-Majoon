@@ -98,7 +98,7 @@
         const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
         const UPI_ID = "9808669522@ybl";
 
-        // 1. Pre-fill data from Quiz
+        // ========== AUTO-FILL FROM SESSION STORAGE (NEW) ==========
         window.onload = function() {
             const quizData = JSON.parse(sessionStorage.getItem('checkout_userData') || '{}');
             if (quizData.name) document.getElementById('custName').value = quizData.name;
@@ -132,7 +132,7 @@
             const address = document.getElementById('custAddress').value;
             const orderId = 'BWG-C' + Date.now().toString().slice(-6);
 
-            // Same mapping as original checkout
+            // Google Form Submit (Same Sheet)
             const fd = new FormData();
             fd.append("entry.824555788", orderId);
             fd.append("entry.663270106", name);
@@ -148,10 +148,11 @@
             orders.push({ orderId, name, mobile, product: "Vitality Custom Protocol", amount: 1599, paymentMethod: method, timestamp: Date.now() });
             localStorage.setItem('balwaanOrders', JSON.stringify(orders));
 
+            // Facebook Pixel Purchase Event
             if (typeof fbq === 'function') fbq('track', 'Purchase', { value: 1599, currency: 'INR' });
 
-            // Redirect to Thank You
-            const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${orderId}\nName: ${name}`);
+            // Redirect to WhatsApp Confirmation
+            const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${orderId}\nName: ${name}\nPayment: ${method}`);
             window.location.href = `https://wa.me/919557133307?text=${msg}`;
         }
     </script>
