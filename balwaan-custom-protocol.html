@@ -70,12 +70,12 @@
         <div class="hero-info">
             <i class="fas fa-stethoscope fa-3x mb-3 gold-text"></i>
             <h2 class="fw-bold">Your Personalised <span class="gold-text">Vitality Protocol</span></h2>
-            <p class="mt-3">Ayurvedic expertise ke saath hum aapke body type, medical history aur lifestyle ke hisaab se custom plan banate hain.</p>
+            <p class="mt-3">We create a custom 30‑day plan based on your body type, medical history, and lifestyle. Please answer honestly.</p>
             <button class="btn btn-gold mt-4 px-5 py-3 fw-bold" id="startAssessmentBtn">Start Free Assessment <i class="fas fa-arrow-right ms-2"></i></button>
         </div>
     </div>
 
-    <!-- STEP 2: CLINICAL FORM (UPDATED WITH ALL MANDATORY QUESTIONS) -->
+    <!-- STEP 2: CLINICAL FORM (ALL QUESTIONS IN SIMPLE ENGLISH) -->
     <div id="step2Container" style="display: none;">
         <div class="journey-card">
             <h4 class="text-center mb-4 fw-bold">Clinical Checkup <span class="gold-text">Form</span></h4>
@@ -84,13 +84,13 @@
                 
                 <!-- Basic Info -->
                 <div class="quiz-card">
-                    <div class="mb-3"><label class="fw-bold">Aapka Poora Naam *</label><input type="text" class="form-control" id="userName" required></div>
-                    <div class="mb-3"><label class="fw-bold">WhatsApp Number *</label><input type="tel" class="form-control" id="userMobile" maxlength="10" required></div>
+                    <div class="mb-3"><label class="fw-bold">Your Full Name *</label><input type="text" class="form-control" id="userName" required></div>
+                    <div class="mb-3"><label class="fw-bold">WhatsApp Number (10 digits) *</label><input type="tel" class="form-control" id="userMobile" maxlength="10" required></div>
                 </div>
 
                 <!-- Age Group -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">1.</span> Aapki Umar (Age)?</div>
+                    <div class="fw-bold mb-3"><span class="q-number">1.</span> Your Age Group</div>
                     <div class="row g-2">
                         <div class="col-6"><label><input type="radio" name="age" value="18-25" class="form-check-input" required><div class="option-label text-center">18-25</div></label></div>
                         <div class="col-6"><label><input type="radio" name="age" value="26-35" class="form-check-input"><div class="option-label text-center">26-35</div></label></div>
@@ -101,28 +101,28 @@
 
                 <!-- Marital Status -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">2.</span> Vaivahik Sthiti (Marital Status)</div>
+                    <div class="fw-bold mb-3"><span class="q-number">2.</span> Marital Status</div>
                     <div class="row g-2">
                         <div class="col-6"><label><input type="radio" name="marital" value="Single" class="form-check-input" required><div class="option-label text-center">Single</div></label></div>
                         <div class="col-6"><label><input type="radio" name="marital" value="Married" class="form-check-input"><div class="option-label text-center">Married</div></label></div>
                     </div>
                     <div id="marriageYearsDiv" style="display:none; margin-top:15px;">
-                        <label class="fw-bold">Vivah ko kitne saal hue? *</label>
+                        <label class="fw-bold">If married, how many years? *</label>
                         <select class="form-select" id="marriageYears">
                             <option value="">Select</option>
-                            <option value="<1">1 saal se kam</option>
-                            <option value="1-3">1-3 saal</option>
-                            <option value="4-6">4-6 saal</option>
-                            <option value="7-10">7-10 saal</option>
-                            <option value="10+">10+ saal</option>
+                            <option value="<1">Less than 1 year</option>
+                            <option value="1-3">1-3 years</option>
+                            <option value="4-6">4-6 years</option>
+                            <option value="7-10">7-10 years</option>
+                            <option value="10+">10+ years</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- Medical Conditions -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">3.</span> Kya aapko ye bimariyan hain? (Select any)</div>
-                    <label><input type="checkbox" name="medical" value="BP" class="med-checkbox"><div class="checkbox-label">High/Low BP</div></label>
+                    <div class="fw-bold mb-3"><span class="q-number">3.</span> Do you have any of these medical conditions? (Select any)</div>
+                    <label><input type="checkbox" name="medical" value="BP" class="med-checkbox"><div class="checkbox-label">High / Low BP</div></label>
                     <label><input type="checkbox" name="medical" value="Diabetes" class="med-checkbox"><div class="checkbox-label">Diabetes</div></label>
                     <label><input type="checkbox" name="medical" value="Thyroid" class="med-checkbox"><div class="checkbox-label">Thyroid</div></label>
                     <label><input type="checkbox" name="medical" value="None" class="med-checkbox"><div class="checkbox-label">None of the above</div></label>
@@ -130,8 +130,8 @@
 
                 <!-- Main Concerns (detailed men's health issues) -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">4.</span> Aapki mukhya samasya kya hai? (Select any)</div>
-                    <label><input type="checkbox" name="concern" value="Premature Ejaculation" class="concern-checkbox"><div class="checkbox-label">Premature Ejaculation (Jaldi nikalna)</div></label>
+                    <div class="fw-bold mb-3"><span class="q-number">4.</span>What is your main health problem / issue right now? (select any)</div>
+                    <label><input type="checkbox" name="concern" value="Premature Ejaculation" class="concern-checkbox"><div class="checkbox-label">Premature Ejaculation (early release)</div></label>
                     <label><input type="checkbox" name="concern" value="Low Sperm Count" class="concern-checkbox"><div class="checkbox-label">Low Sperm Count</div></label>
                     <label><input type="checkbox" name="concern" value="Erectile Dysfunction (ED)" class="concern-checkbox"><div class="checkbox-label">Erectile Dysfunction (ED)</div></label>
                     <label><input type="checkbox" name="concern" value="Poor Timing" class="concern-checkbox"><div class="checkbox-label">Poor Timing / Control</div></label>
@@ -144,7 +144,7 @@
 
                 <!-- Goals -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">5.</span> Aapke kya goals hain? (Select any)</div>
+                    <div class="fw-bold mb-3"><span class="q-number">5.</span> What are your main goals? (Select any)</div>
                     <label><input type="checkbox" name="goal" value="More Energy" class="goal-checkbox"><div class="checkbox-label">More Energy</div></label>
                     <label><input type="checkbox" name="goal" value="Better Stamina" class="goal-checkbox"><div class="checkbox-label">Better Stamina</div></label>
                     <label><input type="checkbox" name="goal" value="Better Sleep" class="goal-checkbox"><div class="checkbox-label">Better Sleep</div></label>
@@ -162,7 +162,7 @@
     <div id="loaderScreen">
         <div class="spinner-border mb-4" style="color: var(--dark-gold); width: 3rem; height: 3rem;"></div>
         <h3 style="color: var(--primary-green);">Analyzing Your Profile...</h3>
-        <p class="text-muted">Aapke liye custom protocol taiyaar ho raha hai.</p>
+        <p class="text-muted">Your custom protocol is being prepared.</p>
     </div>
 
     <!-- RESULT SCREEN (DYNAMIC) -->
@@ -201,12 +201,10 @@
         }
     }
 
-    // Attach event listeners for marital status
     document.querySelectorAll('input[name="marital"]').forEach(radio => {
         radio.addEventListener('change', updateMarriageYearsField);
     });
 
-    // Active state for custom styled checkboxes (already handled by CSS, but we need to sync)
     function syncCheckboxState() {
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
             const label = cb.closest('label');
@@ -241,12 +239,11 @@
 
     document.getElementById('startAssessmentBtn').onclick = () => showStep(2);
 
-    // ---------- FORM SUBMISSION (LEAD CAPTURE + SESSION STORAGE) ----------
+    // ---------- FORM SUBMISSION ----------
     const form = document.getElementById('clinicalQuizForm');
     form.onsubmit = function(e) {
         e.preventDefault();
 
-        // Collect all values
         const name = document.getElementById('userName').value.trim();
         const mobile = document.getElementById('userMobile').value.trim();
         const age = document.querySelector('input[name="age"]:checked')?.value || '';
@@ -254,36 +251,33 @@
         let marriageYears = '';
         if (marital === 'Married') {
             marriageYears = document.getElementById('marriageYears').value;
-            if (!marriageYears) { alert('Kripya vivah ke saal select karein.'); return; }
+            if (!marriageYears) { alert('Please select how many years you have been married.'); return; }
         }
 
         const medical = Array.from(document.querySelectorAll('input[name="medical"]:checked')).map(cb => cb.value);
-        if (medical.length === 0) { alert('Kripya kam se kam ek medical condition select karein.'); return; }
+        if (medical.length === 0) { alert('Please select at least one medical condition option.'); return; }
 
         const concerns = Array.from(document.querySelectorAll('input[name="concern"]:checked')).map(cb => cb.value);
-        if (concerns.length === 0) { alert('Kripya kam se kam ek mukhya samasya select karein.'); return; }
+        if (concerns.length === 0) { alert('Please select at least one main concern.'); return; }
 
         const goals = Array.from(document.querySelectorAll('input[name="goal"]:checked')).map(cb => cb.value);
-        if (goals.length === 0) { alert('Kripya kam se kam ek goal select karein.'); return; }
+        if (goals.length === 0) { alert('Please select at least one goal.'); return; }
 
-        // Basic validation
         if (!name || !mobile || !age || !marital) {
-            alert('Kripya sabhi jaroori fields bharein.');
+            alert('Please fill all required fields.');
             return;
         }
         if (!/^\d{10}$/.test(mobile)) {
-            alert('Kripya sahi 10-digit mobile number daalein.');
+            alert('Please enter a valid 10-digit mobile number.');
             return;
         }
 
         // Save all data to sessionStorage for checkout page
         const quizData = { name, mobile, age, marital, marriageYears, medical, concerns, goals };
         sessionStorage.setItem('quizData', JSON.stringify(quizData));
-
-        // Also store name+mobile for checkout autofill (backward compatibility)
         sessionStorage.setItem('checkout_userData', JSON.stringify({ name, mobile }));
 
-        // Google Sheet Lead Capture (same as before)
+        // Google Form backup (no-cors – will not give response, but it's a fallback)
         const fd = new FormData();
         fd.append("entry.824555788", "QUIZ-LEAD-" + Date.now().toString().slice(-4));
         fd.append("entry.663270106", name);
@@ -291,7 +285,6 @@
         fd.append("entry.1423033745", JSON.stringify({ age, marital, marriageYears, medical, concerns, goals }));
         fd.append("entry.1963041526", "Vitality Detailed Quiz");
         fd.append("entry.585522013", "Lead Captured");
-
         fetch("https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse", {
             method: "POST", mode: "no-cors", body: fd
         }).catch(() => {});
@@ -315,12 +308,10 @@
         setTimeout(() => showStep(4), 2000);
     };
 
-    // Redirect to checkout page
     document.getElementById('orderNowBtn').onclick = function() {
-        window.location.href = 'checkout-custom.html';  // Update if your checkout file has a different name
+        window.location.href = 'checkout-custom.html';
     };
 
-    // Initial step
     showStep(1);
 </script>
 </body>
