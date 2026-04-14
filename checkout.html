@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balwaan Ayurveda - Secure Checkout</title>
     
-    <!-- Favicon (root-relative) -->
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -34,8 +33,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f5 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .checkout-container { max-width: 800px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(20, 69, 47, 0.15); overflow: hidden; position: relative; }
-        
-        /* Back Button Styles */
         .back-button {
             position: absolute;
             top: 20px;
@@ -75,26 +72,20 @@
         .order-summary .total { font-size: 20px; font-weight: 700; color: #14452F; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 10px; }
         .form-group { margin-bottom: 20px; }
         .form-group input, .form-group textarea { width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 12px; font-family: 'Poppins', sans-serif; }
-        
         .order-bump { background: #fffbe6; border: 2px dashed #D4AF37; border-radius: 12px; padding: 15px; margin: 20px 0; }
         .bump-header { display: flex; align-items: center; gap: 10px; font-weight: bold; color: #14452F; margin-bottom: 8px; }
         .bump-header input[type="checkbox"] { transform: scale(1.5); cursor: pointer; accent-color: #14452F; }
         .bump-text { font-size: 13px; color: #555; }
-        
         .payment-section { margin-top: 20px; }
         .payment-option { border: 2px solid #e0e0e0; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px; cursor: pointer; margin-bottom: 10px; }
         .payment-option.selected { border-color: #D4AF37; background: #faf6e7; }
         .payment-option.disabled { opacity: 0.6; cursor: not-allowed; background: #f0f0f0; pointer-events: none; }
         .order-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #D4AF37 0%, #b38f2c 100%); color: #14452F; border: none; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; margin: 20px 0; }
-        
-        /* Modal styles */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
         .modal-content { background: white; border-radius: 20px; padding: 30px; text-align: center; max-width: 400px; width: 90%; }
         .whatsapp-btn { background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; font-weight: bold; margin-bottom: 10px; }
         .ebook-btn { background: #ff9800; color: white; padding: 15px; border-radius: 50px; text-decoration: none; display: none; align-items: center; justify-content: center; gap: 10px; width: 100%; font-weight: bold; margin-bottom: 10px; }
-        
-        /* Payment Modal (QR / UPI) */
         .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; }
         .payment-modal.active { display: flex; }
         .payment-modal .modal-card { background: white; border-radius: 28px; padding: 25px; max-width: 400px; width: 90%; text-align: center; border: 3px solid #D4AF37; position: relative; }
@@ -107,9 +98,7 @@
 </head>
 <body>
     <div class="checkout-container">
-        <!-- Back Button -->
         <a href="#" id="backBtn" class="back-button"><i class="fas fa-arrow-left"></i></a>
-
         <div class="header">
             <h1>Balwaan <span>Gold</span></h1>
             <p>Secure Checkout - 100% Ayurvedic Guarantee</p>
@@ -155,7 +144,6 @@
                 <div class="form-group"><input type="text" id="fullName" placeholder="Full Name *" required></div>
                 <div class="form-group"><input type="tel" id="mobile" placeholder="Mobile Number *" pattern="[0-9]{10}" required></div>
                 <div class="form-group"><textarea id="address" rows="3" placeholder="Full Address *" required></textarea></div>
-                
                 <div class="payment-section">
                     <h4>Payment Method</h4>
                     <div class="payment-option" data-method="cod">
@@ -165,13 +153,11 @@
                         <input type="radio" name="payment" value="Prepaid"> <b>Prepaid (UPI)</b>
                     </div>
                 </div>
-                
                 <button type="submit" class="order-btn">Confirm Order</button>
             </form>
         </div>
     </div>
 
-    <!-- Thank You Modal -->
     <div class="modal" id="thankYouModal">
         <div class="modal-content">
             <h2 style="color: #14452F;">Order Confirmed! ✅</h2>
@@ -183,7 +169,6 @@
         </div>
     </div>
 
-    <!-- Payment Modal (QR for desktop, UPI button for mobile) -->
     <div id="paymentModal" class="payment-modal">
         <div class="modal-card">
             <span class="close-payment" onclick="closePaymentModal()">&times;</span>
@@ -196,21 +181,41 @@
     </div>
 
     <script>
-        // ========== BACK BUTTON FUNCTIONALITY ==========
+        // ========== GOOGLE APPS SCRIPT URL (YOUR DEPLOYED URL) ==========
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznRN4SnYbBA3SJzwFRg2V0J5o8IKp6RnAEWPrZb7-hsvX2UW0dpi6NX5EWyoUEjxEX/exec';
+        const BACKUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
+
+        async function submitOrderToSheet(orderData) {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                const result = await response.json();
+                console.log('✅ Apps Script success:', result);
+                return true;
+            } catch (error) {
+                console.warn('⚠️ Apps Script failed, trying backup Google Form:', error);
+                const formData = new FormData();
+                formData.append("entry.824555788", orderData.orderId);
+                formData.append("entry.663270106", orderData.name);
+                formData.append("entry.524473692", orderData.mobile);
+                formData.append("entry.1423033745", orderData.address);
+                formData.append("entry.1963041526", orderData.product);
+                formData.append("entry.585522013", orderData.paymentMethod);
+                fetch(BACKUP_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
+                return false;
+            }
+        }
+
+        // ========== BACK BUTTON ==========
         document.getElementById('backBtn').addEventListener('click', function(e) {
             e.preventDefault();
-            // Go back in history if available, else go to index.html
-            if (document.referrer && document.referrer !== '') {
-                window.history.back();
-            } else {
-                window.location.href = 'index.html';
-            }
+            if (document.referrer && document.referrer !== '') window.history.back();
+            else window.location.href = 'index.html';
         });
-
-        // ========== GLOBAL ==========
-        const YOUR_UPI_ID = "9808669522@ybl";
-        let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        let currentPendingOrder = null;
 
         // ========== VARIANT SELECTION & SUMMARY ==========
         function updateSummary() {
@@ -227,13 +232,11 @@
                 document.getElementById('bumpRow').style.display = 'none';
             }
             document.getElementById('totalAmount').innerText = '₹' + basePrice;
-            
             const isPrepaidOnly = selectedCard.dataset.prepaidOnly === 'true';
             const codOption = document.querySelector('.payment-option[data-method="cod"]');
             const prepaidOption = document.querySelector('.payment-option[data-method="prepaid"]');
             const codRadio = codOption.querySelector('input[type="radio"]');
             const prepaidRadio = prepaidOption.querySelector('input[type="radio"]');
-            
             if (isPrepaidOnly) {
                 codOption.classList.add('disabled');
                 codRadio.disabled = true;
@@ -245,7 +248,7 @@
                 codRadio.disabled = false;
             }
         }
-        
+
         const variantCards = document.querySelectorAll('.variant-card');
         variantCards.forEach(card => {
             card.addEventListener('click', function() {
@@ -254,7 +257,7 @@
                 updateSummary();
             });
         });
-        
+
         const paymentOptions = document.querySelectorAll('.payment-option');
         paymentOptions.forEach(option => {
             option.addEventListener('click', function() {
@@ -266,26 +269,14 @@
                 this.classList.add('selected');
             });
         });
-        
-        // ========== GOOGLE SHEET & LOCALSTORAGE ==========
-        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
-        function submitToGoogleForm(orderData) {
-            const formData = new FormData();
-            formData.append("entry.824555788", orderData.orderId);
-            formData.append("entry.663270106", orderData.name);
-            formData.append("entry.524473692", orderData.mobile);
-            formData.append("entry.1423033745", orderData.address);
-            formData.append("entry.1963041526", orderData.productValue);
-            formData.append("entry.585522013", orderData.paymentValue);
-            fetch(GOOGLE_FORM_URL, { method: "POST", mode: "no-cors", body: formData });
-        }
-        
+
+        // ========== LOCALSTORAGE ==========
         function saveOrderToLocalStorage(order) {
             let existingOrders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
             existingOrders.push(order);
             localStorage.setItem('balwaanOrders', JSON.stringify(existingOrders));
         }
-        
+
         function showSuccess(orderId, name, amount, productValue) {
             document.getElementById('orderNumber').innerText = 'Order ID: ' + orderId;
             if (document.getElementById('bumpCheck').checked) {
@@ -300,12 +291,16 @@
             document.getElementById('consultBtn').href = `https://wa.me/919557133307?text=${encodeURIComponent(consultMsg)}`;
             document.getElementById('thankYouModal').classList.add('active');
         }
-        
+
         function closePaymentModal() {
             document.getElementById('paymentModal').classList.remove('active');
             currentPendingOrder = null;
         }
-        
+
+        let currentPendingOrder = null;
+        const YOUR_UPI_ID = "9808669522@ybl";
+        let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
         function onPaidClick() {
             if (currentPendingOrder) {
                 closePaymentModal();
@@ -315,9 +310,9 @@
                 alert('No pending order found. Please try again.');
             }
         }
-        
-        // ========== FORM SUBMIT ==========
-        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+
+        // ========== FORM SUBMIT (Main Integration) ==========
+        document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('fullName').value.trim();
             const mobile = document.getElementById('mobile').value.trim();
@@ -338,9 +333,22 @@
                 return;
             }
             const orderId = 'BWG' + Date.now().toString().slice(-6);
-            const orderData = { orderId, name, mobile, address, productValue, paymentValue, amount };
             
-            submitToGoogleForm(orderData);
+            // Submit to Google Sheet (Apps Script)
+            const orderData = {
+                timestamp: new Date().toISOString(),
+                orderId: orderId,
+                name: name,
+                mobile: mobile,
+                address: address,
+                product: productValue,
+                amount: amount,
+                paymentMethod: paymentValue,
+                ebook: document.getElementById('bumpCheck').checked ? 'Yes' : 'No'
+            };
+            await submitOrderToSheet(orderData);
+            
+            // Save to localStorage for admin panel
             saveOrderToLocalStorage({
                 orderId, name, mobile, product: productValue, amount, paymentMethod: paymentValue, timestamp: Date.now()
             });
@@ -353,11 +361,9 @@
                 const qrContainer = document.getElementById('qrContainer');
                 const upiContainer = document.getElementById('upiButtonContainer');
                 const paidBtn = document.getElementById('paidButton');
-                
                 qrContainer.innerHTML = '';
                 upiContainer.innerHTML = '';
                 paidBtn.style.display = 'none';
-                
                 if (isMobile) {
                     const upiBtn = document.createElement('button');
                     upiBtn.className = 'btn-upi';
@@ -386,7 +392,7 @@
                 showSuccess(orderId, name, amount, productValue);
             }
         });
-        
+
         // ========== PRE-FILL FROM CUSTOM PROTOCOL ==========
         const sessionData = sessionStorage.getItem('checkout_userData');
         if (sessionData) {
@@ -399,7 +405,6 @@
                 sessionStorage.removeItem('checkout_userData');
             } catch(e) {}
         }
-        
         document.querySelector('.variant-card[data-value="Starter Pack"]').click();
     </script>
 </body>
