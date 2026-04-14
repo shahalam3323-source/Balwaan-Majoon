@@ -95,10 +95,36 @@
     </div>
 
     <script>
-        const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
-        const UPI_ID = "9808669522@ybl";
+        // ========== GOOGLE APPS SCRIPT URL (SAME AS CHECKOUT.HTML) ==========
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznRN4SnYbBA3SJzwFRg2V0J5o8IKp6RnAEWPrZb7-hsvX2UW0dpi6NX5EWyoUEjxEX/exec';
+        const BACKUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
 
-        // ========== AUTO-FILL FROM SESSION STORAGE (NEW) ==========
+        async function submitOrderToSheet(orderData) {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                const result = await response.json();
+                console.log('✅ Custom order saved via Apps Script:', result);
+                return true;
+            } catch (error) {
+                console.warn('⚠️ Apps Script failed, using backup form:', error);
+                const formData = new FormData();
+                formData.append("entry.824555788", orderData.orderId);
+                formData.append("entry.663270106", orderData.name);
+                formData.append("entry.524473692", orderData.mobile);
+                formData.append("entry.1423033745", orderData.address);
+                formData.append("entry.1963041526", orderData.product);
+                formData.append("entry.585522013", orderData.paymentMethod);
+                fetch(BACKUP_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
+                return false;
+            }
+        }
+
+        // ========== AUTO-FILL FROM SESSION STORAGE ==========
         window.onload = function() {
             const quizData = JSON.parse(sessionStorage.getItem('checkout_userData') || '{}');
             if (quizData.name) document.getElementById('custName').value = quizData.name;
@@ -113,47 +139,60 @@
 
         function closeModal() { document.getElementById('payModal').classList.remove('active'); }
 
-        document.getElementById('customCheckoutForm').onsubmit = function(e) {
+        let currentPaymentOrder = null;
+
+        document.getElementById('customCheckoutForm').onsubmit = async function(e) {
             e.preventDefault();
             const method = document.querySelector('input[name="payMethod"]:checked').value;
-            
+            const name = document.getElementById('custName').value.trim();
+            const mobile = document.getElementById('custMobile').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            if (!name || !mobile || !address) { alert('Please fill all details'); return; }
+            if (!/^\d{10}$/.test(mobile)) { alert('Enter 10-digit mobile number'); return; }
+            const orderId = 'BWG-C' + Date.now().toString().slice(-6);
+            const product = "Vitality Custom Protocol";
+            const amount = 1599;
+
+            // Submit to Google Sheet
+            await submitOrderToSheet({
+                timestamp: new Date().toISOString(),
+                orderId: orderId,
+                name: name,
+                mobile: mobile,
+                address: address,
+                product: product,
+                amount: amount,
+                paymentMethod: method,
+                ebook: 'No'
+            });
+
+            // Local storage
+            let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+            orders.push({ orderId, name, mobile, product: product, amount: amount, paymentMethod: method, timestamp: Date.now() });
+            localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+
+            // Facebook Pixel Purchase Event
+            if (typeof fbq === 'function') fbq('track', 'Purchase', { value: amount, currency: 'INR' });
+
             if (method === 'Prepaid') {
-                const upi = `upi://pay?pa=${UPI_ID}&pn=BalwaanGold&am=1599&cu=INR&tn=CustomProtocol`;
+                currentPaymentOrder = { orderId, name, amount };
+                const UPI_ID = "9808669522@ybl";
+                const upi = `upi://pay?pa=${UPI_ID}&pn=BalwaanGold&am=1599&cu=INR&tn=${orderId}`;
                 document.getElementById('qrPlace').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upi)}" class="qr-img">`;
                 document.getElementById('payModal').classList.add('active');
             } else {
-                finalSubmit('Cash on Delivery');
+                // COD: redirect to WhatsApp with order details
+                const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${orderId}\nName: ${name}\nPayment: COD`);
+                window.location.href = `https://wa.me/919557133307?text=${msg}`;
             }
         };
 
         function finalSubmit(method) {
-            const name = document.getElementById('custName').value;
-            const mobile = document.getElementById('custMobile').value;
-            const address = document.getElementById('custAddress').value;
-            const orderId = 'BWG-C' + Date.now().toString().slice(-6);
-
-            // Google Form Submit (Same Sheet)
-            const fd = new FormData();
-            fd.append("entry.824555788", orderId);
-            fd.append("entry.663270106", name);
-            fd.append("entry.524473692", mobile);
-            fd.append("entry.1423033745", address);
-            fd.append("entry.1963041526", "Vitality Custom Protocol");
-            fd.append("entry.585522013", method);
-
-            fetch(FORM_URL, { method: "POST", mode: "no-cors", body: fd });
-
-            // Store in LocalStorage for Admin Dashboard
-            let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-            orders.push({ orderId, name, mobile, product: "Vitality Custom Protocol", amount: 1599, paymentMethod: method, timestamp: Date.now() });
-            localStorage.setItem('balwaanOrders', JSON.stringify(orders));
-
-            // Facebook Pixel Purchase Event
-            if (typeof fbq === 'function') fbq('track', 'Purchase', { value: 1599, currency: 'INR' });
-
-            // Redirect to WhatsApp Confirmation
-            const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${orderId}\nName: ${name}\nPayment: ${method}`);
-            window.location.href = `https://wa.me/919557133307?text=${msg}`;
+            if (currentPaymentOrder) {
+                closeModal();
+                const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${currentPaymentOrder.orderId}\nName: ${currentPaymentOrder.name}\nPayment: Prepaid`);
+                window.location.href = `https://wa.me/919557133307?text=${msg}`;
+            }
         }
     </script>
 </body>
