@@ -130,7 +130,7 @@
 
                 <!-- Main Concerns (detailed men's health issues) -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">4.</span>What is your main health problem / issue right now? (select any)</div>
+                    <div class="fw-bold mb-3"><span class="q-number">4.</span> What is your main health problem / issue right now? (select any)</div>
                     <label><input type="checkbox" name="concern" value="Premature Ejaculation" class="concern-checkbox"><div class="checkbox-label">Premature Ejaculation (early release)</div></label>
                     <label><input type="checkbox" name="concern" value="Low Sperm Count" class="concern-checkbox"><div class="checkbox-label">Low Sperm Count</div></label>
                     <label><input type="checkbox" name="concern" value="Erectile Dysfunction (ED)" class="concern-checkbox"><div class="checkbox-label">Erectile Dysfunction (ED)</div></label>
@@ -277,17 +277,24 @@
         sessionStorage.setItem('quizData', JSON.stringify(quizData));
         sessionStorage.setItem('checkout_userData', JSON.stringify({ name, mobile }));
 
-        // Google Form backup (no-cors – will not give response, but it's a fallback)
-        const fd = new FormData();
-        fd.append("entry.824555788", "QUIZ-LEAD-" + Date.now().toString().slice(-4));
-        fd.append("entry.663270106", name);
-        fd.append("entry.524473692", mobile);
-        fd.append("entry.1423033745", JSON.stringify({ age, marital, marriageYears, medical, concerns, goals }));
-        fd.append("entry.1963041526", "Vitality Detailed Quiz");
-        fd.append("entry.585522013", "Lead Captured");
-        fetch("https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse", {
-            method: "POST", mode: "no-cors", body: fd
-        }).catch(() => {});
+        // Send quiz answers to Google Sheet (NEW SCRIPT URL)
+        const QUIZ_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpg49UY_2UposhE5kXiO53j443z6224HwBNJCvtQ82LgKFtZYms7YOXJl4NbiTmdg/exec';
+        
+        fetch(QUIZ_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                mobile: mobile,
+                age: age,
+                marital: marital,
+                marriageYears: marriageYears,
+                medical: medical,
+                concerns: concerns,
+                goals: goals
+            })
+        }).then(r => r.json()).then(data => console.log('Quiz saved:', data)).catch(err => console.error('Quiz save error:', err));
 
         if (typeof fbq === 'function') fbq('track', 'Lead');
 
