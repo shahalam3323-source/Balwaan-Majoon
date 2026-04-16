@@ -42,7 +42,6 @@
         .payment-option { border: 2px solid #eee; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; margin-bottom: 10px; transition: 0.2s; }
         .payment-option.selected { border-color: #D4AF37; background: #fffcf0; }
         .order-btn { width: 100%; padding: 16px; background: #D4AF37; color: #14452F; border: none; border-radius: 50px; font-size: 18px; font-weight: 700; cursor: pointer; margin-top: 20px; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
-        .order-btn:disabled { background: #ccc; cursor: not-allowed; box-shadow: none; }
         .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center; }
         .modal.active { display: flex; }
         .modal-content { background:white; padding:30px; border-radius:20px; text-align:center; max-width:400px; width:90%; }
@@ -80,7 +79,7 @@
                     <div><b>Cash on Delivery (COD)</b><br><small>Pay when you receive</small></div>
                 </div>
 
-                <button type="submit" id="submitBtn" class="order-btn">Confirm Order Now</button>
+                <button type="submit" class="order-btn">Confirm Order Now</button>
             </form>
         </div>
     </div>
@@ -96,35 +95,27 @@
     </div>
 
     <script>
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcAA6qv6FrEFDfdVoG1--p1tyXaSRhro5XGoZI7z0viYdnx2KT-8N6iIWCC-0B5s2k/exec';
-        const BACKUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdYPkhK3mj7C2653hLB47ja8oXfUPvKLjPKVxFAhYhyMF8Vbg/formResponse";
+        // ========== GOOGLE APPS SCRIPT URL FOR ORDERS ==========
+        const ORDER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxY7rYvqhFSWNubp9zwo_mEp4umJG9tgRNtGy3kL3mchgLUMir7f1RW3g_w1xZE0SSz/exec';
 
-        // Logic: Pehle data bhejenge, phir redirect karenge
         async function submitOrderToSheet(orderData) {
             try {
-                const response = await fetch(APPS_SCRIPT_URL, {
+                const response = await fetch(ORDER_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(orderData)
                 });
+                const result = await response.json();
+                console.log('✅ Order saved via Apps Script:', result);
                 return true;
             } catch (error) {
-                console.warn('Backup Form triggering...');
-                const formData = new FormData();
-                formData.append("entry.824555788", orderData.orderId);
-                formData.append("entry.663270106", orderData.name);
-                formData.append("entry.524473692", orderData.mobile);
-                formData.append("entry.1423033745", orderData.address);
-                formData.append("entry.1963041526", orderData.product);
-                formData.append("entry.585522013", orderData.paymentMethod);
-                
-                // IMPORTANT: Yahan await zaroori hai taaki browser redirect se pehle request bhej de
-                await fetch(BACKUP_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
-                return true;
+                console.error('❌ Order save failed:', error);
+                return false;
             }
         }
 
+        // ========== AUTO-FILL FROM SESSION STORAGE ==========
         window.onload = function() {
             const quizData = JSON.parse(sessionStorage.getItem('checkout_userData') || '{}');
             if (quizData.name) document.getElementById('custName').value = quizData.name;
@@ -133,9 +124,8 @@
 
         function selectPay(method) {
             document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
-            const target = event.currentTarget;
-            target.classList.add('selected');
-            target.querySelector('input').checked = true;
+            event.currentTarget.classList.add('selected');
+            event.currentTarget.querySelector('input').checked = true;
         }
 
         function closeModal() { document.getElementById('payModal').classList.remove('active'); }
@@ -144,21 +134,19 @@
 
         document.getElementById('customCheckoutForm').onsubmit = async function(e) {
             e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = "Processing...";
-
             const method = document.querySelector('input[name="payMethod"]:checked').value;
             const name = document.getElementById('custName').value.trim();
             const mobile = document.getElementById('custMobile').value.trim();
             const address = document.getElementById('custAddress').value.trim();
-            
+            if (!name || !mobile || !address) { alert('Please fill all details'); return; }
+            if (!/^\d{10}$/.test(mobile)) { alert('Enter 10-digit mobile number'); return; }
             const orderId = 'BWG-C' + Date.now().toString().slice(-6);
             const product = "Vitality Custom Protocol";
             const amount = 1599;
 
-            const orderDetails = {
-                timestamp: new Date().toLocaleString(),
+            // Submit to Google Sheet
+            await submitOrderToSheet({
+                timestamp: new Date().toISOString(),
                 orderId: orderId,
                 name: name,
                 mobile: mobile,
@@ -167,29 +155,24 @@
                 amount: amount,
                 paymentMethod: method,
                 ebook: 'No'
-            };
+            });
 
-            // 1. Sabse pehle Google Sheet mein save karenge (Wait for it)
-            await submitOrderToSheet(orderDetails);
-
-            // 2. Local storage save
+            // Local storage for admin panel
             let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-            orders.push({ orderId, name, mobile, product, amount, paymentMethod: method, timestamp: Date.now() });
+            orders.push({ orderId, name, mobile, product: product, amount: amount, paymentMethod: method, timestamp: Date.now() });
             localStorage.setItem('balwaanOrders', JSON.stringify(orders));
 
-            // 3. Facebook Pixel
+            // Facebook Pixel Purchase Event
             if (typeof fbq === 'function') fbq('track', 'Purchase', { value: amount, currency: 'INR' });
 
-            // 4. Final Action (Redirect ya Modal)
             if (method === 'Prepaid') {
                 currentPaymentOrder = { orderId, name, amount };
                 const UPI_ID = "9808669522@ybl";
                 const upi = `upi://pay?pa=${UPI_ID}&pn=BalwaanGold&am=1599&cu=INR&tn=${orderId}`;
                 document.getElementById('qrPlace').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upi)}" class="qr-img">`;
                 document.getElementById('payModal').classList.add('active');
-                btn.disabled = false;
-                btn.innerText = "Confirm Order Now";
             } else {
+                // COD: redirect to WhatsApp with order details
                 const msg = encodeURIComponent(`Hi Balwaan Team, maine Custom Protocol order kiya hai.\nOrder ID: ${orderId}\nName: ${name}\nPayment: COD`);
                 window.location.href = `https://wa.me/919557133307?text=${msg}`;
             }
