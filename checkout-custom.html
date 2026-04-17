@@ -95,8 +95,8 @@
     </div>
 
     <script>
-        // ========== GOOGLE APPS SCRIPT URL FOR ORDERS ==========
-        const ORDER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxY7rYvqhFSWNubp9zwo_mEp4umJG9tgRNtGy3kL3mchgLUMir7f1RW3g_w1xZE0SSz/exec';
+        // ========== GOOGLE APPS SCRIPT URL (ORDERS) ==========
+        const ORDER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyD8sd5zJRSm1NCE_cTKVJA8M6qVXorCGLYXYAHvaiYYXfMqtrYMN__J3bCfnX76M/exec';
 
         async function submitOrderToSheet(orderData) {
             try {
@@ -107,10 +107,10 @@
                     body: JSON.stringify(orderData)
                 });
                 const result = await response.json();
-                console.log('✅ Order saved via Apps Script:', result);
+                console.log('✅ Custom order saved via Apps Script:', result);
                 return true;
             } catch (error) {
-                console.error('❌ Order save failed:', error);
+                console.error('❌ Custom order save failed:', error);
                 return false;
             }
         }
