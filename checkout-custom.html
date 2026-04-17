@@ -96,24 +96,33 @@
 
     <script>
         // ========== GOOGLE APPS SCRIPT URL (ORDERS) ==========
-        const ORDER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyD8sd5zJRSm1NCE_cTKVJA8M6qVXorCGLYXYAHvaiYYXfMqtrYMN__J3bCfnX76M/exec';
+       const ORDER_API_URL = 'https://api.sheetbest.com/sheets/3480b6ca-9fd6-42f6-bf97-1755b6f09267';
 
-        async function submitOrderToSheet(orderData) {
-            try {
-                const response = await fetch(ORDER_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(orderData)
-                });
-                const result = await response.json();
-                console.log('✅ Custom order saved via Apps Script:', result);
-                return true;
-            } catch (error) {
-                console.error('❌ Custom order save failed:', error);
-                return false;
-            }
-        }
+async function submitOrderToSheet(orderData) {
+    try {
+        const response = await fetch(ORDER_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify([{
+                Timestamp: new Date().toISOString(),
+                "Order ID": orderData.orderId,
+                "Name": orderData.name,
+                "Mobile": orderData.mobile,
+                "Address": orderData.address,
+                "Product": orderData.product,
+                "Amount": orderData.amount,
+                "Payment Method": orderData.paymentMethod,
+                "E-Book": orderData.ebook
+            }])
+        });
+        const result = await response.json();
+        console.log('✅ Order saved via Sheet.best:', result);
+        return true;
+    } catch (error) {
+        console.error('❌ Order save failed:', error);
+        return false;
+    }
+}
 
         // ========== AUTO-FILL FROM SESSION STORAGE ==========
         window.onload = function() {
