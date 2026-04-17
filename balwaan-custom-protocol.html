@@ -277,24 +277,27 @@
         sessionStorage.setItem('quizData', JSON.stringify(quizData));
         sessionStorage.setItem('checkout_userData', JSON.stringify({ name, mobile }));
 
-        // Send quiz answers to Google Sheet (NEW QUIZ API URL)
-        const QUIZ_API_URL = 'https://api.sheetbest.com/sheets/140ca050-491b-4fe5-92cf-7c7851a6d6b5';
+        // Send quiz answers to Google Sheet (UPDATED QUIZ API URL)
+        const QUIZ_API_URL = 'https://api.sheetbest.com/sheets/7a70aa1c-c444-4e12-b278-f846bebc1725';
 
-fetch(QUIZ_API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify([{
-        Timestamp: new Date().toISOString(),
-        Name: name,
-        Mobile: mobile,
-        Age: age,
-        Marital: marital,
-        "Marriage Years": marriageYears,
-        "Medical Conditions": medical.join(', '),
-        "Main Concerns": concerns.join(', '),
-        Goals: goals.join(', ')
-    }])
-}).then(r => r.json()).then(data => console.log('Quiz saved:', data)).catch(err => console.error('Quiz save error:', err));
+        fetch(QUIZ_API_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify([{
+                Timestamp: new Date().toISOString(),
+                Name: name,
+                Mobile: mobile,
+                Age: age,
+                Marital: marital,
+                "Marriage Years": marriageYears,
+                "Medical Conditions": medical.join(', '),
+                "Main Concerns": concerns.join(', '),
+                Goals: goals.join(', ')
+            }])
+        }).then(r => r.json()).then(data => console.log('Quiz saved:', data)).catch(err => console.error('Quiz save error:', err));
+
+        if (typeof fbq === 'function') fbq('track', 'Lead');
 
         // Show result screen with dynamic content
         document.getElementById('userNameDisplay').innerText = name;
