@@ -277,8 +277,8 @@
         sessionStorage.setItem('quizData', JSON.stringify(quizData));
         sessionStorage.setItem('checkout_userData', JSON.stringify({ name, mobile }));
 
-        // Send quiz answers to Google Sheet (NEW SCRIPT URL)
-        const QUIZ_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpg49UY_2UposhE5kXiO53j443z6224HwBNJCvtQ82LgKFtZYms7YOXJl4NbiTmdg/exec';
+        // Send quiz answers to Google Sheet (NEW QUIZ SCRIPT URL)
+        const QUIZ_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJkjx9g4jYpEL-p0CqsXzqYo7X3_3UC4fNwxJkRUuPtRmCXgOQoZQHvuXK_veV7Ls/exec';
         
         fetch(QUIZ_SCRIPT_URL, {
             method: 'POST',
