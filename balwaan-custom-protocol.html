@@ -277,26 +277,24 @@
         sessionStorage.setItem('quizData', JSON.stringify(quizData));
         sessionStorage.setItem('checkout_userData', JSON.stringify({ name, mobile }));
 
-        // Send quiz answers to Google Sheet (NEW QUIZ SCRIPT URL)
-        const QUIZ_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJkjx9g4jYpEL-p0CqsXzqYo7X3_3UC4fNwxJkRUuPtRmCXgOQoZQHvuXK_veV7Ls/exec';
-        
-        fetch(QUIZ_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: name,
-                mobile: mobile,
-                age: age,
-                marital: marital,
-                marriageYears: marriageYears,
-                medical: medical,
-                concerns: concerns,
-                goals: goals
-            })
-        }).then(r => r.json()).then(data => console.log('Quiz saved:', data)).catch(err => console.error('Quiz save error:', err));
+        // Send quiz answers to Google Sheet (NEW QUIZ API URL)
+        const QUIZ_API_URL = 'https://api.sheetbest.com/sheets/140ca050-491b-4fe5-92cf-7c7851a6d6b5';
 
-        if (typeof fbq === 'function') fbq('track', 'Lead');
+fetch(QUIZ_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify([{
+        Timestamp: new Date().toISOString(),
+        Name: name,
+        Mobile: mobile,
+        Age: age,
+        Marital: marital,
+        "Marriage Years": marriageYears,
+        "Medical Conditions": medical.join(', '),
+        "Main Concerns": concerns.join(', '),
+        Goals: goals.join(', ')
+    }])
+}).then(r => r.json()).then(data => console.log('Quiz saved:', data)).catch(err => console.error('Quiz save error:', err));
 
         // Show result screen with dynamic content
         document.getElementById('userNameDisplay').innerText = name;
