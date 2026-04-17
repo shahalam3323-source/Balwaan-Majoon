@@ -165,9 +165,9 @@
                     <label><input type="checkbox" name="medical" value="None" class="med-checkbox"><div class="checkbox-label">None of the above</div></label>
                 </div>
 
-                <!-- Main Concerns -->
+                <!-- Main Concerns (max 3, auto-unselect oldest) -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">4.</span> What is your main health problem / issue right now? (select any)</div>
+                    <div class="fw-bold mb-3"><span class="q-number">4.</span> What is your main health problem / issue right now? (select any, max 3)</div>
                     <label><input type="checkbox" name="concern" value="Premature Ejaculation" class="concern-checkbox"><div class="checkbox-label">Premature Ejaculation (early release)</div></label>
                     <label><input type="checkbox" name="concern" value="Low Sperm Count" class="concern-checkbox"><div class="checkbox-label">Low Sperm Count</div></label>
                     <label><input type="checkbox" name="concern" value="Erectile Dysfunction (ED)" class="concern-checkbox"><div class="checkbox-label">Erectile Dysfunction (ED)</div></label>
@@ -179,7 +179,7 @@
                     <label><input type="checkbox" name="concern" value="Other" class="concern-checkbox"><div class="checkbox-label">Other</div></label>
                 </div>
 
-                <!-- Goals (OPTIONAL, Max 2, Auto-unselect oldest) -->
+                <!-- Goals (max 2, optional, auto-unselect oldest) -->
                 <div class="quiz-card">
                     <div class="fw-bold mb-3"><span class="q-number">5.</span> What are your main goals? <span style="font-weight: normal; font-size: 0.9rem;">(optional, max 2)</span></div>
                     <label><input type="checkbox" name="goal" value="More Energy" class="goal-checkbox"><div class="checkbox-label">More Energy</div></label>
@@ -236,13 +236,25 @@
     document.getElementById('backBtnLoader').addEventListener('click', () => goBackToStep(2));
     document.getElementById('backBtnResult').addEventListener('click', () => goBackToStep(2));
 
-    // ========== GOALS: MAX 2, AUTO-UNSELECT OLDEST (SMOOTH) ==========
+    // ========== CONCERNS: MAX 3, AUTO-UNSELECT OLDEST ==========
+    const concernCheckboxes = document.querySelectorAll('input[name="concern"]');
+    concernCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            const checked = Array.from(concernCheckboxes).filter(c => c.checked);
+            if (checked.length > 3) {
+                // Uncheck the earliest selected one
+                const oldest = checked[0];
+                oldest.checked = false;
+            }
+        });
+    });
+
+    // ========== GOALS: MAX 2, AUTO-UNSELECT OLDEST (OPTIONAL) ==========
     const goalCheckboxes = document.querySelectorAll('input[name="goal"]');
     goalCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function(e) {
+        cb.addEventListener('change', function() {
             const checked = Array.from(goalCheckboxes).filter(c => c.checked);
             if (checked.length > 2) {
-                // Uncheck the earliest selected one (oldest in DOM order, but we use array order)
                 const oldest = checked[0];
                 oldest.checked = false;
             }
@@ -320,11 +332,10 @@
         const medical = Array.from(document.querySelectorAll('input[name="medical"]:checked')).map(cb => cb.value);
         if (medical.length === 0) { alert('Please select at least one medical condition option.'); return; }
 
-        const concerns = Array.from(document.querySelectorAll('input[name="concern"]:checked')).map(cb => cb.value);
+        const concerns = Array.from(concernCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
         if (concerns.length === 0) { alert('Please select at least one main concern.'); return; }
 
-        // GOALS ARE OPTIONAL – no validation for emptiness
-        const goals = Array.from(goalCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+        const goals = Array.from(goalCheckboxes).filter(cb => cb.checked).map(cb => cb.value); // optional, no length check
 
         if (!name || !mobile || !age || !marital) {
             alert('Please fill all required fields.');
