@@ -32,55 +32,22 @@
         body { font-family: 'Lato', sans-serif; background: var(--light-bg); color: #1e2a2e; line-height: 1.6; }
         h1, h2, h3, h4, .btn, .step, .q-number { font-family: 'Poppins', sans-serif; font-weight: 700; }
         .gold-text { color: var(--dark-gold); }
-        
-        /* Premium Back Button Styles */
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.2s;
-            z-index: 100;
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .back-button:hover {
-            background: rgba(212,175,55,0.8);
-            transform: scale(1.05);
-            border-color: #D4AF37;
-            color: #14452F;
-        }
-        .step-container {
-            position: relative;
-        }
+        .back-button { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border: 1px solid rgba(212,175,55,0.3); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; z-index: 100; color: white; font-size: 18px; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .back-button:hover { background: rgba(212,175,55,0.8); transform: scale(1.05); border-color: #D4AF37; color: #14452F; }
+        .step-container { position: relative; }
         .step-progress { display: flex; justify-content: space-between; max-width: 500px; margin: 0 auto 30px; position: relative; }
         .step-progress::before { content: ''; position: absolute; top: 24px; left: 0; width: 100%; height: 3px; background: #e0e4e8; z-index: 0; }
         .step { background: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-weight: 800; border: 3px solid #e0e4e8; position: relative; z-index: 1; transition: 0.3s; }
         .step.active { border-color: var(--dark-gold); background: var(--dark-gold); color: var(--primary-green); }
         .step.completed { border-color: var(--primary-green); background: var(--primary-green); color: white; }
-        
         .journey-card { background: white; border-radius: 28px; padding: 30px 25px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1); margin-bottom: 30px; border: 1px solid rgba(212,175,55,0.2); }
         .hero-info { background: linear-gradient(135deg, var(--primary-green) 0%, #0b2f21 100%); color: white; border-radius: 28px; padding: 40px 30px; text-align: center; margin-bottom: 30px; }
         .btn-gold { background: linear-gradient(95deg, #D4AF37, #f5e27a); color: #1e1e1e; font-weight: 800; border: none; padding: 14px 28px; border-radius: 60px; box-shadow: 0 8px 20px rgba(212,175,55,0.3); }
-        
         .option-label, .checkbox-label { display: block; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 16px; cursor: pointer; transition: 0.2s; background: #fff; margin-bottom: 12px; font-weight: 500; }
         .form-check-input, input[type="checkbox"] { display: none; }
         .form-check-input:checked + .option-label, input[type="checkbox"]:checked + .checkbox-label { border-color: var(--primary-green); background: #eef5f1; }
-        
         .quiz-card { background: white; border-radius: 24px; padding: 20px; margin-bottom: 20px; border: 1px solid #edf2f7; }
         .q-number { font-weight: 900; color: var(--primary-green); margin-right: 8px; }
-        
         #loaderScreen, #resultScreen { display: none; text-align: center; padding: 40px 15px; }
         .offer-box { background: linear-gradient(135deg, #14452F 0%, #0a2418 100%); color: white; padding: 30px; border-radius: 28px; border: 1px solid var(--dark-gold); text-align: center; }
         .btn-action { background: #D4AF37; color: #14452F; font-weight: 800; padding: 16px; border-radius: 60px; font-size: 1.1rem; width: 100%; border: none; transition: 0.3s; margin-top: 20px; }
@@ -96,11 +63,8 @@
         <div class="step" id="step3Icon">3</div>
     </div>
 
-    <!-- STEP 1: INTRO -->
     <div id="step1Container" class="step-container">
-        <div class="back-button" id="backBtnStep1">
-            <i class="fas fa-arrow-left"></i>
-        </div>
+        <a href="javascript:history.back()" class="back-button"><i class="fas fa-arrow-left"></i></a>
         <div class="hero-info">
             <i class="fas fa-stethoscope fa-3x mb-3 gold-text"></i>
             <h2 class="fw-bold">Your Personalised <span class="gold-text">Vitality Protocol</span></h2>
@@ -109,23 +73,18 @@
         </div>
     </div>
 
-    <!-- STEP 2: CLINICAL FORM -->
     <div id="step2Container" class="step-container" style="display: none;">
-        <div class="back-button" id="backBtnStep2">
-            <i class="fas fa-arrow-left"></i>
-        </div>
+        <div class="back-button" onclick="showStep(1)"><i class="fas fa-arrow-left"></i></div>
         <div class="journey-card">
             <h4 class="text-center mb-4 fw-bold">Clinical Checkup <span class="gold-text">Form</span></h4>
             <form id="clinicalQuizForm">
                 <input type="text" id="spam_trap" class="bot-trap">
                 
-                <!-- Basic Info -->
                 <div class="quiz-card">
                     <div class="mb-3"><label class="fw-bold">Your Full Name *</label><input type="text" class="form-control" id="userName" required></div>
                     <div class="mb-3"><label class="fw-bold">WhatsApp Number (10 digits) *</label><input type="tel" class="form-control" id="userMobile" maxlength="10" required></div>
                 </div>
 
-                <!-- Age Group -->
                 <div class="quiz-card">
                     <div class="fw-bold mb-3"><span class="q-number">1.</span> Your Age Group</div>
                     <div class="row g-2">
@@ -136,7 +95,6 @@
                     </div>
                 </div>
 
-                <!-- Marital Status -->
                 <div class="quiz-card">
                     <div class="fw-bold mb-3"><span class="q-number">2.</span> Marital Status</div>
                     <div class="row g-2">
@@ -156,64 +114,52 @@
                     </div>
                 </div>
 
-                <!-- Medical Conditions -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">3.</span> Do you have any of these medical conditions? (Select any)</div>
+                    <div class="fw-bold mb-3"><span class="q-number">3.</span> Do you have any of these medical conditions?</div>
                     <label><input type="checkbox" name="medical" value="BP" class="med-checkbox"><div class="checkbox-label">High / Low BP</div></label>
                     <label><input type="checkbox" name="medical" value="Diabetes" class="med-checkbox"><div class="checkbox-label">Diabetes</div></label>
                     <label><input type="checkbox" name="medical" value="Thyroid" class="med-checkbox"><div class="checkbox-label">Thyroid</div></label>
                     <label><input type="checkbox" name="medical" value="None" class="med-checkbox"><div class="checkbox-label">None of the above</div></label>
                 </div>
 
-                <!-- Main Concerns (max 3, auto-unselect oldest) -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">4.</span> What is your main health problem / issue right now? (select any, max 3)</div>
-                    <label><input type="checkbox" name="concern" value="Premature Ejaculation" class="concern-checkbox"><div class="checkbox-label">Premature Ejaculation (early release)</div></label>
+                    <div class="fw-bold mb-3"><span class="q-number">4.</span> Main health problems? (Select max 3)</div>
+                    <label><input type="checkbox" name="concern" value="Premature Ejaculation" class="concern-checkbox"><div class="checkbox-label">Premature Ejaculation</div></label>
                     <label><input type="checkbox" name="concern" value="Low Sperm Count" class="concern-checkbox"><div class="checkbox-label">Low Sperm Count</div></label>
-                    <label><input type="checkbox" name="concern" value="Erectile Dysfunction (ED)" class="concern-checkbox"><div class="checkbox-label">Erectile Dysfunction (ED)</div></label>
+                    <label><input type="checkbox" name="concern" value="Erectile Dysfunction" class="concern-checkbox"><div class="checkbox-label">Erectile Dysfunction (ED)</div></label>
                     <label><input type="checkbox" name="concern" value="Poor Timing" class="concern-checkbox"><div class="checkbox-label">Poor Timing / Control</div></label>
                     <label><input type="checkbox" name="concern" value="Low Stamina" class="concern-checkbox"><div class="checkbox-label">Low Stamina / Fatigue</div></label>
                     <label><input type="checkbox" name="concern" value="Low Testosterone" class="concern-checkbox"><div class="checkbox-label">Low Testosterone Symptoms</div></label>
-                    <label><input type="checkbox" name="concern" value="Low Confidence" class="concern-checkbox"><div class="checkbox-label">Low Confidence / Self-esteem</div></label>
-                    <label><input type="checkbox" name="concern" value="Mood Issues" class="concern-checkbox"><div class="checkbox-label">Mood Issues / Irritability</div></label>
+                    <label><input type="checkbox" name="concern" value="Low Confidence" class="concern-checkbox"><div class="checkbox-label">Low Confidence</div></label>
+                    <label><input type="checkbox" name="concern" value="Mood Issues" class="concern-checkbox"><div class="checkbox-label">Mood Issues</div></label>
                     <label><input type="checkbox" name="concern" value="Other" class="concern-checkbox"><div class="checkbox-label">Other</div></label>
                 </div>
 
-                <!-- Goals (max 2, optional, auto-unselect oldest) -->
                 <div class="quiz-card">
-                    <div class="fw-bold mb-3"><span class="q-number">5.</span> What are your main goals? <span style="font-weight: normal; font-size: 0.9rem;">(optional, max 2)</span></div>
+                    <div class="fw-bold mb-3"><span class="q-number">5.</span> Your Goals? (Select max 2)</div>
                     <label><input type="checkbox" name="goal" value="More Energy" class="goal-checkbox"><div class="checkbox-label">More Energy</div></label>
                     <label><input type="checkbox" name="goal" value="Better Stamina" class="goal-checkbox"><div class="checkbox-label">Better Stamina</div></label>
                     <label><input type="checkbox" name="goal" value="Better Sleep" class="goal-checkbox"><div class="checkbox-label">Better Sleep</div></label>
-                    <label><input type="checkbox" name="goal" value="Better Focus" class="goal-checkbox"><div class="checkbox-label">Better Focus / Clarity</div></label>
+                    <label><input type="checkbox" name="goal" value="Better Focus" class="goal-checkbox"><div class="checkbox-label">Better Focus</div></label>
                     <label><input type="checkbox" name="goal" value="Improve Confidence" class="goal-checkbox"><div class="checkbox-label">Improve Confidence</div></label>
                     <label><input type="checkbox" name="goal" value="Improve Sexual Health" class="goal-checkbox"><div class="checkbox-label">Improve Sexual Health</div></label>
                 </div>
 
-                <button type="submit" class="btn btn-gold w-100 py-3 mt-2">Submit My Profile <i class="fas fa-file-medical ms-2"></i></button>
+                <button type="submit" class="btn btn-gold w-100 py-3 mt-2">Submit Profile <i class="fas fa-file-medical ms-2"></i></button>
             </form>
         </div>
     </div>
 
-    <!-- LOADER -->
-    <div id="loaderScreen" class="step-container" style="display: none;">
-        <div class="back-button" id="backBtnLoader">
-            <i class="fas fa-arrow-left"></i>
-        </div>
+    <div id="loaderScreen" class="step-container">
         <div class="spinner-border mb-4" style="color: var(--dark-gold); width: 3rem; height: 3rem;"></div>
         <h3 style="color: var(--primary-green);">Analyzing Your Profile...</h3>
-        <p class="text-muted">Your custom protocol is being prepared.</p>
+        <p class="text-muted">Preparing your custom protocol.</p>
     </div>
 
-    <!-- RESULT SCREEN -->
-    <div id="resultScreen" class="step-container" style="display: none;">
-        <div class="back-button" id="backBtnResult">
-            <i class="fas fa-arrow-left"></i>
-        </div>
+    <div id="resultScreen" class="step-container">
         <div class="text-center mb-3">
             <i class="fas fa-check-circle fa-3x text-success"></i>
             <h2 class="fw-bold mt-2" style="color: var(--primary-green);">Protocol Ready, <span id="userNameDisplay">Friend</span>!</h2>
-            <p>Your 30‑day personalised plan is designed based on your answers.</p>
         </div>
         <div id="resultDetails" class="mb-4" style="background:#f4f7fc; border-radius: 20px; padding: 20px;"></div>
         <div class="offer-box">
@@ -226,133 +172,47 @@
 </div>
 
 <script>
-    // ========== BACK BUTTON HANDLERS ==========
-    function goBackToStep(step) {
-        if (window.loaderTimeout) clearTimeout(window.loaderTimeout);
-        showStep(step);
-    }
-    document.getElementById('backBtnStep1').addEventListener('click', () => window.location.href = 'index.html');
-    document.getElementById('backBtnStep2').addEventListener('click', () => goBackToStep(1));
-    document.getElementById('backBtnLoader').addEventListener('click', () => goBackToStep(2));
-    document.getElementById('backBtnResult').addEventListener('click', () => goBackToStep(2));
+    const QUIZ_API_URL = 'https://api.sheetbest.com/sheets/de488537-259d-44b5-8eb9-e96509ee74fe';
 
-    // ========== CONCERNS: MAX 3, AUTO-UNSELECT OLDEST ==========
-    const concernCheckboxes = document.querySelectorAll('input[name="concern"]');
-    concernCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function() {
-            const checked = Array.from(concernCheckboxes).filter(c => c.checked);
-            if (checked.length > 3) {
-                // Uncheck the earliest selected one
-                const oldest = checked[0];
-                oldest.checked = false;
-            }
-        });
-    });
-
-    // ========== GOALS: MAX 2, AUTO-UNSELECT OLDEST (OPTIONAL) ==========
-    const goalCheckboxes = document.querySelectorAll('input[name="goal"]');
-    goalCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function() {
-            const checked = Array.from(goalCheckboxes).filter(c => c.checked);
-            if (checked.length > 2) {
-                const oldest = checked[0];
-                oldest.checked = false;
-            }
-        });
-    });
-
-    // ========== MARITAL STATUS HELPER ==========
-    function updateMarriageYearsField() {
-        const marriedRadio = document.querySelector('input[name="marital"][value="Married"]');
-        const marriageDiv = document.getElementById('marriageYearsDiv');
-        const marriageSelect = document.getElementById('marriageYears');
-        if (marriedRadio && marriedRadio.checked) {
-            marriageDiv.style.display = 'block';
-            marriageSelect.required = true;
-        } else {
-            marriageDiv.style.display = 'none';
-            marriageSelect.required = false;
-            marriageSelect.value = '';
-        }
-    }
-    document.querySelectorAll('input[name="marital"]').forEach(radio => {
-        radio.addEventListener('change', updateMarriageYearsField);
-    });
-
-    // ========== ACTIVE STATE FOR CHECKBOXES/RADIOS (STYLING) ==========
-    function syncCheckboxState() {
-        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-            const label = cb.closest('label');
-            if (label && cb.checked) label.classList.add('active');
-            else if (label) label.classList.remove('active');
-        });
-    }
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener('change', syncCheckboxState);
-    });
-    document.querySelectorAll('input[type="radio"]').forEach(rb => {
-        rb.addEventListener('change', syncCheckboxState);
-    });
-    syncCheckboxState();
-
-    // ========== NAVIGATION LOGIC ==========
-    let currentStep = 1;
     function showStep(step) {
         document.querySelectorAll('[id$="Container"], [id$="Screen"]').forEach(el => el.style.display = 'none');
         if (step === 1) document.getElementById('step1Container').style.display = 'block';
         if (step === 2) document.getElementById('step2Container').style.display = 'block';
         if (step === 3) document.getElementById('loaderScreen').style.display = 'block';
         if (step === 4) document.getElementById('resultScreen').style.display = 'block';
-        currentStep = step;
+        
         for (let i = 1; i <= 3; i++) {
             const el = document.getElementById(`step${i}Icon`);
             el.classList.remove('active', 'completed');
             if (step > i) el.classList.add('completed');
-            else if (step === i) el.classList.add('active');
+            else if (step === i || (step === 4 && i === 3)) el.classList.add('active');
         }
     }
 
     document.getElementById('startAssessmentBtn').onclick = () => showStep(2);
 
-    // ========== FORM SUBMISSION ==========
-    const form = document.getElementById('clinicalQuizForm');
-    form.onsubmit = function(e) {
-        e.preventDefault();
+    document.querySelectorAll('input[name="marital"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            document.getElementById('marriageYearsDiv').style.display = (radio.value === 'Married') ? 'block' : 'none';
+        });
+    });
 
+    // Form Submit
+    document.getElementById('clinicalQuizForm').onsubmit = function(e) {
+        e.preventDefault();
+        
         const name = document.getElementById('userName').value.trim();
         const mobile = document.getElementById('userMobile').value.trim();
         const age = document.querySelector('input[name="age"]:checked')?.value || '';
         const marital = document.querySelector('input[name="marital"]:checked')?.value || '';
-        let marriageYears = '';
-        if (marital === 'Married') {
-            marriageYears = document.getElementById('marriageYears').value;
-            if (!marriageYears) { alert('Please select how many years you have been married.'); return; }
-        }
-
+        const marriageYears = (marital === 'Married') ? document.getElementById('marriageYears').value : '';
         const medical = Array.from(document.querySelectorAll('input[name="medical"]:checked')).map(cb => cb.value);
-        if (medical.length === 0) { alert('Please select at least one medical condition option.'); return; }
+        const concerns = Array.from(document.querySelectorAll('input[name="concern"]:checked')).map(cb => cb.value);
+        const goals = Array.from(document.querySelectorAll('input[name="goal"]:checked')).map(cb => cb.value);
 
-        const concerns = Array.from(concernCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-        if (concerns.length === 0) { alert('Please select at least one main concern.'); return; }
+        if (!/^\d{10}$/.test(mobile)) { alert('Enter 10-digit mobile number.'); return; }
 
-        const goals = Array.from(goalCheckboxes).filter(cb => cb.checked).map(cb => cb.value); // optional, no length check
-
-        if (!name || !mobile || !age || !marital) {
-            alert('Please fill all required fields.');
-            return;
-        }
-        if (!/^\d{10}$/.test(mobile)) {
-            alert('Please enter a valid 10-digit mobile number.');
-            return;
-        }
-
-        // Save data
-        const quizData = { name, mobile, age, marital, marriageYears, medical, concerns, goals };
-        sessionStorage.setItem('quizData', JSON.stringify(quizData));
-        sessionStorage.setItem('checkout_userData', JSON.stringify({ name, mobile }));
-
-        // Send to Sheet.best (Quiz API)
-        const QUIZ_API_URL = 'https://api.sheetbest.com/sheets/7a70aa1c-c444-4e12-b278-f846bebc1725';
+        showStep(3);
 
         fetch(QUIZ_API_URL, {
             method: 'POST',
@@ -369,24 +229,19 @@
                 "Main Concerns": concerns.join(', '),
                 Goals: goals.join(', ')
             }])
-        }).then(r => r.json()).then(data => console.log('Quiz saved:', data)).catch(err => console.error('Quiz save error:', err));
-
-        if (typeof fbq === 'function') fbq('track', 'Lead');
-
-        // Show result screen
-        document.getElementById('userNameDisplay').innerText = name;
-        const resultDetails = document.getElementById('resultDetails');
-        let concernsList = concerns.map(c => `<li>✔ ${c}</li>`).join('');
-        let goalsList = goals.map(g => `<li>⭐ ${g}</li>`).join('');
-        resultDetails.innerHTML = `
-            <h5 style="color:#14452F; font-weight:800;">Your Custom Plan Includes:</h5>
-            <ul style="margin-bottom:15px;">${concernsList}</ul>
-            ${goalsList ? `<h5 style="color:#14452F; font-weight:800; margin-top:15px;">Your Goals:</h5><ul>${goalsList}</ul>` : ''}
-            <p class="mt-3 small text-muted">Based on your age, health status, and personal needs, our experts will create a 30‑day tailored vitality protocol.</p>
-        `;
-
-        showStep(3);
-        window.loaderTimeout = setTimeout(() => showStep(4), 2000);
+        })
+        .then(() => {
+            if (typeof fbq === 'function') fbq('track', 'Lead');
+            document.getElementById('userNameDisplay').innerText = name;
+            let listHtml = concerns.map(c => `<li>✔ ${c}</li>`).join('');
+            document.getElementById('resultDetails').innerHTML = `
+                <h5 style="color:#14452F; font-weight:800;">Your Custom Plan Includes:</h5>
+                <ul>${listHtml}</ul>
+                <p class="mt-3 small text-muted">Based on your age and health status, we've tailored this protocol for you.</p>
+            `;
+            setTimeout(() => showStep(4), 2000);
+        })
+        .catch(() => showStep(4));
     };
 
     document.getElementById('orderNowBtn').onclick = () => window.location.href = 'checkout-custom.html';
