@@ -3,444 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balwaan Gold - Secure Checkout</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    
-    <!-- ============ FACEBOOK PIXEL (LIVE) ============ -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '916924051189893');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"/></noscript>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Checkout – Balwaan Gold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f5 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        
-        .checkout-container { max-width: 800px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(20, 69, 47, 0.15); overflow: hidden; position: relative; }
-        
-        /* ----- BACK BUTTON ----- */
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px;
-            padding: 8px 16px;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f7fc;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-            z-index: 10;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            backdrop-filter: blur(4px);
+            justify-content: center;
+            padding: 20px;
         }
-        .back-button:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
-        .back-button i { font-size: 14px; }
-
-        .header { background: linear-gradient(135deg, #14452F 0%, #1a5a3a 100%); color: white; padding: 30px 30px 25px; text-align: center; }
-        .header h1 { font-family: 'Montserrat', sans-serif; font-size: 28px; margin-bottom: 5px; }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(20, 69, 47, 0.12);
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #14452F 0%, #1a5a3a 100%);
+            padding: 28px 24px 20px;
+            text-align: center;
+            border-bottom: 4px solid #D4AF37;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
         .header h1 span { color: #D4AF37; }
-        .header p { font-size: 14px; opacity: 0.8; margin: 0; }
-
-        .product-section, .form-section { padding: 30px; border-bottom: 1px solid #e0e0e0; }
-        .form-section { border-bottom: none; }
-        h3 { color: #14452F; margin-bottom: 20px; font-size: 20px; font-weight: 700; }
-
-        /* ----- VARIANT CARDS (Live) ----- */
-        .variant-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .variant-card { 
-            border: 2px solid #e0e0e0; border-radius: 14px; padding: 18px 15px; cursor: pointer; transition: all 0.25s ease; 
-            background: white; display: flex; flex-direction: column; gap: 4px;
+        .header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 4px;
         }
-        .variant-card.selected { border-color: #D4AF37; background: #faf6e7; box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); }
-        .variant-card .card-title { font-size: 17px; font-weight: 700; color: #14452F; display: flex; justify-content: space-between; align-items: center; }
-        .variant-card .card-price { font-size: 22px; font-weight: 800; color: #14452F; }
-        .variant-card .card-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #555; margin-top: 5px; flex-wrap: wrap; gap: 4px; }
-        .variant-card .capsule-badge { background: #eef5f1; color: #14452F; font-weight: 700; padding: 2px 12px; border-radius: 30px; font-size: 12px; }
-        .variant-card .per-day-cost { font-weight: 700; color: #14452F; font-size: 14px; }
-        .variant-card .card-badge { font-size: 10px; padding: 2px 12px; border-radius: 30px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        /* BODY */
+        .body { padding: 24px; }
+
+        /* PRODUCT CARDS */
+        .variant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 480px) {
+            .variant-grid { grid-template-columns: 1fr; }
+        }
+
+        .variant {
+            background: #fafcfe;
+            border: 2px solid #e9edf2;
+            border-radius: 16px;
+            padding: 16px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .variant:hover { border-color: #D4AF37; transform: translateY(-2px); }
+        .variant.active {
+            border-color: #D4AF37;
+            background: #fdf8e9;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        .variant .badge {
+            position: absolute;
+            top: -8px;
+            right: 8px;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .badge-entry { background: #6c757d; }
         .badge-best { background: #D4AF37; color: #14452F; }
-        .badge-saving { background: #e64a19; color: white; }
-        .badge-entry { background: #e0e0e0; color: #444; }
+        .badge-saving { background: #e74c3c; }
 
-        /* ----- ORDER SUMMARY ----- */
-        .order-summary { background: #f8f8f8; border-radius: 12px; padding: 20px; margin: 20px 0 0; }
-        .order-summary .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px; }
-        .order-summary .total { font-size: 20px; font-weight: 700; color: #14452F; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 8px; }
-        .order-bump { display: none; } /* E-Book Hidden */
-
-        /* ----- FORM ----- */
-        .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: 0.2s; }
-        .form-group input:focus, .form-group textarea:focus { border-color: #D4AF37; outline: none; background: #fffcf0; }
-
-        /* ----- PAYMENT ----- */
-        .payment-section { margin-top: 10px; }
-        .payment-option { border: 2px solid #e0e0e0; border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; margin-bottom: 10px; transition: 0.2s; }
-        .payment-option.selected { border-color: #D4AF37; background: #faf6e7; }
-        .payment-option input[type="radio"] { accent-color: #14452F; width: 18px; height: 18px; cursor: pointer; }
-        .payment-option .pay-label { font-weight: 600; font-size: 15px; }
-        .payment-option .pay-sub { font-size: 13px; color: #666; font-weight: 400; }
-
-        /* ----- BUTTONS ----- */
-        .order-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #D4AF37 0%, #b38f2c 100%); color: #14452F; border: none; border-radius: 50px; font-size: 18px; font-weight: 700; cursor: pointer; margin: 25px 0 5px; box-shadow: 0 8px 20px rgba(212,175,55,0.3); transition: 0.2s; }
-        .order-btn:hover { transform: scale(1.02); }
-        .order-btn i { margin-right: 10px; }
-
-        /* ----- PAYMENT MODAL (Prepaid QR) ----- */
-        .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; }
-        .payment-modal.active { display: flex; }
-        .payment-modal .modal-card { background: white; border-radius: 28px; padding: 25px; max-width: 400px; width: 90%; text-align: center; border: 3px solid #D4AF37; position: relative; }
-        .close-payment { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; }
-        .qr-img { width: 220px; height: 220px; margin: 15px auto; border: 1px solid #ddd; padding: 5px; border-radius: 12px; display: block; }
-        .btn-paid { background: #25D366; color: white; border: none; padding: 12px 20px; border-radius: 60px; font-weight: bold; width: 100%; margin-top: 15px; cursor: pointer; }
-        .btn-upi { background: #14452F; color: white; border: none; padding: 12px 20px; border-radius: 60px; font-weight: bold; width: 100%; margin-top: 15px; cursor: pointer; }
-        .btn-back-modal { background: #ccc; color: #333; border: none; padding: 10px 20px; border-radius: 60px; margin-top: 10px; cursor: pointer; width: 100%; }
-
-        @media (max-width: 600px) {
-            .variant-options { grid-template-columns: 1fr; }
-            .back-button { font-size: 12px; padding: 5px 12px; top: 15px; left: 15px; }
-            .header h1 { font-size: 22px; }
-            .product-section, .form-section { padding: 20px; }
+        .variant h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #14452F;
+            margin-bottom: 4px;
         }
+        .variant .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #14452F;
+        }
+        .variant .sub {
+            font-size: 12px;
+            color: #6b7a8a;
+            font-weight: 500;
+        }
+        .variant .per-day {
+            font-size: 12px;
+            font-weight: 700;
+            color: #e74c3c;
+            background: #fef0ef;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 4px;
+        }
+
+        /* SUMMARY */
+        .summary {
+            background: #f5f8fc;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+        .summary .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 5px 0;
+            color: #2d4054;
+        }
+        .summary .row.total {
+            border-top: 2px solid #D4AF37;
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #14452F;
+        }
+
+        /* BUMP (Optional E-Book) */
+        .bump {
+            background: #fffbe6;
+            border: 2px dashed #D4AF37;
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .bump input[type="checkbox"] { width: 20px; height: 20px; accent-color: #14452F; flex-shrink: 0; cursor: pointer; }
+        .bump label { font-size: 13px; font-weight: 600; color: #14452F; cursor: pointer; }
+        .bump .extra { font-weight: 700; color: #D4AF37; margin-left: auto; }
+
+        /* FORM */
+        .form-group { margin-bottom: 14px; }
+        .form-group label {
+            font-weight: 600;
+            font-size: 13px;
+            color: #14452F;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e9edf2;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: 0.2s;
+            background: #fff;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #D4AF37;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        /* BUTTON */
+        .btn-whatsapp {
+            width: 100%;
+            padding: 18px;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+        }
+        .btn-whatsapp:hover { background: #1da851; transform: scale(1.01); }
+        .btn-whatsapp:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #8a9aa8;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid #e9edf2;
+        }
+        .footer-note i { margin-right: 4px; }
     </style>
 </head>
 <body>
 
-<div class="checkout-container">
-    <!-- BACK BUTTON -->
-    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> BACK</a>
-
+<div class="container">
     <!-- HEADER -->
     <div class="header">
         <h1>Balwaan <span>Gold</span></h1>
         <p>Secure Checkout - 100% Ayurvedic Guarantee</p>
     </div>
 
-    <!-- ========================================== -->
-    <!-- SECTION 1: CHOOSE PACKAGE                  -->
-    <!-- ========================================== -->
-    <div class="product-section">
-        <h3>1️⃣ Choose Your Package</h3>
+    <!-- BODY -->
+    <div class="body">
 
-        <div class="variant-options">
+        <!-- 1️⃣ CHOOSE PACKAGE -->
+        <div class="variant-grid" id="variantGrid">
             <!-- Trial Pack -->
-            <div class="variant-card" data-price="550" data-name="Trial Pack (30 Capsules - 15 Days)" onclick="selectVariant(this)">
-                <div class="card-title"><span>Trial Pack</span><span class="card-price">₹550</span></div>
-                <div class="card-meta">
-                    <span class="capsule-badge">💊 30 Capsules</span>
-                    <span class="per-day-cost">₹36.6 / day</span>
-                    <span class="card-badge badge-entry">ENTRY</span>
-                </div>
+            <div class="variant" data-price="550" data-name="Trial Pack (30 Capsules)" data-detail="30 Capsules - ENTRY">
+                <span class="badge badge-entry">ENTRY</span>
+                <h4>Trial Pack</h4>
+                <div class="price">₹550</div>
+                <div class="sub">30 Capsules</div>
             </div>
-            <!-- Regular Pack (Default) -->
-            <div class="variant-card selected" data-price="1110" data-name="Regular Pack (60 Capsules - 30 Days)" onclick="selectVariant(this)">
-                <div class="card-title"><span>Regular Pack</span><span class="card-price">₹1110</span></div>
-                <div class="card-meta">
-                    <span class="capsule-badge">💊 60 Capsules</span>
-                    <span class="per-day-cost">₹37 / day</span>
-                    <span class="card-badge badge-best">BEST VALUE</span>
-                </div>
+
+            <!-- Regular Pack (Default Selected) -->
+            <div class="variant active" data-price="1110" data-name="Regular Pack (60 Capsules)" data-detail="60 Capsules - BEST VALUE">
+                <span class="badge badge-best">BEST VALUE</span>
+                <h4>Regular Pack</h4>
+                <div class="price">₹1110</div>
+                <div class="sub">60 Capsules</div>
             </div>
+
             <!-- Combo Pack -->
-            <div class="variant-card" data-price="1599" data-name="Combo Pack (120 Capsules - 60 Days)" onclick="selectVariant(this)">
-                <div class="card-title"><span>Combo Pack</span><span class="card-price">₹1599</span></div>
-                <div class="card-meta">
-                    <span class="capsule-badge">💊 120 Capsules</span>
-                    <span class="per-day-cost">₹26.6 / day</span>
-                    <span class="card-badge badge-saving">MASSIVE SAVING</span>
-                </div>
+            <div class="variant" data-price="1599" data-name="Combo Pack (120 Capsules)" data-detail="120 Capsules - MASSIVE SAVING">
+                <span class="badge badge-saving">MASSIVE SAVING</span>
+                <h4>Combo Pack</h4>
+                <div class="price">₹1599</div>
+                <div class="sub">120 Capsules</div>
+                <div class="per-day">₹26.6 / day</div>
             </div>
         </div>
 
-        <!-- E-BOOK Section: HIDDEN -->
-        <div class="order-bump"></div>
-
-        <!-- ORDER SUMMARY -->
-        <div class="order-summary">
-            <div class="row"><span>Selected Package:</span> <span id="selectedVariantName">Regular Pack (60 Capsules - 30 Days)</span></div>
-            <div class="row"><span>Base Price:</span> <span id="selectedPrice">₹1110</span></div>
-            <div class="row total"><span>Total Amount:</span> <span id="totalAmount">₹1110</span></div>
+        <!-- 📊 ORDER SUMMARY -->
+        <div class="summary" id="summary">
+            <div class="row">
+                <span><i class="fas fa-box me-2"></i>Selected Package</span>
+                <span id="sName">Regular Pack (60 Capsules)</span>
+            </div>
+            <div class="row">
+                <span>Base Price</span>
+                <span id="sPrice">₹1110</span>
+            </div>
+            <div class="row" id="bumpRow" style="display:none;">
+                <span>Diet E-Book</span>
+                <span>+₹99</span>
+            </div>
+            <div class="row total">
+                <span>Total Amount</span>
+                <span id="sTotal">₹1110</span>
+            </div>
         </div>
-    </div>
 
-    <!-- ========================================== -->
-    <!-- SECTION 2: YOUR DETAILS                   -->
-    <!-- ========================================== -->
-    <div class="form-section">
-        <h3>2️⃣ Your Details</h3>
-        
-        <form id="checkoutForm">
-            <div class="form-group">
-                <input type="text" id="fullName" placeholder="Full Name *" required>
-            </div>
-            <div class="form-group">
-                <input type="tel" id="mobile" placeholder="WhatsApp Number *" pattern="[0-9]{10}" required>
-            </div>
-            <div class="form-group">
-                <textarea id="address" rows="3" placeholder="Full Address * (House No, Area, City, Pincode)" required></textarea>
-            </div>
+        <!-- 📘 BUMP (Optional E-Book) -->
+        <div class="bump">
+            <input type="checkbox" id="bumpCheck">
+            <label for="bumpCheck">Add <b>Ayurvedic Diet E-Book</b> (PDF) for faster results</label>
+            <span class="extra">+₹99</span>
+        </div>
 
-            <!-- PAYMENT METHOD -->
-            <div class="payment-section">
-                <h4 style="color: #14452F; margin-bottom: 12px; font-size: 16px;">Payment Method</h4>
-                
-                <div class="payment-option selected" data-method="cod" onclick="selectPayment(this)">
-                    <input type="radio" name="payment" value="Cash on Delivery" checked> 
-                    <div>
-                        <div class="pay-label">Cash on Delivery (COD)</div>
-                        <div class="pay-sub">Pay when you receive</div>
-                    </div>
-                </div>
-                
-                <div class="payment-option" data-method="prepaid" onclick="selectPayment(this)">
-                    <input type="radio" name="payment" value="Prepaid (UPI)"> 
-                    <div>
-                        <div class="pay-label">Prepaid (UPI)</div>
-                        <div class="pay-sub">Pay online via UPI</div>
-                    </div>
-                </div>
+        <!-- 📝 CUSTOMER DETAILS -->
+        <form id="orderForm">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="fullName" placeholder="e.g. Rajesh Kumar" required>
+            </div>
+            <div class="form-group">
+                <label>WhatsApp Number *</label>
+                <input type="tel" id="mobile" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+            <div class="form-group">
+                <label>Delivery Address *</label>
+                <textarea id="address" rows="3" placeholder="House No, Area, City, Pincode" required></textarea>
             </div>
 
-            <button type="submit" class="order-btn">
-                <i class="fas fa-bolt"></i> Confirm Order
+            <button type="submit" class="btn-whatsapp" id="orderBtn">
+                <i class="fab fa-whatsapp fa-lg"></i> Order via WhatsApp
             </button>
         </form>
+
+        <div class="footer-note">
+            <i class="fas fa-shield-alt"></i> Cash on Delivery Available · 100% Discreet Packaging
+        </div>
     </div>
 </div>
 
-<!-- ========================================== -->
-<!-- PAYMENT MODAL (For Prepaid)                -->
-<!-- ========================================== -->
-<div id="paymentModal" class="payment-modal">
-    <div class="modal-card">
-        <span class="close-payment" onclick="closePaymentModal()">&times;</span>
-        <h4 class="fw-bold">Complete Payment</h4>
-        <div id="qrContainer"></div>
-        <div id="upiButtonContainer"></div>
-        <button id="paidButton" class="btn-paid" style="display: none;">✅ I have paid</button>
-        <button class="btn-back-modal" onclick="closePaymentModal()">← Back</button>
-    </div>
-</div>
-
-<!-- ========================================== -->
-<!-- JAVASCRIPT (LIVE)                         -->
-<!-- ========================================== -->
 <script>
-    // ============ CONFIGURATION (LIVE DATA) ============
-    const YOUR_UPI_ID = "9808669522@ybl";
-    const ADMIN_WHATSAPP = "919557133307";
-    const ORDER_API_URL = 'https://api.sheetbest.com/sheets/7a70aa1c-c444-4e12-b278-f846bebc1725'; // Sheet.best
+    // ---------- ELEMENTS ----------
+    const cards = document.querySelectorAll('.variant');
+    const sName = document.getElementById('sName');
+    const sPrice = document.getElementById('sPrice');
+    const sTotal = document.getElementById('sTotal');
+    const bumpRow = document.getElementById('bumpRow');
+    const bumpCheck = document.getElementById('bumpCheck');
+    const form = document.getElementById('orderForm');
+    const btn = document.getElementById('orderBtn');
 
-    // ============ VARIABLE DECLARATION ============
-    let selectedPrice = 1110;
-    let selectedName = "Regular Pack (60 Capsules - 30 Days)";
-    let currentPendingOrder = null;
-    let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // ---------- STATE ----------
+    let currentPrice = 1110;
+    let currentName = 'Regular Pack (60 Capsules)';
 
-    // ============ VARIANT SELECTION ============
-    function selectVariant(el) {
-        document.querySelectorAll('.variant-card').forEach(c => c.classList.remove('selected'));
-        el.classList.add('selected');
-        selectedPrice = parseInt(el.dataset.price);
-        selectedName = el.dataset.name;
-        document.getElementById('selectedVariantName').innerText = selectedName;
-        document.getElementById('selectedPrice').innerHTML = '₹' + selectedPrice;
-        document.getElementById('totalAmount').innerHTML = '₹' + selectedPrice;
-    }
+    // ---------- CARD SELECTION ----------
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            cards.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            currentName = this.dataset.name;
+            currentPrice = parseInt(this.dataset.price);
+            updateSummary();
+        });
+    });
 
-    // ============ PAYMENT SELECTION ============
-    function selectPayment(el) {
-        document.querySelectorAll('.payment-option').forEach(p => p.classList.remove('selected'));
-        el.classList.add('selected');
-        el.querySelector('input[type="radio"]').checked = true;
-    }
+    // ---------- BUMP TOGGLE ----------
+    bumpCheck.addEventListener('change', updateSummary);
 
-    // ============ PRE-FILL FROM QUIZ ============
-    window.onload = function() {
-        try {
-            const data = JSON.parse(sessionStorage.getItem('checkout_userData') || '{}');
-            if (data.name) document.getElementById('fullName').value = data.name;
-            if (data.mobile) document.getElementById('mobile').value = data.mobile;
-        } catch(e) { /* Ignore */ }
-    };
+    function updateSummary() {
+        let total = currentPrice;
+        sName.textContent = currentName;
+        sPrice.textContent = '₹' + currentPrice;
 
-    // ============ PAYMENT MODAL LOGIC ============
-    function openPaymentModal(orderId, name, amount, productValue) {
-        currentPendingOrder = { orderId, name, amount, productValue };
-        const upiLink = `upi://pay?pa=${YOUR_UPI_ID}&pn=BalwaanGold&am=${amount}&cu=INR&tn=Order${orderId}`;
-        const modal = document.getElementById('paymentModal');
-        const qrContainer = document.getElementById('qrContainer');
-        const upiContainer = document.getElementById('upiButtonContainer');
-        const paidBtn = document.getElementById('paidButton');
-        
-        qrContainer.innerHTML = '';
-        upiContainer.innerHTML = '';
-        paidBtn.style.display = 'none';
-        
-        if (isMobile) {
-            const upiBtn = document.createElement('button');
-            upiBtn.className = 'btn-upi';
-            upiBtn.innerHTML = '<i class="fab fa-google-pay me-2"></i> Pay via UPI';
-            upiBtn.onclick = () => {
-                window.location.href = upiLink;
-                alert('Please complete payment in your UPI app, then come back and click "I have paid".');
-            };
-            upiContainer.appendChild(upiBtn);
-            paidBtn.style.display = 'block';
+        if (bumpCheck.checked) {
+            total += 99;
+            bumpRow.style.display = 'flex';
         } else {
-            const qrImg = document.createElement('img');
-            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiLink)}`;
-            qrImg.className = 'qr-img';
-            qrContainer.appendChild(qrImg);
-            paidBtn.style.display = 'block';
+            bumpRow.style.display = 'none';
         }
-        modal.classList.add('active');
-        
-        // Remove old listener and add new one
-        const newPaidBtn = paidBtn.cloneNode(true);
-        paidBtn.parentNode.replaceChild(newPaidBtn, paidBtn);
-        newPaidBtn.id = 'paidButton';
-        newPaidBtn.addEventListener('click', onPaidClick);
-        document.querySelector('.close-payment').onclick = closePaymentModal;
-        document.querySelector('.btn-back-modal').onclick = closePaymentModal;
+        sTotal.textContent = '₹' + total;
     }
 
-    function closePaymentModal() {
-        document.getElementById('paymentModal').classList.remove('active');
-        currentPendingOrder = null;
-    }
-
-    function onPaidClick() {
-        if (currentPendingOrder) {
-            if (confirm('क्या आपने सही से UPI Payment कर दी है? कृपया Payment Screenshot WhatsApp पर भेजना न भूलें।')) {
-                closePaymentModal();
-                // Save order as "Unverified" and redirect to success
-                let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-                let existingOrder = orders.find(o => o.orderId === currentPendingOrder.orderId);
-                if (existingOrder) {
-                    existingOrder.paymentStatus = 'Unverified (Prepaid)';
-                }
-                localStorage.setItem('balwaanOrders', JSON.stringify(orders));
-                
-                // Redirect to success page
-                sessionStorage.setItem('orderCompleteData', JSON.stringify({
-                    orderId: currentPendingOrder.orderId,
-                    name: currentPendingOrder.name,
-                    mobile: document.getElementById('mobile').value,
-                    product: currentPendingOrder.productValue,
-                    amount: currentPendingOrder.amount
-                }));
-                window.location.href = 'order-complete.html';
-            }
-        } else {
-            alert('No pending order found.');
-        }
-    }
-
-    // ============ SUBMIT ORDER TO SHEET.BEST ============
-    async function submitOrderToSheet(orderData) {
-        try {
-            const response = await fetch(ORDER_API_URL, {
-                method: 'POST',
-                mode: 'cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify([{
-                    Timestamp: new Date().toISOString(),
-                    "Order ID": orderData.orderId,
-                    "Name": orderData.name,
-                    "Mobile": orderData.mobile,
-                    "Address": orderData.address,
-                    "Product": orderData.product,
-                    "Amount": orderData.amount,
-                    "Payment Method": orderData.paymentMethod,
-                    "E-Book": "No"
-                }])
-            });
-            const result = await response.json();
-            console.log('✅ Order saved via Sheet.best:', result);
-            return true;
-        } catch (error) {
-            console.error('❌ Order save failed:', error);
-            return false;
-        }
-    }
-
-    // ============ MAIN FORM SUBMIT ============
-    document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+    // ---------- FORM SUBMIT (WhatsApp) ----------
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         const name = document.getElementById('fullName').value.trim();
         const mobile = document.getElementById('mobile').value.trim();
         const address = document.getElementById('address').value.trim();
-        const paymentRadio = document.querySelector('input[name="payment"]:checked');
-        if (!paymentRadio) { alert('Please select a payment method.'); return; }
-        const paymentMethod = paymentRadio.value;
-        
-        if (!name) { alert('Please enter your full name.'); return; }
-        if (!/^\d{10}$/.test(mobile)) { alert('Please enter a valid 10-digit WhatsApp number.'); return; }
-        if (!address) { alert('Please enter your delivery address.'); return; }
+
+        // Validation
+        if (!name || !mobile || !address) {
+            alert('Please fill all the details.');
+            return;
+        }
+        if (!/^\d{10}$/.test(mobile)) {
+            alert('Please enter a valid 10-digit mobile number.');
+            return;
+        }
+
+        // Prepare order
+        let product = currentName;
+        let total = currentPrice;
+        if (bumpCheck.checked) {
+            product += ' + Diet E-Book';
+            total += 99;
+        }
 
         const orderId = 'BWG' + Date.now().toString().slice(-6);
-        const product = selectedName;
-        const amount = selectedPrice;
 
-        // ---------- 1. SAVE TO LOCALSTORAGE (Admin Panel) ----------
+        // 📌 1. SAVE TO LOCALSTORAGE (Admin Panel)
         let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-        let orderObj = {
-            orderId, name, mobile, address, product, amount, paymentMethod,
-            status: (paymentMethod === 'Prepaid (UPI)') ? 'Payment Pending (Unverified)' : 'Order Placed',
+        orders.push({
+            orderId,
+            name,
+            mobile,
+            product,
+            amount: total,
+            paymentMethod: 'Cash on Delivery',
+            address,
             timestamp: Date.now()
-        };
-        orders.push(orderObj);
+        });
         localStorage.setItem('balwaanOrders', JSON.stringify(orders));
 
-        // ---------- 2. SAVE TO SHEET.BEST (Backend) ----------
-        await submitOrderToSheet({
-            orderId, name, mobile, address, product, amount, paymentMethod
-        });
+        // 📌 2. WHATSAPP REDIRECT
+        const msg =
+`Hi Balwaan Team,%0A%0A*Order ID:* ${orderId}%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Product:* ${product}%0A*Amount:* ₹${total}%0A*Payment:* Cash on Delivery%0A*Address:* ${address}%0A%0APlease confirm my order.`;
 
-        // ---------- 3. FACEBOOK PIXEL (Purchase & Lead) ----------
-        if (typeof fbq === 'function') {
-            fbq('track', 'Purchase', { value: amount, currency: 'INR' });
-            fbq('track', 'Lead');
-        }
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
 
-        // ---------- 4. CHECK PAYMENT METHOD ----------
-        if (paymentMethod === 'Prepaid (UPI)') {
-            // Open UPI Modal
-            openPaymentModal(orderId, name, amount, product);
-        } else {
-            // COD: Redirect directly to Complete Page
-            sessionStorage.setItem('orderCompleteData', JSON.stringify({
-                orderId, name, mobile, product, amount
-            }));
-            window.location.href = 'order-complete.html';
-        }
+        // Redirect to WhatsApp
+        window.location.href = `https://wa.me/919557133307?text=${msg}`;
+
+        // Safety: Re-enable button if redirect fails (after 6 seconds)
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fab fa-whatsapp fa-lg"></i> Order via WhatsApp';
+        }, 6000);
     });
+
+    // ---------- PRE-FILL FROM CUSTOM PROTOCOL ----------
+    const sessionData = sessionStorage.getItem('checkout_userData');
+    if (sessionData) {
+        try {
+            const data = JSON.parse(sessionData);
+            if (data.name) document.getElementById('fullName').value = data.name;
+            if (data.mobile) document.getElementById('mobile').value = data.mobile;
+            sessionStorage.removeItem('checkout_userData');
+        } catch(e) {}
+    }
+
+    // ---------- INIT ----------
+    updateSummary();
 </script>
+
 </body>
 </html>
