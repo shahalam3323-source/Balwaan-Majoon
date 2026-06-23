@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Complete - Balwaan Gold</title>
+    
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Facebook Pixel (for tracking success page view) -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '916924051189893');
+        fbq('track', 'PageView');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f0f4f7; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; margin: 0; }
+        .container { max-width: 480px; width: 100%; background: white; border-radius: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; text-align: center; padding: 40px 30px; position: relative; }
+        
+        .back-btn {
+            position: absolute; top: 20px; left: 20px; color: #14452F; font-size: 14px; font-weight: 600;
+            text-decoration: none; display: flex; align-items: center; gap: 6px; opacity: 0.7;
+            transition: 0.2s; background: #f5f7fa; padding: 6px 14px; border-radius: 30px; border: 1px solid #e0e0e0;
+        }
+        .back-btn:hover { opacity: 1; background: #eef2f7; }
+        .back-btn i { font-size: 12px; }
+
+        .checkmark { width: 100px; height: 100px; border-radius: 50%; background: #e8f5e9; display: flex; align-items: center; justify-content: center; margin: 30px auto 20px; animation: popIn 0.5s ease; }
+        .checkmark i { font-size: 60px; color: #25D366; }
+        @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+
+        h1 { font-family: 'Montserrat', sans-serif; color: #14452F; font-size: 32px; margin-bottom: 5px; }
+        .sub-text { color: #666; font-size: 16px; margin-bottom: 10px; }
+        .order-id-box { background: #f5f7fa; padding: 10px; border-radius: 8px; font-weight: 700; color: #14452F; font-size: 18px; margin: 15px 0; border: 1px dashed #D4AF37; }
+        .info-box { background: #fffbe6; border: 1px solid #D4AF37; border-radius: 12px; padding: 18px 15px; margin: 25px 0; text-align: left; }
+        .info-box p { font-size: 14px; color: #333; margin-bottom: 0; }
+        .info-box i { color: #D4AF37; margin-right: 8px; }
+        .highlight { font-weight: 700; color: #14452F; }
+
+        .btn-whatsapp { background: #25D366; color: white; border: none; padding: 16px; border-radius: 60px; font-weight: 700; font-size: 18px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; transition: 0.2s; cursor: pointer; margin: 20px 0 10px; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); }
+        .btn-whatsapp:hover { background: #1da851; color: white; transform: scale(1.02); }
+
+        .btn-home { background: transparent; border: 1px solid #ccc; padding: 12px; border-radius: 60px; width: 100%; font-weight: 600; color: #666; cursor: pointer; transition: 0.2s; margin-top: 5px; }
+        .btn-home:hover { background: #f0f0f0; }
+        .footnote { font-size: 12px; color: #999; margin-top: 20px; }
+        .footnote i { color: #25D366; margin-right: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="checkout.html" class="back-btn"><i class="fas fa-arrow-left"></i> BACK</a>
+
+    <div class="checkmark"><i class="fas fa-check-circle"></i></div>
+
+    <h1>🎉 Order Complete!</h1>
+    <p class="sub-text">Your order has been successfully placed.</p>
+    
+    <div class="order-id-box" id="orderDisplay">Order ID: BWG-1234</div>
+
+    <div class="info-box">
+        <p><i class="fas fa-truck"></i> <strong>Free Shipping Confirmation</strong></p>
+        <p style="font-size: 13px; margin-top: 8px; color: #555;">
+            ✅ Order confirmed successfully. <br>
+            📦 Click the WhatsApp button below and type your <span class="highlight">Delivery Address</span> to confirm.
+        </p>
+    </div>
+
+    <!-- LIVE WHATSAPP LINK WITH AUTO-MESSAGE -->
+    <a id="whatsappLink" href="#" target="_blank" class="btn-whatsapp">
+        <i class="fab fa-whatsapp fa-lg"></i> Confirm Address on WhatsApp
+    </a>
+
+    <button onclick="window.location.href='index.html';" class="btn-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </button>
+
+    <p class="footnote"><i class="fas fa-lock"></i> Your details are safe with us</p>
+</div>
+
+<script>
+    // ============ LIVE DATA ============
+    const ADMIN_NUMBER = '919557133307'; // Real Number
+
+    // Retrieve Order Data
+    const data = JSON.parse(sessionStorage.getItem('orderCompleteData') || '{}');
+    const name = data.name || 'Customer';
+    const mobile = data.mobile || 'XXXXXXXXXX';
+    const orderId = data.orderId || 'BWG-XXXX';
+    const product = data.product || 'Regular Pack (60 Capsules - 30 Days)';
+    const amount = data.amount || 1110;
+
+    document.getElementById('orderDisplay').innerHTML = '🆔 ' + orderId;
+
+    // Build WhatsApp Message
+    const msg = `✅ *Order Placed!*\n\n` +
+                `Order ID: ${orderId}\n` +
+                `Name: ${name}\n` +
+                `Mobile: ${mobile}\n` +
+                `Product: ${product}\n` +
+                `Amount: ₹${amount}\n` +
+                `Payment: Cash on Delivery\n\n` +
+                `📦 *Free Shipping:* Please type your complete delivery address (House No, Area, City, Pincode).`;
+
+    document.getElementById('whatsappLink').href = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(msg)}`;
+</script>
+
+</body>
+</html>
