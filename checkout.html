@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balwaan Ayurveda - Secure Checkout</title>
+    <title>Balwaan Gold - Secure Checkout</title>
     
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Facebook Pixel -->
+    <!-- ============ FACEBOOK PIXEL (LIVE) ============ -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,66 +27,90 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=916924051189893&ev=PageView&noscript=1"/></noscript>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f5 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        
         .checkout-container { max-width: 800px; width: 100%; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(20, 69, 47, 0.15); overflow: hidden; position: relative; }
+        
+        /* ----- BACK BUTTON ----- */
         .back-button {
             position: absolute;
             top: 20px;
             left: 20px;
             background: rgba(255,255,255,0.2);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            padding: 8px 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
             cursor: pointer;
             transition: 0.2s;
             z-index: 10;
             color: white;
-            font-size: 20px;
+            font-size: 14px;
+            font-weight: 600;
             text-decoration: none;
+            backdrop-filter: blur(4px);
         }
-        .back-button:hover {
-            background: rgba(255,255,255,0.4);
-            transform: scale(1.05);
-        }
-        .header { background: linear-gradient(135deg, #14452F 0%, #1a5a3a 100%); color: white; padding: 30px; text-align: center; }
+        .back-button:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
+        .back-button i { font-size: 14px; }
+
+        .header { background: linear-gradient(135deg, #14452F 0%, #1a5a3a 100%); color: white; padding: 30px 30px 25px; text-align: center; }
         .header h1 { font-family: 'Montserrat', sans-serif; font-size: 28px; margin-bottom: 5px; }
         .header h1 span { color: #D4AF37; }
+        .header p { font-size: 14px; opacity: 0.8; margin: 0; }
+
         .product-section, .form-section { padding: 30px; border-bottom: 1px solid #e0e0e0; }
-        h3 { color: #14452F; margin-bottom: 20px; font-size: 20px; }
-        .variant-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .variant-card { border: 2px solid #e0e0e0; border-radius: 12px; padding: 15px; cursor: pointer; transition: all 0.3s ease; position: relative; }
-        .variant-card.selected { border-color: #D4AF37; background: #faf6e7; }
-        .variant-card h4 { font-size: 16px; margin-bottom: 8px; color: #14452F; }
-        .variant-card .price { font-size: 20px; font-weight: 700; color: #14452F; }
-        .prepaid-only-badge { background: #ff9800; color: white; font-size: 11px; border-radius: 20px; padding: 3px 8px; position: absolute; top: -10px; right: 10px; font-weight: bold; }
-        .order-summary { background: #f8f8f8; border-radius: 12px; padding: 20px; margin: 20px 0; }
-        .order-summary .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .order-summary .total { font-size: 20px; font-weight: 700; color: #14452F; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 10px; }
+        .form-section { border-bottom: none; }
+        h3 { color: #14452F; margin-bottom: 20px; font-size: 20px; font-weight: 700; }
+
+        /* ----- VARIANT CARDS (Live) ----- */
+        .variant-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .variant-card { 
+            border: 2px solid #e0e0e0; border-radius: 14px; padding: 18px 15px; cursor: pointer; transition: all 0.25s ease; 
+            background: white; display: flex; flex-direction: column; gap: 4px;
+        }
+        .variant-card.selected { border-color: #D4AF37; background: #faf6e7; box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); }
+        .variant-card .card-title { font-size: 17px; font-weight: 700; color: #14452F; display: flex; justify-content: space-between; align-items: center; }
+        .variant-card .card-price { font-size: 22px; font-weight: 800; color: #14452F; }
+        .variant-card .card-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #555; margin-top: 5px; flex-wrap: wrap; gap: 4px; }
+        .variant-card .capsule-badge { background: #eef5f1; color: #14452F; font-weight: 700; padding: 2px 12px; border-radius: 30px; font-size: 12px; }
+        .variant-card .per-day-cost { font-weight: 700; color: #14452F; font-size: 14px; }
+        .variant-card .card-badge { font-size: 10px; padding: 2px 12px; border-radius: 30px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+        .badge-best { background: #D4AF37; color: #14452F; }
+        .badge-saving { background: #e64a19; color: white; }
+        .badge-entry { background: #e0e0e0; color: #444; }
+
+        /* ----- ORDER SUMMARY ----- */
+        .order-summary { background: #f8f8f8; border-radius: 12px; padding: 20px; margin: 20px 0 0; }
+        .order-summary .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px; }
+        .order-summary .total { font-size: 20px; font-weight: 700; color: #14452F; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 8px; }
+        .order-bump { display: none; } /* E-Book Hidden */
+
+        /* ----- FORM ----- */
         .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 12px; font-family: 'Poppins', sans-serif; }
-        .order-bump { background: #fffbe6; border: 2px dashed #D4AF37; border-radius: 12px; padding: 15px; margin: 20px 0; }
-        .bump-header { display: flex; align-items: center; gap: 10px; font-weight: bold; color: #14452F; margin-bottom: 8px; }
-        .bump-header input[type="checkbox"] { transform: scale(1.5); cursor: pointer; accent-color: #14452F; }
-        .bump-text { font-size: 13px; color: #555; }
-        .payment-section { margin-top: 20px; }
-        .payment-option { border: 2px solid #e0e0e0; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px; cursor: pointer; margin-bottom: 10px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: 0.2s; }
+        .form-group input:focus, .form-group textarea:focus { border-color: #D4AF37; outline: none; background: #fffcf0; }
+
+        /* ----- PAYMENT ----- */
+        .payment-section { margin-top: 10px; }
+        .payment-option { border: 2px solid #e0e0e0; border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; gap: 15px; cursor: pointer; margin-bottom: 10px; transition: 0.2s; }
         .payment-option.selected { border-color: #D4AF37; background: #faf6e7; }
-        .payment-option.disabled { opacity: 0.6; cursor: not-allowed; background: #f0f0f0; pointer-events: none; }
-        .order-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #D4AF37 0%, #b38f2c 100%); color: #14452F; border: none; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; margin: 20px 0; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: white; border-radius: 20px; padding: 30px; text-align: center; max-width: 400px; width: 90%; }
-        .whatsapp-btn { background: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; font-weight: bold; margin-bottom: 10px; }
-        .ebook-btn { background: #ff9800; color: white; padding: 15px; border-radius: 50px; text-decoration: none; display: none; align-items: center; justify-content: center; gap: 10px; width: 100%; font-weight: bold; margin-bottom: 10px; }
+        .payment-option input[type="radio"] { accent-color: #14452F; width: 18px; height: 18px; cursor: pointer; }
+        .payment-option .pay-label { font-weight: 600; font-size: 15px; }
+        .payment-option .pay-sub { font-size: 13px; color: #666; font-weight: 400; }
+
+        /* ----- BUTTONS ----- */
+        .order-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #D4AF37 0%, #b38f2c 100%); color: #14452F; border: none; border-radius: 50px; font-size: 18px; font-weight: 700; cursor: pointer; margin: 25px 0 5px; box-shadow: 0 8px 20px rgba(212,175,55,0.3); transition: 0.2s; }
+        .order-btn:hover { transform: scale(1.02); }
+        .order-btn i { margin-right: 10px; }
+
+        /* ----- PAYMENT MODAL (Prepaid QR) ----- */
         .payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; }
         .payment-modal.active { display: flex; }
         .payment-modal .modal-card { background: white; border-radius: 28px; padding: 25px; max-width: 400px; width: 90%; text-align: center; border: 3px solid #D4AF37; position: relative; }
@@ -93,320 +118,329 @@
         .qr-img { width: 220px; height: 220px; margin: 15px auto; border: 1px solid #ddd; padding: 5px; border-radius: 12px; display: block; }
         .btn-paid { background: #25D366; color: white; border: none; padding: 12px 20px; border-radius: 60px; font-weight: bold; width: 100%; margin-top: 15px; cursor: pointer; }
         .btn-upi { background: #14452F; color: white; border: none; padding: 12px 20px; border-radius: 60px; font-weight: bold; width: 100%; margin-top: 15px; cursor: pointer; }
-        .btn-back { background: #ccc; color: #333; border: none; padding: 10px 20px; border-radius: 60px; margin-top: 10px; cursor: pointer; width: 100%; }
+        .btn-back-modal { background: #ccc; color: #333; border: none; padding: 10px 20px; border-radius: 60px; margin-top: 10px; cursor: pointer; width: 100%; }
+
+        @media (max-width: 600px) {
+            .variant-options { grid-template-columns: 1fr; }
+            .back-button { font-size: 12px; padding: 5px 12px; top: 15px; left: 15px; }
+            .header h1 { font-size: 22px; }
+            .product-section, .form-section { padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="checkout-container">
-        <a href="#" id="backBtn" class="back-button"><i class="fas fa-arrow-left"></i></a>
-        <div class="header">
-            <h1>Balwaan <span>Gold</span></h1>
-            <p>Secure Checkout - 100% Ayurvedic Guarantee</p>
+
+<div class="checkout-container">
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> BACK</a>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Balwaan <span>Gold</span></h1>
+        <p>Secure Checkout - 100% Ayurvedic Guarantee</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: CHOOSE PACKAGE                  -->
+    <!-- ========================================== -->
+    <div class="product-section">
+        <h3>1️⃣ Choose Your Package</h3>
+
+        <div class="variant-options">
+            <!-- Trial Pack -->
+            <div class="variant-card" data-price="550" data-name="Trial Pack (30 Capsules - 15 Days)" onclick="selectVariant(this)">
+                <div class="card-title"><span>Trial Pack</span><span class="card-price">₹550</span></div>
+                <div class="card-meta">
+                    <span class="capsule-badge">💊 30 Capsules</span>
+                    <span class="per-day-cost">₹36.6 / day</span>
+                    <span class="card-badge badge-entry">ENTRY</span>
+                </div>
+            </div>
+            <!-- Regular Pack (Default) -->
+            <div class="variant-card selected" data-price="1110" data-name="Regular Pack (60 Capsules - 30 Days)" onclick="selectVariant(this)">
+                <div class="card-title"><span>Regular Pack</span><span class="card-price">₹1110</span></div>
+                <div class="card-meta">
+                    <span class="capsule-badge">💊 60 Capsules</span>
+                    <span class="per-day-cost">₹37 / day</span>
+                    <span class="card-badge badge-best">BEST VALUE</span>
+                </div>
+            </div>
+            <!-- Combo Pack -->
+            <div class="variant-card" data-price="1599" data-name="Combo Pack (120 Capsules - 60 Days)" onclick="selectVariant(this)">
+                <div class="card-title"><span>Combo Pack</span><span class="card-price">₹1599</span></div>
+                <div class="card-meta">
+                    <span class="capsule-badge">💊 120 Capsules</span>
+                    <span class="per-day-cost">₹26.6 / day</span>
+                    <span class="card-badge badge-saving">MASSIVE SAVING</span>
+                </div>
+            </div>
         </div>
 
-        <div class="product-section">
-            <h3>1️⃣ Choose Your Package</h3>
-            <div class="variant-options">
-                <div class="variant-card" data-price="550" data-value="Starter Pack" data-prepaid-only="false">
-                    <h4>Starter Pack</h4>
-                    <div class="price">₹550</div>
-                </div>
-                <div class="variant-card" data-price="990" data-value="Regular Pack" data-prepaid-only="false">
-                    <h4>Regular Pack</h4>
-                    <div class="price">₹990</div>
-                </div>
-                <div class="variant-card" data-price="1599" data-value="Customized Program" data-prepaid-only="true">
-                    <h4>Customized Program</h4>
-                    <div class="price">₹1599</div>
-                    <span class="prepaid-only-badge">Prepaid Only</span>
-                </div>
-            </div>
+        <!-- E-BOOK Section: HIDDEN -->
+        <div class="order-bump"></div>
 
-            <div class="order-bump">
-                <div class="bump-header">
-                    <input type="checkbox" id="bumpCheck" onchange="updateSummary()">
-                    <label for="bumpCheck">Yes, Add Ayurvedic Diet E-Book!</label>
-                </div>
-                <p class="bump-text">Get Dr. Rana's exclusive "Men's Vitality Diet Guide" (Digital PDF) for faster results. <b>Only ₹99 extra!</b></p>
-            </div>
-
-            <div class="order-summary">
-                <div class="row"><span>Selected Package:</span> <span id="selectedVariantName">Starter Pack</span></div>
-                <div class="row"><span>Base Price:</span> <span id="selectedPrice">₹550</span></div>
-                <div class="row" id="bumpRow" style="display:none;"><span>Diet E-Book:</span> <span>+ ₹99</span></div>
-                <div class="row total"><span>Total Amount:</span> <span id="totalAmount">₹550</span></div>
-            </div>
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary">
+            <div class="row"><span>Selected Package:</span> <span id="selectedVariantName">Regular Pack (60 Capsules - 30 Days)</span></div>
+            <div class="row"><span>Base Price:</span> <span id="selectedPrice">₹1110</span></div>
+            <div class="row total"><span>Total Amount:</span> <span id="totalAmount">₹1110</span></div>
         </div>
+    </div>
 
-        <div class="form-section">
-            <h3>2️⃣ Your Details</h3>
-            <form id="checkoutForm">
-                <div class="form-group"><input type="text" id="fullName" placeholder="Full Name *" required></div>
-                <div class="form-group"><input type="tel" id="mobile" placeholder="Mobile Number *" pattern="[0-9]{10}" required></div>
-                <div class="form-group"><textarea id="address" rows="3" placeholder="Full Address *" required></textarea></div>
-                <div class="payment-section">
-                    <h4>Payment Method</h4>
-                    <div class="payment-option" data-method="cod">
-                        <input type="radio" name="payment" value="Cash on Delivery" checked> <b>Cash on Delivery (COD)</b>
+    <!-- ========================================== -->
+    <!-- SECTION 2: YOUR DETAILS                   -->
+    <!-- ========================================== -->
+    <div class="form-section">
+        <h3>2️⃣ Your Details</h3>
+        
+        <form id="checkoutForm">
+            <div class="form-group">
+                <input type="text" id="fullName" placeholder="Full Name *" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" placeholder="WhatsApp Number *" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+                <textarea id="address" rows="3" placeholder="Full Address * (House No, Area, City, Pincode)" required></textarea>
+            </div>
+
+            <!-- PAYMENT METHOD -->
+            <div class="payment-section">
+                <h4 style="color: #14452F; margin-bottom: 12px; font-size: 16px;">Payment Method</h4>
+                
+                <div class="payment-option selected" data-method="cod" onclick="selectPayment(this)">
+                    <input type="radio" name="payment" value="Cash on Delivery" checked> 
+                    <div>
+                        <div class="pay-label">Cash on Delivery (COD)</div>
+                        <div class="pay-sub">Pay when you receive</div>
                     </div>
-                    <div class="payment-option" data-method="prepaid">
-                        <input type="radio" name="payment" value="Prepaid"> <b>Prepaid (UPI)</b>
+                </div>
+                
+                <div class="payment-option" data-method="prepaid" onclick="selectPayment(this)">
+                    <input type="radio" name="payment" value="Prepaid (UPI)"> 
+                    <div>
+                        <div class="pay-label">Prepaid (UPI)</div>
+                        <div class="pay-sub">Pay online via UPI</div>
                     </div>
                 </div>
-                <button type="submit" class="order-btn">Confirm Order</button>
-            </form>
-        </div>
+            </div>
+
+            <button type="submit" class="order-btn">
+                <i class="fas fa-bolt"></i> Confirm Order
+            </button>
+        </form>
     </div>
+</div>
 
-    <div class="modal" id="thankYouModal">
-        <div class="modal-content">
-            <h2 style="color: #14452F;">Order Confirmed! ✅</h2>
-            <p id="orderNumber" style="font-weight:bold; margin: 15px 0; background: #f5f7fa; padding: 10px; border-radius: 8px;">Order ID: BWG-1234</p>
-            <a id="ebookDownloadBtn" href="#" class="ebook-btn" target="_blank"><i class="fas fa-file-pdf"></i> Download E-Book Here</a>
-            <a id="whatsappJoinBtn" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> Confirm on WhatsApp & Send Payment Screenshot</a>
-            <a id="consultBtn" class="whatsapp-btn" style="background:#14452F" target="_blank"><i class="fas fa-user-md"></i> Free Consultation</a>
-            <button onclick="window.location.href='index.html'" style="margin-top:15px; padding:12px; cursor:pointer; width: 100%; border-radius: 50px; border: 1px solid #ccc; font-weight: bold; background: transparent;">Back to Home</button>
-        </div>
+<!-- ========================================== -->
+<!-- PAYMENT MODAL (For Prepaid)                -->
+<!-- ========================================== -->
+<div id="paymentModal" class="payment-modal">
+    <div class="modal-card">
+        <span class="close-payment" onclick="closePaymentModal()">&times;</span>
+        <h4 class="fw-bold">Complete Payment</h4>
+        <div id="qrContainer"></div>
+        <div id="upiButtonContainer"></div>
+        <button id="paidButton" class="btn-paid" style="display: none;">✅ I have paid</button>
+        <button class="btn-back-modal" onclick="closePaymentModal()">← Back</button>
     </div>
+</div>
 
-    <div id="paymentModal" class="payment-modal">
-        <div class="modal-card">
-            <span class="close-payment" onclick="closePaymentModal()">&times;</span>
-            <h4 class="fw-bold">Complete Payment</h4>
-            <div id="qrContainer"></div>
-            <div id="upiButtonContainer"></div>
-            <button id="paidButton" class="btn-paid" style="display: none;">✅ I have paid</button>
-            <button class="btn-back" onclick="closePaymentModal()">← Back</button>
-        </div>
-    </div>
+<!-- ========================================== -->
+<!-- JAVASCRIPT (LIVE)                         -->
+<!-- ========================================== -->
+<script>
+    // ============ CONFIGURATION (LIVE DATA) ============
+    const YOUR_UPI_ID = "9808669522@ybl";
+    const ADMIN_WHATSAPP = "919557133307";
+    const ORDER_API_URL = 'https://api.sheetbest.com/sheets/7a70aa1c-c444-4e12-b278-f846bebc1725'; // Sheet.best
 
-    <script>
-        // ========== GOOGLE ORDER API URL (UPDATED) ==========
-        const ORDER_API_URL = 'https://api.sheetbest.com/sheets/7a70aa1c-c444-4e12-b278-f846bebc1725';
+    // ============ VARIABLE DECLARATION ============
+    let selectedPrice = 1110;
+    let selectedName = "Regular Pack (60 Capsules - 30 Days)";
+    let currentPendingOrder = null;
+    let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-        async function submitOrderToSheet(orderData) {
-            try {
-                const response = await fetch(ORDER_API_URL, {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify([{
-                        Timestamp: new Date().toISOString(),
-                        "Order ID": orderData.orderId,
-                        "Name": orderData.name,
-                        "Mobile": orderData.mobile,
-                        "Address": orderData.address,
-                        "Product": orderData.product,
-                        "Amount": orderData.amount,
-                        "Payment Method": orderData.paymentMethod,
-                        "E-Book": orderData.ebook
-                    }])
-                });
-                const result = await response.json();
-                console.log('✅ Order saved via Sheet.best:', result);
-                return true;
-            } catch (error) {
-                console.error('❌ Order save failed:', error);
-                return false;
-            }
-        }
+    // ============ VARIANT SELECTION ============
+    function selectVariant(el) {
+        document.querySelectorAll('.variant-card').forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedPrice = parseInt(el.dataset.price);
+        selectedName = el.dataset.name;
+        document.getElementById('selectedVariantName').innerText = selectedName;
+        document.getElementById('selectedPrice').innerHTML = '₹' + selectedPrice;
+        document.getElementById('totalAmount').innerHTML = '₹' + selectedPrice;
+    }
 
-        // ========== BACK BUTTON ==========
-        document.getElementById('backBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (document.referrer && document.referrer !== '') window.history.back();
-            else window.location.href = 'index.html';
-        });
+    // ============ PAYMENT SELECTION ============
+    function selectPayment(el) {
+        document.querySelectorAll('.payment-option').forEach(p => p.classList.remove('selected'));
+        el.classList.add('selected');
+        el.querySelector('input[type="radio"]').checked = true;
+    }
 
-        // ========== VARIANT SELECTION & SUMMARY ==========
-        function updateSummary() {
-            const selectedCard = document.querySelector('.variant-card.selected');
-            if (!selectedCard) return;
-            let basePrice = parseInt(selectedCard.dataset.price);
-            let name = selectedCard.querySelector('h4').innerText;
-            document.getElementById('selectedVariantName').innerText = name;
-            document.getElementById('selectedPrice').innerText = '₹' + basePrice;
-            if (document.getElementById('bumpCheck').checked) {
-                basePrice += 99;
-                document.getElementById('bumpRow').style.display = 'flex';
-            } else {
-                document.getElementById('bumpRow').style.display = 'none';
-            }
-            document.getElementById('totalAmount').innerText = '₹' + basePrice;
-            const isPrepaidOnly = selectedCard.dataset.prepaidOnly === 'true';
-            const codOption = document.querySelector('.payment-option[data-method="cod"]');
-            const prepaidOption = document.querySelector('.payment-option[data-method="prepaid"]');
-            const codRadio = codOption.querySelector('input[type="radio"]');
-            const prepaidRadio = prepaidOption.querySelector('input[type="radio"]');
-            if (isPrepaidOnly) {
-                codOption.classList.add('disabled');
-                codRadio.disabled = true;
-                prepaidRadio.checked = true;
-                prepaidOption.classList.add('selected');
-                codOption.classList.remove('selected');
-            } else {
-                codOption.classList.remove('disabled');
-                codRadio.disabled = false;
-            }
-        }
+    // ============ PRE-FILL FROM QUIZ ============
+    window.onload = function() {
+        try {
+            const data = JSON.parse(sessionStorage.getItem('checkout_userData') || '{}');
+            if (data.name) document.getElementById('fullName').value = data.name;
+            if (data.mobile) document.getElementById('mobile').value = data.mobile;
+        } catch(e) { /* Ignore */ }
+    };
 
-        const variantCards = document.querySelectorAll('.variant-card');
-        variantCards.forEach(card => {
-            card.addEventListener('click', function() {
-                variantCards.forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                updateSummary();
-            });
-        });
-
-        const paymentOptions = document.querySelectorAll('.payment-option');
-        paymentOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                if (this.classList.contains('disabled')) return;
-                const radio = this.querySelector('input[type="radio"]');
-                if (radio.disabled) return;
-                radio.checked = true;
-                paymentOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-            });
-        });
-
-        // ========== LOCALSTORAGE ==========
-        function saveOrderToLocalStorage(order) {
-            let existingOrders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-            existingOrders.push(order);
-            localStorage.setItem('balwaanOrders', JSON.stringify(existingOrders));
-        }
-
-        function showSuccess(orderId, name, amount, productValue) {
-            document.getElementById('orderNumber').innerText = 'Order ID: ' + orderId;
-            if (document.getElementById('bumpCheck').checked) {
-                document.getElementById('ebookDownloadBtn').style.display = 'flex';
-                document.getElementById('ebookDownloadBtn').href = "REPLACE_WITH_YOUR_PDF_LINK";
-            } else {
-                document.getElementById('ebookDownloadBtn').style.display = 'none';
-            }
-            const whatsappMsg = `Hi, I have completed the payment for my order.%0A%0AOrder ID: ${orderId}%0AName: ${name}%0AAmount: ₹${amount}%0AProduct: ${productValue}%0A%0APlease find attached payment screenshot. Kindly confirm my order.`;
-            document.getElementById('whatsappJoinBtn').href = `https://wa.me/919557133307?text=${encodeURIComponent(whatsappMsg)}`;
-            const consultMsg = `Hi, I have placed an order (ID: ${orderId}) and need free consultation.`;
-            document.getElementById('consultBtn').href = `https://wa.me/919557133307?text=${encodeURIComponent(consultMsg)}`;
-            document.getElementById('thankYouModal').classList.add('active');
-        }
-
-        function closePaymentModal() {
-            document.getElementById('paymentModal').classList.remove('active');
-            currentPendingOrder = null;
-        }
-
-        let currentPendingOrder = null;
-        const YOUR_UPI_ID = "9808669522@ybl";
-        let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-        function onPaidClick() {
-            if (currentPendingOrder) {
-                closePaymentModal();
-                showSuccess(currentPendingOrder.orderId, currentPendingOrder.name, currentPendingOrder.amount, currentPendingOrder.productValue);
-                currentPendingOrder = null;
-            } else {
-                alert('No pending order found. Please try again.');
-            }
-        }
-
-        // ========== FORM SUBMIT (Main Integration) ==========
-        document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('fullName').value.trim();
-            const mobile = document.getElementById('mobile').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const paymentRadio = document.querySelector('input[name="payment"]:checked');
-            if (!paymentRadio) { alert('Please select a payment method.'); return; }
-            const paymentValue = paymentRadio.value;
-            const selectedCard = document.querySelector('.variant-card.selected');
-            if (!selectedCard) { alert('Please select a package.'); return; }
-            let productValue = selectedCard.dataset.value;
-            let amount = parseInt(selectedCard.dataset.price);
-            if (document.getElementById('bumpCheck').checked) {
-                productValue += " + Diet E-Book";
-                amount += 99;
-            }
-            if (selectedCard.dataset.prepaidOnly === 'true' && paymentValue !== 'Prepaid') {
-                alert('This package is available only via Prepaid (UPI). Please select Prepaid as payment method.');
-                return;
-            }
-            const orderId = 'BWG' + Date.now().toString().slice(-6);
-            
-            // Submit to Google Sheet (Apps Script)
-            const orderData = {
-                timestamp: new Date().toISOString(),
-                orderId: orderId,
-                name: name,
-                mobile: mobile,
-                address: address,
-                product: productValue,
-                amount: amount,
-                paymentMethod: paymentValue,
-                ebook: document.getElementById('bumpCheck').checked ? 'Yes' : 'No'
+    // ============ PAYMENT MODAL LOGIC ============
+    function openPaymentModal(orderId, name, amount, productValue) {
+        currentPendingOrder = { orderId, name, amount, productValue };
+        const upiLink = `upi://pay?pa=${YOUR_UPI_ID}&pn=BalwaanGold&am=${amount}&cu=INR&tn=Order${orderId}`;
+        const modal = document.getElementById('paymentModal');
+        const qrContainer = document.getElementById('qrContainer');
+        const upiContainer = document.getElementById('upiButtonContainer');
+        const paidBtn = document.getElementById('paidButton');
+        
+        qrContainer.innerHTML = '';
+        upiContainer.innerHTML = '';
+        paidBtn.style.display = 'none';
+        
+        if (isMobile) {
+            const upiBtn = document.createElement('button');
+            upiBtn.className = 'btn-upi';
+            upiBtn.innerHTML = '<i class="fab fa-google-pay me-2"></i> Pay via UPI';
+            upiBtn.onclick = () => {
+                window.location.href = upiLink;
+                alert('Please complete payment in your UPI app, then come back and click "I have paid".');
             };
-            await submitOrderToSheet(orderData);
-            
-            // Save to localStorage for admin panel
-            saveOrderToLocalStorage({
-                orderId, name, mobile, product: productValue, amount, paymentMethod: paymentValue, timestamp: Date.now()
-            });
-            if (typeof fbq === 'function') fbq('track', 'Purchase', { value: amount, currency: 'INR' });
-            
-            if (paymentValue === 'Prepaid') {
-                currentPendingOrder = { orderId, name, amount, productValue };
-                const upiLink = `upi://pay?pa=${YOUR_UPI_ID}&pn=BalwaanGold&am=${amount}&cu=INR&tn=Order${orderId}`;
-                const modal = document.getElementById('paymentModal');
-                const qrContainer = document.getElementById('qrContainer');
-                const upiContainer = document.getElementById('upiButtonContainer');
-                const paidBtn = document.getElementById('paidButton');
-                qrContainer.innerHTML = '';
-                upiContainer.innerHTML = '';
-                paidBtn.style.display = 'none';
-                if (isMobile) {
-                    const upiBtn = document.createElement('button');
-                    upiBtn.className = 'btn-upi';
-                    upiBtn.innerHTML = '<i class="fab fa-google-pay me-2"></i> Pay via UPI';
-                    upiBtn.onclick = () => {
-                        window.location.href = upiLink;
-                        alert('Please complete payment in your UPI app, then come back and click "I have paid".');
-                    };
-                    upiContainer.appendChild(upiBtn);
-                    paidBtn.style.display = 'block';
-                } else {
-                    const qrImg = document.createElement('img');
-                    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiLink)}`;
-                    qrImg.className = 'qr-img';
-                    qrContainer.appendChild(qrImg);
-                    paidBtn.style.display = 'block';
+            upiContainer.appendChild(upiBtn);
+            paidBtn.style.display = 'block';
+        } else {
+            const qrImg = document.createElement('img');
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiLink)}`;
+            qrImg.className = 'qr-img';
+            qrContainer.appendChild(qrImg);
+            paidBtn.style.display = 'block';
+        }
+        modal.classList.add('active');
+        
+        // Remove old listener and add new one
+        const newPaidBtn = paidBtn.cloneNode(true);
+        paidBtn.parentNode.replaceChild(newPaidBtn, paidBtn);
+        newPaidBtn.id = 'paidButton';
+        newPaidBtn.addEventListener('click', onPaidClick);
+        document.querySelector('.close-payment').onclick = closePaymentModal;
+        document.querySelector('.btn-back-modal').onclick = closePaymentModal;
+    }
+
+    function closePaymentModal() {
+        document.getElementById('paymentModal').classList.remove('active');
+        currentPendingOrder = null;
+    }
+
+    function onPaidClick() {
+        if (currentPendingOrder) {
+            if (confirm('क्या आपने सही से UPI Payment कर दी है? कृपया Payment Screenshot WhatsApp पर भेजना न भूलें।')) {
+                closePaymentModal();
+                // Save order as "Unverified" and redirect to success
+                let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+                let existingOrder = orders.find(o => o.orderId === currentPendingOrder.orderId);
+                if (existingOrder) {
+                    existingOrder.paymentStatus = 'Unverified (Prepaid)';
                 }
-                modal.classList.add('active');
-                const newPaidBtn = paidBtn.cloneNode(true);
-                paidBtn.parentNode.replaceChild(newPaidBtn, paidBtn);
-                newPaidBtn.id = 'paidButton';
-                newPaidBtn.addEventListener('click', onPaidClick);
-                document.querySelector('.close-payment').onclick = closePaymentModal;
-                document.querySelector('.btn-back').onclick = closePaymentModal;
-            } else {
-                showSuccess(orderId, name, amount, productValue);
+                localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+                
+                // Redirect to success page
+                sessionStorage.setItem('orderCompleteData', JSON.stringify({
+                    orderId: currentPendingOrder.orderId,
+                    name: currentPendingOrder.name,
+                    mobile: document.getElementById('mobile').value,
+                    product: currentPendingOrder.productValue,
+                    amount: currentPendingOrder.amount
+                }));
+                window.location.href = 'order-complete.html';
             }
+        } else {
+            alert('No pending order found.');
+        }
+    }
+
+    // ============ SUBMIT ORDER TO SHEET.BEST ============
+    async function submitOrderToSheet(orderData) {
+        try {
+            const response = await fetch(ORDER_API_URL, {
+                method: 'POST',
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify([{
+                    Timestamp: new Date().toISOString(),
+                    "Order ID": orderData.orderId,
+                    "Name": orderData.name,
+                    "Mobile": orderData.mobile,
+                    "Address": orderData.address,
+                    "Product": orderData.product,
+                    "Amount": orderData.amount,
+                    "Payment Method": orderData.paymentMethod,
+                    "E-Book": "No"
+                }])
+            });
+            const result = await response.json();
+            console.log('✅ Order saved via Sheet.best:', result);
+            return true;
+        } catch (error) {
+            console.error('❌ Order save failed:', error);
+            return false;
+        }
+    }
+
+    // ============ MAIN FORM SUBMIT ============
+    document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('fullName').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const paymentRadio = document.querySelector('input[name="payment"]:checked');
+        if (!paymentRadio) { alert('Please select a payment method.'); return; }
+        const paymentMethod = paymentRadio.value;
+        
+        if (!name) { alert('Please enter your full name.'); return; }
+        if (!/^\d{10}$/.test(mobile)) { alert('Please enter a valid 10-digit WhatsApp number.'); return; }
+        if (!address) { alert('Please enter your delivery address.'); return; }
+
+        const orderId = 'BWG' + Date.now().toString().slice(-6);
+        const product = selectedName;
+        const amount = selectedPrice;
+
+        // ---------- 1. SAVE TO LOCALSTORAGE (Admin Panel) ----------
+        let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
+        let orderObj = {
+            orderId, name, mobile, address, product, amount, paymentMethod,
+            status: (paymentMethod === 'Prepaid (UPI)') ? 'Payment Pending (Unverified)' : 'Order Placed',
+            timestamp: Date.now()
+        };
+        orders.push(orderObj);
+        localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+
+        // ---------- 2. SAVE TO SHEET.BEST (Backend) ----------
+        await submitOrderToSheet({
+            orderId, name, mobile, address, product, amount, paymentMethod
         });
 
-        // ========== PRE-FILL FROM CUSTOM PROTOCOL ==========
-        const sessionData = sessionStorage.getItem('checkout_userData');
-        if (sessionData) {
-            try {
-                const data = JSON.parse(sessionData);
-                if (data.name) document.getElementById('fullName').value = data.name;
-                if (data.mobile) document.getElementById('mobile').value = data.mobile;
-                const customVariant = document.querySelector('.variant-card[data-value="Customized Program"]');
-                if (customVariant) customVariant.click();
-                sessionStorage.removeItem('checkout_userData');
-            } catch(e) {}
+        // ---------- 3. FACEBOOK PIXEL (Purchase & Lead) ----------
+        if (typeof fbq === 'function') {
+            fbq('track', 'Purchase', { value: amount, currency: 'INR' });
+            fbq('track', 'Lead');
         }
-        document.querySelector('.variant-card[data-value="Starter Pack"]').click();
-    </script>
+
+        // ---------- 4. CHECK PAYMENT METHOD ----------
+        if (paymentMethod === 'Prepaid (UPI)') {
+            // Open UPI Modal
+            openPaymentModal(orderId, name, amount, product);
+        } else {
+            // COD: Redirect directly to Complete Page
+            sessionStorage.setItem('orderCompleteData', JSON.stringify({
+                orderId, name, mobile, product, amount
+            }));
+            window.location.href = 'order-complete.html';
+        }
+    });
+</script>
 </body>
 </html>
