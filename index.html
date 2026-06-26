@@ -89,12 +89,29 @@
 
         @keyframes glowing { 0% { box-shadow: 0 0 5px #D4AF37; } 50% { box-shadow: 0 0 20px #D4AF37; } 100% { box-shadow: 0 0 5px #D4AF37; } }
         .btn-gold-glow {
-            background: var(--gold-gradient); color: #1e1e1e !important; border: none; font-weight: bold; 
-            text-transform: uppercase; letter-spacing: 1px; animation: glowing 2s infinite; 
-            border-radius: 50px; transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;
-        }
-        .btn-gold-glow:hover { background: linear-gradient(135deg, #f5e27a, #D4AF37); transform: scale(1.05); color: #000 !important; cursor: pointer; }
-
+    background: linear-gradient(
+        180deg,
+        #fff0a6 0%,
+        #e4c24e 45%,
+        #c89b2c 100%
+    );
+    color: #1e1e1e !important;
+    border: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    animation: glowing 2.4s infinite;
+    border-radius: 50px;
+    transition: all .3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+        .btn-gold-glow:hover {
+    transform: translateY(-2px) scale(1.03);
+    color: #000 !important;
+    cursor: pointer;
+}
         /* Top banner – clickable + optional background image */
         .vitality-top-banner {
             background: linear-gradient(135deg, #14452F 0%, #0a2418 100%); /* fallback gradient */
@@ -121,8 +138,33 @@
         }
 
         .hero-section { background: radial-gradient(circle at top, #1e5e41, #14452F); color: white; padding: 60px 0; border-bottom: 5px solid var(--dark-gold); min-height: 80vh; display: flex; align-items: center; }
-        .price-box { background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 15px; display: inline-block; margin: 15px 0; border: 1px solid rgba(212, 175, 55, 0.3); }
-        .price-box .new-price { font-size: 32px; font-weight: 800; color: #D4AF37; }
+       .price-box {
+    background: linear-gradient(145deg, rgba(58,112,81,.90), rgba(30,72,52,.96));
+    padding: 22px 32px;
+    border-radius: 22px;
+    display: inline-block;
+    margin: 18px 0;
+    border: 1px solid rgba(212,175,55,.45);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 0 24px rgba(212,175,55,.16);
+}
+
+.price-box .new-price {
+    display: block;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 8px;
+
+    background: linear-gradient(180deg,#fff4b2 0%,#ffd86b 35%,#d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.25),
+        0 0 25px rgba(212,175,55,.15);
+}
         
         .product-gallery { position: relative; max-width: 450px; margin: 0 auto; }
         .main-image-wrapper { position: relative; background: rgba(255,255,255,0.05); border-radius: 15px; padding: 10px; cursor: zoom-in; border: 1px solid rgba(212, 175, 55, 0.2); transition: 0.3s; }
