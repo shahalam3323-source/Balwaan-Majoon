@@ -87,30 +87,48 @@
         body { font-family: 'Poppins', sans-serif; background-color: #f9f9f9; color: #333; overflow-x: hidden; }
         h1, h2, h3, h4, h5, .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; }
 
-        @keyframes glowing { 0% { box-shadow: 0 0 5px #D4AF37; } 50% { box-shadow: 0 0 20px #D4AF37; } 100% { box-shadow: 0 0 5px #D4AF37; } }
         .btn-gold-glow {
-    background: linear-gradient(
-        180deg,
-        #fff0a6 0%,
-        #e4c24e 45%,
-        #c89b2c 100%
-    );
+    background: linear-gradient(180deg, #fff0a6 0%, #e4c24e 45%, #c89b2c 100%);
     color: #1e1e1e !important;
     border: none;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 1.4px;
-    animation: glowing 2.4s infinite;
+    letter-spacing: 1.2px;
     border-radius: 50px;
-    transition: all .3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    padding: 12px 28px;
+    position: relative; /* Pseudo-element ke liye */
+    
+    /* 🚀 Performance boost: GPU layer */
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+}
+
+/* Glow effect ab animation nahi, sirf hover par trigger hoga (cheaper) */
+.btn-gold-glow::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 52px;
+    background: rgba(212, 175, 55, 0.25);
+    filter: blur(10px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 }
         .btn-gold-glow:hover {
     transform: translateY(-2px) scale(1.03);
     color: #000 !important;
     cursor: pointer;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-gold-glow:hover::after {
+    opacity: 1; /* Hover par glow dikhega */
 }
         /* Top banner – clickable + optional background image */
         .vitality-top-banner {
@@ -139,31 +157,37 @@
 
         .hero-section { background: radial-gradient(circle at top, #1e5e41, #14452F); color: white; padding: 60px 0; border-bottom: 5px solid var(--dark-gold); min-height: 80vh; display: flex; align-items: center; }
        .price-box {
-    background: linear-gradient(145deg, rgba(58,112,81,.90), rgba(30,72,52,.96));
-    padding: 22px 32px;
-    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(58, 112, 81, 0.92), rgba(30, 72, 52, 0.96));
+    padding: 20px 28px;
+    border-radius: 20px;
     display: inline-block;
-    margin: 18px 0;
-    border: 1px solid rgba(212,175,55,.45);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 0 24px rgba(212,175,55,.16);
+    margin: 16px 0;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    
+    /* Sirf ek layer shadow (pehle multiple the) */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);
+    
+    /* 🚀 Layer promotion */
+    transform: translateZ(0);
 }
 
 .price-box .new-price {
     display: block;
-    font-size: 56px;
+    font-size: 44px;
     font-weight: 900;
-    line-height: 1;
-    margin-top: 8px;
-
-    background: linear-gradient(180deg,#fff4b2 0%,#ffd86b 35%,#d4af37 100%);
+    line-height: 1.1;
+    margin-top: 4px;
+    
+    /* ✅ Solid color fallback (pehle yeh dikhega) */
+    color: #f5d76e;
+    
+    /* ✅ Gradient properties — agar browser support karega toh yeh apply honge */
+    background: linear-gradient(180deg, #fff4b2 0%, #ffd86b 35%, #d4af37 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    text-shadow:
-        0 0 10px rgba(212,175,55,.25),
-        0 0 25px rgba(212,175,55,.15);
+    background-clip: text;
+    
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
 }
         
         .product-gallery { position: relative; max-width: 450px; margin: 0 auto; }
