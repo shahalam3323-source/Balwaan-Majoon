@@ -195,9 +195,32 @@
         .main-image-wrapper:hover { border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
         .product-img-main { width: 100%; height: auto; border-radius: 10px; }
         .zoom-hint { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 20px; font-size: 12px; pointer-events: none; }
-        .thumbnail-container { display: flex; gap: 10px; margin-top: 15px; justify-content: center; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
-        .thumbnail-container::-webkit-scrollbar { display: none; }
-        .thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid transparent; cursor: pointer; opacity: 0.6; transition: 0.3s; }
+       .thumbnail-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 12px;
+    flex-wrap: nowrap;            /* ✅ FIX 1 - एक ही लाइन में रोकेगा */
+    scrollbar-width: thin;        /* ✅ FIX 2 - Scrollbar दिखेगी (ताकि पता चले और images हैं) */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar को सुनहरा और खूबसूरत बनाएँ */
+.thumbnail-container::-webkit-scrollbar {
+    height: 5px;
+}
+.thumbnail-container::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 10px;
+}
+        .thumb { width: 70px; height: 70px; object-fit: contain; border-radius: 8px; border: 2px solid transparent; cursor: pointer; opacity: 0.6; transition: 0.3s; flex: 0 0 70px; }
         .thumb.active, .thumb:hover { opacity: 1; border-color: #D4AF37; }
 
         #imageZoomModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100000; align-items: center; justify-content: center; }
