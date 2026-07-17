@@ -291,6 +291,62 @@
             .ingredient-box .badge { font-size: 9px !important; padding: 3px 5px !important; margin-bottom: 3px; display: inline-block;}
             .issue-badge { font-size: 14px; padding: 8px 20px !important; }
         }
+        /* ===== MOBILE FIX: Product Details (Label Section) ===== */
+@media (max-width: 576px) {
+    /* Cards ki padding kam karein */
+    .bg-light .card.p-4 {
+        padding: 16px 14px !important;
+    }
+
+    /* Heading chhoti karein */
+    .bg-light .card h4 {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+    }
+
+    /* Table ke font ko readable rakhein */
+    .bg-light .table td {
+        font-size: 13px !important;
+        padding: 5px 0 !important;
+        border-bottom: 1px solid #f0f0f0 !important; /* Thoda sa separator acha lagta hai */
+    }
+
+    /* 🔥 Botanical names (jaise Withania somnifera) ko agli line pe bhejein */
+    .bg-light .table .text-muted {
+        display: block !important;
+        font-size: 10px !important;
+        color: #6c757d !important;
+        margin-top: -2px !important;
+        font-weight: 400 !important;
+    }
+
+    /* Badges ko chhota aur single line me rakhna */
+    .bg-light .card .badge {
+        font-size: 9px !important;
+        padding: 4px 8px !important;
+        margin-bottom: 3px !important;
+    }
+
+    /* Right side (Usage) ka text thoda chhota */
+    .bg-light .card h6 {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+    }
+    .bg-light .card p, 
+    .bg-light .card .text-muted {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Disclaimer wala box */
+    .bg-light .alert {
+        padding: 12px 10px !important;
+    }
+    .bg-light .alert p {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+    }
+}
     </style>
 </head>
 <body>
