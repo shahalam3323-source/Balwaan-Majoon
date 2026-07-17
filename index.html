@@ -296,7 +296,7 @@
             .ingredient-box .badge { font-size: 9px !important; padding: 3px 5px !important; margin-bottom: 3px; display: inline-block;}
             .issue-badge { font-size: 14px; padding: 8px 20px !important; }
         }
-        /* ===== MOBILE FIX: Product Details (Label Section) ===== */
+  /* ===== MOBILE FIX: Product Details (Label Section) ===== */
 @media (max-width: 576px) {
     /* Cards ki padding kam karein */
     .bg-light .card.p-4 {
@@ -313,10 +313,10 @@
     .bg-light .table td {
         font-size: 13px !important;
         padding: 5px 0 !important;
-        border-bottom: 1px solid #f0f0f0 !important; /* Thoda sa separator acha lagta hai */
+        border-bottom: 1px solid #f0f0f0 !important;
     }
 
-    /* 🔥 Botanical names (jaise Withania somnifera) ko agli line pe bhejein */
+    /* Botanical names (jaise Withania somnifera) ko agli line pe bhejein */
     .bg-light .table .text-muted {
         display: block !important;
         font-size: 10px !important;
@@ -350,6 +350,30 @@
     .bg-light .alert p {
         font-size: 10px !important;
         line-height: 1.4 !important;
+    }
+
+    /* ===== NEW: REVIEWS SECTION - Mobile Friendly Fix ===== */
+    .testimonials-section .card {
+        padding: 16px 14px !important;
+    }
+    .testimonials-section .card h6 {
+        font-size: 14px !important;
+    }
+    .testimonials-section .card p {
+        font-size: 12.5px !important;
+        line-height: 1.5 !important;
+    }
+    .testimonials-section .card .text-muted {
+        font-size: 11px !important;
+    }
+    .testimonials-section .trust-badge-box {
+        padding: 10px 5px !important;
+    }
+    .testimonials-section .trust-badge-box h5 {
+        font-size: 15px !important;
+    }
+    .testimonials-section .trust-badge-box p {
+        font-size: 9px !important;
     }
 }
     </style>
@@ -634,6 +658,114 @@
                 </div>
             </div>
         </section>
+        <!-- ===== CUSTOMER TESTIMONIALS (Option 2 - Fully Responsive) ===== -->
+<section class="section-padding bg-light testimonials-section">
+    <div class="container text-center">
+        <div class="mb-4">
+            <span class="badge bg-dark text-gold px-4 py-2 rounded-pill" style="font-size: 14px; letter-spacing: 1px;">💬 REAL STORIES</span>
+            <h2 class="mt-3">What Our <span class="text-gold">Customers Say</span></h2>
+            <p class="text-muted">1000+ men across India have trusted Balwaan Gold</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Testimonial 1: Rajesh -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-start">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; font-size: 20px; font-weight: 700; color: #000;">
+                            R
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="fw-bold mb-0">Rajesh S.</h6>
+                            <span class="text-muted small">Delhi</span>
+                        </div>
+                    </div>
+                    <p class="text-muted small mb-0">"Balwaan Gold se mujhe bahut badhiya stamina aur energy mili hai. Natural ingredients pe mujhe poora bharosa hai. Main ise pehle se zyada active mehsus kar raha hoon!"</p>
+                    <div class="mt-2 text-warning">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2: Amit -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-start">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; font-size: 20px; font-weight: 700; color: #000;">
+                            A
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="fw-bold mb-0">Amit T.</h6>
+                            <span class="text-muted small">Jaipur</span>
+                        </div>
+                    </div>
+                    <p class="text-muted small mb-0">"Natural ingredients ke saath result bhi kamal ka mila. Isse pehle main kaafi struggle kar raha tha, lekin Balwaan Gold ne meri life badal di."</p>
+                    <div class="mt-2 text-warning">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3: Vikram -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-start">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; font-size: 20px; font-weight: 700; color: #000;">
+                            V
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="fw-bold mb-0">Vikram P.</h6>
+                            <span class="text-muted small">Lucknow</span>
+                        </div>
+                    </div>
+                    <p class="text-muted small mb-0">"Main is product ko use karke confident feel kar raha hoon. Energy level pehle se double ho gaya hai. Ekdum reliable aur natural product hai."</p>
+                    <div class="mt-2 text-warning">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Badges (4.8 Rating + 1000+ Customers) -->
+        <div class="row g-3 justify-content-center mt-4">
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-white rounded-3 shadow-sm border trust-badge-box">
+                    <i class="fas fa-users fa-2x text-gold"></i>
+                    <h5 class="fw-bold mt-2 mb-0">1000+</h5>
+                    <p class="text-muted small">Happy Customers</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-white rounded-3 shadow-sm border trust-badge-box">
+                    <i class="fas fa-star fa-2x text-warning"></i>
+                    <h5 class="fw-bold mt-2 mb-0">4.8/5</h5>
+                    <p class="text-muted small">Average Rating</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-white rounded-3 shadow-sm border trust-badge-box">
+                    <i class="fas fa-award fa-2x text-success"></i>
+                    <h5 class="fw-bold mt-2 mb-0">GMP</h5>
+                    <p class="text-muted small">Certified</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="p-3 bg-white rounded-3 shadow-sm border trust-badge-box">
+                    <i class="fas fa-shield-alt fa-2x text-success"></i>
+                    <h5 class="fw-bold mt-2 mb-0">100%</h5>
+                    <p class="text-muted small">Ayurvedic</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <div class="mt-4">
+            <a href="https://wa.me/919557133307?text=Hi%2C%20I%20want%20to%20order%20Balwaan%20Gold." class="btn btn-gold-glow btn-lg px-5 py-3">
+                <i class="fab fa-whatsapp me-2"></i> Join 1000+ Happy Customers – Order Now
+            </a>
+        </div>
+    </div>
+</section>
 
         <!-- ===== PRODUCT DETAILS / LABEL INFORMATION (New Section) ===== -->
 <section class="section-padding bg-light">
