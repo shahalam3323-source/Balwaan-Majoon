@@ -238,10 +238,15 @@
         #zoomedImage { max-width: 95%; max-height: 90vh; border-radius: 10px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
         .close-zoom { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; cursor: pointer; background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
 
-        .trust-banner { background: #fff; border-bottom: 1px solid #e9ecef; padding: 15px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .trust-banner { background: #fff; border-bottom: 1px solid #e9ecef; padding: 12px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .trust-item { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--primary-green); margin: 5px 15px; }
         .trust-item i { font-size: 20px; color: var(--dark-gold); }
-        .section-padding { padding: 70px 0; }
+        /* ===== FIX: Consistent & Optimized Section Spacing ===== */
+.section-padding { padding: 60px 0; } /* Desktop पर 60px */
+
+@media (max-width: 768px) {
+    .section-padding { padding: 40px 0 !important; } /* Mobile पर सिर्फ 40px */
+}
         .bg-green { background-color: var(--primary-green); color: white; }
         .text-gold { color: #f5d76e; } /* ✅ FIX 4: Contrast improve karne ke liye color थोड़ा हल्का किया */
 
@@ -283,7 +288,7 @@
 
         @media (max-width: 768px) { 
             .mobile-cta-bar { display: block; } 
-            .hero-section { text-align: center; padding: 40px 0 80px 0; } 
+            .hero-section { text-align: center; padding: 30px 0 60px 0; } 
             .ingredient-box { padding: 12px 8px !important; }
             .ingredient-img { width: 90px; height: 90px; border-width: 2px; }
             .ingredient-box h5 { font-size: 14px; margin-bottom: 5px; }
