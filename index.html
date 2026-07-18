@@ -91,21 +91,27 @@
     /></noscript>
 
     <style>
-        /* ===== FIX: Horizontal Scroll / Left-Right Swipe Issue ===== */
-html, body {
-    overflow-x: hidden !important;  /* आड़ी (Horizontal) स्क्रॉल को पूरी तरह बंद करेगा */
-    max-width: 100% !important;     /* सुनिश्चित करेगा कि कोई भी चीज बाहर न जाए */
-    margin: 0;
-    padding: 0;
+/* ===== FINAL FIX: Horizontal Shift + Left Stuck Issue ===== */
+html {
+    overflow-x: hidden; /* बस आड़ी स्क्रॉल बंद करें, मार्जिन न बदलें */
 }
 
-/* सभी Container और Row को भी सुरक्षित रखें */
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative; /* सुनिश्चित करता है कि body अपनी जगह पर रहे */
+}
+
+/* ⚠️ जरूरी: पुराने margin:0; padding:0; को हटाकर यह डालें */
 .container, .container-fluid, .row {
-    overflow-x: hidden !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 15px !important;  /* Bootstrap का Default Padding बहाल करें */
+    padding-right: 15px !important; /* Bootstrap का Default Padding बहाल करें */
     max-width: 100% !important;
 }
 
-/* अगर कहीं कोई बड़ी इमेज या टेबल है, तो उसे छोटा करें */
+/* किसी भी बड़ी इमेज या टेबल को स्क्रीन में समेटें */
 img, table, .table-responsive {
     max-width: 100% !important;
     height: auto !important;
