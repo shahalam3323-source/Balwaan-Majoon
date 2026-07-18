@@ -11,159 +11,31 @@
     <link rel="manifest" href="/site.webmanifest">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f6f9fc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 16px;
-        }
-        .policy-card {
-            max-width: 780px;
-            width: 100%;
-            background: white;
-            border-radius: 36px;
-            box-shadow: 0 30px 50px -15px rgba(0,0,0,0.2);
-            overflow: hidden;
-            border: 1px solid #dee7ef;
-        }
-        .header {
-            background: #14452F;
-            padding: 32px 24px;
-            text-align: center;
-            color: white;
-        }
-        .header h1 {
-            font-size: 36px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
-        .header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
-        .gold-bar {
-            height: 6px;
-            background: linear-gradient(90deg, #D4AF37, #f5da7a, #D4AF37);
-        }
-        .content {
-            padding: 40px 36px;
-        }
-        .highlight-box {
-            background: #edf5f0;
-            border-radius: 28px;
-            padding: 28px;
-            margin-bottom: 32px;
-            border-left: 8px solid #D4AF37;
-        }
-        .highlight-box p {
-            font-size: 18px;
-            font-weight: 500;
-            color: #14452F;
-            margin-bottom: 12px;
-        }
-        .highlight-box .small {
-            font-size: 16px;
-            color: #2d4d3a;
-            font-weight: 400;
-        }
-        .section {
-            margin: 28px 0;
-        }
-        .section h2 {
-            color: #14452F;
-            font-size: 22px;
-            font-weight: 600;
-            border-left: 6px solid #D4AF37;
-            padding-left: 16px;
-            margin-bottom: 14px;
-        }
-        .section p, .section li {
-            font-size: 16px;
-            color: #1f2c3c;
-            line-height: 1.7;
-        }
-        .section ul {
-            list-style: none;
-            padding-left: 8px;
-        }
-        .section li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .section li::before {
-            content: "✓";
-            color: #D4AF37;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .trust-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 30px 0 20px;
-            justify-content: center;
-        }
-        .badge {
-            background: #eef3f7;
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #14452F;
-            border: 1px solid #c2d4e6;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .btn-home {
-            display: block;
-            background: #14452F;
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            padding: 18px 28px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 18px;
-            border: 2px solid #D4AF37;
-            box-shadow: 0 8px 18px rgba(20,69,47,0.3);
-            transition: 0.2s;
-            margin: 36px 0 16px;
-        }
-        .btn-home:hover {
-            background: #1d5e3f;
-            transform: scale(1.02);
-        }
-        .footer {
-            text-align: center;
-            border-top: 1px dashed #cbd5e1;
-            padding: 22px 20px;
-            background: #fafdff;
-        }
-        .footer p {
-            font-size: 14px;
-            color: #54708f;
-            margin: 4px 0;
-        }
-        .footer .cert {
-            font-size: 13px;
-            color: #7a8faa;
-        }
-        @media (max-width: 550px) {
-            .header h1 { font-size: 28px; }
-            .content { padding: 28px 20px; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f6f9fc; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 16px; }
+        .policy-card { max-width: 780px; width: 100%; background: white; border-radius: 36px; box-shadow: 0 30px 50px -15px rgba(0,0,0,0.2); overflow: hidden; border: 1px solid #dee7ef; }
+        .header { background: #14452F; padding: 32px 24px; text-align: center; color: white; }
+        .header h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .header p { font-size: 18px; opacity: 0.9; }
+        .gold-bar { height: 6px; background: linear-gradient(90deg, #D4AF37, #f5da7a, #D4AF37); }
+        .content { padding: 40px 36px; }
+        .highlight-box { background: #edf5f0; border-radius: 28px; padding: 28px; margin-bottom: 32px; border-left: 8px solid #D4AF37; }
+        .highlight-box p { font-size: 18px; font-weight: 500; color: #14452F; margin-bottom: 12px; }
+        .highlight-box .small { font-size: 16px; color: #2d4d3a; font-weight: 400; }
+        .section { margin: 28px 0; }
+        .section h2 { color: #14452F; font-size: 22px; font-weight: 600; border-left: 6px solid #D4AF37; padding-left: 16px; margin-bottom: 14px; }
+        .section p, .section li { font-size: 16px; color: #1f2c3c; line-height: 1.7; }
+        .section ul { list-style: none; padding-left: 8px; }
+        .section li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; }
+        .section li::before { content: "✓"; color: #D4AF37; font-weight: bold; font-size: 18px; }
+        .trust-badges { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 20px; justify-content: center; }
+        .badge { background: #eef3f7; padding: 10px 20px; border-radius: 40px; font-size: 14px; font-weight: 600; color: #14452F; border: 1px solid #c2d4e6; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-home { display: block; background: #14452F; color: white; text-decoration: none; text-align: center; padding: 18px 28px; border-radius: 60px; font-weight: 600; font-size: 18px; border: 2px solid #D4AF37; box-shadow: 0 8px 18px rgba(20,69,47,0.3); transition: 0.2s; margin: 36px 0 16px; }
+        .btn-home:hover { background: #1d5e3f; transform: scale(1.02); }
+        .footer { text-align: center; border-top: 1px dashed #cbd5e1; padding: 22px 20px; background: #fafdff; }
+        .footer p { font-size: 14px; color: #54708f; margin: 4px 0; }
+        .footer .cert { font-size: 13px; color: #7a8faa; }
+        @media (max-width: 550px) { .header h1 { font-size: 28px; } .content { padding: 28px 20px; } }
     </style>
 </head>
 <body>
@@ -175,7 +47,6 @@
         <div class="gold-bar"></div>
 
         <div class="content">
-            <!-- ===== YOUR EXACT CONTENT ===== -->
             <div class="highlight-box">
                 <p>🔐 Your Privacy Matters</p>
                 <div class="small">We only collect your name, phone number, and address to deliver your order. We do not sell or share your data with any third party.</div>
@@ -186,7 +57,6 @@
                 <div class="small">Our website is secured with SSL encryption to ensure your personal information remains 100% private and protected.</div>
             </div>
 
-            <!-- ===== ETHICAL DATA PROMISE (Islamic compliance, no name) ===== -->
             <div class="section">
                 <h2>🤝 Ethical Data Promise</h2>
                 <p>We treat your information as a trust. It is used strictly for the purpose you provided — order delivery and support. We never sell, rent, or misuse your data. Your consent is respected at all times.</p>
@@ -201,6 +71,18 @@
                 </ul>
             </div>
 
+            <!-- ✅ NEW: Cookie Policy -->
+            <div class="section">
+                <h2>🍪 Cookie Policy</h2>
+                <p>We use cookies and similar tracking technologies to analyze website traffic, improve your experience, and for marketing purposes (including Facebook Pixel and Google Analytics). You can control or disable cookies at any time through your browser settings. By continuing to use our website, you consent to our use of cookies.</p>
+            </div>
+
+            <!-- ✅ NEW: Data Deletion Request -->
+            <div class="section">
+                <h2>🗑️ Data Deletion Request</h2>
+                <p>If you wish to have your personal data permanently deleted from our systems, please send us a request via WhatsApp or email. We will respond within <strong>7 business days</strong> and delete your information unless we are legally required to retain it.</p>
+            </div>
+
             <div class="trust-badges">
                 <span class="badge">🔒 256-bit SSL</span>
                 <span class="badge">🚫 No Third‑Party Sharing</span>
@@ -210,16 +92,20 @@
 
             <div class="section">
                 <h2>📬 Contact Us</h2>
-                <p>For any privacy concerns or data deletion requests:<br>
-                <strong>+91 9557133307</strong> (reply within 24 hours)</p>
+                <p>For any privacy concerns or data deletion requests, reach out to us on WhatsApp:</p>
+                <p style="font-size: 18px; font-weight: 600;">
+                    <a href="https://wa.me/919557133307" target="_blank" style="color: #25D366; text-decoration: none;">
+                        <i class="fab fa-whatsapp" style="margin-right: 6px;"></i> +91 95571 33307
+                    </a>
+                </p>
+                <p style="font-size: 14px; color: #666;">(Reply within 24 hours)</p>
             </div>
 
             <a href="https://balwaangold.com" class="btn-home">← Back to Balwaan Gold</a>
 
-            <!-- ===== FOOTER EXACTLY AS YOU WANTED (updated) ===== -->
             <div class="footer">
-                <p>© 2024 Balwaan Ayurveda | Made in India </p>
-                <p class="cert">Last Updated: December 2024 | All herbs are FSSAI approved</p>
+                <p>© 2026 Balwaan Ayurveda | Made in India</p>
+                <p class="cert">Last Updated: January 2026 | All herbs are FSSAI approved</p>
             </div>
         </div>
     </div>
