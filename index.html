@@ -91,6 +91,25 @@
     /></noscript>
 
     <style>
+        /* ===== FIX: Horizontal Scroll / Left-Right Swipe Issue ===== */
+html, body {
+    overflow-x: hidden !important;  /* आड़ी (Horizontal) स्क्रॉल को पूरी तरह बंद करेगा */
+    max-width: 100% !important;     /* सुनिश्चित करेगा कि कोई भी चीज बाहर न जाए */
+    margin: 0;
+    padding: 0;
+}
+
+/* सभी Container और Row को भी सुरक्षित रखें */
+.container, .container-fluid, .row {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+/* अगर कहीं कोई बड़ी इमेज या टेबल है, तो उसे छोटा करें */
+img, table, .table-responsive {
+    max-width: 100% !important;
+    height: auto !important;
+}
         /* GLOBAL BASE & FONTS */
         :root { --primary-green: #14452F; --gold-gradient: linear-gradient(135deg, #D4AF37, #f5e27a); --dark-gold: #D4AF37; }
         body { font-family: 'Poppins', sans-serif; background-color: #f9f9f9; color: #333; overflow-x: hidden; }
