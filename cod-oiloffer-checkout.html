@@ -1,14 +1,34 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balwaan Gold – COD Order with FREE Oil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- ===== FACEBOOK PIXEL (ID: 916924051189893) ===== -->
-    <script>
+<html lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Balwaan Gold - Premium Hybrid Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer { 0% { background-position: -100% 0; } 100% { background-position: 100% 0; } }
+        .tap-effect:active { transform: scale(0.96); transition: 0.1s; }
+        .checkout-gradient { background: linear-gradient(180deg, #ffffff 0%, #FCF9F0 100%); }
+        
+        .gold-text {
+            background: linear-gradient(180deg, #fff4b2 0%, #ffd86b 35%, #d4af37 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        /* Accordion summary arrow rotation */
+        details>summary { list-style: none; }
+        details>summary::-webkit-details-marker { display: none; }
+    </style>
+<!-- Facebook Pixel Code -->
+<script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -17,414 +37,277 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '916924051189893'); 
+        fbq('init', '916924051189893');
         fbq('track', 'PageView');
     </script>
-
-    <style>
-        :root {
-            --brand-green: #14452F;
-            --brand-gold: #D4AF37;
-            --brand-dark: #0a2418;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f4f7fc;
-            min-height: 100vh;
-            width: 100%;
-            padding: 20px;
-            display: block;
-        }
-        .container {
-            max-width: 650px;
-            width: 100%;
-            margin: 20px auto;
-            background: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 20px 50px rgba(20, 69, 47, 0.12);
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            position: relative;
-        }
-        
-        /* ===== BACK BUTTON ===== */
-        .back-button {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--brand-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: 0.2s;
-            z-index: 10;
-            color: var(--brand-green);
-            text-decoration: none;
-        }
-        .back-button:hover { background: var(--brand-gold); color: #fff; }
-        
-        .header {
-            background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-dark) 100%);
-            padding: 24px 20px 18px;
-            text-align: center;
-            border-bottom: 4px solid var(--brand-gold);
-        }
-        .header h1 { font-size: 26px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-        .header h1 span { color: var(--brand-gold); }
-        .header p { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; margin-top: 6px; }
-
-        .body { padding: 24px; }
-
-        /* ===== CONGRATULATIONS BANNER ===== */
-        .congrats-banner {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
-            border: 2px solid var(--brand-gold);
-            border-radius: 16px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .congrats-banner h2 {
-            font-size: 22px;
-            font-weight: 900;
-            color: #14452F;
-        }
-        .congrats-banner p {
-            font-size: 14px;
-            font-weight: 600;
-            color: #0a2418;
-        }
-        
-        /* ===== GALLERY ===== */
-        .product-gallery {
-            position: relative;
-            max-width: 450px;
-            margin: 0 auto 20px;
-        }
-        .main-image-wrapper {
-            position: relative;
-            background: #f9f9f9;
-            border-radius: 15px;
-            padding: 10px;
-            cursor: zoom-in;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: 0.3s;
-        }
-        .main-image-wrapper:hover { border-color: var(--brand-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
-        .product-img-main { width: 100%; height: auto; border-radius: 10px; display: block; }
-        .zoom-hint { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 20px; font-size: 12px; pointer-events: none; }
-        .thumbnail-container {
-            display: flex; gap: 10px; margin-top: 15px; justify-content: flex-start;
-            overflow-x: auto; overflow-y: hidden; padding-bottom: 12px; flex-wrap: nowrap;
-            scrollbar-width: thin; -webkit-overflow-scrolling: touch;
-        }
-        .thumbnail-container::-webkit-scrollbar { height: 5px; }
-        .thumbnail-container::-webkit-scrollbar-track { background: #e0e0e0; border-radius: 10px; }
-        .thumbnail-container::-webkit-scrollbar-thumb { background: var(--brand-gold); border-radius: 10px; }
-        .thumb { width: 70px; height: 70px; object-fit: contain; border-radius: 8px; border: 2px solid transparent; cursor: pointer; opacity: 0.6; transition: 0.3s; flex: 0 0 70px; }
-        .thumb.active, .thumb:hover { opacity: 1; border-color: var(--brand-gold); }
-
-        /* ===== ZOOM MODAL ===== */
-        #imageZoomModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; align-items: center; justify-content: center; }
-        #imageZoomModal.active { display: flex; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        #zoomedImage { max-width: 95%; max-height: 90vh; border-radius: 10px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
-        .close-zoom { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; cursor: pointer; background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-
-        /* ===== RATINGS ===== */
-        .ratings-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0 20px;
-            padding: 10px;
-            background: #f5f8fc;
-            border-radius: 12px;
-            border: 1px solid #e9edf2;
-        }
-        .ratings-box .stars { color: #f5c518; font-size: 18px; }
-        .ratings-box .rating-text { font-weight: 700; font-size: 14px; color: #14452F; }
-
-        /* ===== SUMMARY ===== */
-        .summary {
-            background: #f5f8fc;
-            border-radius: 16px;
-            padding: 16px 18px;
-            margin: 18px 0;
-        }
-        .summary .row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; color: #2d4054; }
-        .summary .row.total { border-top: 2px solid var(--brand-gold); margin-top: 8px; padding-top: 12px; font-size: 18px; font-weight: 800; color: var(--brand-green); }
-        .summary .gift-row { color: #27ae60; font-weight: 700; border-bottom: 1px dashed #d1d8e0; padding-bottom: 8px; margin-bottom: 4px; }
-        .summary .shipping-row { color: #14452F; font-weight: 600; }
-
-        /* ===== FORM ===== */
-        .section-label { font-size: 13px; font-weight: 800; color: var(--brand-green); margin: 18px 0 10px; text-transform: uppercase; }
-        .form-group { margin-bottom: 14px; }
-        .form-group label { font-weight: 600; font-size: 12px; color: var(--brand-green); display: block; margin-bottom: 4px; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 13px 15px;
-            border: 2px solid #e9edf2; border-radius: 12px; font-size: 14px; font-family: inherit;
-            transition: 0.2s; background: #fff;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--brand-gold); outline: none; box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
-        }
-
-        /* ===== BUTTON ===== */
-        .btn-main { 
-            width: 100%; padding: 16px; border: none; border-radius: 14px; 
-            font-size: 16px; font-weight: 800; cursor: pointer; transition: 0.3s; 
-            display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;
-        }
-        .btn-cod { background: var(--brand-green); color: #fff; box-shadow: 0 8px 20px rgba(20, 69, 47, 0.3); }
-
-        /* ===== TRUST BADGES ===== */
-        .trust-badges {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 15px 0 10px;
-        }
-        .trust-badge {
-            background: #f5f8fc; border-radius: 20px; padding: 6px 14px;
-            font-size: 11px; font-weight: 600; color: #14452F;
-            display: flex; align-items: center; gap: 6px; border: 1px solid #e9edf2;
-        }
-        .trust-badge i { color: var(--brand-gold); }
-
-        .footer-note { text-align: center; margin-top: 14px; font-size: 11px; color: #7a8a9a; line-height: 1.5; }
-    </style>
 </head>
-<body>
-<div class="container">
-    <a href="javascript:history.back()" class="back-button"><i class="fas fa-arrow-left"></i></a>
+<body class="bg-[#FCF9F0] text-[#0a2418] antialiased pb-20 overflow-x-hidden">
+<div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl relative border-x border-gray-100 overflow-hidden">
+
+<!-- 1. TOP BANNER -->
+<div class="relative z-10 bg-[#0a2418] text-white text-center text-[11px] font-bold py-2 px-3 uppercase tracking-wider flex items-center justify-center gap-2">
+    <i class="fas fa-gift text-[#D4AF37]"></i> 
+    FREE OIL (WORTH ₹499) WITH EVERY ORDER!
+</div>
+
+<!-- 2. HERO + GALLERY -->
+<section class="relative hero-bg px-5 pt-6 pb-4 text-center">
+    <h1 class="font-['Montserrat'] text-4xl font-black tracking-tight leading-none">
+        BALWAAN<br>
+        <span class="gold-text text-5xl">GOLD</span>
+    </h1>
     
-    <div class="header">
-        <h1>BALWAAN <span>GOLD</span></h1>
-        <p>100% Ayurvedic • GMP Certified • Private Packaging</p>
+    <div class="mt-4 mx-auto max-w-[300px] relative bg-[#f0f5f0] rounded-2xl p-4 shadow-sm border border-gray-100">
+        <img src="images/bottle.webp" alt="Balwaan Gold" class="w-full h-auto object-contain drop-shadow-xl">
     </div>
-    
-    <div class="body">
-        
-        <!-- ===== CONGRATULATIONS BANNER ===== -->
-        <div class="congrats-banner">
-            <h2>🎉 Congratulations!</h2>
-            <p>Aapne Jeeta Hai Ek <strong>FREE Herbal Massage Oil Trial Pack!</strong></p>
-        </div>
 
-        <!-- ===== PRODUCT GALLERY ===== -->
-        <div class="product-gallery">
-            <div class="main-image-wrapper" onclick="openZoom(document.getElementById('mainImg').src)">
-                <img id="mainImg" src="images/gallery-1.webp" alt="Balwaan Gold Main Product" class="product-img-main">
-                <div class="zoom-hint"><i class="fas fa-search-plus"></i> Tap to Zoom</div>
-            </div>
-            <div class="thumbnail-container">
-                <img src="images/gallery-1.webp" alt="Gallery 1" class="thumb active" onclick="changeImage(this)">
-                <img src="images/gallery-2.webp" alt="Gallery 2" class="thumb" onclick="changeImage(this)">
-                <img src="images/stress-relief.webp" alt="Stress Relief" class="thumb" onclick="changeImage(this)">
-                <img src="images/vitality-boost.webp" alt="Vitality Boost" class="thumb" onclick="changeImage(this)">
-                <img src="images/mental-focus.webp" alt="Mental Focus" class="thumb" onclick="changeImage(this)">
-                <img src="images/trust-rating.webp" alt="Trust Rating" class="thumb" onclick="changeImage(this)">
-                <img src="images/trust-badge.webp" alt="Trust Badge" class="thumb" onclick="changeImage(this)">
-                <img src="images/private-packaging.webp" alt="Private Packaging" class="thumb" onclick="changeImage(this)">
-            </div>
-        </div>
-        
-        <!-- ===== ZOOM MODAL ===== -->
-        <div id="imageZoomModal">
-            <div class="close-zoom" onclick="closeZoom()">&times;</div>
-            <img id="zoomedImage" src="">
-        </div>
+    <div class="flex justify-center gap-2 mt-3">
+        <img src="images/gallery-1.webp" class="w-12 h-12 rounded-lg border-2 border-[#D4AF37] object-cover shadow-sm cursor-pointer tap-effect">
+        <img src="images/gallery-2.webp" class="w-12 h-12 rounded-lg border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect opacity-70 hover:opacity-100">
+        <img src="images/stress-relief.webp" class="w-12 h-12 rounded-lg border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect opacity-70 hover:opacity-100">
+        <img src="images/vitality-boost.webp" class="w-12 h-12 rounded-lg border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect opacity-70 hover:opacity-100">
+    </div>
+</section>
 
-        <!-- ===== RATINGS ===== -->
-        <div class="ratings-box">
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+<!-- 3. BENEFITS ICON STRIP -->
+<section class="px-4 py-3 bg-white border-y border-gray-100">
+    <div class="grid grid-cols-4 gap-1 text-center">
+        <div class="flex flex-col items-center gap-1">
+            <div class="w-8 h-8 rounded-full bg-[#0a2418] flex items-center justify-center text-[#D4AF37] text-xs"><i class="fas fa-bolt"></i></div>
+            <span class="text-[8px] font-bold uppercase leading-tight">Boosts<br>Stamina</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+            <div class="w-8 h-8 rounded-full bg-[#0a2418] flex items-center justify-center text-[#D4AF37] text-xs"><i class="fas fa-dumbbell"></i></div>
+            <span class="text-[8px] font-bold uppercase leading-tight">Enhances<br>Strength</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+            <div class="w-8 h-8 rounded-full bg-[#0a2418] flex items-center justify-center text-[#D4AF37] text-xs"><i class="fas fa-shield-alt"></i></div>
+            <span class="text-[8px] font-bold uppercase leading-tight">Natural<br>& Safe</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+            <div class="w-8 h-8 rounded-full bg-[#0a2418] flex items-center justify-center text-[#D4AF37] text-xs"><i class="fas fa-leaf"></i></div>
+            <span class="text-[8px] font-bold uppercase leading-tight">100%<br>Ayurvedic</span>
+        </div>
+    </div>
+</section>
+
+<!-- 4. HEADLINE & SUBHEADLINE -->
+<section class="px-5 py-4 text-center bg-white border-b border-gray-100">
+    <h2 class="text-lg font-black tracking-tight leading-tight text-[#0a2418]">Discover a New World of <br><span class="text-[#D4AF37]">Strength & Vitality</span></h2>
+    <p class="text-xs text-gray-600 mt-1 font-medium">Your ultimate natural defense against daily struggles.</p>
+</section>
+
+<!-- 5. SOCIAL PROOF -->
+<section class="px-5 py-3 bg-white flex flex-col items-center border-b border-gray-100">
+    <div class="flex items-center gap-1 text-[#D4AF37] text-sm">★★★★★</div>
+    <div class="flex -space-x-2 mt-1">
+        <div class="w-7 h-7 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold">R</div>
+        <div class="w-7 h-7 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold">A</div>
+        <div class="w-7 h-7 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold">S</div>
+        <div class="w-7 h-7 bg-[#0a2418] rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">4.9K</div>
+    </div>
+    <p class="text-[10px] text-gray-600 font-bold mt-1">1,847+ Happy Customers</p>
+</section>
+
+<!-- 6. PRICE & MAIN CTA -->
+<section class="px-5 py-4 bg-[#FCF9F0] border-b border-gray-100">
+    <div class="bg-white rounded-2xl shadow-md p-4 flex flex-col items-center border border-gray-100">
+        <div class="flex items-center gap-3 mb-3">
+            <span class="text-4xl font-black text-[#0a2418]">₹990</span>
+            <span class="text-lg text-gray-400 line-through font-bold">₹1,999</span>
+            <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full">₹1,009 OFF</span>
+        </div>
+        <button class="w-full bg-[#0a2418] text-white font-extrabold py-4 rounded-xl uppercase tracking-widest tap-effect shadow-lg text-sm flex items-center justify-center gap-2" onclick="document.getElementById('checkoutForm').scrollIntoView({behavior: 'smooth'})">
+            UNLOCK MY WELLNESS <i class="fas fa-chevron-right text-xs"></i>
+        </button>
+        <p class="text-[9px] text-red-500 font-bold mt-2 animate-pulse">⚡ Limited Stock. Order Now!</p>
+    </div>
+</section>
+
+<!-- 7. POSITIVE OUTCOMES -->
+<section class="py-6 px-4 bg-white">
+    <div class="text-center mb-4">
+        <h2 class="font-['Montserrat'] font-black text-lg text-[#0a2418] uppercase tracking-tight">
+            Experience the <span class="text-[#D4AF37]">Transformation</span>
+        </h2>
+        <p class="text-xs text-gray-500 mt-1 font-medium">What Balwaan Gold delivers to you</p>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+        <div class="bg-[#0a2418] rounded-xl p-4 text-center border border-[#D4AF37]/30 flex flex-col items-center shadow-md">
+            <div class="w-8 h-8 bg-[#D4AF37] text-[#0a2418] rounded-full flex items-center justify-center text-sm mb-2">⚡</div>
+            <h3 class="text-[11px] font-black leading-tight text-[#D4AF37]">Unstoppable Energy</h3>
+            <p class="text-[9px] text-white/80 leading-tight mt-1">Din bhar fauladi stamina. Perform 100% every day.</p>
+            <div class="mt-2 text-[8px] bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full">⭐ 1,200+ users</div>
+        </div>
+        <div class="bg-[#0a2418] rounded-xl p-4 text-center border border-[#D4AF37]/30 flex flex-col items-center shadow-md">
+            <div class="w-8 h-8 bg-[#D4AF37] text-[#0a2418] rounded-full flex items-center justify-center text-sm mb-2">🛡️</div>
+            <h3 class="text-[11px] font-black leading-tight text-[#D4AF37]">Rock-Solid Confidence</h3>
+            <p class="text-[9px] text-white/80 leading-tight mt-1">Inner power boost. Fearless and fully charged.</p>
+            <div class="mt-2 text-[8px] bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full">✅ Verified results</div>
+        </div>
+        <div class="bg-[#0a2418] rounded-xl p-4 text-center border border-[#D4AF37]/30 flex flex-col items-center shadow-md">
+            <div class="w-8 h-8 bg-[#D4AF37] text-[#0a2418] rounded-full flex items-center justify-center text-sm mb-2">🌙</div>
+            <h3 class="text-[11px] font-black leading-tight text-[#D4AF37]">Deep, Restful Sleep</h3>
+            <p class="text-[9px] text-white/80 leading-tight mt-1">Calm mind. Deep sleep. Wake up fresh and active.</p>
+            <div class="mt-2 text-[8px] bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full">🌙 Stress-free nights</div>
+        </div>
+        <div class="bg-[#0a2418] rounded-xl p-4 text-center border border-[#D4AF37]/30 flex flex-col items-center shadow-md">
+            <div class="w-8 h-8 bg-[#D4AF37] text-[#0a2418] rounded-full flex items-center justify-center text-sm mb-2">🧠</div>
+            <h3 class="text-[11px] font-black leading-tight text-[#D4AF37]">Crystal Clear Focus</h3>
+            <p class="text-[9px] text-white/80 leading-tight mt-1">Brain fog gone. Sharp mind. 2X productivity.</p>
+            <div class="mt-2 text-[8px] bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full">🧠 2X productivity</div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. CHECKOUT FORM -->
+<section id="checkoutForm" class="px-4 pb-4 checkout-gradient">
+    <div class="mt-2 bg-white rounded-2xl shadow-lg border border-gray-100 p-5">
+        <h2 class="text-sm font-black text-[#0a2418] uppercase mb-4 text-center border-b pb-2">📦 Place Your Order</h2>
+        <form class="space-y-3" onsubmit="sendWhatsAppOrder(event)">
+            <div class="relative">
+                <input class="peer w-full border-b-2 border-gray-100 p-3 pt-5 text-sm font-bold focus:border-[#0a2418] outline-none transition-all placeholder-transparent" id="custName" placeholder=" " required="" type="text"/>
+                <label class="absolute left-0 top-1 text-[10px] font-black text-gray-400 uppercase peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-1 peer-focus:text-[10px] transition-all">Full Name</label>
             </div>
-            <span class="rating-text">4.8 Stars (1,847 Reviews)</span>
-        </div>
-        
-        <!-- ===== ORDER SUMMARY (ONLY COD + FREE OIL + FREE SHIPPING) ===== -->
-        <div class="summary" id="summary">
-            <div class="row"><span>Balwaan Gold (30 Days Pack)</span><span>₹990</span></div>
-            <div class="row gift-row"><span>🎁 FREE Oil (Worth ₹499)</span><span>₹0</span></div>
-            <div class="row shipping-row"><span><i class="fas fa-truck"></i> Free Shipping (COD)</span><span>₹0</span></div>
-            <div class="row total"><span>Total Payable (COD)</span><span>₹990</span></div>
-        </div>
-        
-        <!-- ===== DELIVERY FORM ===== -->
-        <div class="section-label">Delivery Details</div>
-        <form id="orderForm">
-            <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" placeholder="e.g. Rajesh Kumar" required></div>
-            <div class="form-group"><label>WhatsApp Number *</label><input type="tel" id="mobile" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required></div>
-            <div class="form-group"><label>Delivery Address *</label><textarea id="address" rows="3" placeholder="House No, Area, City, Pincode" required></textarea></div>
-            
-            <!-- ===== SINGLE BUTTON (COD ONLY) ===== -->
-            <button type="submit" class="btn-main btn-cod" id="orderBtn">
-                📲 Confirm COD Order on WhatsApp
+            <div class="relative">
+                <input class="peer w-full border-b-2 border-gray-100 p-3 pt-5 text-sm font-bold focus:border-[#0a2418] outline-none transition-all placeholder-transparent" id="custMobile" pattern="[0-9]{10}" placeholder=" " required="" type="tel"/>
+                <label class="absolute left-0 top-1 text-[10px] font-black text-gray-400 uppercase peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-1 peer-focus:text-[10px] transition-all">WhatsApp Number</label>
+            </div>
+            <div class="relative">
+                <textarea class="peer w-full border-b-2 border-gray-100 p-3 pt-5 text-sm font-bold focus:border-[#0a2418] outline-none transition-all placeholder-transparent resize-none" id="custAddress" placeholder=" " required="" rows="1"></textarea>
+                <label class="absolute left-0 top-1 text-[10px] font-black text-gray-400 uppercase peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-focus:top-1 peer-focus:text-[10px] transition-all">House No., Area, City, Pincode</label>
+            </div>
+            <button class="w-full bg-[#25D366] text-white font-black py-3.5 rounded-xl shadow-lg uppercase tracking-widest flex items-center justify-center gap-3 tap-effect shimmer text-sm mt-2" type="submit">
+                <i class="fab fa-whatsapp text-lg"></i> CONFIRM ORDER
             </button>
         </form>
-
-        <!-- ===== TRUST BADGES ===== -->
-        <div class="trust-badges">
-            <span class="trust-badge"><i class="fas fa-truck-fast"></i> Free Delivery</span>
-            <span class="trust-badge"><i class="fas fa-lock"></i> Secure COD</span>
-            <span class="trust-badge"><i class="fas fa-leaf"></i> 100% Ayurvedic</span>
-            <span class="trust-badge"><i class="fas fa-certificate"></i> GMP Certified</span>
-        </div>
-        
-        <div class="footer-note"><i class="fas fa-shield-alt"></i> Discreet Packaging • No Side Effects</div>
     </div>
+</section>
+
+<!-- ===== NEW SECTIONS: POST-CHECKOUT TRUST (Expert, Discreet, FAQ, Badges) ===== -->
+<section class="px-4 pb-2 space-y-3">
+    
+    <!-- 9. Expert Counseling Support -->
+    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-[#0a2418] flex items-center justify-center text-[#D4AF37] text-lg shrink-0">
+            <i class="fas fa-user-md"></i>
+        </div>
+        <div class="flex-1">
+            <h4 class="text-[11px] font-black text-[#0a2418]">Expert Counseling Support</h4>
+            <p class="text-[10px] text-gray-600 mt-0.5 leading-tight">Chat directly with our Ayurvedic expert for personalized advice.</p>
+        </div>
+        <a href="https://wa.me/919557133307" class="bg-[#25D366] text-white text-[10px] font-bold px-4 py-2 rounded-lg shrink-0 tap-effect shadow-sm" target="_blank">Chat Now</a>
+    </div>
+
+    <!-- 10. Discreet Packaging -->
+    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex flex-col items-center text-center">
+        <div class="w-10 h-10 rounded-full bg-[#0a2418]/5 flex items-center justify-center text-[#0a2418] text-lg mb-2">
+            <i class="fas fa-box-open"></i>
+        </div>
+        <h4 class="text-[11px] font-black text-[#0a2418]">100% Discreet Packaging</h4>
+        <p class="text-[10px] text-gray-600 mt-0.5 leading-tight">No product name or brand logo on the outside. Delivered in a plain, confidential box. Your privacy is 100% safe.</p>
+    </div>
+
+    <!-- 11. FAQ (Accordion) -->
+    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        <h4 class="text-[11px] font-black text-[#0a2418] mb-3 border-b border-gray-100 pb-2">Frequently Asked Questions</h4>
+        
+        <details class="group border-b border-gray-100 pb-2 mb-2 last:border-0 last:pb-0 last:mb-0">
+            <summary class="flex justify-between items-center cursor-pointer list-none text-[11px] font-bold text-[#0a2418]">
+                <span>Kya COD available hai?</span>
+                <i class="fas fa-chevron-down text-[10px] text-[#D4AF37] transition-transform group-open:rotate-180"></i>
+            </summary>
+            <p class="text-[10px] text-gray-600 mt-2 leading-relaxed">Haan, COD (Cash on Delivery) available hai. Aap parcel receive karte waqt ₹990 pay kar sakte hain.</p>
+        </details>
+        
+        <details class="group border-b border-gray-100 pb-2 mb-2 last:border-0 last:pb-0 last:mb-0">
+            <summary class="flex justify-between items-center cursor-pointer list-none text-[11px] font-bold text-[#0a2418]">
+                <span>Delivery kitne din me aayega?</span>
+                <i class="fas fa-chevron-down text-[10px] text-[#D4AF37] transition-transform group-open:rotate-180"></i>
+            </summary>
+            <p class="text-[10px] text-gray-600 mt-2 leading-relaxed">Order confirm hone ke baad 24-48 ghante me dispatch hota hai. India me delivery 2-3 din me aa jati hai.</p>
+        </details>
+        
+        <details class="group">
+            <summary class="flex justify-between items-center cursor-pointer list-none text-[11px] font-bold text-[#0a2418]">
+                <span>Kya iske koi side effects hain?</span>
+                <i class="fas fa-chevron-down text-[10px] text-[#D4AF37] transition-transform group-open:rotate-180"></i>
+            </summary>
+            <p class="text-[10px] text-gray-600 mt-2 leading-relaxed">Nahi, Balwaan Gold 100% Ayurvedic ingredients se bana hai. Isme koi chemical nahi, aur 100% safe hai.</p>
+        </details>
+    </div>
+
+    <!-- 12. Trust Badges (Combined) -->
+    <div class="bg-white rounded-xl p-3 shadow-sm border border-gray-100 flex justify-around items-center">
+        <div class="flex flex-col items-center gap-1">
+            <i class="fas fa-leaf text-[#0a2418] text-sm"></i>
+            <span class="text-[8px] font-bold uppercase text-gray-600">100% Ayurvedic</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+            <i class="fas fa-flask text-[#0a2418] text-sm"></i>
+            <span class="text-[8px] font-bold uppercase text-gray-600">No Side Effects</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+            <i class="fas fa-seedling text-[#0a2418] text-sm"></i>
+            <span class="text-[8px] font-bold uppercase text-gray-600">Natural Ingredients</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+            <i class="fas fa-shield-alt text-[#0a2418] text-sm"></i>
+            <span class="text-[8px] font-bold uppercase text-gray-600">Safe & Trusted</span>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="p-4 bg-[#0a2418] text-white/40 text-center mt-2">
+    <p class="text-[9px] leading-relaxed uppercase tracking-tighter">AYUSH Approved. ISO Certified Lab. Results may vary.</p>
+</footer>
+
+<!-- Bottom Sticky -->
+<div class="fixed bottom-0 left-0 right-0 bg-white/95 border-t border-gray-100 p-2 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] flex items-center justify-between gap-3 z-50 max-w-md mx-auto backdrop-blur-sm">
+    <div class="pl-2 flex items-center gap-2">
+        <span class="text-[9px] font-black text-emerald-600 uppercase">Deal</span>
+        <span class="text-lg font-black text-[#0a2418]">₹990</span>
+    </div>
+    <button class="bg-[#0a2418] text-[#D4AF37] font-black text-[11px] py-2.5 px-5 rounded-xl uppercase tracking-widest tap-effect" onclick="document.getElementById('checkoutForm').scrollIntoView({behavior: 'smooth'})">
+        Order Now
+    </button>
+</div>
 </div>
 
 <script>
-    // ===== GALLERY & ZOOM LOGIC =====
-    let currentImgIndex = 0;
-    let isSwiping = false;
-    const thumbs = document.querySelectorAll('.thumb');
-    const mainImg = document.getElementById('mainImg');
-    const mainImgWrapper = document.querySelector('.main-image-wrapper');
-
-    function changeImage(element) {
-        mainImg.src = element.src;
-        thumbs.forEach((t, i) => {
-            t.classList.remove('active');
-            if(t.src === element.src) currentImgIndex = i;
-        });
-        element.classList.add('active');
-        element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-
-    // Mobile Swipe
-    let touchStartX = 0, touchEndX = 0;
-    mainImgWrapper.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; isSwiping = false; }, {passive: true});
-    mainImgWrapper.addEventListener('touchmove', e => { isSwiping = true; }, {passive: true});
-    mainImgWrapper.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        const swipeThreshold = 40;
-        if (touchStartX - touchEndX > swipeThreshold) {
-            currentImgIndex = (currentImgIndex + 1) % thumbs.length;
-            updateMainImage();
-        } else if (touchEndX - touchStartX > swipeThreshold) {
-            currentImgIndex = (currentImgIndex - 1 + thumbs.length) % thumbs.length;
-            updateMainImage();
-        }
-    }, {passive: true});
-
-    function updateMainImage() {
-        mainImg.src = thumbs[currentImgIndex].src;
-        thumbs.forEach(t => t.classList.remove('active'));
-        thumbs[currentImgIndex].classList.add('active');
-        thumbs[currentImgIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-
-    function openZoom(imageSrc) {
-        if(isSwiping) return;
-        document.getElementById('zoomedImage').src = imageSrc;
-        document.getElementById('imageZoomModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeZoom() {
-        document.getElementById('imageZoomModal').classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-    document.getElementById('imageZoomModal').addEventListener('click', function(e) { if (e.target === this) closeZoom(); });
-
-    // ===== AUTO-FILL FROM INSTANT FORM =====
-    window.addEventListener('DOMContentLoaded', function() {
-        const sessionData = sessionStorage.getItem('checkout_userData');
-        if (sessionData) {
-            try {
-                const data = JSON.parse(sessionData);
-                if (data.name) document.getElementById('fullName').value = data.name;
-                if (data.mobile) document.getElementById('mobile').value = data.mobile;
-            } catch(e) {}
-        }
-    });
-
-    // ===== GOOGLE SHEET INTEGRATION =====
-    const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeoSYU6Q-SlPFeJAvlxSerWmLC_9BDXjCc-195OJasPvS5rSA/formResponse';
-
+function generateOrderID() { return 'BWN-' + Math.floor(100000 + Math.random() * 900000); }
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeoSYU6Q-SlPFeJAvlxSerWmLC_9BDXjCc-195OJasPvS5rSA/formResponse';
     async function submitOrderToSheet(orderData) {
-        const formData = new FormData();
-        // ⚠️ अपने Google Form के इनपुट IDs (entry.XXXXXX) को यहाँ डालें
-        formData.append('entry.123456789', orderData.orderId);
-        formData.append('entry.987654321', orderData.name);
-        formData.append('entry.567891234', orderData.mobile);
-        formData.append('entry.112233445', orderData.address);
-        formData.append('entry.554433221', orderData.product);
-        formData.append('entry.998877665', orderData.amount);
-        formData.append('entry.667788990', orderData.paymentMethod);
-        formData.append('entry.556677889', orderData.freeOil ? 'Yes (COD Offer)' : 'No');
+    const formData = new FormData();
+    // ⚠️ अपने Google Form के entry.XXXXXX IDs यहाँ डालें
+    formData.append('entry.123456789', orderData.orderID);
+    formData.append('entry.987654321', orderData.name);
+    formData.append('entry.567891234', orderData.mobile);
+    formData.append('entry.112233445', orderData.address);
+    formData.append('entry.554433221', orderData.product);
+    formData.append('entry.998877665', orderData.amount);
+    formData.append('entry.667788990', orderData.payment);
+    try { await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData }); } catch(e) { console.error(e); }
+}
 
-        try {
-            await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
-            console.log('✅ Order saved to Google Sheet');
-            return true;
-        } catch (error) {
-            console.error('❌ Order save failed to Google Sheet:', error);
-            return false;
-        }
-    }
+async function sendWhatsAppOrder(event) {
+    event.preventDefault();
+    const name = document.getElementById('custName').value;
+    const mobile = document.getElementById('custMobile').value;
+    const address = document.getElementById('custAddress').value;
+    if (!name || !mobile || !address) { alert('कृपया सभी डिटेल्स भरें'); return; }
+    if (!/^\d{10}$/.test(mobile)) { alert('कृपया सही मोबाइल नंबर डालें'); return; }
 
-    // ===== ORDER SUBMIT (SMOOTH COD + WHATSAPP REDIRECT) =====
-    document.getElementById('orderForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
+    const submitBtn = document.querySelector('button[type="submit"]');
+    submitBtn.disabled = true; submitBtn.innerText = 'Processing...';
+    const orderID = generateOrderID();
+    await submitOrderToSheet({ orderID, name, mobile, address, product: 'Balwaan Gold Premium Kit', amount: '990', payment: 'Cash on Delivery' });
 
-        const name = document.getElementById('fullName').value.trim();
-        const mobile = document.getElementById('mobile').value.trim();
-        const address = document.getElementById('address').value.trim();
-
-        if (!name || !mobile || !address) {
-            alert('कृपया सभी डिटेल्स भरें (Please fill all details).');
-            return;
-        }
-        if (!/^\d{10}$/.test(mobile)) {
-            alert('कृपया सही 10-अंकीय मोबाइल नंबर डालें (Enter valid 10-digit number).');
-            return;
-        }
-
-        const submitBtn = document.getElementById('orderBtn');
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Processing Order...';
-
-        const orderId = 'BWG' + Date.now().toString().slice(-6);
-        const total = 990;
-        const productName = "Balwaan Gold Regular Pack (30 Days)";
-        const paymentMethod = "Cash on Delivery";
-        const hasFreeOil = true; // COD के साथ Free Oil है
-
-        const orderData = { orderId, name, mobile, address, product: productName, amount: total, paymentMethod, freeOil: hasFreeOil };
-
-        // ===== 1. GOOGLE SHEET BACKUP =====
-        await submitOrderToSheet(orderData);
-
-        // ===== 2. LOCAL STORAGE =====
-        let orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-        orders.push(orderData);
-        localStorage.setItem('balwaanOrders', JSON.stringify(orders));
-
-        // ===== 3. FACEBOOK PIXEL (COD Purchase) =====
-        if (typeof fbq === 'function') {
-            fbq('track', 'Purchase', {
-                value: total,
-                currency: 'INR',
-                content_name: 'COD_With_Oil',
-                content_category: 'Ayurvedic Supplement'
-            });
-        }
-
-        // ===== 4. SMOOTH WHATSAPP MESSAGE (ALL DETAILS INCLUDED) =====
-        let rawMessage = `Hi Balwaan Team,\n\n*NEW COD ORDER*\n\n*Order ID:* ${orderId}\n*Name:* ${name}\n*Mobile:* ${mobile}\n*Product:* ${productName}\n*Amount:* ₹${total} (Free Shipping)\n*Payment:* Cash on Delivery\n*FREE Gift:* Xtream Oil 10ml (Worth ₹499) Added ✅\n*Address:* ${address}\n\nPlease confirm my order and dispatch fast.`;
-
-        window.location.href = `https://wa.me/919557133307?text=${encodeURIComponent(rawMessage)}`;
-    });
+    if (typeof fbq !== 'undefined') fbq('track', 'Purchase', { value: 990, currency: 'INR', content_name: 'Balwaan Gold' });
+    
+    const msg = `*PREMIUM ORDER - BALWAAN GOLD* 📦\n\n*Order ID:* ${orderID}\n*Name:* ${name}\n*Mobile:* ${mobile}\n*Address:* ${address}\n\n✅ Balwaan Gold (60 Capsules)\n🎁 FREE Ayurvedic Massage Oil (₹499)\n💰 ₹990 (COD)\n\nPlease confirm!`;
+    window.open(`https://wa.me/919557133307?text=${encodeURIComponent(msg)}`, '_blank');
+}
 </script>
-</body>
-</html>
+</body></html>
