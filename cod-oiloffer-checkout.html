@@ -280,14 +280,15 @@ function generateOrderID() { return 'BWN-' + Math.floor(100000 + Math.random() *
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeoSYU6Q-SlPFeJAvlxSerWmLC_9BDXjCc-195OJasPvS5rSA/formResponse';
     async function submitOrderToSheet(orderData) {
     const formData = new FormData();
-    // ⚠️ अपने Google Form के entry.XXXXXX IDs यहाँ डालें
-    formData.append('entry.123456789', orderData.orderID);
-    formData.append('entry.987654321', orderData.name);
-    formData.append('entry.567891234', orderData.mobile);
-    formData.append('entry.112233445', orderData.address);
-    formData.append('entry.554433221', orderData.product);
-    formData.append('entry.998877665', orderData.amount);
-    formData.append('entry.667788990', orderData.payment);
+        // ⚠️ यहाँ आपके Google Form की असली entry IDs डाली गई हैं
+    formData.append('entry.956816412', orderData.orderID);    // Order ID
+    formData.append('entry.810357359', orderData.name);       // Name
+    formData.append('entry.1188401630', orderData.mobile);    // Mobile
+    formData.append('entry.1973053237', orderData.address);   // Address
+    formData.append('entry.1347236556', orderData.product);   // Product
+    formData.append('entry.198933311', orderData.amount);     // Amount
+    formData.append('entry.885839485', orderData.payment);    // Payment Method
+    formData.append('entry.2106372591', orderData.freeOil ? 'Yes' : 'No'); // Free Oil
     try { await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData }); } catch(e) { console.error(e); }
 }
 
