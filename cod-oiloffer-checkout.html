@@ -266,14 +266,15 @@
         
         // Google Sheet Payload Mapping
         const formData = new FormData();
-        formData.append('entry.956816412', orderID);
-        formData.append('entry.810357359', name);
-        formData.append('entry.1188401630', mobile);
-        formData.append('entry.1973053237', fullAddress);
-        formData.append('entry.1347236556', 'Balwaan Gold Premium Kit');
-        formData.append('entry.198933311', '990');
-        formData.append('entry.885839485', 'Cash on Delivery');
-        formData.append('entry.2106372591', 'Yes (Oil included)');
+
+formData.append('entry.810357359', orderID);
+formData.append('entry.1188401630', name);
+formData.append('entry.1973053237', mobile);
+formData.append('entry.956816412', fullAddress);
+formData.append('entry.1347236556', 'Balwaan Gold Premium Kit');
+formData.append('entry.198933311', '990');
+formData.append('entry.885839485', 'Cash on Delivery');
+formData.append('entry.2106372591', 'Yes (Oil included)');
 
         // Background Google Sheet Sync
         try { await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData }); } catch(e) {}
