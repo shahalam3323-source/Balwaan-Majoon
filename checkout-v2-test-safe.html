@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Balwaan Gold - Premium Checkout</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+<style>
+    body { font-family: 'Inter', sans-serif; background-color: #f5f5f7; color: #1d1d1f; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Apple Style Inputs */
+    .apple-input {
+        background-color: #f5f5f7; border: 1px solid transparent; border-radius: 12px; transition: all 0.2s ease;
+    }
+    .apple-input:focus {
+        background-color: #ffffff; border-color: #0071e3; box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1); outline: none;
+    }
+    
+    .tap-effect:active { transform: scale(0.97); transition: transform 0.1s; }
+    
+    /* Subtle Fade In Animation */
+    .animate-fade-in { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeIn { 
+        from { opacity: 0; transform: translateY(15px); } 
+        to { opacity: 1; transform: translateY(0); } 
+    }
+
+    /* Zoom Modal */
+    #imageZoomModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+    #imageZoomModal.active { display: flex; }
+    #zoomedImage { max-width: 95%; max-height: 90vh; border-radius: 16px; object-fit: contain; }
+    .close-zoom { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; cursor: pointer; background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+
+    .test-mode-badge {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10000;
+        background: #b91c1c;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        box-shadow: 0 4px 12px rgba(0,0,0,.18);
+    }
+</style>
+</head>
+<body class="pb-24 overflow-x-hidden">
+<div class="test-mode-badge">TEST MODE</div>
+<div class="max-w-md mx-auto bg-white min-h-screen shadow-xl relative border-x border-gray-100 overflow-hidden">
+
+<div class="bg-[#1d1d1f] text-white text-center text-[11px] font-semibold py-2.5 px-4 uppercase tracking-widest flex items-center justify-center gap-2">
+    <i class="fas fa-gift text-[#D4AF37]"></i> TEST MODE • NO REAL ORDER SUBMITTED
+</div>
+
+<section class="px-5 pt-8 pb-6 text-center">
+    <div class="inline-block mb-3">
+        <h1 class="text-4xl md:text-5xl font-black text-[#1d1d1f] tracking-tight leading-none uppercase">BALWAAN</h1>
+        <div class="text-center mt-0.5"><span class="text-5xl md:text-6xl font-black text-[#D4AF37]">GOLD</span></div>
+    </div>
+    
+    <div class="mt-2 mx-auto max-w-[280px] relative">
+        <img id="mainImg" src="images/bottle.webp" alt="Balwaan Gold" class="w-full h-auto object-contain drop-shadow-2xl">
+    </div>
+
+    <div class="flex justify-center gap-3 mt-6">
+        <img src="images/gallery-1.webp" class="w-14 h-14 rounded-2xl border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect" onclick="openZoom(this.src)">
+        <img src="images/gallery-2.webp" class="w-14 h-14 rounded-2xl border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect" onclick="openZoom(this.src)">
+        <img src="images/stress-relief.webp" class="w-14 h-14 rounded-2xl border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect" onclick="openZoom(this.src)">
+        <img src="images/vitality-boost.webp" class="w-14 h-14 rounded-2xl border border-gray-200 object-cover shadow-sm cursor-pointer tap-effect" onclick="openZoom(this.src)">
+    </div>
+</section>
+
+<section class="px-4 py-4 bg-[#f5f5f7]">
+    <div class="grid grid-cols-4 gap-2 text-center">
+        <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1d1d1f] text-sm"><i class="fas fa-bolt"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-wide text-gray-500">Stamina</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1d1d1f] text-sm"><i class="fas fa-dumbbell"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-wide text-gray-500">Strength</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1d1d1f] text-sm"><i class="fas fa-shield-alt"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-wide text-gray-500">Safe</span>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#1d1d1f] text-sm"><i class="fas fa-leaf"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-wide text-gray-500">Ayurvedic</span>
+        </div>
+    </div>
+</section>
+
+<section id="checkoutSection" class="px-5 py-8">
+    <div class="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 p-6 min-h-[400px] flex flex-col justify-center">
+        
+        <div id="checkoutHeader" class="text-center mb-6">
+            <h2 class="text-xl font-bold text-[#1d1d1f] tracking-tight">Complete Your Order</h2>
+            <p class="text-xs text-gray-500 mt-1">Pay <strong class="text-black">₹990</strong> via Cash on Delivery</p>
+        </div>
+        
+        <form id="orderForm" class="space-y-4" onsubmit="processOrder(event)">
+            <div class="space-y-4">
+                <input class="w-full apple-input p-4 text-sm font-medium" id="custName" placeholder="Full Name" required minlength="3" type="text"/>
+                <input class="w-full apple-input p-4 text-sm font-medium" id="custMobile" pattern="[0-9]{10}" placeholder="WhatsApp Number (10 digits)" required type="tel"/>
+            </div>
+
+            <div class="h-px w-full bg-gray-100 my-4"></div>
+
+            <div class="space-y-4">
+                <div class="relative">
+                    <input class="w-full apple-input p-4 text-sm font-medium" id="custPincode" pattern="[0-9]{6}" placeholder="6-Digit Pincode" required type="tel" oninput="checkPincode(this.value)"/>
+                    <span id="cityStateLabel" class="absolute right-4 top-4 text-xs font-semibold text-emerald-600 hidden">Fetching...</span>
+                </div>
+                
+                <input class="w-full apple-input p-4 text-sm font-medium" id="custHouse" placeholder="House/Flat No. & Building" required minlength="2" type="text"/>
+                <input class="w-full apple-input p-4 text-sm font-medium" id="custArea" placeholder="Street, Area, or Colony" required minlength="4" type="text"/>
+                <input class="w-full apple-input p-4 text-sm font-medium" id="custLandmark" placeholder="Nearby Landmark (Optional)" type="text"/>
+            </div>
+
+            <button id="submitBtn" class="w-full bg-[#1d1d1f] text-white font-bold py-4 rounded-xl shadow-lg mt-4 tap-effect flex items-center justify-center gap-2 transition-all" type="submit">
+                CONFIRM ORDER (COD) <i class="fas fa-arrow-right text-sm"></i>
+            </button>
+            <p class="text-[10px] text-center text-gray-400 mt-3"><i class="fas fa-lock"></i> 256-bit Secure Checkout</p>
+        </form>
+
+        <div id="successMessage" class="hidden flex-col items-center justify-center text-center animate-fade-in py-4">
+            <div class="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-5">
+                <i class="fas fa-check-circle text-6xl text-emerald-500"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-[#1d1d1f] tracking-tight mb-2">Test Successful!</h3>
+            <p class="text-sm text-gray-500 mb-6 px-4 leading-relaxed">Checkout flow completed successfully. No real order or customer data was submitted.</p>
+            
+            <div class="w-full bg-[#f5f5f7] rounded-xl p-4 mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs text-gray-500">Order Amount</span>
+                    <span class="text-sm font-bold text-[#1d1d1f]">₹990 (TEST)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">Estimated Delivery</span>
+                    <span class="text-sm font-bold text-[#1d1d1f]">2-4 Days</span>
+                </div>
+            </div>
+
+            <a id="waTrackingBtn" href="#" class="w-full bg-[#25D366] text-white font-bold py-4 rounded-xl shadow-lg tap-effect flex items-center justify-center gap-2" target="_blank">
+                <i class="fab fa-whatsapp text-xl"></i> TEST AGAIN
+            </a>
+            <p class="text-[11px] text-gray-400 mt-4">Dummy checkout only. No real WhatsApp order message is sent.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="px-5 pb-6">
+    <div class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-[#f5f5f7] flex items-center justify-center text-[#1d1d1f] text-xl shrink-0"><i class="fas fa-box"></i></div>
+        <div>
+            <h4 class="text-sm font-bold text-[#1d1d1f]">100% Discreet Packaging</h4>
+            <p class="text-xs text-gray-500 mt-0.5 leading-relaxed">No product name on the box. Total privacy guaranteed.</p>
+        </div>
+    </div>
+</section>
+
+<section class="px-5 pb-8">
+    <div class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-[#f5f5f7] flex items-center justify-center text-[#1d1d1f] text-xl shrink-0"><i class="fas fa-headset"></i></div>
+        <div class="flex-1">
+            <h4 class="text-sm font-bold text-[#1d1d1f]">Need Help?</h4>
+            <p class="text-xs text-gray-500 mt-0.5">Real after-sales support.</p>
+        </div>
+        <a href="https://wa.me/919557133307" class="bg-[#f5f5f7] text-[#1d1d1f] text-xs font-bold px-4 py-2 rounded-lg shrink-0 tap-effect" target="_blank">Chat Now</a>
+    </div>
+</section>
+
+<footer class="p-6 bg-[#f5f5f7] text-gray-400 text-center">
+    <p class="text-[10px] uppercase tracking-widest font-semibold">GMP Certified • 100% Ayurvedic • Secure COD</p>
+</footer>
+
+<div id="stickyFooter" class="fixed bottom-0 left-0 right-0 bg-white/80 border-t border-gray-100 p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] flex items-center justify-between gap-4 z-50 max-w-md mx-auto backdrop-blur-md transition-all duration-300">
+    <div>
+        <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">Total Pay</div>
+        <div class="text-xl font-black text-[#1d1d1f]">₹990</div>
+    </div>
+    <button class="bg-[#1d1d1f] text-white font-bold text-sm py-3.5 px-8 rounded-full tap-effect shadow-md" onclick="document.getElementById('checkoutSection').scrollIntoView({behavior: 'smooth'})">Order Now</button>
+</div>
+</div>
+
+<div id="imageZoomModal">
+    <div class="close-zoom" onclick="closeZoom()">&times;</div>
+    <img id="zoomedImage" src="">
+</div>
+
+<script>
+    // Zoom Logic
+    function openZoom(src) {
+        document.getElementById('zoomedImage').src = src;
+        document.getElementById('imageZoomModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeZoom() {
+        document.getElementById('imageZoomModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    document.getElementById('imageZoomModal').addEventListener('click', function(e) { if (e.target === this) closeZoom(); });
+
+    // Hide Sticky Footer on Input Focus
+    const formInputs = document.querySelectorAll('#orderForm input');
+    const stickyFooter = document.getElementById('stickyFooter');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', () => stickyFooter.style.transform = 'translateY(100%)');
+        input.addEventListener('blur', () => stickyFooter.style.transform = 'translateY(0)');
+    });
+
+    // Smart Pincode Lookup
+    async function checkPincode(pincode) {
+        const label = document.getElementById('cityStateLabel');
+        if(pincode.length === 6) {
+            label.classList.remove('hidden');
+            label.innerText = 'Checking...';
+            try {
+                let response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+                let data = await response.json();
+                if(data[0].Status === "Success") {
+                    label.innerText = `${data[0].PostOffice[0].District}, ${data[0].PostOffice[0].State}`;
+                } else {
+                    label.innerText = "Invalid Pincode";
+                    label.classList.add('text-red-500');
+                }
+            } catch(e) { label.innerText = "Verified"; }
+        } else {
+            label.classList.add('hidden');
+            label.classList.remove('text-red-500');
+        }
+    }
+
+    function generateOrderID() { return 'BWN-' + Math.floor(100000 + Math.random() * 900000); }
+async function processOrder(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('custName').value.trim();
+        const mobile = document.getElementById('custMobile').value.trim();
+        const pincode = document.getElementById('custPincode').value.trim();
+        const house = document.getElementById('custHouse').value.trim();
+        const area = document.getElementById('custArea').value.trim();
+
+        if (!name || !mobile || !pincode || !house || !area) {
+            alert('Please fill all required details.');
+            return;
+        }
+
+        if (!/^\d{10}$/.test(mobile)) {
+            alert('Please enter a valid 10-digit mobile number.');
+            return;
+        }
+
+        if (!/^\d{6}$/.test(pincode)) {
+            alert('Please enter a valid 6-digit pincode.');
+            return;
+        }
+
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> TESTING...';
+
+        // TEST MODE ONLY.
+        // No Meta Pixel, Google Form, Google Sheet/CRM,
+        // production endpoint, or real WhatsApp order message.
+
+        const testOrderID = 'TEST-' + Math.floor(100000 + Math.random() * 900000);
+
+        // Browser-only dummy record. Nothing is sent anywhere.
+        sessionStorage.setItem('balwaan_test_order', JSON.stringify({
+            testOrderID: testOrderID,
+            name: name,
+            mobile: mobile,
+            pincode: pincode,
+            house: house,
+            area: area,
+            timestamp: new Date().toISOString()
+        }));
+
+        document.getElementById('checkoutHeader').style.display = 'none';
+        document.getElementById('orderForm').style.display = 'none';
+
+        const successMsg = document.getElementById('successMessage');
+        successMsg.classList.remove('hidden');
+        successMsg.classList.add('flex');
+
+        const successText = successMsg.querySelector('p.text-sm');
+        if (successText) {
+            successText.textContent =
+                'Checkout flow completed successfully. No real order or customer data was submitted.';
+        }
+
+        const trackingButton = document.getElementById('waTrackingBtn');
+        trackingButton.href = '#';
+        trackingButton.innerHTML = '<i class="fas fa-redo text-xl"></i> TEST AGAIN';
+        trackingButton.onclick = function(e) {
+            e.preventDefault();
+            location.reload();
+        };
+
+        const trackingNote = successMsg.querySelector('p.text-\\[11px\\]');
+        if (trackingNote) {
+            trackingNote.textContent =
+                'Dummy checkout only. No CRM entry, Pixel event, or WhatsApp order message was sent.';
+        }
+
+        stickyFooter.style.display = 'none';
+
+        document.getElementById('checkoutSection').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+</script>
+</body>
+</html>
