@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     }
 
     const PIXEL_ID = '916924051189893';
-    const ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN_HERE'; // ⚠️ इसे Meta से लें
+    const ACCESS_TOKEN = 'EAAP0aqEdD0sBSBlCYgvVjoJxUZAZCsB5UbSXEKmSeM97d7FaivYN5UvDUAF72caAxRteDswdDylpHa4kZBAulXvS0YvMcYHt4jFWVZAZB42ogxQvzngpIUpbOKSf5wCeRz2V0ZBZA3x57KVT2VJL5CP0ZCcWSDhIxS0sqkTifiWxvMqwkag5EvlAzoobL4IxfDboFgZDZD'; // ⚠️ इसे Meta से लें
     const CAPI_URL = `https://graph.facebook.com/v18.0/${PIXEL_ID}/events`;
 
     const { orderID, mobile } = req.body;
