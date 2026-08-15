@@ -1,5 +1,5 @@
-// api/capi.js (Vercel Serverless Function)
-import crypto from 'crypto';
+// api/capi.js - Vercel Serverless Function (Working version)
+const crypto = require('crypto');
 
 export default async function handler(req, res) {
     // CORS Support
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     }
 
     const PIXEL_ID = '916924051189893';
-    const ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN_HERE'; // ⚠️ इसे अपने Meta Pixel के Token से बदलो
+    const ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN_HERE'; // ⚠️ इसे Meta से लें
     const CAPI_URL = `https://graph.facebook.com/v18.0/${PIXEL_ID}/events`;
 
     const { orderID, mobile } = req.body;
