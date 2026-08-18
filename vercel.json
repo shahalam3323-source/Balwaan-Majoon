@@ -1,9 +1,26 @@
 {
   "cleanUrls": true,
-  "redirects": [
-    { "source": "/:path.html", "destination": "/:path", "permanent": true }
-  ],
   "rewrites": [
     { "source": "/990only", "destination": "/cod-oiloffer-checkout.html" }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/style.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
