@@ -5,6 +5,9 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <title>Balwaan Gold - Strength & Stamina Support </title>
     
+    <!-- Critical Preloads for LCP Improvement -->
+    <link rel="preload" as="image" href="images/gallery-1.webp" type="image/webp">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -57,7 +60,7 @@
         .gold-gradient-bg {
             background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #B89628 100%);
         }
-.float-badge-1 { animation: float-slow 3s ease-in-out infinite; }
+        .float-badge-1 { animation: float-slow 3s ease-in-out infinite; }
         .float-badge-2 { animation: float-fast 4s ease-in-out infinite reverse; }
 
         @keyframes pulse-glow-border {
@@ -214,8 +217,6 @@
         @media (min-width: 768px) {
             .xtream-offer-banner { height: 115px; }
         }
-
-
     </style>
     <!-- Meta Pixel -->
     <script>
@@ -278,21 +279,23 @@
                          src="images/gallery-1.webp"
                          alt="Balwaan Gold Ayurvedic supplement product"
                          class="w-full aspect-square object-cover transition-opacity duration-200"
+                         fetchpriority="high"
+                         loading="eager"
                          draggable="false">
                 </div>
 
                 <div id="galleryThumbs" class="gallery-thumbs">
                     <button type="button" class="gallery-thumb thumb-card rounded-lg overflow-hidden border-2 border-brand-gold opacity-100 transition-all shadow-sm" aria-label="Show Balwaan Gold product image 1" onclick="changeImage(this, 0)">
-                        <img src="images/gallery-1.webp" alt="Balwaan Gold product bottle" class="w-full h-16 object-cover" draggable="false">
+                        <img src="images/gallery-1.webp" alt="Balwaan Gold product bottle" class="w-full h-16 object-cover" loading="lazy" draggable="false">
                     </button>
                     <button type="button" class="gallery-thumb thumb-card rounded-lg overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition-all shadow-sm" aria-label="Show Balwaan Gold ingredient image" onclick="changeImage(this, 1)">
-                        <img src="images/gallery-2.webp" alt="Balwaan Gold Ayurvedic ingredients" class="w-full h-16 object-cover" draggable="false">
+                        <img src="images/gallery-2.webp" alt="Balwaan Gold Ayurvedic ingredients" class="w-full h-16 object-cover" loading="lazy" draggable="false">
                     </button>
                     <button type="button" class="gallery-thumb thumb-card rounded-lg overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition-all shadow-sm" aria-label="Show Balwaan Gold product hero image" onclick="changeImage(this, 2)">
-                        <img src="images/private-packaging.webp" alt="private and discreet packaging" class="w-full h-16 object-cover" draggable="false">
+                        <img src="images/private-packaging.webp" alt="private and discreet packaging" class="w-full h-16 object-cover" loading="lazy" draggable="false">
                     </button>
                     <button type="button" class="gallery-thumb thumb-card rounded-lg overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition-all shadow-sm" aria-label="Show Balwaan Gold capsules image" onclick="changeImage(this, 3)">
-                        <img src="images/stress-relief.webp" alt="positive impact like stress relief" class="w-full h-16 object-cover" draggable="false">
+                        <img src="images/stress-relief.webp" alt="positive impact like stress relief" class="w-full h-16 object-cover" loading="lazy" draggable="false">
                     </button>
                 </div>
                 <p class="text-[10px] text-gray-400 text-center font-medium md:hidden">Swipe the product image or thumbnails</p>
@@ -500,42 +503,42 @@
 
             <div class="ingredients-track">
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/shilajit.webp" alt="Shilajit" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/shilajit.webp" alt="Shilajit" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Shilajit</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally valued for energy, strength, and stamina support.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/ashwagandha.webp" alt="Ashwagandha" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/ashwagandha.webp" alt="Ashwagandha" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Ashwagandha</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally used for stress support, balance, and daily vitality.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/musli.webp" alt="Safed Musli" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/musli.webp" alt="Safed Musli" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Safed Musli</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally used to support physical strength and vitality.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/gokshura.webp" alt="Gokshura" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/gokshura.webp" alt="Gokshura" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Gokshura</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally used in Ayurvedic wellness and endurance support.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/kaunch.webp" alt="Kaunch Beej" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/kaunch.webp" alt="Kaunch Beej" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Kaunch Beej</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally included for vitality, strength, and reproductive wellness.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/vidari.webp" alt="Vidari Khand" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/vidari.webp" alt="Vidari Khand" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Vidari Khand</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally used as a nourishing Ayurvedic botanical for vitality.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/shatawari.webp" alt="Shatavari" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/shatawari.webp" alt="Shatavari" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Shatavari</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Traditionally used for nourishment, balance, and overall wellness.</p>
                 </article>
                 <article class="ingredient-card glass-card rounded-2xl p-3 text-center">
-                    <img src="images/moringa.webp" alt="Moringa" class="w-full rounded-xl border border-brand-gold/30">
+                    <img src="images/moringa.webp" alt="Moringa" class="w-full rounded-xl border border-brand-gold/30" loading="lazy">
                     <h4 class="mt-2 font-black text-brand-darkGreen text-sm">Moringa</h4>
                     <p class="text-[10px] text-gray-600 font-medium mt-1">Nutrient-rich botanical traditionally used for everyday vitality.</p>
                 </article>
@@ -581,13 +584,12 @@
             </div>
         </section>
 
-
         <!-- Expert Counselling -->
         <section class="p-4 pb-2">
             <div class="bg-gradient-to-r from-brand-forestGreen to-brand-darkGreen rounded-2xl p-4 shadow-lg text-white">
                 <div class="flex items-center gap-4">
                     <div class="shrink-0">
-                        <img src="images/dr-basit.webp" alt="Hakeem Basit Khan, Senior Ayurvedic Sexologist" class="w-14 h-14 rounded-full object-cover border-2 border-brand-gold/70 shadow-md" onerror="this.src='favicon.svg'">
+                        <img src="images/dr-basit.webp" alt="Hakeem Basit Khan, Senior Ayurvedic Sexologist" class="w-14 h-14 rounded-full object-cover border-2 border-brand-gold/70 shadow-md" loading="lazy" onerror="this.src='favicon.svg'">
                     </div>
                     <div class="min-w-0">
                         <h3 class="font-black text-sm text-yellow-400">Free Expert Counselling</h3><div class="text-[11px] text-white font-bold mt-0.5">Hakeem Basit Khan</div>
