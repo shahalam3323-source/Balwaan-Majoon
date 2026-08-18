@@ -810,41 +810,52 @@
             input.addEventListener('blur', () => { stickyFooter.style.transform = 'translateY(0)'; });
         });
 
-        // --- EXIT INTENT LOGIC ---
+       // --- EXIT INTENT LOGIC WITH 20-SECOND MINIMUM DELAY ---
         let exitPopupShown = false;
+        let pageLoadedAt = Date.now(); // Page load hone ka exact time
 
         function showExitPopup() {
             if (!exitPopupShown) {
                 const popup = document.getElementById('exitPopup');
                 const box = document.getElementById('exitPopupBox');
-                popup.classList.remove('opacity-0', 'pointer-events-none');
-                box.classList.remove('scale-95');
-                box.classList.add('scale-100');
-                exitPopupShown = true;
+                if (popup && box) {
+                    popup.classList.remove('opacity-0', 'pointer-events-none');
+                    box.classList.remove('scale-95');
+                    box.classList.add('scale-100');
+                    exitPopupShown = true;
+                }
             }
         }
 
         function closeExitPopup() {
             const popup = document.getElementById('exitPopup');
             const box = document.getElementById('exitPopupBox');
-            popup.classList.add('opacity-0', 'pointer-events-none');
-            box.classList.remove('scale-100');
-            box.classList.add('scale-95');
+            if (popup && box) {
+                popup.classList.add('opacity-0', 'pointer-events-none');
+                box.classList.remove('scale-100');
+                box.classList.add('scale-95');
+            }
         }
 
         function claimExitOffer() {
             closeExitPopup();
-            document.getElementById('checkoutSection').scrollIntoView({ behavior: 'smooth' });
+            const checkoutSec = document.getElementById('checkoutSection');
+            if (checkoutSec) {
+                checkoutSec.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        // Desktop Exit Intent Trigger (Mouse leaves top of window)
+        // Desktop Exit Intent Trigger (20-second delay condition check)
         document.addEventListener('mouseleave', (e) => {
             if (e.clientY <= 0) {
-                showExitPopup();
+                const timePassed = Date.now() - pageLoadedAt;
+                if (timePassed >= 20000) { // Sirf 20 second ke baad hi trigger hoga
+                    showExitPopup();
+                }
             }
         });
 
-        // Mobile Fallback Trigger (Timer based: shows after 20 seconds of user activity if not ordered)
+        // Auto Timer Trigger (Exactly 20 seconds baad trigger hoga)
         setTimeout(() => {
             if (!exitPopupShown) {
                 showExitPopup();
