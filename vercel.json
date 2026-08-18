@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/990only", "destination": "/cod-oiloffer-checkout.html" }
   ],
@@ -14,7 +15,7 @@
       ]
     },
     {
-      "source": "/style.css",
+      "source": "/(.*\\.(css|js|webp|png|jpg|jpeg|svg|ico|webmanifest))",
       "headers": [
         {
           "key": "Cache-Control",
