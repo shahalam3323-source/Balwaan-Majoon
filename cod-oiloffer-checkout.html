@@ -108,13 +108,6 @@
             z-index: 0;
         }
 
-        /* Exit Intent Modal Animations */
-        .modal-backdrop {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            transition: opacity 0.3s ease;
-        }
-    
         /* Final UI polish */
         .brand-wordmark {
             font-family: 'Inter', sans-serif;
@@ -445,8 +438,9 @@
                     </a>
                 </div>
 
-                <!-- Order Form -->
-                <form id="orderForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <!-- Order Form with Hidden IFrame -->
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                <form id="orderForm" onsubmit="handleFormSubmit(event)" target="hidden_iframe" class="space-y-4">
                     <div class="relative">
                         <label class="block text-[11px] font-bold text-gray-500 mb-1.5 uppercase tracking-wider">Full Name *</label>
                         <input type="text" id="custName" required placeholder="Enter your full name" class="w-full rounded-xl px-4 py-3.5 text-sm font-medium placeholder-gray-400"/>
@@ -474,6 +468,9 @@
                         <label class="block text-[11px] font-bold text-gray-500 mb-1.5 uppercase tracking-wider">Complete Address *</label>
                         <textarea id="custAddress" rows="2" required placeholder="House No, Street, Area, Landmark" class="w-full rounded-xl px-4 py-3.5 text-sm font-medium placeholder-gray-400"></textarea>
                     </div>
+
+                    <!-- Order ID is populated on load and mapped to Google Form at submission time. -->
+                    <input type="hidden" id="orderIdField">
 
                     <div class="p-3.5 bg-green-50 rounded-xl border border-green-200 flex items-center justify-between">
                         <div class="flex items-center gap-3">
@@ -628,46 +625,6 @@
 
     </div>
 
-    <!-- EXIT INTENT POPUP (FOMO & Free Gift Expiry Hook) -->
-    <div id="exitPopup" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-brand-gold/40 relative transform scale-95 transition-transform duration-300" id="exitPopupBox">
-            <!-- Close Button -->
-            <button onclick="closeExitPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center font-bold">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="text-center space-y-4 pt-2">
-                <div class="w-16 h-16 bg-red-50 text-red-600 rounded-full flex items-center justify-center text-3xl mx-auto border-2 border-red-100 shadow-inner">
-                    <i class="fa-solid fa-triangle-exclamation animate-bounce"></i>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-black text-brand-darkGreen uppercase tracking-tight">Wait. Your ₹499 Free Oil Is Still Reserved</h3>
-                    <p class="text-xs text-gray-600 mt-2 font-medium leading-relaxed">
-                        Complete your order now to keep the <strong class="text-brand-forestGreen">10ml Xtream Ayurvedic Massage Oil worth ₹499</strong> free with your ₹990 COD order.
-                    </p>
-                </div>
-
-                <div class="bg-green-50 border border-green-200 rounded-xl p-3 text-left">
-                    <div class="text-[11px] font-extrabold text-green-800 flex items-center gap-1.5">
-                        <i class="fa-solid fa-gift text-green-600"></i> Your Offer:
-                    </div>
-                    <div class="text-[11px] text-green-700 font-medium mt-1">
-                        Balwaan Gold + Free Oil @ <strong class="font-black">₹990 (COD)</strong>
-                    </div>
-                </div>
-
-                <button onclick="claimExitOffer()" class="w-full py-3.5 gold-gradient-bg text-black font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 uppercase tracking-wide">
-                    Keep My Free Gift & Order <i class="fa-solid fa-arrow-right"></i>
-                </button>
-
-                <button onclick="closeExitPopup()" class="text-[11px] text-gray-400 font-bold hover:underline block mx-auto uppercase tracking-wider">
-                    No thanks, I'll skip the offer
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Interactive Product Gallery
         const galleryImages = [
@@ -810,101 +767,41 @@
             input.addEventListener('blur', () => { stickyFooter.style.transform = 'translateY(0)'; });
         });
 
-       // --- EXIT INTENT LOGIC WITH 20-SECOND MINIMUM DELAY ---
-        let exitPopupShown = false;
-        let pageLoadedAt = Date.now(); // Page load hone ka exact time
-
-        function showExitPopup() {
-            if (!exitPopupShown) {
-                const popup = document.getElementById('exitPopup');
-                const box = document.getElementById('exitPopupBox');
-                if (popup && box) {
-                    popup.classList.remove('opacity-0', 'pointer-events-none');
-                    box.classList.remove('scale-95');
-                    box.classList.add('scale-100');
-                    exitPopupShown = true;
-                }
-            }
-        }
-
-        function closeExitPopup() {
-            const popup = document.getElementById('exitPopup');
-            const box = document.getElementById('exitPopupBox');
-            if (popup && box) {
-                popup.classList.add('opacity-0', 'pointer-events-none');
-                box.classList.remove('scale-100');
-                box.classList.add('scale-95');
-            }
-        }
-
-        function claimExitOffer() {
-            closeExitPopup();
-            const checkoutSec = document.getElementById('checkoutSection');
-            if (checkoutSec) {
-                checkoutSec.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Desktop Exit Intent Trigger (20-second delay condition check)
-        document.addEventListener('mouseleave', (e) => {
-            if (e.clientY <= 0) {
-                const timePassed = Date.now() - pageLoadedAt;
-                if (timePassed >= 20000) { // Sirf 20 second ke baad hi trigger hoga
-                    showExitPopup();
-                }
-            }
-        });
-
-        // Auto Timer Trigger (Exactly 20 seconds baad trigger hoga)
-        setTimeout(() => {
-            if (!exitPopupShown) {
-                showExitPopup();
-            }
-        }, 20000);
-
-        // Production checkout integration
+        // ===== NEW BULLETPROOF GOOGLE SHEET INTEGRATION (IFRAME METHOD) =====
         const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeoSYU6Q-SlPFeJAvlxSerWmLC_9BDXjCc-195OJasPvS5rSA/formResponse';
         const WHATSAPP_NUMBER = '919557133307';
+        let submitted = false; // form submit hone ka flag
 
-        function submitToGoogleSheet(mapping) {
-            return new Promise((resolve) => {
-                const formData = new URLSearchParams();
-                Object.entries(mapping).forEach(([key, value]) => {
-                    formData.append(key, value);
-                });
+        // 1. Auto-generate Order ID on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            const randomId = "BWN-" + Math.floor(100000 + Math.random() * 900000);
+            const orderField = document.getElementById("orderIdField");
+            if(orderField) { orderField.value = randomId; }
+        });
 
-                fetch(GOOGLE_FORM_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: formData.toString()
-                }).then(() => {
-                    resolve();
-                }).catch(err => {
-                    console.error("Form Submit Error:", err);
-                    resolve(); 
-                });
-            });
-        }
-
-        async function handleFormSubmit(event) {
-            event.preventDefault();
+        // 2. Handle form submission (without fetch, using iframe)
+        function handleFormSubmit(event) {
+            event.preventDefault(); // default submit roko
 
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing...`;
+            if(btn) {
+                btn.disabled = true;
+                btn.innerText = "Processing Order...";
+            }
 
+            // Build the exact Google Form payload using the VERIFIED entry IDs.
+            // Visible UI fields intentionally have no Google entry names so
+            // Pincode/Address cannot overwrite each other.
+            const form = document.getElementById('orderForm');
             const name = document.getElementById('custName').value.trim();
             const mobile = document.getElementById('custMobile').value.trim();
             const pincode = document.getElementById('custPincode').value.trim();
             const city = document.getElementById('custCity').value.trim();
             const address = document.getElementById('custAddress').value.trim();
-            const orderID = "BWN-" + Math.floor(100000 + Math.random() * 900000);
-            const fullAddress = `${address}, ${city} - ${pincode}`;
+            const orderID = document.getElementById('orderIdField').value.trim();
+            const fullAddress = `${address}${city ? ', ' + city : ''}${pincode ? ' - ' + pincode : ''}`;
 
-            const mapping = {
+            const googlePayload = {
                 'entry.810357359': orderID,
                 'entry.1188401630': name,
                 'entry.1973053237': mobile,
@@ -915,20 +812,46 @@
                 'entry.2106372591': 'Yes (Oil included)'
             };
 
-            await submitToGoogleSheet(mapping);
+            // Remove any old dynamically-created Google fields, then add one
+            // hidden input per verified entry ID.
+            form.querySelectorAll('.google-form-field').forEach(el => el.remove());
+            Object.entries(googlePayload).forEach(([key, value]) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = value;
+                input.className = 'google-form-field';
+                form.appendChild(input);
+            });
 
-            const orderData = {
-                orderID, name, mobile,
-                address: fullAddress,
-                product: 'Balwaan Gold Premium Kit',
-                amount: '990',
-                payment: 'Cash on Delivery',
-                freeOil: true
-            };
-            const orders = JSON.parse(localStorage.getItem('balwaanOrders') || '[]');
-            orders.push(orderData);
-            localStorage.setItem('balwaanOrders', JSON.stringify(orders));
+            form.action = GOOGLE_FORM_URL;
+            form.target = "hidden_iframe";
+            submitted = true;
+            successHandled = false;
+            form.submit();
+            // Iframe load hone par handleFormSuccess() automatically call hoga (neeche)
+            // Fallback for browsers: 2 second baad check karo
+            setTimeout(() => {
+                if(submitted) {
+                    handleFormSuccess();
+                }
+            }, 2000);
+        }
 
+        // 3. Function called when iframe loads successfully
+        function handleFormSuccess() {
+            if(!submitted) return;
+            
+            // Fetch all data from form fields
+            const name = document.getElementById('custName').value;
+            const mobile = document.getElementById('custMobile').value;
+            const pincode = document.getElementById('custPincode').value;
+            const city = document.getElementById('custCity').value;
+            const address = document.getElementById('custAddress').value;
+            const orderID = document.getElementById('orderIdField').value;
+            const fullAddress = `${address}, ${city} - ${pincode}`;
+
+            // Fire Pixel Purchase Event
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'Purchase', {
                     value: 990,
@@ -938,10 +861,7 @@
                 }, { eventID: orderID });
             }
 
-            const waMsg = `Hi Balwaan Team! 👋\n\nI just placed my COD order successfully. Please share my dispatch details and live tracking link.\n\n📦 *Order Summary:*\nOrder ID: ${orderID}\nName: ${name}\nMobile: ${mobile}\nAddress: ${fullAddress}\n\n✅ 1x Balwaan Gold Premium Kit\n🎁 1x FREE Xtream Oil for Men (10ml)\n💰 Net Pay: ₹990 (COD)`;
-            const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
-
-            // Server-side Meta CAPI Integration (Vercel)
+            // CAPI Integration (server-side, with eventID to avoid duplicate)
             fetch('https://balwaangold.vercel.app/api/capi', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -951,9 +871,14 @@
                     name: name,
                     address: fullAddress,
                     amount: 990,
-                    currency: 'INR'
+                    currency: 'INR',
+                    eventID: orderID // unique eventID for deduplication
                 })
             }).catch(e => console.log('CAPI silent error:', e));
+
+            // WhatsApp Link
+            const waMsg = `Hi Balwaan Team! 👋\n\nI just placed my COD order successfully. Please share my dispatch details and live tracking link.\n\n📦 *Order Summary:*\nOrder ID: ${orderID}\nName: ${name}\nMobile: ${mobile}\nAddress: ${fullAddress}\n\n✅ 1x Balwaan Gold Premium Kit\n🎁 1x FREE Xtream Oil for Men (10ml)\n💰 Net Pay: ₹990 (COD)`;
+            const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
 
             document.getElementById('waTrackingBtn').href = waLink;
             document.getElementById('orderForm').style.display = 'none';
@@ -962,7 +887,14 @@
             successMsg.classList.remove('hidden');
             successMsg.classList.add('flex');
             stickyFooter.style.display = 'none';
+            
+            submitted = false; // reset
         }
+        
+        // Iframe load event listener
+        document.getElementById('hidden_iframe').addEventListener('load', function() {
+            if(submitted) handleFormSuccess();
+        });
     </script>
 </body>
 </html>
